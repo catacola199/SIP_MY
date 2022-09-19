@@ -70,8 +70,21 @@ class User extends CI_Controller {
 			'password_pengguna'	    => $this->input->post('password_pengguna'),
 			'foto_pengguna'		    => $update_foto
 		);
-		$this->M_User->updatedatauser($data, $id);
 		$this->session->set_flashdata('notif', 'Data berhasil diupdate');
+		redirect(base_url('users'));
+	}
+
+	public function verifuser($id = null)
+	{
+		$idp = array(
+			'id_pengguna' => $id
+		);
+		$nama = $this->db->get_where('pengguna', ["id_pengguna" => $id])->row()->nama_pengguna;
+		$data = array(
+			'terverifikasi' => 1
+		);
+		$this->M_User->verif_user($data, $idp);
+		$this->session->set_flashdata('notif', ucfirst($nama).' berhasil terverifikasi');
 		redirect(base_url('users'));
 	}
 

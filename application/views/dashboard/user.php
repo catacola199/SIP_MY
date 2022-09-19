@@ -6,18 +6,16 @@
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
+    
     <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
-        </div>
+       <span class="loader"></span>
     </div>
+
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
         <!-- ============================================================== -->
-
 
         <!-- ****** Top Header -->
         <?php $this->load->view('component/_header') ?>
@@ -57,7 +55,7 @@
                                 <hr>
                                 <h6 class="card-subtitle">
                                     <div class="btn-list">
-                                        <a href="<?php site_url('user') ?>" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="refresh"></i> </a>
+                                        <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="Refresh"></i> </a>
                                         <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#success-header-modal"><i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="Add"></i></button>
                                     </div>
                                 </h6>
@@ -94,9 +92,26 @@
                                                             <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
                                                         </a>
 
-                                                        <a onclick="deleteConfirm('<?php echo site_url('user/deleteuser/' . $data->id_pengguna) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
-                                                            <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
-                                                        </a>
+                                                        <?php if ($data->terverifikasi != 1):?>
+                                                            <a onclick="verifConfirm('<?php echo site_url('user/verifuser/' . $data->id_pengguna) ?>')" href="#!" class="btn btn-sm btn-outline-primary">
+                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Verifikasi"></i>
+                                                            </a>
+                                                        <?php else:?>
+                                                            <a href="" class="btn btn-sm btn-outline-primary disabled" aria-disabled="true">
+                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Verifikasi"></i>
+                                                            </a>
+                                                        <?php endif;?>
+                                                       
+                                                        
+                                                        <?php if ($this->fungsi->user_login()->nama_pengguna != $data->nama_pengguna):?>
+                                                            <a onclick="deleteConfirm('<?php echo site_url('user/deleteuser/' . $data->id_pengguna) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
+                                                                <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
+                                                            </a>
+                                                        <?php else:?>
+                                                            <a href="#!" class="btn btn-sm btn-outline-danger disabled" aria-disabled="true">
+                                                                <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
+                                                            </a>
+                                                        <?php endif;?>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -132,30 +147,6 @@
     <!-- Jquery -->
     <?php $this->load->view('component/_jquery') ?>
     <!-- End JQuery -->
-
-    <!-- Modal Delete-->
-    <!-- Delete Header Modal -->
-    <div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header modal-colored-header bg-primary">
-                    <h4 class="modal-title" id="warning-header-modalLabel">Konfirmasi hapus data user
-                    </h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <!-- Form -->
-                    Apakah anda akan menghapus data tersebut?
-                    <!-- End Form -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
-                    <a id="btn-delete" href="<?php echo site_url('user/deleteuser/' . $data->id_pengguna) ?>" class="btn btn-success">Ya</a>
-                </div>
-                </form>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 
     <!-- Form Add Modal -->
     <div id="success-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="success-header-modalLabel" aria-hidden="true">

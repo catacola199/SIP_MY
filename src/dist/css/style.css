@@ -7681,7 +7681,7 @@ a.text-purple:hover, a.text-purple:focus {
           justify-content: flex-start; } }
 
 @media (max-width: 767.98px) {
-  #main-wrapper {
+    #main-wrapper {
     /*Header position*/ }
     #main-wrapper[data-sidebartype="mini-sidebar"] .left-sidebar {
       left: -260px; }
@@ -7709,55 +7709,59 @@ a.text-purple:hover, a.text-purple:focus {
       right: 0px; }
   .right-part {
     width: 100%;
-    margin-left: 0px; } }
-
-/*******************
-Preloader
-********************/
+    margin-left: 0px; } 
+  }
+  
+.loader{
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+}
+/*Selecting both pseudo-elements together because they will have the following styles in common. Doing it this way we don't have to repeat ourselves later.*/
+.loader::before,
+.loader::after{
+  content: '';
+  position: absolute;
+  width: inherit; /*Gets the same width as the parent (.loader).*/
+  height: inherit; /*Gets the same height as the parent (.loader).*/
+  border-radius: 50%;
+  animation: rotate 1s infinite
+  cubic-bezier(0.77, 0, 0.175, 1); /*The animation will take 1 second and it will run for an infinite time.*/
+}
+/*Selecting the pseudo-elements individually to apply different colors and a delay on the ::after.*/
+.loader::before{
+  background-color: #ff4f70;
+}
+.loader::after{
+  background-color: #5f76e8;
+  animation-delay: .5s; /*The delay here is important. Make sure that the delay is half of your animation duration (1 second in this case) so we do a delay of .5 second.
+  If the delay is not half of the animation duration, the animation will not look fluid.*/
+}
+@keyframes rotate {
+  0%,100%{
+      left: 50px; /*The 0% and 100% (start and end) stops will have the same styles so here we use them together to not repeat it later. We move the element to the left.*/
+  }
+  25%{
+      transform: scale(.35); /*On this stop we scale the element down to make it look smaller.*/
+  }
+  50%{
+      left: 0; /*On this stop the left position to 0 to bring it all the way back..*/
+  }
+  75%{
+      transform: scale(1); /*On this stop we make the element the normal size again.*/
+  }
+}
+/* kjahdflhadf */
 .preloader {
   width: 100%;
   height: 100%;
   top: 0px;
   position: fixed;
   z-index: 99999;
-  background: #fff; }
-
-.lds-ripple {
-  display: inline-block;
-  position: relative;
-  width: 64px;
-  height: 64px;
-  position: absolute;
-  top: calc(50% - 3.5px);
-  left: calc(50% - 3.5px); }
-  .lds-ripple .lds-pos {
-    position: absolute;
-    border: 2px solid #2962FF;
-    opacity: 1;
-    border-radius: 50%;
-    animation: lds-ripple 1s cubic-bezier(0, 0.1, 0.5, 1) infinite; }
-  .lds-ripple .lds-pos:nth-child(2) {
-    animation-delay: -0.5s; }
-
-@keyframes lds-ripple {
-  0% {
-    top: 28px;
-    left: 28px;
-    width: 0;
-    height: 0;
-    opacity: 0; }
-  5% {
-    top: 28px;
-    left: 28px;
-    width: 0;
-    height: 0;
-    opacity: 1; }
-  100% {
-    top: -1px;
-    left: -1px;
-    width: 58px;
-    height: 58px;
-    opacity: 0; } }
+  background: #fff;
+ }
 
 /*******************
  General Topbar

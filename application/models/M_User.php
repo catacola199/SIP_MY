@@ -53,6 +53,11 @@ class M_User extends CI_Model
         return $this->db->delete('pengguna', array("id_pengguna" => $id));
     }
 
+    public function verif_user($data, $id)
+    {
+        return $this->db->update('pengguna', $data, $id);
+    }
+
     public function updatedatauser($data, $id)
     {
         $this->db->update('pengguna', $data, $id);

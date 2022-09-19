@@ -13,7 +13,7 @@
 <script src="<?= base_url('src') ?>/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
 <script src="<?= base_url('src') ?>/dist/js/sidebarmenu.js"></script>
 <!--Custom JavaScript -->
-<script src="<?= base_url('src') ?>/dist/js/custom.min.js"></script>
+<script src="<?= base_url('src') ?>/dist/js/custom.js"></script>
 <!--This page JavaScript -->
 <script src="<?= base_url('src') ?>/assets/extra-libs/c3/d3.min.js"></script>
 <script src="<?= base_url('src') ?>/assets/extra-libs/c3/c3.min.js"></script>
@@ -34,21 +34,80 @@
 <!-- Separate -->
 <script>
     function deleteConfirm(url) {
-        $('#btn-delete').attr('href', url);
-        $('#deleteModal').modal();
+        Swal.fire({
+            icon: 'warning',
+            title: 'Peringatan',
+            text: "Anda yakin ingin menghapus data ini?",
+            showCancelButton: true,
+            confirmButtonColor: '#5f76e8',
+            cancelButtonColor: '#fd5f7d',
+            confirmButtonText: 'Ya, Hapus!'
+         }).then(result => {
+            if(result.isConfirmed){
+                swal.fire({
+                    imageUrl: "<?= base_url('assets/loader_kecil.gif'); ?>",
+                    title: "Menghapus Data",
+                    text: "Mohon Tunggu",
+                    showConfirmButton: false,
+                    allowOutsideClick: false,
+                    timer: 1000
+                }).then((result)=>{
+                    window.location.href = url;
+                });
+            }
+         });
+    }
+    function verifConfirm(url) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Peringatan',
+            text: "Anda yakin ingin mengubah data ini?",
+            showCancelButton: true,
+            confirmButtonColor: '#5f76e8',
+            cancelButtonColor: '#fd5f7d',
+            confirmButtonText: 'Ya, Ubah!'
+         }).then(result => {
+            if(result.isConfirmed){
+                swal.fire({
+                    imageUrl: "<?= base_url('assets/loader_kecil.gif'); ?>",
+                    title: "Mengubah Data",
+                    text: "Mohon Tunggu",
+                    showConfirmButton: false,
+                    allowOutsideClick: false,
+                    timer: 1000
+                }).then((result)=>{
+                    window.location.href = url;
+                });
+            }
+         });
     }
 
     function editConfirm(url) {
         $('#btn-edit').attr('href', url);
         $('#editModal').modal();
     }
+
+    $("#refresh_tabel").click(function(e) {
+        swal.fire({
+            imageUrl: "<?= base_url('assets/loader_kecil.gif'); ?>",
+            title: "Refresh Data",
+            text: "Mohon Tunggu",
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            timer: 1000
+        }).then((result)=>{
+            window.location.reload();
+        });
+    });
 </script>
+
 <?php if ($this->session->flashdata('notif')):?>
     <script>
         Swal.fire({
             icon: 'success',
             title: 'Success!',
             text: "<?php echo $this->session->flashdata('notif'); ?>",
+            confirmButtonColor: '#5f76e8'
     });
     </script>
 <?php endif ?>

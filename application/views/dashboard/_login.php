@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('src') ?>/assets/images/favicon.png">
     <title>Login Page</title>
     <!-- Custom CSS -->
-    <link href="<?= base_url('src') ?>/dist/css/style.min.css" rel="stylesheet">
+    <link href="<?= base_url('src') ?>/dist/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.32/dist/sweetalert2.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -28,10 +28,7 @@
     <div class="main-wrapper">
         <!-- Preloader - style you can find in spinners.css -->
         <div class="preloader">
-            <div class="lds-ripple">
-                <div class="lds-pos"></div>
-                <div class="lds-pos"></div>
-            </div>
+            <span class="loader"></span>
         </div>
         <!-- Preloader - style you can find in spinners.css -->
 
