@@ -37,7 +37,7 @@
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item"><a href="<?= site_url('welcome/steptwo') ?>">Dashboard</a>
+                                    <li class="breadcrumb-item"><a href="<?= site_url('dashboard') ?>">Dashboard</a>
                                         <i class="fas fa-angle-double-right"></i> Edit Brosur
                                     </li>
                                 </ol>
@@ -78,10 +78,10 @@
                                             <!-- Form -->
                                             <form action="<?php echo base_url('brosur/update_brosur') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3">
 
-                                                <input type="text" hidden name="id_pengguna" id="id_pengguna" value="<?= $user->id_pengguna ?>">
+                                                <input type="text" hidden name="id_pengguna" id="id_pengguna" value="<?= $brosur->id ?>">
                                                 <div class="form-group">
                                                     <label for="nama_brosur"><strong>Nama Brosur</strong></label>
-                                                    <input type="text" class="form-control form-control-user" name="nama_brosur" id="nama_brosur" placeholder="Nama Brosur" required>
+                                                    <input type="text" class="form-control form-control-user" name="nama_brosur" id="nama_brosur" placeholder="Nama Brosur" value="<?= $brosur->nama_brosur ?>" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="deskripsi_brosur">Deskripsi</label>

@@ -157,7 +157,7 @@
                         </div>
                         <div class="form-group">
                             <label for="link_youtube"><strong>Link Youtube</strong></label>
-                            <input type="text" class="form-control form-control-user" name="link_youtube" id="link_youtube" placeholder="Link Youtube" required>
+                            <input type="text" class="form-control form-control-user" name="link_youtube" id="link_youtube" placeholder="Link Youtube">
                         </div>
 
 
