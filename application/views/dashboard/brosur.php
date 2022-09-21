@@ -7,10 +7,7 @@
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
     <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
-        </div>
+       <span class="loader"></span>
     </div>
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
@@ -38,7 +35,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                     <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>">Dashboard</a>
-                                        <i class="fas fa-angle-double-right"></i> User Akun
+                                        <i class="fas fa-angle-double-right"></i> Master Brosur
                                     </li>
                                 </ol>
                             </nav>
@@ -57,7 +54,7 @@
                                 <hr>
                                 <h6 class="card-subtitle">
                                     <div class="btn-list">
-                                        <a href="<?php site_url('brosur') ?>" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="refresh"></i> </a>
+                                        <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="refresh"></i> </a>
                                         <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#success-header-modal"><i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="Add"></i></button>
                                     </div>
                                 </h6>
@@ -66,9 +63,9 @@
                                         <thead class="bg-primary text-white">
                                             <tr>
                                                 <th>#</th>
+                                                <th>Thumbnail</th>
                                                 <th>Nama Brosur</th>
                                                 <th>Deskripsi</th>
-                                                <th>Thumbnail</th>
                                                 <th>File Brosur</th>
                                                 <th>Link Youtube</th>
                                                 <th>Action</th>
@@ -80,10 +77,10 @@
                                             foreach ($brosur as $data) : ?>
                                                 <tr>
                                                     <td><?= $i++ ?></td>
+                                                    <td><img src="<?php echo base_url('upload/brosur/thumbnail/' . $data->thumb_brosur) ?>" alt="Foto" width="60" class="img-thumbnail rounded" /></td>
                                                     <td><?php echo $data->nama_brosur ?></td>
-                                                    <td><?php echo $data->deskripsi_brosur ?></td>
-                                                    <td><?php echo $data->thumb_brosur ?></td>
-                                                    <td><img src="<?php echo base_url('upload/brosur/' . $data->file_brosur) ?>" class="rounded-circle" alt="Foto" width="50" /></td>
+                                                    <td><?php echo substr($data->deskripsi_brosur , 0, 40) . '...'?></td>
+                                                    <td><?php echo $data->file_brosur ?></td>
                                                     <td><?php echo $data->link_youtube ?></td>
                                                     <td>
                                                         <a href="<?php echo site_url('brosur/edit_brosur/' . $data->id) ?>" class="btn btn-sm btn-outline-success">
@@ -127,30 +124,6 @@
     <!-- Jquery -->
     <?php $this->load->view('component/_jquery') ?>
     <!-- End JQuery -->
-
-    <!-- Modal Delete-->
-    <!-- Delete Header Modal -->
-    <div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header modal-colored-header bg-primary">
-                    <h4 class="modal-title" id="warning-header-modalLabel">Konfirmasi hapus data user
-                    </h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <!-- Form -->
-                    Apakah anda akan menghapus data tersebut?
-                    <!-- End Form -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
-                    <a id="btn-delete" href="<?php echo site_url('brosur/deletebrosur/' . $data->id_pengguna) ?>" class="btn btn-success">Ya</a>
-                </div>
-                </form>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 
     <!-- Form Add Modal -->
     <div id="success-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="success-header-modalLabel" aria-hidden="true">

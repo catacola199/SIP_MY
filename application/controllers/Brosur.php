@@ -8,7 +8,7 @@ class Brosur extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('All_model');
-		$this->load->model('M_brosur');
+		$this->load->model('M_Brosur');
 		if ($this->All_model->isNotLogin()) redirect(site_url(''));
 		$this->load->helper('url');
 	}
@@ -16,25 +16,21 @@ class Brosur extends CI_Controller
 	public function index()
 	{
 		$data["role"] = $this->All_model->getAllRole();
-		$data["brosur"] = $this->M_brosur->getAllBrosur();
+		$data["brosur"] = $this->M_Brosur->getAllBrosur();
 		$this->load->view("dashboard/brosur", $data);
 	}
 
 	// Get Save User
 	public function save_brosur()
 	{
-		$options = [
-			'cost' => 10,
-		];
-
 		$data = array(
 			'nama_brosur'	        => $this->input->post('nama_brosur'),
 			'deskripsi_brosur'	    => $this->input->post('deskripsi_brosur'),
-			'thumb_brosur'     		=> $this->M_brosur->_uploadImageBrosur(),
-			'file_brosur'	        => $this->M_brosur->_uploadFileBrosur(),
+			'thumb_brosur'     		=> $this->M_Brosur->_uploadImageBrosur(),
+			'file_brosur'	        => $this->M_Brosur->_uploadFileBrosur(),
 			'link_youtube'	 	    => $this->input->post('link_youtube')
 		);
-		$this->M_brosur->simpandatabrosur($data);
+		$this->M_Brosur->simpandatabrosur($data);
 		$this->session->set_flashdata('notif', 'Data berhasil disimpan');
 		redirect(base_url('brosurs'));
 	}
@@ -55,16 +51,16 @@ class Brosur extends CI_Controller
 		);
 
 		if (!empty($_FILES['image']['name'])) {
-			$update_foto = $this->M_User->_uploadImage();
+			$update_foto = $this->M_Brosur->_uploadImage();
 		} else {
-			$update_foto = $this->input->post('foto_profile');
+			$update_foto = $this->input->post('thumb_brosur');
 		}
 
 		$data = array(
 			'nama_brosur'	        => $this->input->post('nama_brosur'),
 			'deskripsi_brosur'	    => $this->input->post('deskripsi_brosur'),
-			'thumb_brosur'     		=> $this->M_brosur->_uploadImageBrosur(),
-			'file_brosur'	        => $this->M_brosur->_uploadFileBrosur(),
+			'thumb_brosur'     		=> $this->M_Brosur->_uploadImageBrosur(),
+			'file_brosur'	        => $this->M_Brosur->_uploadFileBrosur(),
 			'link_youtube'	 	    => $this->input->post('link_youtube')
 		);
 		$this->M_Brosur->updatedatabrosur($data, $id);

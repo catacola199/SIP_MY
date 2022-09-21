@@ -17,8 +17,8 @@ class M_Brosur extends CI_Model
 
     public function _uploadFileBrosur()
     {
-        $config['upload_path']          = './upload/brosur/';
-        $config['allowed_types']        = 'pdf';
+        $config['upload_path']          = './upload/brosur/file/';
+        $config['allowed_types']        = 'pdf|doc|docx';
         $config['file_name']            = $this->input->post('nama_brosur');
         $config['encrypt_name']         = false;
         $config['overwrite']            = true;
@@ -34,7 +34,7 @@ class M_Brosur extends CI_Model
     }
     public function _uploadImageBrosur()
     {
-        $config['upload_path']          = './upload/brosur/';
+        $config['upload_path']          = './upload/brosur/thumbnail/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->input->post('nama_brosur');
         $config['encrypt_name']         = false;
@@ -57,17 +57,26 @@ class M_Brosur extends CI_Model
 
     public function _deleteImage($id)
     {
-        $pengguna = $this->getID($id);
+        $brosur = $this->getID($id);
 
-        if ($pengguna->foto_pengguna != "default.png") {
-            $filename = explode(".", $pengguna->file_brosur)[0];
-            return array_map('unlink', glob(FCPATH . "upload/brosur/$filename.*"));
+        if ($brosur->thumb_brosur != "default.png") {
+            $filename = explode(".", $brosur->thumb_brosur)[0];
+            return array_map('unlink', glob(FCPATH . "upload/brosur/thumbnail/$filename.*"));
         }
     }
+    public function _deleteFile($id)
+    {
+        $brosur = $this->getID($id);
 
+        if ($brosur->file_brosur != "default.pdf") {
+            $filename = explode(".", $brosur->file_brosur)[0];
+            return array_map('unlink', glob(FCPATH . "upload/brosur/file/$filename.*"));
+        }
+    }
     public function del_brosur($id)
     {
         $this->_deleteImage($id);
+        $this->_deleteFile($id);
         return $this->db->delete('brosur', array("id" => $id));
     }
 
