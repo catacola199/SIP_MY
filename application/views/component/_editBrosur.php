@@ -78,32 +78,32 @@
                                             <!-- Form -->
                                             <form action="<?php echo base_url('brosur/update_brosur') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3">
 
-                                                <input type="text" hidden name="id_pengguna" id="id_pengguna" value="<?= $user->id_pengguna ?>">
+                                                <input type="text" hidden name="id" id="id" value="<?= $brosur->id ?>">
                                                 <div class="form-group">
                                                     <label for="nama_brosur"><strong>Nama Brosur</strong></label>
-                                                    <input type="text" class="form-control form-control-user" name="nama_brosur" id="nama_brosur" placeholder="Nama Brosur" required>
+                                                    <input type="text" class="form-control form-control-user" name="nama_brosur" id="nama_brosur" placeholder="Nama Brosur" value="<?= $brosur->nama_brosur ?>" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="deskripsi_brosur">Deskripsi</label>
-                                                    <textarea class="form-control" name="deskripsi_brosur" id="deskripsi_brosur" rows="2"></textarea>
+                                                    <textarea class="form-control" name="deskripsi_brosur" id="deskripsi_brosur" rows="2"><?= $brosur->deskripsi_brosur ?></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="thumb_brosur"><strong>Thumbnail</strong></label>
-                                                    <input type="file" class="form-control form-control-file" name="thumb_brosur" id="thumb_brosur" accept=".png,.jpg,.jpeg">
+                                                    <input type="file" class="form-control form-control-file" name="thumb_brosur" id="thumb_brosur" accept=".png,.jpg,.jpeg" value="<?= $brosur->thumb_brosur ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="file_brosur"><strong>File Brosur</strong></label>
-                                                    <input type="file" class="form-control form-control-file" name="file_brosur" id="file_brosur" accept=".pdf">
+                                                    <input type="file" class="form-control form-control-file" name="file_brosur" id="file_brosur" accept=".pdf" value="<?= $brosur->file_brosur ?>">
 
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="link_youtube"><strong>Link Youtube</strong></label>
-                                                    <input type="text" class="form-control form-control-user" name="link_youtube" id="link_youtube" placeholder="Link Youtube" required>
+                                                    <input type="text" class="form-control form-control-user" name="link_youtube" id="link_youtube" placeholder="Link Youtube" value="<?= $brosur->link_youtube ?>" required>
                                                 </div>
                                                 <!-- End Form -->
 
                                                 <div class="modal-footer">
-                                                    <a href="<?php echo site_url('users') ?>" class="btn btn-danger" data-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</a>
+                                                    <a href="<?php echo site_url('brosurs') ?>" class="btn btn-danger" data-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</a>
                                                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
                                                 </div>
 
