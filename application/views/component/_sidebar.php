@@ -26,6 +26,11 @@
                                 <span class="hide-menu">Pengguna </span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a href="<?= base_url('brosurs') ?>" class="sidebar-link">
+                                <span class="hide-menu">Brosur </span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

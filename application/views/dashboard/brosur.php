@@ -77,7 +77,7 @@
                                         </thead>
                                         <tbody>
                                             <?php $i = 1;
-                                            foreach ($user as $data) : ?>
+                                            foreach ($brosur as $data) : ?>
                                                 <tr>
                                                     <td><?= $i++ ?></td>
                                                     <td><?php echo $data->nama_brosur ?></td>
@@ -85,6 +85,14 @@
                                                     <td><?php echo $data->thumb_brosur ?></td>
                                                     <td><img src="<?php echo base_url('upload/brosur/' . $data->file_brosur) ?>" class="rounded-circle" alt="Foto" width="50" /></td>
                                                     <td><?php echo $data->link_youtube ?></td>
+                                                    <td>
+                                                        <a href="<?php echo site_url('brosur/edit_brosur/' . $data->id) ?>" class="btn btn-sm btn-outline-success">
+                                                            <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
+                                                        </a>
+                                                        <a onclick="deleteConfirm('<?php echo site_url('brosur/deletebrosur/' . $data->id) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
+                                                            <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>
@@ -137,7 +145,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
-                    <a id="btn-delete" href="<?php echo site_url('user/deleteuser/' . $data->id_pengguna) ?>" class="btn btn-success">Ya</a>
+                    <a id="btn-delete" href="<?php echo site_url('brosur/deletebrosur/' . $data->id_pengguna) ?>" class="btn btn-success">Ya</a>
                 </div>
                 </form>
             </div><!-- /.modal-content -->
@@ -155,37 +163,31 @@
                 </div>
                 <div class="modal-body">
                     <!-- Form -->
-                    <form action="<?php echo base_url('user/save_user') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3">
+                    <form action="<?php echo base_url('brosur/save_brosur') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3">
 
                         <div class="form-group">
-                            <label for="nama_pengguna"><strong>Nama</strong></label>
-                            <input type="text" class="form-control form-control-user" name="nama_pengguna" id="nama_pengguna" placeholder="Nama Pengguna" required>
+                            <label for="nama_brosur"><strong>Nama Brosur</strong></label>
+                            <input type="text" class="form-control form-control-user" name="nama_brosur" id="nama_brosur" placeholder="Nama Brosur" required>
                         </div>
                         <div class="form-group">
-                            <label for="email_pengguna"><strong>Email</strong></label>
-                            <input type="text" class="form-control form-control-user" name="email_pengguna" id="email_pengguna" placeholder="Email Pengguna" required>
+                            <label for="deskripsi_brosur">Deskripsi</label>
+                            <textarea class="form-control" name="deskripsi_brosur" id="deskripsi_brosur" rows="2"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="telepon_pengguna"><strong>No Hp</strong></label>
-                            <input type="number" class="form-control form-control-user" name="telepon_pengguna" id="telepon_pengguna" placeholder="No Handphone" required>
+                            <label for="thumb_brosur"><strong>Thumbnail</strong></label>
+                            <input type="file" class="form-control form-control-file" name="thumb_brosur" id="thumb_brosur" accept=".png,.jpg,.jpeg">
                         </div>
                         <div class="form-group">
-                            <label for="username_pengguna"><strong>Username</strong></label>
-                            <input type="text" class="form-control form-control-user" name="username_pengguna" id="username_pengguna" placeholder="Username Pengguna" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password_pengguna"><strong>Password</strong></label>
-                            <input type="password" class="form-control form-control-user" name="password_pengguna" id="password_pengguna" placeholder="Password Pengguna" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="id_role"><strong>id Role</strong></label>
-                            <input type="number" class="form-control form-control-user" name="id_role" id="id_role" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="image"><strong>Photo</strong></label>
-                            <input type="file" class="form-control form-control-file" name="image" id="image" accept=".png,.jpg,.jpeg">
+                            <label for="file_brosur"><strong>File Brosur</strong></label>
+                            <input type="file" class="form-control form-control-file" name="file_brosur" id="file_brosur" accept=".pdf">
 
                         </div>
+                        <div class="form-group">
+                            <label for="link_youtube"><strong>Link Youtube</strong></label>
+                            <input type="text" class="form-control form-control-user" name="link_youtube" id="link_youtube" placeholder="Link Youtube" required>
+                        </div>
+
+
                         <!-- End Form -->
 
                         <div class="modal-footer">

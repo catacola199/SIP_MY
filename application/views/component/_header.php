@@ -11,17 +11,17 @@
                 <a href="<?= base_url('dashboard') ?>">
                     <b class="logo-icon">
                         <!-- Dark Logo icon -->
-                        <img src="<?= base_url('src') ?>/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                        <img src="<?= base_url('src') ?>/assets/images/logo_1.png" alt="homepage" class="dark-logo" />
                         <!-- Light Logo icon -->
-                        <img src="<?= base_url('src') ?>/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+                        <img src="<?= base_url('src') ?>/assets/images/logo_1.png" alt="homepage" class="light-logo" />
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span class="logo-text">
                         <!-- dark Logo text -->
-                        <img src="<?= base_url('src') ?>/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                        <img src="<?= base_url('src') ?>/assets/images/SIPMEDIc.png" alt="homepage" class="dark-logo" />
                         <!-- Light Logo text -->
-                        <img src="<?= base_url('src') ?>/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                        <img src="<?= base_url('src') ?>/assets/images/SIPMEDIc.png" class="light-logo" alt="homepage" />
                     </span>
                 </a>
             </div>
@@ -56,8 +56,8 @@
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="<?php echo base_url('upload/pengguna/'.$this->fungsi->user_login()->foto_pengguna) ?>" alt="user" class="rounded-circle" width="40">
-                        <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span class="text-dark"><?= $this->fungsi->user_login()->nama_pengguna?></span> <i data-feather="chevron-down" class="svg-icon"></i></span>
+                        <img src="<?php echo base_url('upload/pengguna/' . $this->fungsi->user_login()->foto_pengguna) ?>" alt="user" class="rounded-circle" width="40">
+                        <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span class="text-dark"><?= $this->fungsi->user_login()->nama_pengguna ?></span> <i data-feather="chevron-down" class="svg-icon"></i></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                         <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user" class="svg-icon mr-2 ml-1"></i>
