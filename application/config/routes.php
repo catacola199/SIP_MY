@@ -57,4 +57,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['dashboard'] = 'dashboard';
 $route['users'] = 'user';
 $route['brosurs'] = 'brosur';
+$route['produks'] = 'produk';
+$route['penawarans'] = 'penawaran';
+$route['permintaans'] = 'permintaan';
 // $route['login'] = 'login/auth';

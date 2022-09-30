@@ -31,6 +31,21 @@
                                 <span class="hide-menu">Brosur </span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a href="<?= base_url('produks') ?>" class="sidebar-link">
+                                <span class="hide-menu">Produk </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="<?= base_url('penawarans') ?>" class="sidebar-link">
+                                <span class="hide-menu">Penawaran </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="<?= base_url('permintaans') ?>" class="sidebar-link">
+                                <span class="hide-menu">Permintaan </span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
