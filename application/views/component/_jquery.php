@@ -31,6 +31,8 @@
 <script src="<?= base_url('src') ?>/dist/js/pages/datatable/datatable-basic.init.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
 <!-- Separate -->
 <script>
     function deleteConfirm(url) {
@@ -42,8 +44,8 @@
             confirmButtonColor: '#5f76e8',
             cancelButtonColor: '#fd5f7d',
             confirmButtonText: 'Ya, Hapus!'
-         }).then(result => {
-            if(result.isConfirmed){
+        }).then(result => {
+            if (result.isConfirmed) {
                 swal.fire({
                     imageUrl: "<?= base_url('assets/loader_kecil.gif'); ?>",
                     title: "Menghapus Data",
@@ -51,12 +53,13 @@
                     showConfirmButton: false,
                     allowOutsideClick: false,
                     timer: 1000
-                }).then((result)=>{
+                }).then((result) => {
                     window.location.href = url;
                 });
             }
-         });
+        });
     }
+
     function verifConfirm(url) {
         Swal.fire({
             icon: 'warning',
@@ -66,8 +69,8 @@
             confirmButtonColor: '#5f76e8',
             cancelButtonColor: '#fd5f7d',
             confirmButtonText: 'Ya, Ubah!'
-         }).then(result => {
-            if(result.isConfirmed){
+        }).then(result => {
+            if (result.isConfirmed) {
                 swal.fire({
                     imageUrl: "<?= base_url('assets/loader_kecil.gif'); ?>",
                     title: "Mengubah Data",
@@ -75,11 +78,11 @@
                     showConfirmButton: false,
                     allowOutsideClick: false,
                     timer: 1000
-                }).then((result)=>{
+                }).then((result) => {
                     window.location.href = url;
                 });
             }
-         });
+        });
     }
 
     function editConfirm(url) {
@@ -95,20 +98,29 @@
             showConfirmButton: false,
             allowOutsideClick: false,
             timer: 1000
-        }).then((result)=>{
+        }).then((result) => {
             window.location.reload();
+        });
+    });
+
+    $(function() {
+        $('#pengadaan_alat').datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true,
+            todayBtn: "linked",
+            todayHighlight: true
         });
     });
 </script>
 
-<?php if ($this->session->flashdata('notif')):?>
+<?php if ($this->session->flashdata('notif')) : ?>
     <script>
         Swal.fire({
             icon: 'success',
             title: 'Success!',
             text: "<?php echo $this->session->flashdata('notif'); ?>",
             confirmButtonColor: '#5f76e8'
-    });
+        });
     </script>
 <?php endif ?>
 
