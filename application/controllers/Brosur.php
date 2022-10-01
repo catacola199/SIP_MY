@@ -20,15 +20,26 @@ class Brosur extends CI_Controller
 		$this->load->view("dashboard/brosur", $data);
 	}
 
+	public function brosur()
+	{
+		$data["role"] = $this->All_model->getAllRole();
+		$data["brosur"] = $this->M_Brosur->getAllBrosur();
+		$this->load->view("user/brosur", $data);
+	}
+
 	// Get Save User
 	public function save_brosur()
-	{
+	{	
+		$url = $this->input->post('link_youtube');
+		preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+		$video_id = $match[1];
+		
 		$data = array(
 			'nama_brosur'	        => $this->input->post('nama_brosur'),
 			'deskripsi_brosur'	    => $this->input->post('deskripsi_brosur'),
 			'thumb_brosur'     		=> $this->M_Brosur->_uploadImageBrosur(),
 			'file_brosur'	        => $this->M_Brosur->_uploadFileBrosur(),
-			'link_youtube'	 	    => $this->input->post('link_youtube')
+			'link_youtube'	 	    => $video_id
 		);
 		$this->M_Brosur->simpandatabrosur($data);
 		$this->session->set_flashdata('notif', 'Data berhasil disimpan');

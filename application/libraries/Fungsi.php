@@ -10,5 +10,10 @@ class Fungsi{
         $this->ci->session->userdata('id_pengguna')])->row();
         return $data;
     }
+    
+    function data_brosur(){
+        $data = $this->ci->db->get('brosur')->result();
+        return $data;
+    }
 }
 ?>
