@@ -81,7 +81,13 @@
                                                     <td><?php echo $data->nama_brosur ?></td>
                                                     <td><?php echo substr($data->deskripsi_brosur , 0, 40) . '...'?></td>
                                                     <td><?php echo $data->file_brosur ?></td>
-                                                    <td><?php echo $data->link_youtube ?></td>
+                                                    <td>
+                                                        <?php if ($data->link_youtube != null):?>
+                                                            <a href="<?php echo "https://youtu.be/".$data->link_youtube ?>"> <?php echo "https://youtu.be/".$data->link_youtube ?></a>
+                                                        <?php else:?>
+                                                            <?php echo "-" ?>  
+                                                        <?php endif;?> 
+                                                    </td>
                                                     <td>
                                                         <a href="<?php echo site_url('brosur/edit_brosur/' . $data->id) ?>" class="btn btn-sm btn-outline-success">
                                                             <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>

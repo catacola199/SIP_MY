@@ -17,6 +17,25 @@
                 </li>
 
                 <li class="sidebar-item">
+                    <a class="sidebar-link sidebar-link" href="<?= base_url('compro') ?>" aria-expanded="false">
+                        <i data-feather="book" class="feather-icon"></i>
+                        <span class="hide-menu">Company Profile</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link sidebar-link" href="<?= base_url('produk') ?>" aria-expanded="false">
+                        <i data-feather="shopping-cart" class="feather-icon"></i>
+                        <span class="hide-menu">Produk</span>
+                    </a>
+                </li>
+
+                <li class="list-divider"></li>
+                <li class="nav-small-cap">
+                    <span class="hide-menu">Admin</span>
+                </li>
+
+                <li class="sidebar-item">
                     <a class="sidebar-link has-arrow btn btn-outline-light" href="javascript:void(0)" aria-expanded="false" style="border:0; border-radius: 0 50px 50px 0;"><i data-feather="archive" class="feather-icon"></i>
                         <span class="hide-menu">Master Data</span>
                     </a>
