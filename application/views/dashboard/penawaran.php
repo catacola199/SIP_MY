@@ -50,7 +50,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Daftar Produk</h4>
+                                <h4 class="card-title">Daftar Penawaran</h4>
                                 <hr>
                                 <h6 class="card-subtitle">
                                     <div class="btn-list">
@@ -62,7 +62,7 @@
                                     <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
                                         <thead class="bg-primary text-white">
                                             <tr>
-
+                                                <th>#</th>
                                                 <th>Kode Penawaran</th>
                                                 <th>Nama Instansi</th>
                                                 <th>Tanggal Penawaran</th>
@@ -76,7 +76,7 @@
                                             <?php $i = 1;
                                             foreach ($penawaran as $data) : ?>
                                                 <tr>
-
+                                                    <td><?php echo $i++ ?></td>
                                                     <td><?php echo $data->kode_penawaran ?></td>
                                                     <td><?php echo $data->nama_instansi ?></td>
                                                     <td><?php echo $data->tgl_penawaran ?></td>
@@ -140,17 +140,26 @@
                     <form action="<?php echo base_url('penawaran/save_penawaran') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3">
 
                         <div class="form-group">
+                            <label for="nama_instansi"><strong>Kode Penawaran</strong></label>
+                            <input type="text" class="form-control form-control-user" name="kode_penawaran" id="kode_penawaran" placeholder="Kode Penawaran" required>
+                        </div>
+                        <div class="form-group">
                             <label for="nama_instansi"><strong>Nama Instansi</strong></label>
                             <input type="text" class="form-control form-control-user" name="nama_instansi" id="nama_instansi" placeholder="Nama Instansi" required>
                         </div>
                         <div class="form-group">
                             <label for="jenis_produk">Nama Barang </label>
-                            <input type="text" class="form-control form-control-user" name="jenis_produk" id="jenis_produk" placeholder="Jenis Produk" required>
+                            <table class="table  table-borderless" id="dynamic_field">  
+                                <tr>  
+                                    <td><input type="text" name="id_barang[]" placeholder="Nama Barang" class="form-control name_list" required="" /></td>  
+                                    <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>  
+                                </tr>  
+                            </table> 
                         </div>
 
                         <label for="lokasi_alat"><strong>Tanggal Pengadaan</strong></label>
                         <div class="input-group date" id="pengadaan_alat">
-                            <input type="text" class="form-control" name="tglpengadaan_alat" id="tglpengadaan_alat" />
+                            <input type="text" class="form-control" name="tgl_penawaran" id="tgl_penawaran" />
                             <span class="input-group-append">
                                 <span class="input-group-text bg-light d-block">
                                     <i class="fa fa-calendar"></i>
@@ -158,9 +167,9 @@
                             </span>
                         </div>
                         <div class="form-group">
-                            <label for="nama_produk"><strong>Nama Produk</strong></label>
-                            <input type="text" class="form-control form-control-user" name="quantity_produk" id="quantity_produk" placeholder="Quantity Produk" required>
-                        </div>
+                            <label for="nama_produk"><strong>Status</strong></label>
+                            <input type="text" class="form-control form-control-user" name="status" id="status" placeholder="Status" required>
+                        </div> 
                         <!-- End Form -->
 
                         <div class="modal-footer">
@@ -174,6 +183,21 @@
     </div><!-- /.modal -->
 
     <script>
+         $(document).ready(function(){      
+            var i=1;  
+
+            $('#add').click(function(){  
+                i++;  
+                $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="id_barang[]" placeholder="Enter your Name" class="form-control name_list" required /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+            });
+
+
+            $(document).on('click', '.btn_remove', function(){  
+                var button_id = $(this).attr("id");   
+                $('#row'+button_id+'').remove();  
+            });  
+
+        });  
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });

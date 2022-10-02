@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Penawaran extends CI_Controller
 {
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -23,16 +22,19 @@ class Penawaran extends CI_Controller
 	// Get Save User
 	public function save_penawaran()
 	{
-		$data = array(
-			'kode_produk'	    => $this->input->post('kode_produk'),
-			'id_produk'		    => 'default.jpg',
-			'nama_produk'	    => $this->input->post('nama_produk'),
-			'jenis_produk'	    => $this->input->post('jenis_produk'),
-			'harga_produk'	    => $this->input->post('harga_produk'),
-			'quantity_produk'   => $this->input->post('quantity_produk')
-		);
-		$this->M_Penawaran->simpandatapenawaran($data);
-		$this->session->set_flashdata('notif', 'Data berhasil disimpan');
+		$result = array();
+		foreach ($this->input->post('id_barang') as $key => $val) {
+			$result[] = array(
+				'kode_penawaran'	=> $this->input->post('kode_penawaran'),
+				'id_produk'		    => $this->input->post('id_barang')[$key],
+				'nama_instansi'	    => $this->input->post('nama_instansi'),
+				'tgl_penawaran'	    => $this->input->post('tgl_penawaran'),
+				'status'	    	=> $this->input->post('status')
+			);     
+		 }  
+		$this->db->insert_batch('penawaran',$result);
+		// $this->M_Penawaran->simpandatapenawaran($data);
+		$this->session->set_flashdata('notif','Data berhasil disimpan');
 		redirect(base_url('penawarans'));
 	}
 
@@ -73,4 +75,8 @@ class Penawaran extends CI_Controller
 			redirect(base_url('penawarans'));
 		}
 	}
+		public function __destruct() {  
+		$this->db->close();  
+	} 
+	
 }
