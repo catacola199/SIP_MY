@@ -148,11 +148,13 @@
                             <input type="text" class="form-control form-control-user" name="nama_instansi" id="nama_instansi" placeholder="Nama Instansi" required>
                         </div>
                         <div class="form-group">
-                            <label for="jenis_produk">Nama Barang </label>
-                            <table class="table  table-borderless" id="dynamic_field">  
-                                <tr>  
-                                    <td><input type="text" name="id_barang[]" placeholder="Nama Barang" class="form-control name_list" required="" /></td>  
-                                    <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>  
+                            <label for="jenis_produk">Barang </label>
+                            <table class="table-borderless col-md-12" id="dynamic_field">  
+                                <tr>
+                                    <td><input type="text" name="id_barang[]" placeholder="Id Produk" class="form-control" required/></td> 
+                                    <td><input type="text" name="qty[]" placeholder="QTY" class="form-control"/></td>  
+ 
+                                    <td class="text-center"><button type="button" name="add" id="add" class="btn btn-success "><i class="fa fa-plus"></i></button></td>  
                                 </tr>  
                             </table> 
                         </div>
@@ -188,7 +190,7 @@
 
             $('#add').click(function(){  
                 i++;  
-                $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="id_barang[]" placeholder="Enter your Name" class="form-control name_list" required /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+                $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="id_barang[]" placeholder="Id Produk" class="form-control" required /></td><td><input type="text" name="id_barang[]" placeholder="QTY" class="form-control" required /></td><td class="text-center"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove"><i class="fa fa-times"></i></button></td></tr>');  
             });
 
 
