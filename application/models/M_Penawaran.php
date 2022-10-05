@@ -9,6 +9,7 @@ class M_Penawaran extends CI_Model
         $this->db->select('*');
         $this->db->from('penawaran');
         $this->db->join('produk', 'produk.id_produk = penawaran.id_produk');
+        $this->db->join('pengguna', 'pengguna.id_pengguna = penawaran.id_pengguna');
         $query = $this->db->get();
         return  $query->result();
     }
@@ -35,5 +36,17 @@ class M_Penawaran extends CI_Model
     {
         $this->db->update('penawaran', $data, $id);
         return TRUE;
+    }
+
+    public function get_instansi()
+    {
+        $query = $this->db->get('pengguna');
+        return $query->result_array();
+    }
+
+    public function get_produk()
+    {
+        $query = $this->db->get('produk');
+        return $query->result_array();
     }
 }

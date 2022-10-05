@@ -15,7 +15,9 @@ class Penawaran extends CI_Controller
 	public function index()
 	{
 		$data["role"] = $this->All_model->getAllRole();
+		$data["instansi"] = $this->M_Penawaran->get_instansi();
 		$data["penawaran"] = $this->M_Penawaran->getAllpenawaran();
+		$data["produk"] = $this->M_Penawaran->get_produk();
 		$this->load->view("dashboard/penawaran", $data);
 	}
 
