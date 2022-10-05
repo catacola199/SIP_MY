@@ -50,7 +50,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Daftar Produk</h4>
+                                <h4 class="card-title">Daftar Penawaran</h4>
                                 <hr>
                                 <h6 class="card-subtitle">
                                     <div class="btn-list">
@@ -62,6 +62,7 @@
                                     <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
                                         <thead class="bg-primary text-white">
                                             <tr>
+                                                <th>#</th>
                                                 <th>Kode Penawaran</th>
                                                 <th>Nama Instansi</th>
                                                 <th>Tanggal Penawaran</th>
@@ -73,7 +74,7 @@
                                             <?php $i = 1;
                                             foreach ($penawaran as $data) : ?>
                                                 <tr>
-
+                                                    <td><?php echo $i++ ?></td>
                                                     <td><?php echo $data->kode_penawaran ?></td>
                                                     <td><?php echo $data->instansi_pengguna ?></td>
                                                     <td><?php echo $data->tgl_penawaran ?></td>
@@ -134,7 +135,11 @@
                 <div class="modal-body">
                     <!-- Form -->
                     <form action="<?php echo base_url('penawaran/save_penawaran') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3">
-                        <div class="">
+                        <div class="form-group">
+                            <label for="nama_instansi"><strong>Kode Penawaran</strong></label>
+                            <input type="text" class="form-control form-control-user" name="kode_penawaran" id="kode_penawaran" placeholder="Kode Penawaran" required>
+                        </div>
+                        <div class="from-group">
                             <label for="nama_alat"><strong>Nama Instansi</strong></label>
                             <select class="form-control" name="id_pengguna" id="id_pengguna">
                                 <option selected>...</option>
@@ -143,29 +148,34 @@
                                 <?php } ?>
                             </select>
                         </div>
-
-                        <div class="">
-                            <label for="nama_alat"><strong>Nama Produk</strong></label>
-                            <select class="form-control" name="id_produk" id="id_produk">
-                                <option selected>...</option>
-                                <?php foreach ($produk as $l) { ?>
-                                    <option value="<?php echo $l['id_produk']; ?>"><?php echo $l['nama_produk']; ?> </option>
-                                <?php } ?>
-                            </select>
+                        <div class="form-group">
+                            <label for="jenis_produk">Barang </label>
+                            <table class="table-borderless col-md-12" id="dynamic_field">  
+                                <tr>
+                                    <td>
+                                    <select class="form-control" name="id_barang[]" id="id_produk">
+                                        <option selected>...</option>
+                                        <?php foreach ($produk as $l) { ?>
+                                            <option value="<?php echo $l['id_produk']; ?>"><?php echo $l['nama_produk']; ?> </option>
+                                        <?php } ?>
+                                    </select>
+                                    </td> 
+                                    <td><input type="text" name="qty[]" placeholder="QTY" class="form-control"/></td>  
+ 
+                                    <td class="text-center"><button type="button" name="add" id="add" class="btn btn-success "><i class="fa fa-plus"></i></button></td>  
+                                </tr>  
+                            </table> 
                         </div>
 
                         <label for="lokasi_alat"><strong>Tanggal Pengadaan</strong></label>
                         <div class="input-group date" id="pengadaan_alat">
-                            <input type="text" class="form-control" name="tglpengadaan_alat" id="tglpengadaan_alat" />
+                            <input type="text" class="form-control" name="tgl_penawaran" id="tgl_penawaran" />
                             <span class="input-group-append">
                                 <span class="input-group-text bg-light d-block">
                                     <i class="fa fa-calendar"></i>
                                 </span>
                             </span>
                         </div>
-                       
-                            <input type="hidden"  name="quantity_produk" id="quantity_produk"  >
-
                         <!-- End Form -->
 
                         <div class="modal-footer">
@@ -179,6 +189,21 @@
     </div><!-- /.modal -->
 
     <script>
+         $(document).ready(function(){      
+            var i=1;  
+
+            $('#add').click(function(){  
+                i++;  
+                $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="id_barang[]" placeholder="Id Produk" class="form-control" required /></td><td><input type="text" name="id_barang[]" placeholder="QTY" class="form-control" required /></td><td class="text-center"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove"><i class="fa fa-times"></i></button></td></tr>');  
+            });
+
+
+            $(document).on('click', '.btn_remove', function(){  
+                var button_id = $(this).attr("id");   
+                $('#row'+button_id+'').remove();  
+            });  
+
+        });  
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
