@@ -16,7 +16,9 @@ class Penawaran extends CI_Controller
 	public function index()
 	{
 		$data["role"] = $this->All_model->getAllRole();
+		$data["instansi"] = $this->M_Penawaran->get_instansi();
 		$data["penawaran"] = $this->M_Penawaran->getAllpenawaran();
+		$data["produk"] = $this->M_Penawaran->get_produk();
 		$this->load->view("dashboard/penawaran", $data);
 	}
 
@@ -24,8 +26,8 @@ class Penawaran extends CI_Controller
 	public function save_penawaran()
 	{
 		$data = array(
-			'kode_produk'	    => $this->input->post('kode_produk'),
-			'id_produk'		    => 'default.jpg',
+			'kode_produk'	    => '123',
+			'id_produk'		    => '123',
 			'nama_produk'	    => $this->input->post('nama_produk'),
 			'jenis_produk'	    => $this->input->post('jenis_produk'),
 			'harga_produk'	    => $this->input->post('harga_produk'),

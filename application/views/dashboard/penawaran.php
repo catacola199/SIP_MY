@@ -62,14 +62,11 @@
                                     <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
                                         <thead class="bg-primary text-white">
                                             <tr>
-
                                                 <th>Kode Penawaran</th>
                                                 <th>Nama Instansi</th>
                                                 <th>Tanggal Penawaran</th>
                                                 <th>Nama Produk </th>
-                                                <th>Status </th>
                                                 <th>Action</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -78,16 +75,15 @@
                                                 <tr>
 
                                                     <td><?php echo $data->kode_penawaran ?></td>
-                                                    <td><?php echo $data->nama_instansi ?></td>
+                                                    <td><?php echo $data->instansi_pengguna ?></td>
                                                     <td><?php echo $data->tgl_penawaran ?></td>
                                                     <td><?php echo $data->nama_produk ?></td>
-                                                    <td><?php echo $data->status ?></td>
 
                                                     <td>
-                                                        <a href="<?php echo site_url('produk/edit_produk/' . $data->id_produk) ?>" class="btn btn-sm btn-outline-success">
+                                                        <a href="<?php echo site_url('produk/edit_produk/' . $data->id_penawaran) ?>" class="btn btn-sm btn-outline-success">
                                                             <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
                                                         </a>
-                                                        <a onclick="deleteConfirm('<?php echo site_url('produk/deleteproduk/' . $data->id_produk) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
+                                                        <a onclick="deleteConfirm('<?php echo site_url('produk/deleteproduk/' . $data->id_penawaran) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
                                                             <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
                                                         </a>
                                                     </td>
@@ -138,14 +134,24 @@
                 <div class="modal-body">
                     <!-- Form -->
                     <form action="<?php echo base_url('penawaran/save_penawaran') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3">
-
-                        <div class="form-group">
-                            <label for="nama_instansi"><strong>Nama Instansi</strong></label>
-                            <input type="text" class="form-control form-control-user" name="nama_instansi" id="nama_instansi" placeholder="Nama Instansi" required>
+                        <div class="">
+                            <label for="nama_alat"><strong>Nama Instansi</strong></label>
+                            <select class="form-control" name="id_pengguna" id="id_pengguna">
+                                <option selected>...</option>
+                                <?php foreach ($instansi as $l) { ?>
+                                    <option value="<?php echo $l['id_pengguna']; ?>"><?php echo $l['instansi_pengguna']; ?> </option>
+                                <?php } ?>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label for="jenis_produk">Nama Barang </label>
-                            <input type="text" class="form-control form-control-user" name="jenis_produk" id="jenis_produk" placeholder="Jenis Produk" required>
+
+                        <div class="">
+                            <label for="nama_alat"><strong>Nama Produk</strong></label>
+                            <select class="form-control" name="id_produk" id="id_produk">
+                                <option selected>...</option>
+                                <?php foreach ($produk as $l) { ?>
+                                    <option value="<?php echo $l['id_produk']; ?>"><?php echo $l['nama_produk']; ?> </option>
+                                <?php } ?>
+                            </select>
                         </div>
 
                         <label for="lokasi_alat"><strong>Tanggal Pengadaan</strong></label>
@@ -157,10 +163,9 @@
                                 </span>
                             </span>
                         </div>
-                        <div class="form-group">
-                            <label for="nama_produk"><strong>Nama Produk</strong></label>
-                            <input type="text" class="form-control form-control-user" name="quantity_produk" id="quantity_produk" placeholder="Quantity Produk" required>
-                        </div>
+                       
+                            <input type="hidden"  name="quantity_produk" id="quantity_produk"  >
+
                         <!-- End Form -->
 
                         <div class="modal-footer">
