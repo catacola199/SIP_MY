@@ -62,7 +62,7 @@
                                     <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
                                         <thead class="bg-primary text-white">
                                             <tr>
-
+                                                <th>#</th>
                                                 <th>Kode</th>
                                                 <th>Nama Produk</th>
                                                 <th>Jenis</th>
@@ -76,7 +76,7 @@
                                             <?php $i = 1;
                                             foreach ($produk as $data) : ?>
                                                 <tr>
-
+                                                    <td><?php echo $i++ ?></td>
                                                     <td><?php echo $data->kode_produk ?></td>
                                                     <td><?php echo $data->nama_produk ?></td>
                                                     <td><?php echo $data->jenis_produk ?></td>

@@ -135,33 +135,37 @@
                 <div class="modal-body">
                     <!-- Form -->
                     <form action="<?php echo base_url('penawaran/save_penawaran') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3">
+                        
                         <div class="form-group">
-                            <label for="nama_instansi"><strong>Kode Penawaran</strong></label>
-                            <input type="text" class="form-control form-control-user" name="kode_penawaran" id="kode_penawaran" placeholder="Kode Penawaran" required>
+                            <label for="kode"><strong>Kode Penawaran</strong></label>
+                            <input type="text" class="form-control" name="kode" id="kode" placeholder="Kode Penawaran" autocomplete="off" 
+                            value="<?php $kode_penawaran = "SIP-".date("dmY").substr(md5(time()), 0, 5); echo $kode_penawaran;?>" disabled>
+                            <input type="hidden" name="kode_penawaran" id="kode_penawaran" value="<?php $kode_penawaran = "SIP-".date("dmY").substr(md5(time()), 0, 5); echo $kode_penawaran;?>">
                         </div>
-                        <div class="from-group">
+
+                        <div class="form-group">
                             <label for="nama_alat"><strong>Nama Instansi</strong></label>
-                            <select class="form-control" name="id_pengguna" id="id_pengguna">
-                                <option selected>...</option>
+                            <select class="form-select" name="id_pengguna" id="id_pengguna" required>
+                                <option disabled value="" selected>Pilih salah satu...</option>
                                 <?php foreach ($instansi as $l) { ?>
-                                    <option value="<?php echo $l['id_pengguna']; ?>"><?php echo $l['instansi_pengguna']; ?> </option>
+                                    <option value="<?php echo $l['id_pengguna']; ?>"><?php echo $l['nama_pengguna']." - ".$l['instansi_pengguna']; ?> </option>
                                 <?php } ?>
                             </select>
                         </div>
+
                         <div class="form-group">
-                            <label for="jenis_produk">Barang </label>
+                            <label for="dynamic_field"><strong>Produk</strong></label>
                             <table class="table-borderless col-md-12" id="dynamic_field">  
                                 <tr>
-                                    <td>
-                                    <select class="form-control" name="id_barang[]" id="id_produk">
-                                        <option selected>...</option>
+                                    <td class="col-6 col-sm-6 col-lg-6 col-md-6">
+                                    <select class="form-select" name="id_produk[]" id="id_produk[]" required>
+                                        <option disabled value="" selected>Pilih salah satu...</option>
                                         <?php foreach ($produk as $l) { ?>
                                             <option value="<?php echo $l['id_produk']; ?>"><?php echo $l['nama_produk']; ?> </option>
                                         <?php } ?>
                                     </select>
                                     </td> 
-                                    <td><input type="text" name="qty[]" placeholder="QTY" class="form-control"/></td>  
- 
+                                    <td class="col-5 col-sm-5 col-lg-5 col-md-5"><input type="text" name="qty[]" placeholder="QTY" class="form-control" autocomplete="off" required/></td>  
                                     <td class="text-center"><button type="button" name="add" id="add" class="btn btn-success "><i class="fa fa-plus"></i></button></td>  
                                 </tr>  
                             </table> 
@@ -169,7 +173,7 @@
 
                         <label for="lokasi_alat"><strong>Tanggal Pengadaan</strong></label>
                         <div class="input-group date" id="pengadaan_alat">
-                            <input type="text" class="form-control" name="tgl_penawaran" id="tgl_penawaran" />
+                            <input type="text" class="form-control" name="tgl_penawaran" id="tgl_penawaran" placeholder="Pilih Tanggal" autocomplete="off" required />
                             <span class="input-group-append">
                                 <span class="input-group-text bg-light d-block">
                                     <i class="fa fa-calendar"></i>
@@ -194,7 +198,11 @@
 
             $('#add').click(function(){  
                 i++;  
-                $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="id_barang[]" placeholder="Id Produk" class="form-control" required /></td><td><input type="text" name="id_barang[]" placeholder="QTY" class="form-control" required /></td><td class="text-center"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove"><i class="fa fa-times"></i></button></td></tr>');  
+                // $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="id_barang[]" placeholder="Id Produk" class="form-control" required /></td><td><input type="text" name="id_barang[]" placeholder="QTY" class="form-control" required /></td><td class="text-center"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove"><i class="fa fa-times"></i></button></td></tr>');  
+                $('#dynamic_field').append(
+                    '<tr id="row'+i+'" class="dynamic-added"><td class="col-6 col-sm-6 col-lg-6 col-md-6"><select class="form-select" name="id_produk[]" id="id_produk[]" required><option disabled value="" selected>Pilih salah satu...</option><?php foreach ($produk as $l) { ?><option value="<?php echo $l['id_produk']; ?>"><?php echo $l['nama_produk']; ?> </option><?php } ?></select></td><td class="col-5 col-sm-5 col-lg-5 col-md-5"><input type="text" name="qty[]" placeholder="QTY" class="form-control" autocomplete="off" required/></td><td class="text-center"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove"><i class="fa fa-times"></i></button></td></tr>'
+                );  
+                
             });
 
 

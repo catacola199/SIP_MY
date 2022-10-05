@@ -25,13 +25,13 @@ class Penawaran extends CI_Controller
 	public function save_penawaran()
 	{
 		$result = array();
-		foreach ($this->input->post('id_barang') as $key => $val) {
+		foreach ($this->input->post('id_produk') as $key => $val) {
 			$result[] = array(
 				'kode_penawaran'	=> $this->input->post('kode_penawaran'),
-				'id_produk'		    => $this->input->post('id_barang')[$key],
-				'nama_instansi'	    => $this->input->post('nama_instansi'),
+				'id_produk'		    => $this->input->post('id_produk')[$key],
+				'id_pengguna'	    => $this->input->post('id_pengguna'),
+				'qty_penawaran'	    => $this->input->post('qty')[$key],
 				'tgl_penawaran'	    => $this->input->post('tgl_penawaran'),
-				'status'	    	=> $this->input->post('status')
 			);     
 		 }  
 		$this->db->insert_batch('penawaran',$result);
