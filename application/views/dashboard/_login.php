@@ -15,13 +15,9 @@
     <!-- Custom CSS -->
     <link href="<?= base_url('src') ?>/dist/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.32/dist/sweetalert2.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+
 </head>
 
 <body>
@@ -41,40 +37,34 @@
                 <div class="col-lg-5 col-md-7 bg-white">
                     <div class="p-3">
                         <div class="text-center">
-                            <img src="<?= base_url('src') ?>/assets/images/big/icon.png" alt="wrapkit">
+                            <img src="<?= base_url('src') ?>/assets/images/sipmedic1.png" alt="wrapkit">
                         </div>
                         <h4 class="mt-3 text-center">
-                        	Start your session!
+                        	Selamat datang kembali!
                         </h4>
                         <p class="text-center">
-                        	<small>Enter your email address and password to access admin panel.</small>
+                        	<small>Masukan username dan password untuk mengakses menu admin</small>
                         </p>
                         <form class="mt-4" action="<?= site_url('login')?>" method="POST">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label class="text-dark" for="uname">
-                                        	<strong><small>Username</small></strong>
-                                        </label>
-                                        <input class="form-control" id="username_pengguna" name="username_pengguna" type="text"
-                                            placeholder="">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="username_pengguna" name="username_pengguna" placeholder="Username">
+                                        <label for="floatingInput">Username</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label class="text-dark" for="pwd">
-                                        	<strong><small>Password</small></strong>
-                                        </label>
-                                        <input class="form-control" id="password_pengguna" name="password_pengguna" type="password"
-                                            placeholder="">
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" id="password_pengguna" name="password_pengguna" placeholder="Password">
+                                        <label for="floatingInput">Password</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 text-center">
-                                    <button type="submit" class="btn btn-block btn-dark">Sign In</button>
+                                    <button type="submit" class="btn btn-block btn-primary">Sign In</button>
                                 </div>
                                 <div class="col-lg-12 text-center mt-5">
                                     <small>Don't have an account? 
-                                        <a href="https://api.whatsapp.com/send?phone=6289517832540&text=Assalamualaikum%20admin,%20tolong%20buatin%20akun%20SIFAPEN%20Terimakasih."class="text-danger">Contact admin</a>
+                                        <a href="#"class="text-danger">Contact admin</a>
                                     </small>
                                 </div>
                             </div>
@@ -88,7 +78,7 @@
 
     </div>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <!-- All Required js -->
     <script src="<?= base_url('src') ?>/assets/libs/jquery/dist/jquery.min.js "></script>
     <!-- Bootstrap tether Core JavaScript -->

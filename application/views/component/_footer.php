@@ -1,4 +1,4 @@
-<footer class="footer text-center text-muted">
-                <small>All Rights Reserved by TechnoDevelops. Designed and Developed by <a
-                    href="https://t.me/TechnoDevelops">TechnoDev</a>.</small>
-            </footer> 
+<footer class="footer text-center text-muted align-text-bottom">
+    <small>All Rights Reserved by HammaCreative. Designed and Developed by <a
+        href="https://instagram.com/">HammaCreative</a>.</small>
+</footer> 
