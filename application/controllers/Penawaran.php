@@ -43,7 +43,7 @@ class Penawaran extends CI_Controller
 	// Edit User
 	public function edit_penawaran($id)
 	{
-		// $data["role"] = $this->All_model->getAllRole();
+		$data["all"] = $this->M_Penawaran->getInstansi($id);
 		$data["penawaran"] = $this->M_Penawaran->getID($id);
 		$this->load->view("component/_editpenawaran", $data);
 	}

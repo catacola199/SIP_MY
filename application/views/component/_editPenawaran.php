@@ -86,19 +86,12 @@
                                                         <label for="kode">Kode Penawaran</label>
                                                     </div>
                                                 </div>
-
                                                 <div class="form-group">
                                                     <div class="form-floating">
-                                                        <select class="form-select" id="id_pengguna" name="id_pengguna" aria-label="Floating label select example" required>
-                                                            <option disabled value="" selected>Pilih salah satu...</option>
-                                                            <?php foreach ($instansi as $l) { ?>
-                                                                <option value="<?php echo $l['id_pengguna']; ?>"><?php echo $l['nama_pengguna'] . " - " . $l['instansi_pengguna']; ?> </option>
-                                                            <?php } ?>
-                                                        </select>
-                                                        <label for="id_pengguna">Kostumer & Instansi</label>
+                                                        <input type="text" class="form-control" id="id_pengguna" placeholder="Kode Penawaran" value="<?= $all->instansi_pengguna ?>" disabled>
+                                                        <label for="id_pengguna">Pengguna & Instansi</label>
                                                     </div>
                                                 </div>
-
                                                 <div class="form-group">
                                                     <table class="table-borderless col-md-12" id="dynamic_field">
                                                         <tr>
