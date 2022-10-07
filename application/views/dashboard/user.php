@@ -66,8 +66,8 @@
                                                 <th>#</th>
                                                 <th>Profile</th>
                                                 <th>Nama Lengkap</th>
+                                                <th>Instansi</th>
                                                 <th>Email</th>
-                                                <th>Telepon</th>
                                                 <th>Terverifikasi</th>
                                                 <th>Action</th>
 
@@ -80,8 +80,8 @@
                                                     <td><?= $i++ ?></td>
                                                     <td><img src="<?php echo base_url('upload/pengguna/'.$data->foto_pengguna) ?>" class="rounded-circle" alt="Foto" width="50" /></td>
                                                     <td><?php echo $data->nama_pengguna ?></td>
+                                                    <td><?php echo $data->instansi_pengguna ?></td>
                                                     <td><?php echo $data->email_pengguna ?></td>
-                                                    <td><?php echo $data->telepon_pengguna ?></td>
                                                     <td><?php if ($data->terverifikasi == 0) {
                                                             echo "Tidak";
                                                         } else {
@@ -103,7 +103,7 @@
                                                         <?php endif;?>
                                                        
                                                         
-                                                        <?php if ($this->fungsi->user_login()->nama_pengguna != $data->nama_pengguna):?>
+                                                        <?php if ($this->fungsi->user_login()->id_pengguna != $data->id_pengguna && $data->id_role != 1 ):?>
                                                             <a onclick="deleteConfirm('<?php echo site_url('user/deleteuser/' . $data->id_pengguna) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
                                                                 <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
                                                             </a>
@@ -159,31 +159,54 @@
                 </div>
                 <div class="modal-body">
                     <!-- Form -->
-                    <form action="<?php echo base_url('user/save_user') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3">
-
+                    <form action="<?php echo base_url('user/save_user') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3" autocomplete="off">
+                        
                         <div class="form-group">
-                            <label for="nama_pengguna"><strong>Nama</strong></label>
-                            <input type="text" class="form-control form-control-user" name="nama_pengguna" id="nama_pengguna" placeholder="Nama Pengguna" required>
+                            <div class="form-floating">
+                                <input type="text" class="form-control form-control-user" name="nama_pengguna" id="nama_pengguna" placeholder="Nama Pengguna" required>
+                                <label for="nama_pengguna">Nama Pengguna</label>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="email_pengguna"><strong>Email</strong></label>
-                            <input type="text" class="form-control form-control-user" name="email_pengguna" id="email_pengguna" placeholder="Email Pengguna" required>
+                            <div class="form-floating">
+                                <input type="text" class="form-control form-control-user" name="instansi_pengguna" id="instansi_pengguna" placeholder="Instansi Pengguna" required>
+                                <label for="instansi_pengguna">Instansi Pengguna</label>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="telepon_pengguna"><strong>No Hp</strong></label>
-                            <input type="number" class="form-control form-control-user" name="telepon_pengguna" id="telepon_pengguna" placeholder="No Handphone" required>
+                            <div class="form-floating">
+                                <input type="email" class="form-control form-control-user" name="email_pengguna" id="email_pengguna" placeholder="Email Pengguna" required>
+                                <label for="email_pengguna">Email Pengguna</label>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="username_pengguna"><strong>Username</strong></label>
-                            <input type="text" class="form-control form-control-user" name="username_pengguna" id="username_pengguna" placeholder="Username Pengguna" required>
+                            <div class="form-floating">
+                                <input type="number" class="form-control form-control-user" name="telepon_pengguna" id="telepon_pengguna" placeholder="No Handphone" required>
+                                <label for="telepon_pengguna">No Handphone</label>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="password_pengguna"><strong>Password</strong></label>
-                            <input type="password" class="form-control form-control-user" name="password_pengguna" id="password_pengguna" placeholder="Password Pengguna" required>
+                            <div class="form-floating">
+                                <input type="text" class="form-control form-control-user" name="username_pengguna" id="username_pengguna" placeholder="Username Pengguna" required>
+                                <label for="username_pengguna">Username</label>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="id_role"><strong>id Role</strong></label>
-                            <input type="number" class="form-control form-control-user" name="id_role" id="id_role" required>
+                            <div class="form-floating">
+                                <input type="password" class="form-control form-control-user" name="password_pengguna" id="password_pengguna" placeholder="Password Pengguna" required>
+                                <label for="password_pengguna">Password</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-floating">
+                                <select class="form-select" id="id_role" name="id_role"  aria-label="Floating label select example" required>
+                                    <option disabled value="" selected>Pilih salah satu...</option>
+                                    <?php foreach ($role as $data) { ?>
+                                        <option value="<?php echo $data->id_role; ?>"><?php echo $data->nama_role; ?> </option>
+                                    <?php } ?>
+                                </select>
+                                <label for="id_role">Role Pengguna</label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="image"><strong>Photo</strong></label>

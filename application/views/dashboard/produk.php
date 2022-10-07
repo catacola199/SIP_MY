@@ -81,7 +81,7 @@
                                                     <td><?php echo $data->nama_produk ?></td>
                                                     <td><?php echo $data->jenis_produk ?></td>
                                                     <td><?php echo $data->quantity_produk ?></td>
-                                                    <td><?php echo $data->harga_produk ?></td>
+                                                    <td><?php echo "Rp. ".$data->harga_produk ?></td>
 
                                                     <td>
                                                         <a href="<?php echo site_url('produk/edit_produk/' . $data->id_produk) ?>" class="btn btn-sm btn-outline-success">
@@ -137,26 +137,41 @@
                 </div>
                 <div class="modal-body">
                     <!-- Form -->
-                    <form action="<?php echo base_url('produk/save_produk') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3">
+                    <form action="<?php echo base_url('produk/save_produk') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3" autocomplete="off">
+                        
                         <div class="form-group">
-                            <label for="kode_produk"><strong>Kode Produk</strong></label>
-                            <input type="text" class="form-control form-control-user" name="kode_produk" id="kode_produk" placeholder="Kode Produk">
+                            <div class="form-floating">
+                            <input type="text" class="form-control form-control-user" name="kode_produk" id="kode_produk" placeholder="Kode Produk" required>
+                                <label for="kode_produk">Kode Produk</label>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="nama_produk"><strong>Nama Produk</strong></label>
+                            <div class="form-floating">
                             <input type="text" class="form-control form-control-user" name="nama_produk" id="nama_produk" placeholder="Nama Produk" required>
+                                <label for="nama_produk">Nama Produk</label>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="jenis_produk">Jenis </label>
-                            <input type="text" class="form-control form-control-user" name="jenis_produk" id="jenis_produk" placeholder="Jenis Produk" required>
+                            <div class="form-floating">
+                                <select class="form-select" id="jenis_produk" name="jenis_produk"  aria-label="Floating label select example" required>
+                                    <option disabled value="" selected>Pilih salah satu...</option>
+                                    <option value="Umum">Umum</option>
+                                    <option value="X-Ray">X-Ray</option>
+                                </select>
+                                <label for="jenis_produk">Jenis Produk</label>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="quantity_produk"><strong>Quantity</strong></label>
+                            <div class="form-floating">
                             <input type="text" class="form-control form-control-user" name="quantity_produk" id="quantity_produk" placeholder="Quantity Produk" required>
+                                <label for="quantity_produk">Quantity Produk</label>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="harga_produk"><strong>Harga</strong></label>
-                            <input type="text" class="form-control form-control-user" name="harga_produk" id="harga_produk" placeholder="Harga Produk" required>
+                            <div class="form-floating">
+                            <input type="text" class="form-control form-control-user" name="harga_produk" id="harga_produk" placeholder="Quantity Produk" required>
+                                <label for="harga_produk">Harga Produk</label>
+                            </div>
                         </div>
                         <!-- End Form -->
 

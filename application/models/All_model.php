@@ -73,7 +73,7 @@ class All_model extends CI_Model
 
     public function getAllRole()
     {
-        return $this->db->get($this->_role)->result();
+        return $this->db->get_where($this->_role, ['id_role !=' => 1 ])->result();
     }
 
     public function getAllProdiJurusan()

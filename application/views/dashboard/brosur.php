@@ -143,29 +143,37 @@
                 <div class="modal-body">
                     <!-- Form -->
                     <form action="<?php echo base_url('brosur/save_brosur') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3">
-
+                        
                         <div class="form-group">
-                            <label for="nama_brosur"><strong>Nama Brosur</strong></label>
-                            <input type="text" class="form-control form-control-user" name="nama_brosur" id="nama_brosur" placeholder="Nama Brosur" required>
+                            <div class="form-floating">
+                                <input type="text" class="form-control form-control-user" name="nama_brosur" id="nama_brosur" placeholder="Nama Brosur" required autocomplete="off">
+                                <label for="nama_brosur">Nama Brosur</label>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="deskripsi_brosur">Deskripsi</label>
-                            <textarea class="form-control" name="deskripsi_brosur" id="deskripsi_brosur" rows="2"></textarea>
+                            <div class="form-floating">
+                                <textarea class="form-control" name="deskripsi_brosur" placeholder="Deskripsi" id="deskripsi_brosur" style="height: 100px" required autocomplete="off"></textarea>
+                                <label for="deskripsi_brosur">Deskripsi</label>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="thumb_brosur"><strong>Thumbnail</strong></label>
+                            <label for="thumb_brosur">Thumbnail Brosur</label>
                             <input type="file" class="form-control form-control-file" name="thumb_brosur" id="thumb_brosur" accept=".png,.jpg,.jpeg">
                         </div>
                         <div class="form-group">
-                            <label for="file_brosur"><strong>File Brosur</strong></label>
+                            <label for="file_brosur">File Brosur</label>
                             <input type="file" class="form-control form-control-file" name="file_brosur" id="file_brosur" accept=".pdf">
 
                         </div>
                         <div class="form-group">
-                            <label for="link_youtube"><strong>Link Youtube</strong></label>
-                            <input type="text" class="form-control form-control-user" name="link_youtube" id="link_youtube" placeholder="Link Youtube">
+                            <div class="form-floating">
+                                <input type="text" class="form-control form-control-user" name="link_youtube" id="link_youtube" placeholder="Link Youtube" autocomplete="off">
+                                <label for="link_youtube">Link Youtube</label>
+                                <div class="small text-muted">
+                                    <?php echo"<font color ='red'>*</font>"?> Kosongkan jika menambahkan brosur
+                                </div>
+                            </div>
                         </div>
-
 
                         <!-- End Form -->
 

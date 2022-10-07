@@ -45,7 +45,7 @@
                         <p class="text-center">
                         	<small>Masukan username dan password untuk mengakses menu admin</small>
                         </p>
-                        <form class="mt-4" action="<?= site_url('login')?>" method="POST">
+                        <form class="mt-4" action="<?= site_url('login')?>" method="POST" autocomplete="off">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-floating mb-3">

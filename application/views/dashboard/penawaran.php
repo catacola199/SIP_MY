@@ -67,6 +67,7 @@
                                                 <th>Nama Instansi</th>
                                                 <th>Tanggal Penawaran</th>
                                                 <th>Nama Produk </th>
+                                                <th>QTY </th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -79,6 +80,7 @@
                                                     <td><?php echo $data->instansi_pengguna ?></td>
                                                     <td><?php echo $data->tgl_penawaran ?></td>
                                                     <td><?php echo $data->nama_produk ?></td>
+                                                    <td><?php echo $data->qty_penawaran ?></td>
 
                                                     <td>
                                                         <a href="<?php echo site_url('produk/edit_produk/' . $data->id_penawaran) ?>" class="btn btn-sm btn-outline-success">

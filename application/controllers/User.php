@@ -27,6 +27,7 @@ class User extends CI_Controller {
 
 		$data = array(
 			'nama_pengguna'	        => $this->input->post('nama_pengguna'),
+			'instansi_pengguna'     => $this->input->post('instansi_pengguna'),
 			'email_pengguna'	    => $this->input->post('email_pengguna'),
 			'telepon_pengguna'      => $this->input->post('telepon_pengguna'),
 			'id_role'	            => $this->input->post('id_role'),
