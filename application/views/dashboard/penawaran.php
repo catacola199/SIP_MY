@@ -83,10 +83,10 @@
                                                     <td><?php echo $data->qty_penawaran ?></td>
 
                                                     <td>
-                                                        <a href="<?php echo site_url('produk/edit_produk/' . $data->id_penawaran) ?>" class="btn btn-sm btn-outline-success">
+                                                        <a href="<?php echo site_url('penawaran/edit_penawaran/' . $data->id_penawaran) ?>" class="btn btn-sm btn-outline-success">
                                                             <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
                                                         </a>
-                                                        <a onclick="deleteConfirm('<?php echo site_url('produk/deleteproduk/' . $data->id_penawaran) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
+                                                        <a onclick="deleteConfirm('<?php echo site_url('penawaran/deletepenawaran/' . $data->id_penawaran) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
                                                             <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
                                                         </a>
                                                     </td>

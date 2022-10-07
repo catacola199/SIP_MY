@@ -8,7 +8,7 @@
     <!-- ============================================================== -->
 
     <div class="preloader">
-       <span class="loader"></span>
+        <span class="loader"></span>
     </div>
 
     <!-- ============================================================== -->
@@ -37,12 +37,12 @@
                             <img class="mx-auto d-block mt-4" style="width: 20%;" src="<?= base_url('assets/logo_only.png') ?>" alt="...">
 
                             <div class="card-body">
-                                <h2 class="card-title">SIP Medic</h2>
+                                <h2 class="card-title">Sri Intan Perkasa</h2>
 
-                                <h4 class="card-title">Selamat Datang, <?= $this->fungsi->user_login()->nama_pengguna?></h4>
+                                <h4 class="card-title">Selamat Datang, <?= $this->fungsi->user_login()->nama_pengguna ?></h4>
 
                                 <marquee width="40%" direction="left">
-                                    <h5 class="card-title">Selamat datang di halaman administrator SIPMedic</h5>
+                                    <h5 class="card-title">Selamat datang di halaman administrator Website Sri Intan Perkasa</h5>
                                 </marquee>
                             </div>
                         </div>
