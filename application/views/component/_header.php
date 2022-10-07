@@ -11,17 +11,17 @@
                 <a href="<?= base_url('dashboard') ?>">
                     <b class="logo-icon">
                         <!-- Dark Logo icon -->
-                        <img src="<?= base_url('src') ?>/assets/images/sipmedic1.png" alt="homepage" class="dark-logo" />
+                        <img src="<?= base_url('src') ?>/assets/images/sip.png" alt="homepage" class="dark-logo" />
                         <!-- Light Logo icon -->
-                        <img src="<?= base_url('src') ?>/assets/images/sipmedic1.png" alt="homepage" class="light-logo" />
+                        <img src="<?= base_url('src') ?>/assets/images/sip.png" alt="homepage" class="light-logo" />
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span class="logo-text">
                         <!-- dark Logo text -->
-                        <img src="<?= base_url('src') ?>/assets/images/SIPMEDIc.png" alt="homepage" class="dark-logo" />
+                        <img src="<?= base_url('src') ?>/assets/images/siplab.png" alt="homepage" class="dark-logo" />
                         <!-- Light Logo text -->
-                        <img src="<?= base_url('src') ?>/assets/images/SIPMEDIc.png" class="light-logo" alt="homepage" />
+                        <img src="<?= base_url('src') ?>/assets/images/siplab.png" class="light-logo" alt="homepage" />
                     </span>
                 </a>
             </div>
