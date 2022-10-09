@@ -56,7 +56,7 @@
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="<?php echo base_url('upload/pengguna/' . $this->fungsi->user_login()->foto_pengguna) ?>" alt="user" class="rounded-circle" width="40">
+                        <img src="<?php echo base_url('upload/pengguna/' . $this->fungsi->user_login()->foto_pengguna) ?>" alt="user" class="rounded-circle pp" alt="Foto" width="45" height="45">
                         <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span class="text-dark"><?= $this->fungsi->user_login()->nama_pengguna ?></span> <i data-feather="chevron-down" class="svg-icon"></i></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">

@@ -78,7 +78,7 @@
                                             foreach ($user as $data) : ?>
                                                 <tr>
                                                     <td><?= $i++ ?></td>
-                                                    <td><img src="<?php echo base_url('upload/pengguna/'.$data->foto_pengguna) ?>" class="rounded-circle" alt="Foto" width="50" /></td>
+                                                    <td><img src="<?php echo base_url('upload/pengguna/'.$data->foto_pengguna) ?>" class="rounded-circle pp" alt="Foto" width="55" height="55" /></td>
                                                     <td><?php echo $data->nama_pengguna ?></td>
                                                     <td><?php echo $data->instansi_pengguna ?></td>
                                                     <td><?php echo $data->email_pengguna ?></td>

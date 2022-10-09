@@ -468,6 +468,10 @@ pre {
   max-height: 340px;
   overflow-y: scroll; }
 
+.pp{
+  object-fit: cover;
+  object-position: center;
+}
 .container {
   width: 100%;
   padding-right: 15px;

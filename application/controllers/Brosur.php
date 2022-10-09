@@ -60,6 +60,9 @@ class Brosur extends CI_Controller
 		$id = array(
 			'id' => $this->input->post('id')
 		);
+		$url = $this->input->post('link_youtube');
+		preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+		$video_id = $match[1];
 
 		if (!empty($_FILES['image']['name'])) {
 			$update_foto = $this->M_Brosur->_uploadImage();
@@ -72,7 +75,7 @@ class Brosur extends CI_Controller
 			'deskripsi_brosur'	    => $this->input->post('deskripsi_brosur'),
 			'thumb_brosur'     		=> $this->M_Brosur->_uploadImageBrosur(),
 			'file_brosur'	        => $this->M_Brosur->_uploadFileBrosur(),
-			'link_youtube'	 	    => $this->input->post('link_youtube')
+			'link_youtube'	 	    => $video_id
 		);
 		$this->M_Brosur->updatedatabrosur($data, $id);
 		$this->session->set_flashdata('notif', 'Data berhasil diupdate');
