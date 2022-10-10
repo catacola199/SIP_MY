@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html dir="ltr">
 
@@ -29,10 +28,9 @@
         <!-- Preloader - style you can find in spinners.css -->
 
         <!-- Login box.scss -->
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative"
-            style="background:url(<?= base_url('src') ?>/assets/images/big/auth-bg.jpg) no-repeat center center;">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative" style="background-color:#3C7FB0;">
             <div class="auth-box row">
-                <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url(<?= base_url('src') ?>/assets/images/big/4.png);">
+                <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url(<?= base_url('src') ?>/assets/images/LoginPage.png);">
                 </div>
                 <div class="col-lg-5 col-md-7 bg-white">
                     <div class="p-3">
@@ -40,12 +38,12 @@
                             <img src="<?= base_url('src') ?>/assets/images/sipmedic1.png" alt="wrapkit">
                         </div>
                         <h4 class="mt-3 text-center">
-                        	Selamat datang kembali!
+                            Selamat datang kembali!
                         </h4>
                         <p class="text-center">
-                        	<small>Masukan username dan password untuk mengakses menu admin</small>
+                            <small>Masukan username dan password untuk mengakses menu admin</small>
                         </p>
-                        <form class="mt-4" action="<?= site_url('login')?>" method="POST" autocomplete="off">
+                        <form class="mt-4" action="<?= site_url('login') ?>" method="POST" autocomplete="off">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-floating mb-3">
@@ -63,8 +61,8 @@
                                     <button type="submit" class="btn btn-block btn-primary">Sign In</button>
                                 </div>
                                 <div class="col-lg-12 text-center mt-5">
-                                    <small>Don't have an account? 
-                                        <a href="#"class="text-danger">Contact admin</a>
+                                    <small>Don't have an account?
+                                        <a href="#" class="text-danger">Contact admin</a>
                                     </small>
                                 </div>
                             </div>
@@ -89,24 +87,23 @@
         $(".preloader ").fadeOut();
     </script>
 </body>
-    <?php if ($this->session->flashdata('notif')):?>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: "<?php echo $this->session->flashdata('notif'); ?>",
+<?php if ($this->session->flashdata('notif')) : ?>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "<?php echo $this->session->flashdata('notif'); ?>",
         });
-        </script>
-    <?php endif ?>
-    <?php if ($this->session->flashdata('notif-logout')):?>
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: "<?php echo $this->session->flashdata('notif-logout'); ?>",
+    </script>
+<?php endif ?>
+<?php if ($this->session->flashdata('notif-logout')) : ?>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: "<?php echo $this->session->flashdata('notif-logout'); ?>",
         });
-        </script>
-    <?php endif ?>
+    </script>
+<?php endif ?>
+
 </html>
-
-

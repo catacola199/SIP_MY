@@ -59,7 +59,7 @@
                                     </div>
                                 </h6>
                                 <div class="table-responsive">
-                                    <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
+                                    <table id="multi_col_order" class="table  table-row-border no-wrap" style="width:100%">
                                         <thead class="bg-primary text-white">
                                             <tr>
                                                 <th>#</th>
