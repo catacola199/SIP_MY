@@ -1,22 +1,23 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class User extends CI_Controller {
+class User extends CI_Controller
+{
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('All_model');
 		$this->load->model('M_User');
-		if($this->All_model->isNotLogin()) redirect(site_url(''));
+		if ($this->All_model->isNotLogin()) redirect(site_url(''));
 		$this->load->helper('url');
 	}
 
 	public function index()
 	{
-        $data["role"] = $this->All_model->getAllRole();
+		$data["role"] = $this->All_model->getAllRole();
 		$data["user"] = $this->All_model->getAllUser();
-        $this->load->view("dashboard/user",$data);
+		$this->load->view("dashboard/user", $data);
 	}
 	// Get Save User
 	public function save_user()
@@ -31,7 +32,7 @@ class User extends CI_Controller {
 			'email_pengguna'	    => $this->input->post('email_pengguna'),
 			'telepon_pengguna'      => $this->input->post('telepon_pengguna'),
 			'id_role'	            => $this->input->post('id_role'),
-            'username_pengguna'	    => $this->input->post('username_pengguna'),
+			'username_pengguna'	    => $this->input->post('username_pengguna'),
 			'password_pengguna'	    => sha1(sha1($this->input->post('password_pengguna'))),
 			// 'password_pengguna'	    => password_hash($this->input->post('password_pengguna'),PASSWORD_DEFAULT,$options),
 			'foto_pengguna'		    => $this->M_User->_uploadImage()
@@ -57,20 +58,21 @@ class User extends CI_Controller {
 		);
 
 		if (!empty($_FILES['image']['name'])) {
-            $update_foto = $this->M_User->_uploadImage();
-        } else {
-            $update_foto = $this->input->post('foto_profile');
-        }
+			$update_foto = $this->M_User->_uploadImage();
+		} else {
+			$update_foto = $this->input->post('foto_profile');
+		}
 
 		$data = array(
 			'nama_pengguna'	        => $this->input->post('nama_pengguna'),
 			'email_pengguna'	    => $this->input->post('email_pengguna'),
 			'telepon_pengguna'      => $this->input->post('telepon_pengguna'),
 			'id_role'	            => $this->input->post('id_role'),
-            'username_pengguna'	    => $this->input->post('username_pengguna'),
+			'username_pengguna'	    => $this->input->post('username_pengguna'),
 			'password_pengguna'	    => $this->input->post('password_pengguna'),
 			'foto_pengguna'		    => $update_foto
 		);
+		$this->M_User->updatedatauser($data, $id);
 		$this->session->set_flashdata('notif', 'Data berhasil diupdate');
 		redirect(base_url('users'));
 	}
@@ -85,7 +87,7 @@ class User extends CI_Controller {
 			'terverifikasi' => 1
 		);
 		$this->M_User->verif_user($data, $idp);
-		$this->session->set_flashdata('notif', ucfirst($nama).' berhasil terverifikasi');
+		$this->session->set_flashdata('notif', ucfirst($nama) . ' berhasil terverifikasi');
 		redirect(base_url('users'));
 	}
 

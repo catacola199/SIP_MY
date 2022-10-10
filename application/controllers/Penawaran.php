@@ -18,6 +18,7 @@ class Penawaran extends CI_Controller
 		$data["instansi"] = $this->M_Penawaran->get_instansi();
 		$data["penawaran"] = $this->M_Penawaran->getAllpenawaran();
 		$data["produk"] = $this->M_Penawaran->get_produk();
+		$data["all"] = $this->M_Penawaran->getInstansi();
 		$this->load->view("dashboard/penawaran", $data);
 	}
 

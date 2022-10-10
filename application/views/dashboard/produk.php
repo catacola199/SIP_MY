@@ -81,12 +81,15 @@
                                                     <td><?php echo $data->nama_produk ?></td>
                                                     <td><?php echo $data->jenis_produk ?></td>
                                                     <td><?php echo $data->quantity_produk ?></td>
-                                                    <td><?php echo "Rp. ".$data->harga_produk ?></td>
+                                                    <td><?php echo "Rp. " . $data->harga_produk ?></td>
 
                                                     <td>
-                                                        <a href="<?php echo site_url('produk/edit_produk/' . $data->id_produk) ?>" class="btn btn-sm btn-outline-success">
+                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#edit-<?= $data->id_produk ?>">
                                                             <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
                                                         </a>
+                                                        <!-- <a href="<?php echo site_url('produk/editproduk/' . $data->id) ?>" class="btn btn-sm btn-outline-success">
+                                                            <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
+                                                        </a> -->
                                                         <a onclick="deleteConfirm('<?php echo site_url('produk/deleteproduk/' . $data->id_produk) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
                                                             <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
                                                         </a>
@@ -138,22 +141,22 @@
                 <div class="modal-body">
                     <!-- Form -->
                     <form action="<?php echo base_url('produk/save_produk') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3" autocomplete="off">
-                        
+
                         <div class="form-group">
                             <div class="form-floating">
-                            <input type="text" class="form-control form-control-user" name="kode_produk" id="kode_produk" placeholder="Kode Produk" required>
+                                <input type="text" class="form-control form-control-user" name="kode_produk" id="kode_produk" placeholder="Kode Produk" required>
                                 <label for="kode_produk">Kode Produk</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-floating">
-                            <input type="text" class="form-control form-control-user" name="nama_produk" id="nama_produk" placeholder="Nama Produk" required>
+                                <input type="text" class="form-control form-control-user" name="nama_produk" id="nama_produk" placeholder="Nama Produk" required>
                                 <label for="nama_produk">Nama Produk</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-floating">
-                                <select class="form-select" id="jenis_produk" name="jenis_produk"  aria-label="Floating label select example" required>
+                                <select class="form-select" id="jenis_produk" name="jenis_produk" aria-label="Floating label select example" required>
                                     <option disabled value="" selected>Pilih salah satu...</option>
                                     <option value="Umum">Umum</option>
                                     <option value="X-Ray">X-Ray</option>
@@ -163,13 +166,13 @@
                         </div>
                         <div class="form-group">
                             <div class="form-floating">
-                            <input type="text" class="form-control form-control-user" name="quantity_produk" id="quantity_produk" placeholder="Quantity Produk" required>
+                                <input type="text" class="form-control form-control-user" name="quantity_produk" id="quantity_produk" placeholder="Quantity Produk" required>
                                 <label for="quantity_produk">Quantity Produk</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-floating">
-                            <input type="text" class="form-control form-control-user" name="harga_produk" id="harga_produk" placeholder="Quantity Produk" required>
+                                <input type="text" class="form-control form-control-user" name="harga_produk" id="harga_produk" placeholder="Quantity Produk" required>
                                 <label for="harga_produk">Harga Produk</label>
                             </div>
                         </div>
@@ -185,6 +188,65 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
+    <!-- Modal Edit -->
+    <?php foreach ($produk as $data) : ?>
+        <div class="modal fade" id="edit-<?= $data->id_produk ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Form Edit Produk</h1>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="<?php echo base_url('produk/update_produk') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
+
+                            <input type="text" hidden name="id_produk" id="id_produk" value="<?= $data->id_produk ?>">
+
+                            <div class="form-group">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control form-control-user" name="kode_produk" id="kode_produk" placeholder="Kode Produk" value="<?= $data->kode_produk ?>" required>
+                                    <label for="kode_produk">Kode Produk</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control form-control-user" name="nama_produk" id="nama_produk" placeholder="Nama Produk" value="<?= $data->nama_produk ?>" required>
+                                    <label for="nama_produk">Nama Produk</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-floating">
+                                    <select class="form-select" id="jenis_produk" name="jenis_produk" aria-label="Floating label select example" required>
+                                        <option value="Umum" <?php if ($data->jenis_produk == "Umum") echo 'selected ="selected"'; ?>>Umum</option>
+                                        <option value="X-Ray" <?php if ($data->jenis_produk == "X-Ray") echo 'selected ="selected"'; ?>>X-Ray</option>
+                                    </select>
+                                    <label for="jenis_produk">Jenis Produk</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control form-control-user" name="quantity_produk" id="quantity_produk" placeholder="Quantity Produk" value="<?= $data->quantity_produk ?>" required>
+                                    <label for="quantity_produk">Quantity Produk</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control form-control-user" name="harga_produk" id="harga_produk" placeholder="Harga Produk" value="<?= $data->harga_produk ?>" required>
+                                    <label for="harga_produk">Harga Produk</label>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="<?php echo site_url('produks') ?>" class="btn btn-danger" data-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</a>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Edit End -->
+    <?php endforeach; ?>
     <script>
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
