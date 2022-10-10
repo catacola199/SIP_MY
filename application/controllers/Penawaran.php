@@ -18,7 +18,6 @@ class Penawaran extends CI_Controller
 		$data["instansi"] = $this->M_Penawaran->get_instansi();
 		$data["penawaran"] = $this->M_Penawaran->getAllpenawaran();
 		$data["produk"] = $this->M_Penawaran->get_produk();
-		$data["all"] = $this->M_Penawaran->getInstansi();
 		$this->load->view("dashboard/penawaran", $data);
 	}
 
@@ -33,19 +32,19 @@ class Penawaran extends CI_Controller
 				'id_pengguna'	    => $this->input->post('id_pengguna'),
 				'qty_penawaran'	    => $this->input->post('qty')[$key],
 				'tgl_penawaran'	    => $this->input->post('tgl_penawaran'),
-			);     
-		 }  
-		$this->db->insert_batch('penawaran',$result);
+			);
+		}
+		$this->db->insert_batch('penawaran', $result);
 		// $this->M_Penawaran->simpandatapenawaran($data);
-		$this->session->set_flashdata('notif','Data berhasil disimpan');
+		$this->session->set_flashdata('notif', 'Data berhasil disimpan');
 		redirect(base_url('penawarans'));
 	}
 
 	// Edit User
 	public function edit_penawaran($id)
 	{
-		$data["all"] = $this->M_Penawaran->getInstansi($id);
-		$data["penawaran"] = $this->M_Penawaran->getID($id);
+		$data["all2"] = $this->M_Penawaran->getInstansi($id);
+		$data["penawaran2"] = $this->M_Penawaran->getID($id);
 		$this->load->view("component/_editpenawaran", $data);
 	}
 
@@ -78,8 +77,8 @@ class Penawaran extends CI_Controller
 			redirect(base_url('penawarans'));
 		}
 	}
-		public function __destruct() {  
-		$this->db->close();  
-	} 
-	
+	public function __destruct()
+	{
+		$this->db->close();
+	}
 }
