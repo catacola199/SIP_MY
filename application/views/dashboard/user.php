@@ -6,9 +6,9 @@
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
-    
+
     <div class="preloader">
-       <span class="loader"></span>
+        <span class="loader"></span>
     </div>
 
     <!-- ============================================================== -->
@@ -78,7 +78,7 @@
                                             foreach ($user as $data) : ?>
                                                 <tr>
                                                     <td><?= $i++ ?></td>
-                                                    <td><img src="<?php echo base_url('upload/pengguna/'.$data->foto_pengguna) ?>" class="rounded-circle pp" alt="Foto" width="55" height="55" /></td>
+                                                    <td><img src="<?php echo base_url('upload/pengguna/' . $data->foto_pengguna) ?>" class="rounded-circle pp" alt="Foto" width="55" height="55" /></td>
                                                     <td><?php echo $data->nama_pengguna ?></td>
                                                     <td><?php echo $data->instansi_pengguna ?></td>
                                                     <td><?php echo $data->email_pengguna ?></td>
@@ -88,30 +88,30 @@
                                                             echo "Ya";
                                                         } ?></td>
                                                     <td>
-                                                        <a href="<?php echo site_url('user/edit_user/' . $data->id_pengguna) ?>" class="btn btn-sm btn-outline-success">
+                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#edit-<?= $data->id_pengguna ?>">
                                                             <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
                                                         </a>
 
-                                                        <?php if ($data->terverifikasi != 1):?>
+                                                        <?php if ($data->terverifikasi != 1) : ?>
                                                             <a onclick="verifConfirm('<?php echo site_url('user/verifuser/' . $data->id_pengguna) ?>')" href="#!" class="btn btn-sm btn-outline-primary">
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Verifikasi"></i>
                                                             </a>
-                                                        <?php else:?>
+                                                        <?php else : ?>
                                                             <a href="" class="btn btn-sm btn-outline-primary disabled" aria-disabled="true">
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Verifikasi"></i>
                                                             </a>
-                                                        <?php endif;?>
-                                                       
-                                                        
-                                                        <?php if ($this->fungsi->user_login()->id_pengguna != $data->id_pengguna && $data->id_role != 1 ):?>
+                                                        <?php endif; ?>
+
+
+                                                        <?php if ($this->fungsi->user_login()->id_pengguna != $data->id_pengguna && $data->id_role != 1) : ?>
                                                             <a onclick="deleteConfirm('<?php echo site_url('user/deleteuser/' . $data->id_pengguna) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
                                                                 <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
                                                             </a>
-                                                        <?php else:?>
+                                                        <?php else : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-danger disabled" aria-disabled="true">
                                                                 <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
                                                             </a>
-                                                        <?php endif;?>
+                                                        <?php endif; ?>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -160,7 +160,7 @@
                 <div class="modal-body">
                     <!-- Form -->
                     <form action="<?php echo base_url('user/save_user') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3" autocomplete="off">
-                        
+
                         <div class="form-group">
                             <div class="form-floating">
                                 <input type="text" class="form-control form-control-user" name="nama_pengguna" id="nama_pengguna" placeholder="Nama Pengguna" required>
@@ -199,7 +199,7 @@
                         </div>
                         <div class="form-group">
                             <div class="form-floating">
-                                <select class="form-select" id="id_role" name="id_role"  aria-label="Floating label select example" required>
+                                <select class="form-select" id="id_role" name="id_role" aria-label="Floating label select example" required>
                                     <option disabled value="" selected>Pilih salah satu...</option>
                                     <?php foreach ($role as $data) { ?>
                                         <option value="<?php echo $data->id_role; ?>"><?php echo $data->nama_role; ?> </option>
@@ -225,6 +225,66 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     
+    <!-- Modal Edit -->
+    <?php foreach ($user as $data) : ?>
+        <div class="modal fade" id="edit-<?= $data->id_pengguna ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Form Edit User</h1>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="<?php echo base_url('user/update_user') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
+
+                            <input type="text" hidden name="id_pengguna" id="id_pengguna" value="<?= $data->id_pengguna ?>">
+
+                            <div class="form-group">
+                                <label for="nama_pengguna"><strong>Nama</strong></label>
+                                <input type="text" class="form-control form-control-user" name="nama_pengguna" id="nama_pengguna" placeholder="Nama Pengguna" value="<?= $data->nama_pengguna ?>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email_pengguna"><strong>Email</strong></label>
+                                <input type="text" class="form-control form-control-user" name="email_pengguna" id="email_pengguna" placeholder="Email Pengguna" value="<?= $data->email_pengguna ?>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telepon_pengguna"><strong>No Hp</strong></label>
+                                <input type="number" class="form-control form-control-user" name="telepon_pengguna" id="telepon_pengguna" placeholder="No Handphone" value="<?= $data->telepon_pengguna ?>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="username_pengguna"><strong>Username</strong></label>
+                                <input type="text" class="form-control form-control-user" name="username_pengguna" id="username_pengguna" placeholder="Username Pengguna" value="<?= $data->username_pengguna ?>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password_pengguna"><strong>Password</strong></label>
+                                <input type="password" class="form-control form-control-user" name="password_pengguna" id="password_pengguna" placeholder="Password Pengguna" value="<?= $data->password_pengguna ?>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_role"><strong>id Role</strong></label>
+                                <input type="number" class="form-control form-control-user" name="id_role" id="id_role" value="<?= $data->id_role ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="image"><strong>Photo</strong></label>
+                                <input type="file" class="form-control form-control-file" name="image" id="image" accept=".png,.jpg,.jpeg">
+                                <input type="hidden" name="old_image" value="<?= $data->foto_pengguna ?>" />
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="<?php echo site_url('users') ?>" class="btn btn-danger" data-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</a>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Edit End -->
+    <?php endforeach; ?>
     <script>
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
