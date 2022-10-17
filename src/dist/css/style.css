@@ -8551,8 +8551,6 @@ strong {
     position: relative; }
     .auth-wrapper .auth-box .modal-bg-img {
       background-size: cover;
-      background-color: #fff;
-      opacity: 70%;
       background-position: center center;
       border-radius: 2%;
       min-height: 300px; }
