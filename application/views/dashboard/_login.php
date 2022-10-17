@@ -31,6 +31,9 @@
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative" style="background-color:#3C7FB0;">
             <div class="auth-box row">
                 <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url(<?= base_url('src') ?>/assets/images/LoginPage.png);">
+                    <div class="cards">
+                        <img src="<?= base_url('src') ?>/assets/images/SIPMEDic.png" class="card-img" alt="...">
+                    </div>
                 </div>
                 <div class="col-lg-5 col-md-7 bg-white" style="border-radius: 2%;">
                     <div class="p-3">
@@ -38,10 +41,10 @@
                             <img src="<?= base_url('src') ?>/assets/images/sipmedic1.png" alt="wrapkit">
                         </div>
                         <h4 class="mt-3 text-center">
-                            Selamat datang kembali!
+                            Welcome
                         </h4>
                         <p class="text-center">
-                            <small>Masukan username dan password untuk mengakses menu admin</small>
+                            <small>We Are Happy To Have You Back</small>
                         </p>
                         <form class="mt-4" action="<?= site_url('login') ?>" method="POST" autocomplete="off">
                             <div class="row">
@@ -58,7 +61,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 text-center">
-                                    <button type="submit" class="btn btn-block btn-primary">Sign In</button>
+                                    <button type="submit" class="button-43">Sign In</button>
                                 </div>
                                 <div class="col-lg-12 text-center mt-5">
                                     <small>Don't have an account?
