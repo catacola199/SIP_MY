@@ -52,15 +52,13 @@ class Penawaran extends CI_Controller
 	public function update_penawaran()
 	{
 		$id = array(
-			'id' => $this->input->post('id')
+			'id_penawaran' => $this->input->post('id_penawaran')
 		);
 
 		$data = array(
-			'nama_brosur'	        => $this->input->post('nama_brosur'),
-			'deskripsi_brosur'	    => $this->input->post('deskripsi_brosur'),
-			'thumb_brosur'     		=> $this->M_Brosur->_uploadImageBrosur(),
-			'file_brosur'	        => $this->M_Brosur->_uploadFileBrosur(),
-			'link_youtube'	 	    => $this->input->post('link_youtube')
+			'id_produk'	   		    => $this->input->post('id_produk'),
+			'qty_penawaran'	   		=> $this->input->post('qty'),
+			'tgl_penawaran'     	=> $this->input->post('tgl_penawaran')
 		);
 		$this->M_Penawaran->updatedatapenawaran($data, $id);
 		$this->session->set_flashdata('notif', 'Data berhasil diupdate');

@@ -99,25 +99,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Row -->
-                <!-- End Location and Earnings Charts Section -->
-
-                <!-- Start Top Leader Table -->
-                <!-- <?php //$this->load->view('component/_table') 
-                        ?> -->
-                <!-- End Top Leader Table -->
             </div>
-
-            <!-- End Container fluid  -->
-
-            <!-- footer -->
             <?php $this->load->view('component/_footer') ?>
-            <!-- End footer -->
-
         </div>
-        <!-- End Page wrapper  -->
-
     </div>
     <!-- End Wrapper -->
 
@@ -140,10 +124,11 @@
 
                         <div class="form-group">
                             <div class="form-floating">
-                                <input type="hidden" name="kode_penawaran" id="kode_penawaran" value="<?php $kode_penawaran = "SIP-" . date("dmY") . substr(md5(time()), 0, 5);
-                                                                                                        echo $kode_penawaran; ?>">
-                                <input type="text" class="form-control" id="kode" placeholder="Kode Penawaran" value="<?php $kode_penawaran = "SIP-" . date("dmY") . substr(md5(time()), 0, 5);
-                                                                                                                        echo $kode_penawaran; ?>" disabled>
+                                <input type="hidden" name="kode_penawaran" id="kode_penawaran" 
+                                value="<?php $kode_penawaran = "SIP-" . date("dmY") . substr(md5(time()), 0, 5);echo $kode_penawaran; ?>">
+                                <input type="text" class="form-control" id="kode" placeholder="Kode Penawaran" 
+                                value="<?php $kode_penawaran = "SIP-" . date("dmY") . substr(md5(time()), 0, 5);
+                                    echo $kode_penawaran; ?>" disabled>
                                 <label for="kode">Kode Penawaran</label>
                             </div>
                         </div>
@@ -212,7 +197,7 @@
 
     <!-- Modal Edit -->
     <?php foreach ($penawaran as $data) : ?>
-        <div class="modal fade" id="edit-<?= $data->id_penawaran ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="edit-<?= $data->id_penawaran ?>" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
@@ -222,8 +207,7 @@
 
                     <div class="modal-body">
                         <form action="<?php echo base_url('penawaran/update_penawaran') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
-
-                            < <input type="text" hidden name="id_penawaran" id="id_penawaran" value="<?= $data->id_penawaran ?>">
+                                <input type="text" hidden name="id_penawaran" id="id_penawaran" value="<?= $data->id_penawaran ?>">
                                 <div class="form-group">
                                     <div class="form-floating">
                                         <input type="hidden" name="kode_penawaran" id="kode_penawaran" value="<?= $data->kode_penawaran ?>">
@@ -233,7 +217,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="id_pengguna" placeholder="Kode Penawaran" value="<?= $all->instansi_pengguna ?>" disabled>
+                                        <input type="text" class="form-control" id="id_pengguna" placeholder="Kode Penawaran" value="<?= $data->instansi_pengguna ?>" disabled>
                                         <label for="id_pengguna">Pengguna & Instansi</label>
                                     </div>
                                 </div>
@@ -242,29 +226,30 @@
                                         <tr>
                                             <td class="col-6 col-sm-6 col-lg-6 col-md-6">
                                                 <div class="form-floating">
-                                                    <select class="form-select" id="id_produk[]" name="id_produk[]" aria-label="Floating label select example" required>
-                                                        <option disabled value="" selected>Pilih salah satu...</option>
+                                                    <select class="form-select" id="id_produk" name="id_produk" aria-label="Floating label select example" required>
+                                                        <option disabled value="">Pilih salah satu...</option>
                                                         <?php foreach ($produk as $l) { ?>
-                                                            <option value="<?php echo $l['id_produk']; ?>"><?php echo $l['nama_produk']; ?> </option>
+                                                            <?php if($l['id_produk']==$data->id_produk):?>
+                                                                <option value="<?php echo $l['id_produk']; ?>" <?= 'selected ="selected"'?> ><?php echo $l['nama_produk']; ?> </option>
+                                                            <?php else: ?>
+                                                                <option value="<?php echo $l['id_produk']; ?>"><?php echo $l['nama_produk']; ?> </option>
+                                                            <?php endif;?>
                                                         <?php } ?>
                                                     </select>
-                                                    <label for="id_produk[]">Produk </label>
+                                                    <label for="id_produk">Produk </label>
                                                 </div>
                                             </td>
-                                            <td class="col-5 col-sm-5 col-lg-5 col-md-5">
+                                            <td class="col-6 col-sm-6 col-lg-6 col-md-6">
                                                 <div class="form-floating">
-                                                    <input type="text" name="qty[]" id="qty[]" placeholder="Quantity" class="form-control" autocomplete="off" value="<?= $data->qty_penawaran ?>" required />
-                                                    <label for="qty[]">Quantity</label>
+                                                    <input type="text" name="qty" id="qty" placeholder="Quantity" class="form-control" autocomplete="off" value="<?= $data->qty_penawaran ?>" required />
+                                                    <label for="qty">Quantity</label>
                                                 </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <button type="button" name="add" id="add" class="btn btn-success "><i class="fa fa-plus"></i></button>
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
 
-                                <div class="input-group date" id="pengadaan_alat">
+                                <div class="input-group date" id="penawaran_alat">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" name="tgl_penawaran" id="tgl_penawaran" placeholder="Pilih Tanggal" autocomplete="off" value="<?= $data->tgl_penawaran ?>" required />
                                         <label for="tgl_penawaran">Tanggal Penawaran</label>
@@ -276,35 +261,44 @@
                                     </span>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="<?php echo site_url('users') ?>" class="btn btn-danger" data-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</a>
+                                    <a href="" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</a>
                                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
                                 </div>
                         </form>
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
+        </div>
+    <?php endforeach; ?>
         <!-- /Modal Edit End -->
-        <script>
-            $(document).ready(function() {
-                var i = 1;
+    <script>
+        $(document).ready(function() {
+            var i = 1;
 
-                $('#add').click(function() {
-                    i++;
-                    $('#dynamic_field').append(
-                        '<tr id="row' + i + '" class="dynamic-added"><td class="col-6 col-sm-6 col-lg-6 col-md-6"><div class="form-floating"><select class="form-select" id="id_produk[]" name="id_produk[]"  aria-label="Floating label select example" required><option disabled value="" selected>Pilih salah satu...</option><?php foreach ($produk as $l) { ?><option value="<?php echo $l['id_produk']; ?>"><?php echo $l['nama_produk']; ?> </option><?php } ?></select><label for="id_produk[]">Kostumer & Instansi</label></div></td><td class="col-5 col-sm-5 col-lg-5 col-md-5"><div class="form-floating"><input type="text" name="qty[]" id="qty[]" placeholder="Quantity" class="form-control" autocomplete="off" required/><label for="qty[]">Quantity</label></div></td><td class="text-center"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove"><i class="fa fa-times"></i></button></td></tr>'
-                    );
-
-                });
-
-
-                $(document).on('click', '.btn_remove', function() {
-                    var button_id = $(this).attr("id");
-                    $('#row' + button_id + '').remove();
-                });
+            $('#add').click(function() {
+                i++;
+                $('#dynamic_field').append(
+                    '<tr id="row' + i + '" class="dynamic-added"><td class="col-6 col-sm-6 col-lg-6 col-md-6"><div class="form-floating"><select class="form-select" id="id_produk[]" name="id_produk[]"  aria-label="Floating label select example" required><option disabled value="" selected>Pilih salah satu...</option><?php foreach ($produk as $l) { ?><option value="<?php echo $l['id_produk']; ?>"><?php echo $l['nama_produk']; ?> </option><?php } ?></select><label for="id_produk[]">Kostumer & Instansi</label></div></td><td class="col-5 col-sm-5 col-lg-5 col-md-5"><div class="form-floating"><input type="text" name="qty[]" id="qty[]" placeholder="Quantity" class="form-control" autocomplete="off" required/><label for="qty[]">Quantity</label></div></td><td class="text-center"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove"><i class="fa fa-times"></i></button></td></tr>'
+                );
 
             });
-            $(function() {
-                $('[data-toggle="tooltip"]').tooltip();
+
+
+            $(document).on('click', '.btn_remove', function() {
+                var button_id = $(this).attr("id");
+                $('#row' + button_id + '').remove();
             });
-        </script>
+
+        });
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        $(function() {
+            $('#penawaran_alat').datepicker({
+                format: "dd/mm/yyyy",
+                autoclose: true,
+                todayBtn: "linked",
+                todayHighlight: true
+            });
+        });
+    </script>

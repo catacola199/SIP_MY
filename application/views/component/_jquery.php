@@ -76,6 +76,11 @@
         $('#editModal').modal();
     }
 
+    function editModal(id) {
+        // $('#edit').attr('id',id);
+        $('#edit'.id).modal("show");
+    }
+
     $("#refresh_tabel").click(function(e) {
         swal.fire({
             imageUrl: "<?= base_url('assets/loader_kecil.gif'); ?>",
@@ -97,6 +102,7 @@
             todayHighlight: true
         });
     });
+
 </script>
 
 <?php if ($this->session->flashdata('notif')) : ?>
