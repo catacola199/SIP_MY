@@ -101,6 +101,12 @@
             todayBtn: "linked",
             todayHighlight: true
         });
+        $('#penawaran_alat').datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true,
+            todayBtn: "linked",
+            todayHighlight: true
+        });
     });
 
 </script>

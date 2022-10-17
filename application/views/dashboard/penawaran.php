@@ -293,12 +293,4 @@
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
-        $(function() {
-            $('#penawaran_alat').datepicker({
-                format: "dd/mm/yyyy",
-                autoclose: true,
-                todayBtn: "linked",
-                todayHighlight: true
-            });
-        });
     </script>
