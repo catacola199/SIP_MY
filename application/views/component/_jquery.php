@@ -98,6 +98,20 @@
         });
     });
 
+    function checkPasswordMatch() {
+        var password = $("#password_pengguna_baru").val();
+        var confirmPassword = $("#password_pengguna_konfirm").val();
+        var element = document.getElementById("password_pengguna_konfirm");
+
+        if (password != confirmPassword)
+            element.className += "border border-danger";
+        else
+            element.className += "border border-success";
+    }
+
+    $(document).ready(function () {
+        $("#password_pengguna_konfirm").keyup(checkPasswordMatch);
+    });
 </script>
 
 <?php if ($this->session->flashdata('notif')) : ?>

@@ -15,41 +15,10 @@ class Profile extends CI_Controller
 
 	public function index()
 	{
-
-		$this->load->view("dashboard/profil_user");
-	}
-	// Get Save User
-	public function save_user()
-	{
-		$options = [
-			'cost' => 10,
-		];
-
-		$data = array(
-			'nama_pengguna'	        => $this->input->post('nama_pengguna'),
-			'instansi_pengguna'     => $this->input->post('instansi_pengguna'),
-			'email_pengguna'	    => $this->input->post('email_pengguna'),
-			'telepon_pengguna'      => $this->input->post('telepon_pengguna'),
-			'id_role'	            => $this->input->post('id_role'),
-			'username_pengguna'	    => $this->input->post('username_pengguna'),
-			'password_pengguna'	    => sha1(sha1($this->input->post('password_pengguna'))),
-			// 'password_pengguna'	    => password_hash($this->input->post('password_pengguna'),PASSWORD_DEFAULT,$options),
-			'foto_pengguna'		    => $this->M_User->_uploadImage()
-		);
-		$this->M_User->simpandatauser($data);
-		$this->session->set_flashdata('notif', 'Data berhasil disimpan');
-		redirect(base_url('users'));
+		$data["role"] = $this->All_model->getAllRole();
+		$this->load->view("dashboard/profil_user",$data);
 	}
 
-	// Edit User
-	public function edit_user($id)
-	{
-		// $data["role"] = $this->All_model->getAllRole();
-		$data["user"] = $this->M_User->getID($id);
-		$this->load->view("component/_editPengguna", $data);
-	}
-
-	// Update User
 	public function update_user()
 	{
 		$id = array(
@@ -68,12 +37,24 @@ class Profile extends CI_Controller
 			'telepon_pengguna'      => $this->input->post('telepon_pengguna'),
 			'id_role'	            => $this->input->post('id_role'),
 			'username_pengguna'	    => $this->input->post('username_pengguna'),
-			'password_pengguna'	    => $this->input->post('password_pengguna'),
 			'foto_pengguna'		    => $update_foto
 		);
 		$this->M_User->updatedatauser($data, $id);
 		$this->session->set_flashdata('notif', 'Data berhasil diupdate');
-		redirect(base_url('users'));
+		redirect(base_url('profiles'));
+	}
+	public function update_pass()
+	{
+		$id = array(
+			'id_pengguna' => $this->input->post('id_pengguna')
+		);
+
+		$data = array(
+			'password_pengguna'	    => sha1(sha1($this->input->post('password_pengguna_konfirm')))
+		);
+		$this->M_User->updatedatauser($data, $id);
+		$this->session->set_flashdata('notif', 'Password berhasil diupdate');
+		redirect(base_url('profiles'));
 	}
 
 	public function verifuser($id = null)

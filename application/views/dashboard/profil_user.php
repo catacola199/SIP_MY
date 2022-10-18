@@ -61,30 +61,16 @@
                                 <center class="m-t-30"> <img src="<?php if(file_exists(FCPATH.'upload/pengguna/'.$this->fungsi->user_login()->foto_pengguna) != 1){echo base_url('upload/pengguna/default.png');}else{ echo base_url('upload/pengguna/').$this->fungsi->user_login()->foto_pengguna;} ?>" class="rounded-circle pp" alt="..." width="150" height="150" />
                                     <h4 class="card-title mt-4"><?= ucfirst($this->fungsi->user_login()->nama_pengguna)?></h4>
                                     <h6 class="card-subtitle"><?= ucfirst($this->fungsi->user_login()->instansi_pengguna)?></h6>
-                                    <div class="row text-center justify-content-md-center">
-                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i>
-                                                <font class="font-medium">254</font>
-                                            </a></div>
-                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-picture"></i>
-                                                <font class="font-medium">54</font>
-                                            </a></div>
-                                    </div>
                                 </center>
                             </div>
-                            <div>
-                                <hr>
-                            </div>
-                            <div class="card-body"> <small class="text-muted">Email address </small>
-                                <h6>hannagover@gmail.com</h6> <small class="text-muted p-t-30 db">Phone</small>
-                                <h6>+91 654 784 547</h6> <small class="text-muted p-t-30 db">Address</small>
-                                <h6>71 Pilgrim Avenue Chevy Chase, MD 20815</h6>
-                                <div class="map-box">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
-                                </div> <small class="text-muted p-t-30 db">Social Profile</small>
-                                <br />
-                                <button class="btn btn-circle btn-secondary"><i class="fab fa-facebook-f"></i></button>
-                                <button class="btn btn-circle btn-secondary"><i class="fab fa-twitter"></i></button>
-                                <button class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></button>
+                            <hr class="dropdown-divider">
+                            <div class="card-body"> 
+                                <small class="text-muted">Alamat Email</small>
+                                    <h6><?=$this->fungsi->user_login()->email_pengguna?></h6>
+                                <small class="text-muted">Nomor Telepon </small>
+                                    <h6><?=$this->fungsi->user_login()->telepon_pengguna?></h6>
+                                <small class="text-muted">Dibuat </small>
+                                    <h6><?=$this->fungsi->user_login()->date_created?></h6>
                             </div>
                         </div>
                     </div>
@@ -93,75 +79,113 @@
                     <div class="col-lg-8 col-xlg-9 col-md-7">
                         <div class="card">
                             <div class="card-body">
-                                <form class="form-horizontal form-material mx-2">
-                                    <div class="form-group">
-                                        <label class="col-md-12">Full Name</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
+                                    <button class="nav-link" id="nav-password-tab" data-bs-toggle="tab" data-bs-target="#nav-password" type="button" role="tab" aria-controls="nav-password" aria-selected="false">Edit Password</button>
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <form action="<?php echo base_url('profile/update_user') ?>" method="post" enctype="multipart/form-data" class="p-2 mt-3" autocomplete="off">
+                                        <input type="text" hidden name="id_pengguna" id="id_pengguna" value="<?= $this->fungsi->user_login()->id_pengguna ?>">
+
+                                        <div class="form-group">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control form-control-user" name="nama_pengguna" id="nama_pengguna" placeholder="Nama Pengguna" value="<?= $this->fungsi->user_login()->nama_pengguna ?>" required>
+                                                <label for="nama_pengguna">Nama Pengguna</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="example-email" class="col-md-12">Email</label>
-                                        <div class="col-md-12">
-                                            <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email">
+                                        <div class="form-group">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control form-control-user" name="instansi_pengguna" id="instansi_pengguna" placeholder="Instansi Pengguna" value="<?= $this->fungsi->user_login()->instansi_pengguna ?>" required>
+                                                <label for="instansi_pengguna">Instansi Pengguna</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Password</label>
-                                        <div class="col-md-12">
-                                            <input type="password" value="password" class="form-control form-control-line">
+                                        <div class="form-group">
+                                            <div class="form-floating">
+                                                <input type="email" class="form-control form-control-user" name="email_pengguna" id="email_pengguna" placeholder="Email Pengguna" value="<?= $this->fungsi->user_login()->email_pengguna ?>" required>
+                                                <label for="email_pengguna">Email Pengguna</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Phone No</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="123 456 7890" class="form-control form-control-line">
+                                        <div class="form-group">
+                                            <div class="form-floating">
+                                                <input type="number" class="form-control form-control-user" name="telepon_pengguna" id="telepon_pengguna" placeholder="No Handphone" value="<?= $this->fungsi->user_login()->telepon_pengguna ?>"required>
+                                                <label for="telepon_pengguna">No Handphone</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Message</label>
-                                        <div class="col-md-12">
-                                            <textarea rows="5" class="form-control form-control-line"></textarea>
+                                        <div class="form-group">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control form-control-user" name="username_pengguna" id="username_pengguna" placeholder="Username Pengguna"  value="<?= $this->fungsi->user_login()->username_pengguna ?>"required>
+                                                <label for="username_pengguna">Username</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-12">Select Country</label>
-                                        <div class="col-sm-12">
-                                            <select class="form-select shadow-none form-control-line">
-                                                <option>London</option>
-                                                <option>India</option>
-                                                <option>Usa</option>
-                                                <option>Canada</option>
-                                                <option>Thailand</option>
-                                            </select>
+                                        <div class="form-group">
+                                            <div class="form-floating">
+                                                <?php if (($this->fungsi->user_login()->id_role) != 1){?>
+                                                    <select class="form-select" id="id_role" name="id_role" aria-label="Floating label select example" required>
+                                                        <option disabled value="" selected>Pilih salah satu...</option>
+                                                        <?php foreach ($role as $data) { ?>
+                                                            <?php if($data->id_role == $this->fungsi->user_login()->id_role):?>
+                                                                <option value="<?php echo $data->id_role; ?>" <?= 'selected ="selected"'?> ><?php echo $data->nama_role; ?> </option>
+                                                            <?php else: ?>
+                                                                <option value="<?php echo $data->id_role; ?>"><?php echo $data->nama_role; ?> </option>
+                                                            <?php endif;?>
+                                                        <?php } ?>
+                                                    </select>
+                                                <?php }else{ ?>
+                                                    <select class="form-select" id="id_role" name="id_role" aria-label="Floating label select example" disabled required>
+                                                        <option value="" selected>Superadmin</option>
+                                                    </select>
+                                                <?php } ?>
+                                                <label for="id_role">Role Pengguna</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <button class="btn btn-success text-white">Update Profile</button>
+                                        
+                                        <div class="form-group">
+                                            <label for="image"><strong>Photo</strong></label>
+                                            <input type="file" class="form-control form-control-file" name="image" id="image" accept=".png,.jpg,.jpeg">
+                                            <input type="hidden" name="old_image" value="<?= $this->fungsi->user_login()->foto_pengguna ?>" />
                                         </div>
-                                    </div>
-                                </form>
+                                        
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success text-white">Update Profile</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
+                                    <form action="<?php echo base_url('profile/update_pass') ?>" method="post" enctype="multipart/form-data" class="p-2 mt-3" autocomplete="off">
+                                        <input type="text" hidden name="id_pengguna" id="id_pengguna" value="<?= $this->fungsi->user_login()->id_pengguna ?>">
+                                        <div class="form-group">
+                                            <div class="form-floating">
+                                                <input type="password" class="form-control form-control-user" name="password_pengguna_lama" id="password_pengguna_lama" placeholder="Password Pengguna" required>
+                                                <label for="password_pengguna">Password Lama</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-floating">
+                                                <input type="password" class="form-control form-control-user" name="password_pengguna_baru" id="password_pengguna_baru" placeholder="Password Pengguna" required>
+                                                <label for="password_pengguna">Password Baru</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-floating" >
+                                                <input type="password" class="form-control form-control-user" name="password_pengguna_konfirm" id="password_pengguna_konfirm" placeholder="Password Pengguna" onChange="checkPasswordMatch();" required>
+                                                <label for="password_pengguna">Konfirmasi Password Lama</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success text-white">Update Password</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
                     <!-- Column -->
                 </div>
-                <!-- Row -->
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-
             <!-- footer -->
             <?php $this->load->view('component/_footer') ?>
             <!-- End footer -->
@@ -175,10 +199,6 @@
     <!-- Jquery -->
     <?php $this->load->view('component/_jquery') ?>
     <!-- End JQuery -->
-
-
-
-
     <script>
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();

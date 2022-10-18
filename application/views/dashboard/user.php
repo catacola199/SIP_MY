@@ -215,8 +215,8 @@
                         <!-- End Form -->
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success">Simpan</button>
                         </div>
                     </form>
             </div><!-- /.modal-content -->
@@ -234,72 +234,72 @@
                     </div>
 
                     <div class="modal-body">
-                        <form action="<?php echo base_url('user/update_user') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
+                        <form action="<?php echo base_url('user/update_user') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3" autocomplete="off">
 
                             <input type="text" hidden name="id_pengguna" id="id_pengguna" value="<?= $data->id_pengguna ?>">
 
                             <div class="form-group">
-                            <div class="form-floating">
-                                <input type="text" class="form-control form-control-user" name="nama_pengguna" id="nama_pengguna" placeholder="Nama Pengguna" value="<?= $data->nama_pengguna ?>" required>
-                                <label for="nama_pengguna">Nama Pengguna</label>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control form-control-user" name="nama_pengguna" id="nama_pengguna" placeholder="Nama Pengguna" value="<?= $data->nama_pengguna ?>" required>
+                                    <label for="nama_pengguna">Nama Pengguna</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <input type="text" class="form-control form-control-user" name="instansi_pengguna" id="instansi_pengguna" placeholder="Instansi Pengguna" value="<?= $data->instansi_pengguna ?>" required>
-                                <label for="instansi_pengguna">Instansi Pengguna</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <input type="email" class="form-control form-control-user" name="email_pengguna" id="email_pengguna" placeholder="Email Pengguna" value="<?= $data->email_pengguna ?>" required>
-                                <label for="email_pengguna">Email Pengguna</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <input type="number" class="form-control form-control-user" name="telepon_pengguna" id="telepon_pengguna" placeholder="No Handphone" value="<?= $data->telepon_pengguna ?>"required>
-                                <label for="telepon_pengguna">No Handphone</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <input type="text" class="form-control form-control-user" name="username_pengguna" id="username_pengguna" placeholder="Username Pengguna"  value="<?= $data->username_pengguna ?>"required>
-                                <label for="username_pengguna">Username</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <input type="password" class="form-control form-control-user" name="password_pengguna" id="password_pengguna" placeholder="Password Pengguna" value="<?= $data->password_pengguna ?>" required>
-                                <label for="password_pengguna">Password</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <select class="form-select" id="id_role" name="id_role" aria-label="Floating label select example" required>
-                                    <option disabled value="" selected>Pilih salah satu...</option>
-                                    <?php foreach ($role as $l) { ?>
-                                        <?php if($l->id_role == $data->id_role):?>
-                                            <option value="<?php echo $l->id_role; ?>" <?= 'selected ="selected"'?> ><?php echo $l->nama_role; ?> </option>
-                                        <?php else: ?>
-                                            <option value="<?php echo $l->id_role; ?>"><?php echo $l->nama_role; ?> </option>
-                                        <?php endif;?>
-                                    <?php } ?>
-                                </select>
-                                <label for="id_role">Role Pengguna</label>
-                            </div>
-                        </div>
                             <div class="form-group">
-                                <label for="image"><strong>Photo</strong></label>
-                                <input type="file" class="form-control form-control-file" name="image" id="image" accept=".png,.jpg,.jpeg">
-                                <input type="hidden" name="old_image" value="<?= $data->foto_pengguna ?>" />
+                                <div class="form-floating">
+                                    <input type="text" class="form-control form-control-user" name="instansi_pengguna" id="instansi_pengguna" placeholder="Instansi Pengguna" value="<?= $data->instansi_pengguna ?>" required>
+                                    <label for="instansi_pengguna">Instansi Pengguna</label>
+                                </div>
                             </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa fa-window-close"></i> Batal</button>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
-                    </div>
+                            <div class="form-group">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control form-control-user" name="email_pengguna" id="email_pengguna" placeholder="Email Pengguna" value="<?= $data->email_pengguna ?>" required>
+                                    <label for="email_pengguna">Email Pengguna</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control form-control-user" name="telepon_pengguna" id="telepon_pengguna" placeholder="No Handphone" value="<?= $data->telepon_pengguna ?>"required>
+                                    <label for="telepon_pengguna">No Handphone</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control form-control-user" name="username_pengguna" id="username_pengguna" placeholder="Username Pengguna"  value="<?= $data->username_pengguna ?>"required>
+                                    <label for="username_pengguna">Username</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control form-control-user" name="password_pengguna" id="password_pengguna" placeholder="Password Pengguna" value="<?= $data->password_pengguna ?>" required>
+                                    <label for="password_pengguna">Password</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-floating">
+                                    <select class="form-select" id="id_role" name="id_role" aria-label="Floating label select example" required>
+                                        <option disabled value="" selected>Pilih salah satu...</option>
+                                        <?php foreach ($role as $l) { ?>
+                                            <?php if($l->id_role == $data->id_role):?>
+                                                <option value="<?php echo $l->id_role; ?>" <?= 'selected ="selected"'?> ><?php echo $l->nama_role; ?> </option>
+                                            <?php else: ?>
+                                                <option value="<?php echo $l->id_role; ?>"><?php echo $l->nama_role; ?> </option>
+                                            <?php endif;?>
+                                        <?php } ?>
+                                    </select>
+                                    <label for="id_role">Role Pengguna</label>
+                                </div>
+                            </div>
+                                <div class="form-group">
+                                    <label for="image"><strong>Photo</strong></label>
+                                    <input type="file" class="form-control form-control-file" name="image" id="image" accept=".png,.jpg,.jpeg">
+                                    <input type="hidden" name="old_image" value="<?= $data->foto_pengguna ?>" />
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success">Update Pengguna</button>
+                        </div>
                     </form>
                 </div>
             </div>
