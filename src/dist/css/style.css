@@ -472,6 +472,16 @@ pre {
   object-fit: cover;
   object-position: center;
 }
+
+.mini-profile{
+  z-index: 1;
+  position: relative;
+  top: -100px;
+}
+
+.foto-profile{
+  background: white;
+}
 .container {
   width: 100%;
   padding-right: 15px;

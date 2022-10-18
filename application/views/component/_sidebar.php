@@ -30,12 +30,12 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item">
+                <!-- <li class="sidebar-item">
                     <a class="sidebar-link sidebar-link" href="<?= base_url('profiles') ?>" aria-expanded="false">
                         <i data-feather="user" class="feather-icon"></i>
                         <span class="hide-menu"> Profile</span>
                     </a>
-                </li>
+                </li> -->
 
                 <li class="list-divider"></li>
                 <li class="nav-small-cap">

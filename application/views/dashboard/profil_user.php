@@ -55,16 +55,14 @@
                 <div class="row">
                     <!-- Column -->
                     <div class="col-lg-4 col-xlg-3 col-md-5">
-                        <div class="card">
-                            <div class="card-body">
-                                
-                                <center class="m-t-30"> <img src="<?php if(file_exists(FCPATH.'upload/pengguna/'.$this->fungsi->user_login()->foto_pengguna) != 1){echo base_url('upload/pengguna/default.png');}else{ echo base_url('upload/pengguna/').$this->fungsi->user_login()->foto_pengguna;} ?>" class="rounded-circle pp" alt="..." width="150" height="150" />
+                        <div class="card" style="height: 30rem;">
+                            <img src="<?= base_url("src/assets/images/LoginPage.png")?>" class="card-img-top pp" style="height:10rem;"alt="...">
+                            <div class="card-body mini-profile">
+                                <center class=""> <img src="<?php if(file_exists(FCPATH.'upload/pengguna/'.$this->fungsi->user_login()->foto_pengguna) != 1){echo base_url('upload/pengguna/default.png');}else{ echo base_url('upload/pengguna/').$this->fungsi->user_login()->foto_pengguna;} ?>" class="rounded-circle pp foto-profile" alt="..." width="150" height="150" />
                                     <h4 class="card-title mt-4"><?= ucfirst($this->fungsi->user_login()->nama_pengguna)?></h4>
                                     <h6 class="card-subtitle"><?= ucfirst($this->fungsi->user_login()->instansi_pengguna)?></h6>
                                 </center>
-                            </div>
-                            <hr class="dropdown-divider">
-                            <div class="card-body"> 
+                                <hr class="dropdown-divider mt-1 mb-1">
                                 <small class="text-muted">Alamat Email</small>
                                     <h6><?=$this->fungsi->user_login()->email_pengguna?></h6>
                                 <small class="text-muted">Nomor Telepon </small>
