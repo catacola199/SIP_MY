@@ -76,11 +76,6 @@
         $('#editModal').modal();
     }
 
-    function editModal(id) {
-        // $('#edit').attr('id',id);
-        $('#edit'.id).modal("show");
-    }
-
     $("#refresh_tabel").click(function(e) {
         swal.fire({
             imageUrl: "<?= base_url('assets/loader_kecil.gif'); ?>",
@@ -95,13 +90,7 @@
     });
 
     $(function() {
-        $('#pengadaan_alat').datepicker({
-            format: "dd/mm/yyyy",
-            autoclose: true,
-            todayBtn: "linked",
-            todayHighlight: true
-        });
-        $('#penawaran_alat').datepicker({
+        $('.input-group.date').datepicker({
             format: "dd/mm/yyyy",
             autoclose: true,
             todayBtn: "linked",
