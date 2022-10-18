@@ -35,7 +35,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                     <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>">Dashboard</a>
-                                        <i class="fas fa-angle-double-right"></i> Master Brosur
+                                        <i class="fas fa-angle-double-right"></i> <?= $this->uri->segment(1); ?>
                                     </li>
                                 </ol>
                             </nav>
@@ -57,9 +57,10 @@
                     <div class="col-lg-4 col-xlg-3 col-md-5">
                         <div class="card">
                             <div class="card-body">
-                                <center class="m-t-30"> <img src="<?= base_url('src') ?>/assets/images/users/2.jpg" class="rounded-circle" width="150" />
-                                    <h4 class="card-title m-t-10">Hanna Gover</h4>
-                                    <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
+                                
+                                <center class="m-t-30"> <img src="<?php if(file_exists(FCPATH.'upload/pengguna/'.$this->fungsi->user_login()->foto_pengguna) != 1){echo base_url('upload/pengguna/default.png');}else{ echo base_url('upload/pengguna/').$this->fungsi->user_login()->foto_pengguna;} ?>" class="rounded-circle pp" alt="..." width="150" height="150" />
+                                    <h4 class="card-title mt-4"><?= ucfirst($this->fungsi->user_login()->nama_pengguna)?></h4>
+                                    <h6 class="card-subtitle"><?= ucfirst($this->fungsi->user_login()->instansi_pengguna)?></h6>
                                     <div class="row text-center justify-content-md-center">
                                         <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i>
                                                 <font class="font-medium">254</font>
