@@ -132,8 +132,9 @@
                                                         <?php } ?>
                                                     </select>
                                                 <?php }else{ ?>
-                                                    <select class="form-select" id="id_role" name="id_role" aria-label="Floating label select example" disabled required>
-                                                        <option value="" selected>Superadmin</option>
+                                                    <input type="text" hidden name="id_role" id="id_role" value="1">
+                                                    <select class="form-select" aria-label="Floating label select example" disabled required>
+                                                        <option value="1" selected>Superadmin</option>
                                                     </select>
                                                 <?php } ?>
                                                 <label for="id_role">Role Pengguna</label>
@@ -143,7 +144,7 @@
                                         <div class="form-group">
                                             <label for="image"><strong>Photo</strong></label>
                                             <input type="file" class="form-control form-control-file" name="image" id="image" accept=".png,.jpg,.jpeg">
-                                            <input type="hidden" name="old_image" value="<?= $this->fungsi->user_login()->foto_pengguna ?>" />
+                                            <input type="hidden" name="old_image" id="old_image" value="<?= $this->fungsi->user_login()->foto_pengguna ?>" />
                                         </div>
                                         
                                         <div class="form-group">

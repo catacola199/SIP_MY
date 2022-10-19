@@ -25,23 +25,29 @@ class Profile extends CI_Controller
 			'id_pengguna' => $this->input->post('id_pengguna')
 		);
 
-		if (!empty($_FILES['image']['name'])) {
-			$update_foto = $this->M_User->_uploadImage();
+		if ($_FILES['image']['size'] > 5094) {
+			$this->session->set_flashdata('error', 'Ukuran file terlalu besar, Coba untuk lebih kecil lagi!');
+			redirect(base_url('profiles'));
 		} else {
-			$update_foto = $this->input->post('foto_profile');
+			if (!empty($_FILES['image']['name'])) {
+				$update_foto = $this->M_User->_uploadImage();
+			} else {
+				$update_foto = $this->input->post()["old_image"];
+			}
+	
+			$data = array(
+				'nama_pengguna'	        => $this->input->post('nama_pengguna'),
+				'instansi_pengguna'	    => $this->input->post('instansi_pengguna'),
+				'email_pengguna'	    => $this->input->post('email_pengguna'),
+				'telepon_pengguna'      => $this->input->post('telepon_pengguna'),
+				'id_role'	            => $this->input->post('id_role'),
+				'username_pengguna'	    => $this->input->post('username_pengguna'),
+				'foto_pengguna'		    => $update_foto
+			);
+			$this->M_User->updatedatauser($data, $id);
+			$this->session->set_flashdata('notif', 'Data berhasil diupdate');	
+			redirect(base_url('profiles'));
 		}
-
-		$data = array(
-			'nama_pengguna'	        => $this->input->post('nama_pengguna'),
-			'email_pengguna'	    => $this->input->post('email_pengguna'),
-			'telepon_pengguna'      => $this->input->post('telepon_pengguna'),
-			'id_role'	            => $this->input->post('id_role'),
-			'username_pengguna'	    => $this->input->post('username_pengguna'),
-			'foto_pengguna'		    => $update_foto
-		);
-		$this->M_User->updatedatauser($data, $id);
-		$this->session->set_flashdata('notif', 'Data berhasil diupdate');
-		redirect(base_url('profiles'));
 	}
 	public function update_pass()
 	{
@@ -49,12 +55,20 @@ class Profile extends CI_Controller
 			'id_pengguna' => $this->input->post('id_pengguna')
 		);
 
-		$data = array(
-			'password_pengguna'	    => sha1(sha1($this->input->post('password_pengguna_konfirm')))
-		);
-		$this->M_User->updatedatauser($data, $id);
-		$this->session->set_flashdata('notif', 'Password berhasil diupdate');
-		redirect(base_url('profiles'));
+		$id_pengguna = $this->input->post('id_pengguna'); 
+		$pass = sha1(sha1($this->input->post('password_pengguna_lama')));
+		$hash = $this->db->get_where('pengguna', ["id_pengguna" => $id_pengguna])->row()->password_pengguna;
+		if ($pass == $hash){
+			$data = array(
+				'password_pengguna'	    => sha1(sha1($this->input->post('password_pengguna_konfirm')))
+			);
+			$this->M_User->updatedatauser($data, $id);
+			$this->session->set_flashdata('notif', 'Password berhasil diupdate');
+			redirect(base_url('profiles'));
+		}else{
+			$this->session->set_flashdata('error', 'Password lama tidak ditemukan!');
+			redirect(base_url('profiles'));
+		}
 	}
 
 	public function verifuser($id = null)

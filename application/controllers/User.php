@@ -60,7 +60,7 @@ class User extends CI_Controller
 		if (!empty($_FILES['image']['name'])) {
 			$update_foto = $this->M_User->_uploadImage();
 		} else {
-			$update_foto = $this->input->post('foto_profile');
+			$update_foto = $this->input->post()["old_image"];
 		}
 
 		$data = array(

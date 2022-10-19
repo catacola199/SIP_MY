@@ -112,9 +112,27 @@
             element.className += "border border-success";
     }
 
+    var MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+
     $(document).ready(function () {
         $("#password_pengguna_konfirm").keyup(checkPasswordMatch);
+        $('#image').change(function() {
+            fileSize = this.files[0].size;
+            if (fileSize > MAX_FILE_SIZE) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Ukuran file tidak lebih dari 5 MB!",
+                    confirmButtonColor: '#5f76e8'
+                });
+                // this.setCustomValidity("File must not exceed 5 MB!");
+                // this.reportValidity();
+            } else {
+                this.setCustomValidity("");
+            }
+        });
     });
+
 </script>
 
 <?php if ($this->session->flashdata('notif')) : ?>
@@ -127,7 +145,16 @@
         });
     </script>
 <?php endif ?>
-
+<?php if ($this->session->flashdata('error')) : ?>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "<?php echo $this->session->flashdata('error'); ?>",
+            confirmButtonColor: '#5f76e8'
+        });
+    </script>
+<?php endif ?>
 </body>
 
 </html>

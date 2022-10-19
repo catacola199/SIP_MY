@@ -18,7 +18,7 @@ class M_User extends CI_Model
     public function _uploadImage()
     {
         $config['upload_path']          = './upload/pengguna/';
-        $config['allowed_types']        = 'gif|jpg|png';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
         $config['file_name']            = $this->input->post('nama_pengguna');
         $config['encrypt_name']         = false;
         $config['overwrite']            = true;
