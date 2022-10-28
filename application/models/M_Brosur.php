@@ -19,8 +19,8 @@ class M_Brosur extends CI_Model
     {
         $config['upload_path']          = './upload/brosur/file_brosur/';
 		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
-        $config['file_name']            = $this->input->post('nama_brosur');
-        $config['encrypt_name']         = false;
+        // $config['file_name']            = $this->input->post('nama_brosur');
+        // $config['encrypt_name']         = false;
         $config['overwrite']            = true;
         $config['max_size']             = 5094; // 1MB
 

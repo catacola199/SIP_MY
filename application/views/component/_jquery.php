@@ -123,7 +123,12 @@
                     icon: 'error',
                     title: 'Oops...',
                     text: "Ukuran file tidak lebih dari 5 MB!",
-                    confirmButtonColor: '#5f76e8'
+                    confirmButtonColor: '#5f76e8',
+                    showConfirmButton: false,
+                    allowOutsideClick: false,
+                    timer: 2000
+                }).then((result) => {
+                    document.getElementById("image").value = '';
                 });
                 // this.setCustomValidity("File must not exceed 5 MB!");
                 // this.reportValidity();

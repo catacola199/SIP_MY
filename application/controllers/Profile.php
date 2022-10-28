@@ -25,7 +25,7 @@ class Profile extends CI_Controller
 			'id_pengguna' => $this->input->post('id_pengguna')
 		);
 
-		if ($_FILES['image']['size'] > 5094) {
+		if ($_FILES['image']['size'] > 5242880) {
 			$this->session->set_flashdata('error', 'Ukuran file terlalu besar, Coba untuk lebih kecil lagi!');
 			redirect(base_url('profiles'));
 		} else {
