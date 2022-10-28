@@ -136,6 +136,46 @@
                 this.setCustomValidity("");
             }
         });
+        $('#thumb_brosur').change(function() {
+            fileSize = this.files[0].size;
+            if (fileSize > MAX_FILE_SIZE) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Ukuran file tidak lebih dari 5 MB!",
+                    confirmButtonColor: '#5f76e8',
+                    showConfirmButton: false,
+                    allowOutsideClick: false,
+                    timer: 2000
+                }).then((result) => {
+                    document.getElementById("thumb_brosur").value = '';
+                });
+                // this.setCustomValidity("File must not exceed 5 MB!");
+                // this.reportValidity();
+            } else {
+                this.setCustomValidity("");
+            }
+        });
+        $('#file_brosur').change(function() {
+            fileSize = this.files[0].size;
+            if (fileSize > MAX_FILE_SIZE) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Ukuran file tidak lebih dari 5 MB!",
+                    confirmButtonColor: '#5f76e8',
+                    showConfirmButton: false,
+                    allowOutsideClick: false,
+                    timer: 2000
+                }).then((result) => {
+                    document.getElementById("file_brosur").value = '';
+                });
+                // this.setCustomValidity("File must not exceed 5 MB!");
+                // this.reportValidity();
+            } else {
+                this.setCustomValidity("");
+            }
+        });
     });
 
 </script>
