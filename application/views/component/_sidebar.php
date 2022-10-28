@@ -47,31 +47,39 @@
                         <span class="hide-menu">Master Data</span>
                     </a>
                     <ul aria-expanded="false" class="collapse first-level base-level-line">
-                        <li class="sidebar-item">
-                            <a href="<?= base_url('users') ?>" class="sidebar-link">
-                                <span class="hide-menu">Pengguna </span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="<?= base_url('brosurs') ?>" class="sidebar-link">
-                                <span class="hide-menu">Brosur </span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="<?= base_url('produks') ?>" class="sidebar-link">
-                                <span class="hide-menu">Produk </span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="<?= base_url('penawarans') ?>" class="sidebar-link">
-                                <span class="hide-menu">Penawaran </span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="<?= base_url('permintaans') ?>" class="sidebar-link">
-                                <span class="hide-menu">Permintaan </span>
-                            </a>
-                        </li>
+                        <?php if ($this->fungsi->user_login()->id_role == "1") { ?>
+                            <li class="sidebar-item">
+                                <a href="<?= base_url('users') ?>" class="sidebar-link">
+                                    <span class="hide-menu">Pengguna </span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="<?= base_url('brosurs') ?>" class="sidebar-link">
+                                    <span class="hide-menu">Brosur </span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="<?= base_url('produks') ?>" class="sidebar-link">
+                                    <span class="hide-menu">Produk </span>
+                                </a>
+                            </li>
+                        <?php }
+                        if ($this->fungsi->user_login()->id_role == "2") { ?>
+                            <li class="sidebar-item">
+                                <a href="<?= base_url('penawarans') ?>" class="sidebar-link">
+                                    <span class="hide-menu">Penawaran </span>
+                                </a>
+                            </li>
+                        <?php }
+                        if ($this->fungsi->user_login()->id_role == "3") { ?>
+                            <li class="sidebar-item">
+                                <a href="<?= base_url('permintaans') ?>" class="sidebar-link">
+                                    <span class="hide-menu">Permintaan </span>
+                                </a>
+                            </li>
+                        <?php } ?>
+
+
                     </ul>
                 </li>
 
@@ -81,17 +89,7 @@
                         <span class="hide-menu">Settings </span>
                     </a>
                     <ul aria-expanded="false" class="collapse first-level base-level-line">
-                        <li class="sidebar-item">
-                            <a href="<?= site_url('welcome/mas_absensiguru') ?>" class="sidebar-link">
-                                <span class="hide-menu">Absensi Guru</span>
-                            </a>
-                        </li>
 
-                        <li class="sidebar-item">
-                            <a href="<?= site_url('welcome/mas_absensi') ?>" class="sidebar-link">
-                                <span class="hide-menu">Absensi Siswa</span>
-                            </a>
-                        </li>
                     </ul>
                 </li>
 
