@@ -10,26 +10,39 @@
                         <span class="hide-menu">Dashboard</span>
                     </a>
                 </li>
+                <?php if ($this->fungsi->user_login()->id_role == "4" ) { ?>
+                    <li class="list-divider"></li>
+                    <li class="nav-small-cap">
+                        <span class="hide-menu">Applications</span>
+                    </li>
 
-                <li class="list-divider"></li>
-                <li class="nav-small-cap">
-                    <span class="hide-menu">Applications</span>
-                </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('produk') ?>" aria-expanded="false">
+                            <i data-feather="file-text" class="feather-icon"></i>
+                            <span class="hide-menu">JADWAL</span>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if ($this->fungsi->user_login()->id_role == "1" || $this->fungsi->user_login()->id_role == "2") { ?>
+                    <li class="list-divider"></li>
+                    <li class="nav-small-cap">
+                        <span class="hide-menu">Applications</span>
+                    </li>
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link sidebar-link" href="<?= base_url('compro') ?>" aria-expanded="false">
-                        <i data-feather="book" class="feather-icon"></i>
-                        <span class="hide-menu">Company Profile</span>
-                    </a>
-                </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('compro') ?>" aria-expanded="false">
+                            <i data-feather="book" class="feather-icon"></i>
+                            <span class="hide-menu">Company Profile</span>
+                        </a>
+                    </li>
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link sidebar-link" href="<?= base_url('produk') ?>" aria-expanded="false">
-                        <i data-feather="shopping-cart" class="feather-icon"></i>
-                        <span class="hide-menu">Produk</span>
-                    </a>
-                </li>
-
+                    <li class="sidebar-item">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('produk') ?>" aria-expanded="false">
+                            <i data-feather="shopping-cart" class="feather-icon"></i>
+                            <span class="hide-menu">Produk</span>
+                        </a>
+                    </li>
+                <?php } ?>
                 <!-- <li class="sidebar-item">
                     <a class="sidebar-link sidebar-link" href="<?= base_url('profiles') ?>" aria-expanded="false">
                         <i data-feather="user" class="feather-icon"></i>
@@ -37,61 +50,63 @@
                     </a>
                 </li> -->
 
-                <li class="list-divider"></li>
-                <li class="nav-small-cap">
-                    <span class="hide-menu">Admin</span>
-                </li>
+                <?php if ($this->fungsi->user_login()->id_role == "1" || $this->fungsi->user_login()->id_role == "2") { ?>
+                    <li class="list-divider"></li>
+                    <li class="nav-small-cap">
+                        <span class="hide-menu">Admin</span>
+                    </li>
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow btn btn-outline-light" href="javascript:void(0)" aria-expanded="false" style="border:0; border-radius: 0 50px 50px 0;"><i data-feather="archive" class="feather-icon"></i>
-                        <span class="hide-menu">Master Data</span>
-                    </a>
-                    <ul aria-expanded="false" class="collapse first-level base-level-line">
-                        <?php if ($this->fungsi->user_login()->id_role == "1") { ?>
-                            <li class="sidebar-item">
-                                <a href="<?= base_url('users') ?>" class="sidebar-link">
-                                    <span class="hide-menu">Pengguna </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="<?= base_url('brosurs') ?>" class="sidebar-link">
-                                    <span class="hide-menu">Brosur </span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="<?= base_url('produks') ?>" class="sidebar-link">
-                                    <span class="hide-menu">Produk </span>
-                                </a>
-                            </li>
-                        <?php }
-                        if ($this->fungsi->user_login()->id_role == "2") { ?>
-                            <li class="sidebar-item">
-                                <a href="<?= base_url('penawarans') ?>" class="sidebar-link">
-                                    <span class="hide-menu">Penawaran </span>
-                                </a>
-                            </li>
-                        <?php }
-                        if ($this->fungsi->user_login()->id_role == "3") { ?>
-                            <li class="sidebar-item">
-                                <a href="<?= base_url('permintaans') ?>" class="sidebar-link">
-                                    <span class="hide-menu">Permintaan </span>
-                                </a>
-                            </li>
-                        <?php } ?>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow btn btn-outline-light" href="javascript:void(0)" aria-expanded="false" style="border:0; border-radius: 0 50px 50px 0;"><i data-feather="archive" class="feather-icon"></i>
+                            <span class="hide-menu">Master Data</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse first-level base-level-line">
+                            <?php if ($this->fungsi->user_login()->id_role == "1") { ?>
+                                <li class="sidebar-item">
+                                    <a href="<?= base_url('users') ?>" class="sidebar-link">
+                                        <span class="hide-menu">Pengguna </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="<?= base_url('brosurs') ?>" class="sidebar-link">
+                                        <span class="hide-menu">Brosur </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="<?= base_url('produks') ?>" class="sidebar-link">
+                                        <span class="hide-menu">Produk </span>
+                                    </a>
+                                </li>
+                            <?php }
+                            if ($this->fungsi->user_login()->id_role == "2") { ?>
+                                <li class="sidebar-item">
+                                    <a href="<?= base_url('penawarans') ?>" class="sidebar-link">
+                                        <span class="hide-menu">Penawaran </span>
+                                    </a>
+                                </li>
+                            <?php }
+                            if ($this->fungsi->user_login()->id_role == "3") { ?>
+                                <li class="sidebar-item">
+                                    <a href="<?= base_url('permintaans') ?>" class="sidebar-link">
+                                        <span class="hide-menu">Permintaan </span>
+                                    </a>
+                                </li>
+                            <?php } ?>
 
 
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
 
-                <!-- <li class="list-divider"></li> -->
-                <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow btn btn-outline-light" href="javascript:void(0)" aria-expanded="false" style="border:0; border-radius: 0 50px 50px 0;"><i data-feather="sliders" class="feather-icon"></i>
-                        <span class="hide-menu">Settings </span>
-                    </a>
-                    <ul aria-expanded="false" class="collapse first-level base-level-line">
+                    <!-- <li class="list-divider"></li> -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow btn btn-outline-light" href="javascript:void(0)" aria-expanded="false" style="border:0; border-radius: 0 50px 50px 0;"><i data-feather="sliders" class="feather-icon"></i>
+                            <span class="hide-menu">Settings </span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse first-level base-level-line">
 
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
+                <?php } ?>
 
             </ul>
         </nav>
