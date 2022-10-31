@@ -42,7 +42,7 @@
                                 <h4 class="card-title">Selamat Datang, <?= $this->fungsi->user_login()->nama_pengguna ?></h4>
 
                                 <marquee width="40%" direction="left">
-                                    <h5 class="card-title">Selamat datang di halaman administrator Website Sri Intan Perkasa</h5>
+                                    <h5 class="card-title">Selamat Datang Di Halaman Dashboard Sri Intan Perkasa</h5>
                                 </marquee>
                             </div>
                         </div>

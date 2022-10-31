@@ -62,4 +62,5 @@ $route['penawarans'] = 'penawaran';
 $route['permintaans'] = 'permintaan';
 $route['profiles'] = 'profile';
 $route['compro'] = 'brosur/brosur';
+$route['teknisis'] = 'teknisi';
 // $route['login'] = 'login/auth';
