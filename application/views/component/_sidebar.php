@@ -10,14 +10,14 @@
                         <span class="hide-menu">Dashboard</span>
                     </a>
                 </li>
-                <?php if ($this->fungsi->user_login()->id_role == "4" ) { ?>
+                <?php if ($this->fungsi->user_login()->id_role == "4") { ?>
                     <li class="list-divider"></li>
                     <li class="nav-small-cap">
                         <span class="hide-menu">Applications</span>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link sidebar-link" href="<?= base_url('produk') ?>" aria-expanded="false">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('teknisis') ?>" aria-expanded="false">
                             <i data-feather="file-text" class="feather-icon"></i>
                             <span class="hide-menu">JADWAL</span>
                         </a>
@@ -28,7 +28,7 @@
                     <li class="nav-small-cap">
                         <span class="hide-menu">Applications</span>
                     </li>
-
+                   
                     <li class="sidebar-item">
                         <a class="sidebar-link sidebar-link" href="<?= base_url('compro') ?>" aria-expanded="false">
                             <i data-feather="book" class="feather-icon"></i>
@@ -40,6 +40,16 @@
                         <a class="sidebar-link sidebar-link" href="<?= base_url('produk') ?>" aria-expanded="false">
                             <i data-feather="shopping-cart" class="feather-icon"></i>
                             <span class="hide-menu">Produk</span>
+                        </a>
+                    </li>
+                    <li class="list-divider"></li>
+                    <li class="nav-small-cap">
+                        <span class="hide-menu">Teknisi</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('teknisis') ?>" aria-expanded="false">
+                            <i data-feather="file-text" class="feather-icon"></i>
+                            <span class="hide-menu">JADWAL</span>
                         </a>
                     </li>
                 <?php } ?>
@@ -77,6 +87,16 @@
                                         <span class="hide-menu">Produk </span>
                                     </a>
                                 </li>
+                                <li class="sidebar-item">
+                                    <a href="<?= base_url('penawarans') ?>" class="sidebar-link">
+                                        <span class="hide-menu">Penawaran </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="<?= base_url('permintaans') ?>" class="sidebar-link">
+                                        <span class="hide-menu">Permintaan </span>
+                                    </a>
+                                </li>
                             <?php }
                             if ($this->fungsi->user_login()->id_role == "2") { ?>
                                 <li class="sidebar-item">
@@ -96,7 +116,8 @@
 
                         </ul>
                     </li>
-
+                    
+                    
                     <!-- <li class="list-divider"></li> -->
                     <li class="sidebar-item">
                         <a class="sidebar-link has-arrow btn btn-outline-light" href="javascript:void(0)" aria-expanded="false" style="border:0; border-radius: 0 50px 50px 0;"><i data-feather="sliders" class="feather-icon"></i>
