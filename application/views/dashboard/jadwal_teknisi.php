@@ -61,37 +61,37 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col">
-                                            <div class="card border-success " style="max-width: 10rem;">
-                                                <div class="card-body text-success">
-                                                    <h5 class="card-title " style="color: green">Status</h5>
+                                            <div class="card  bg-secondary  mb-3 " style="max-width: 10rem ;">
+                                                <div class="card-body">
+                                                    <h5 class="card-title text-white">Status</h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="card border-success " style="max-width: 10rem;">
+                                            <div class="card text-white bg-success mb-3 " style="max-width: 10rem;">
                                                 <div class="card-body text-success">
-                                                    <h5 class="card-title " style="color: green">Baru</h5>
+                                                    <h5 class="card-title ">Baru</h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="card border-success " style="max-width: 10rem;">
+                                            <div class="card text-white bg-success mb-3 " style="max-width: 10rem;">
                                                 <div class="card-body text-success">
-                                                    <h5 class="card-title " style="color: green">Dijadwalkan</h5>
+                                                    <h5 class="card-title " >Dijadwalkan</h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="card border-success " style="max-width: 10rem;">
+                                            <div class="card text-white bg-success mb-3 " style="max-width: 10rem;">
                                                 <div class="card-body text-success">
-                                                    <h5 class="card-title " style="color: green">Selesai</h5>
+                                                    <h5 class="card-title " >Selesai</h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="card border-success " style="max-width: 10rem;">
+                                            <div class="card text-white bg-danger mb-3 " style="max-width: 10rem;">
                                                 <div class="card-body text-success">
-                                                    <h5 class="card-title " style="color: green">Tidak Selesai</h5>
+                                                    <h5 class="card-title " >Tidak Selesai</h5>
                                                 </div>
                                             </div>
                                         </div>
