@@ -8,6 +8,11 @@ class M_Produk extends CI_Model
     {
         return $this->db->get($this->_table)->result();
     }
+    public function getAllprodukshow()
+    {
+        $query = $this->db->get('produk');
+        return $query->result_array();
+    }
 
     public function simpandataproduk($data)
     {

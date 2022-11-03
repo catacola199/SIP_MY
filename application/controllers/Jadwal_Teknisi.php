@@ -9,6 +9,7 @@ class Jadwal_Teknisi extends CI_Controller
 		parent::__construct();
 		$this->load->model('All_model');
 		$this->load->model('M_JadwalTeknisi');
+		$this->load->model('M_Produk');
 		if ($this->All_model->isNotLogin()) redirect(site_url(''));
 		$this->load->helper('url');
 	}
@@ -17,6 +18,7 @@ class Jadwal_Teknisi extends CI_Controller
 	{
 		$data["role"] = $this->All_model->getAllRole();
 		$data["jadwal_tek"] = $this->M_JadwalTeknisi->getAllJadtek();
+		$data["produk"] = $this->M_Produk->getAllprodukshow();
 		$this->load->view("dashboard/jadwal_teknisi", $data);
 	}
 
@@ -31,10 +33,9 @@ class Jadwal_Teknisi extends CI_Controller
 
 		$data = array(
 			'no_permohonan'	    => $this->input->post('no_permohonan'),
-			'nama_produk'	    => $this->input->post('nama_produk'),
-			'jenis_produk'	    => $this->input->post('jenis_produk'),
-			'tipe_produk'	    => $this->input->post('tipe_produk'),
-			'pabrik_produk'   => $this->input->post('pabrik_produk')
+			'id_produk'	    	=> $this->input->post('id_produk'),
+			'pabrik_produk'   	=> $this->input->post('pabrik_produk'),
+			'status'			=> "Baru"
 		);
 		$this->M_Brosur->simpandatajadwaltek($data);
 		$this->session->set_flashdata('notif', 'Jadwal berhasil disimpan');

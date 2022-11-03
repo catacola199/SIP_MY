@@ -6,7 +6,11 @@ class M_JadwalTeknisi extends CI_Model
 
     public function getAllJadtek()
     {
-        return $this->db->get($this->_table)->result();
+        $this->db->select('*');
+        $this->db->from('jadwal_teknisi');
+        $this->db->join('produk', 'produk.id_produk = jadwal_teknisi.id_produk');
+        $query = $this->db->get();
+        return  $query->result();
     }
 
     public function simpandatajadtek($data)

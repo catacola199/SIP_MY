@@ -143,35 +143,13 @@
                         </div>
                         <div class="form-group">
                             <div class="form-floating">
-                                <select class="form-select" id="jenis_produk" name="jenis_produk" aria-label="Floating label select example" required>
-                                    <option selected>Choose One</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="form-select" data-live-search="true" id="id_produk" name="id_produk" aria-label="Floating label select example" required>
+                                    <option disabled value="" selected>Pilih salah satu...</option>
+                                    <?php foreach ($produk as $p) { ?>
+                                        <option value="<?php echo $p['id_produk']; ?>"><?php echo $p['jenis_produk'] . " - " . $p['nama_produk'] . " - " . $p['tipe_produk']; ?> </option>
+                                    <?php } ?>
                                 </select>
-                                <label for="jenis_produk">Jenis Produk</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <select class="form-select" id="nama_produk" name="nama_produk" aria-label="Floating label select example" required>
-                                    <option selected>Choose One</option>
-                                    <option value="1">Proslide </option>
-                                    <option value="2">DR </option>
-                                    <option value="3">PACS </option>
-                                </select>
-                                <label for="nama_produk">Nama Produk</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <select class="form-select" id="tipe_produk" name="tipe_produk" aria-label="Floating label select example" required>
-                                    <option selected>Choose One</option>
-                                    <option value="1">32A</option>
-                                    <option value="2">32B</option>
-                                    <option value="3">32C</option>
-                                </select>
-                                <label for="tipe_produk">Tipe Produk</label>
+                                <label for="id_produk">Jenis, Nama dan Tipe Produk</label>
                             </div>
                         </div>
                         <div class="form-group">
