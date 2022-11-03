@@ -58,6 +58,46 @@
                                         <button class="btn btn-outline-success float-right" data-bs-toggle="modal" data-bs-target="#tambah"><i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="Add"></i></button>
                                     </div>
                                 </h6>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card border-success " style="max-width: 10rem;">
+                                                <div class="card-body text-success">
+                                                    <h5 class="card-title " style="color: green">Status</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card border-success " style="max-width: 10rem;">
+                                                <div class="card-body text-success">
+                                                    <h5 class="card-title " style="color: green">Baru</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card border-success " style="max-width: 10rem;">
+                                                <div class="card-body text-success">
+                                                    <h5 class="card-title " style="color: green">Dijadwalkan</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card border-success " style="max-width: 10rem;">
+                                                <div class="card-body text-success">
+                                                    <h5 class="card-title " style="color: green">Selesai</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card border-success " style="max-width: 10rem;">
+                                                <div class="card-body text-success">
+                                                    <h5 class="card-title " style="color: green">Tidak Selesai</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="table-responsive">
                                     <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
                                         <thead class="bg-primary text-white">
@@ -245,5 +285,27 @@
     <script>
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
+
+            function filterColumn(value) {
+                table.column(2).search(value).draw();
+            }
+
+
+
+            var table = $('#multi_col_order').DataTable();
+
+            $('#button1').on('click', function() {
+                filterColumn('X-Ray');
+            })
+            $('#button2').on('click', function() {
+                filterColumn('Umum');
+            })
+
+
+        });
+        var select_box_element = document.querySelector('#id_produk');
+
+        dselect(select_box_element, {
+            search: true
         });
     </script>
