@@ -27,17 +27,14 @@ class Jadwal_Teknisi extends CI_Controller
 	// Get Save User
 	public function save_jadtek()
 	{
-		$url = $this->input->post('link_youtube');
-		preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
-		$video_id = $match[1];
-
 		$data = array(
 			'no_permohonan'	    => $this->input->post('no_permohonan'),
 			'id_produk'	    	=> $this->input->post('id_produk'),
 			'pabrik_produk'   	=> $this->input->post('pabrik_produk'),
-			'status'			=> "Baru"
+			'status'			=>"Baru"
+
 		);
-		$this->M_Brosur->simpandatajadwaltek($data);
+		$this->M_JadwalTeknisi->simpandatajadtek($data);
 		$this->session->set_flashdata('notif', 'Jadwal berhasil disimpan');
 		redirect(base_url('teknisis'));
 	}

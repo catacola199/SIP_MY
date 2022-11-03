@@ -15,7 +15,7 @@ class M_JadwalTeknisi extends CI_Model
 
     public function simpandatajadtek($data)
     {
-        $this->db->insert('brosur', $data);
+        $this->db->insert('jadwal_teknisi', $data);
         return TRUE;
     }
 
