@@ -43,29 +43,10 @@ class M_JadwalTeknisi extends CI_Model
         return $this->db->get_where('jadwal_teknisi', ['id' => $id])->row();
     }
 
-    public function _deleteImage($id)
-    {
-        $brosur = $this->getID($id);
-
-        if ($brosur->thumb_brosur != "default.png") {
-            $filename = explode(".", $brosur->thumb_brosur)[0];
-            return array_map('unlink', glob(FCPATH . "upload/brosur/thumbnail/$filename.*"));
-        }
-    }
-    public function _deleteFile($id)
-    {
-        $brosur = $this->getID($id);
-
-        if ($brosur->file_brosur != "default.pdf") {
-            $filename = explode(".", $brosur->file_brosur)[0];
-            return array_map('unlink', glob(FCPATH . "upload/brosur/file/$filename.*"));
-        }
-    }
+   
     public function del_jadtek($id)
     {
-        $this->_deleteImage($id);
-        $this->_deleteFile($id);
-        return $this->db->delete('jadwal_teknisi', array("id" => $id));
+        return $this->db->delete('jadwal_teknisi', array("id_jadwal" => $id));
     }
 
     public function update_jadtek($data, $id)
