@@ -12,7 +12,8 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
         <!-- ============================================================== -->
 
 
@@ -54,44 +55,48 @@
                                 <hr>
                                 <h6 class="card-subtitle">
                                     <div class="btn-list">
-                                        <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="refresh"></i> </a>
-                                        <button class="btn btn-outline-success float-right" data-bs-toggle="modal" data-bs-target="#tambah"><i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="Add"></i></button>
+                                        <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i
+                                                class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom"
+                                                title="refresh"></i> </a>
+                                        <button class="btn btn-outline-success float-right" data-bs-toggle="modal"
+                                            data-bs-target="#tambah"><i class="fas fa-user-plus" data-toggle="tooltip"
+                                                data-placement="bottom" title="Add"></i></button>
                                     </div>
                                 </h6>
                                 <div class="container">
                                     <div class="row">
                                         <div class="col">
-                                            <div class="card border-success " style="max-width: 10rem;">
-                                                <div class="card-body text-success">
-                                                    <h5 class="card-title " style="color: green">Status</h5>
+                                            <div class="card  bg-secondary  mb-3 " style="max-width: 10rem ;">
+                                                <div class="card-body">
+                                                    <h5 class="card-title text-white">Status</h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="card border-success " style="max-width: 10rem;">
+                                            <div class="card text-white bg-success mb-3 " style="max-width: 10rem;">
                                                 <div class="card-body text-success">
-                                                    <h5 class="card-title " style="color: green">Baru</h5>
+                                                    <h5 class="card-title ">Baru</h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="card border-success " style="max-width: 10rem;">
+                                            <div class="card text-white bg-success mb-3 " style="max-width: 10rem;">
                                                 <div class="card-body text-success">
-                                                    <h5 class="card-title " style="color: green">Dijadwalkan</h5>
+                                                    <h5 class="card-title ">Dijadwalkan</h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="card border-success " style="max-width: 10rem;">
+                                            <div class="card text-white bg-success mb-3 " style="max-width: 10rem;">
                                                 <div class="card-body text-success">
-                                                    <h5 class="card-title " style="color: green">Selesai</h5>
+                                                    <h5 class="card-title ">Selesai</h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="card border-success " style="max-width: 10rem;">
+                                            <div class="card text-white bg-danger mb-3 " style="max-width: 10rem;">
                                                 <div class="card-body text-success">
-                                                    <h5 class="card-title " style="color: green">Tidak Selesai</h5>
+                                                    <h5 class="card-title ">Tidak Selesai</h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,7 +104,8 @@
                                 </div>
 
                                 <div class="table-responsive">
-                                    <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
+                                    <table id="multi_col_order"
+                                        class="table table-striped table-bordered display no-wrap" style="width:100%">
                                         <thead class="bg-primary text-white">
                                             <tr>
                                                 <th>#</th>
@@ -116,26 +122,43 @@
                                         <tbody>
                                             <?php $i = 1;
                                             foreach ($jadwal_tek as $data) : ?>
-                                                <tr>
-                                                    <td><?= $i++ ?></td>
-                                                    <td><?php echo $data->no_permohonan ?></td>
-                                                    <td><?php echo $data->jenis_produk ?></td>
-                                                    <td><?php echo $data->nama_produk ?></td>
-                                                    <td><?php echo $data->tipe_produk ?></td>
-                                                    <td><?php echo $data->pabrik_produk ?></td>
-                                                    <td><?php echo $data->status ?></td>
-                                                    <td>
-                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#edit-<?= $data->id_jadwal ?>">
-                                                            <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
-                                                        </a>
-                                                        <!-- <a href="<?php echo site_url('Jadwal_Teknisi/edit_brosur/' . $data->id) ?>" class="btn btn-sm btn-outline-success">
-                                                            <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
-                                                        </a> -->
-                                                        <a onclick="deleteConfirm('<?php echo site_url('Jadwal_Teknisi/deletebrosur/' . $data->id_jadwal) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
-                                                            <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                            <tr>
+                                                <td><?= $i++ ?></td>
+                                                <td><?php echo $data->no_permohonan ?></td>
+                                                <td><?php echo $data->jenis_produk ?></td>
+                                                <td><?php echo $data->nama_produk ?></td>
+                                                <td><?php echo $data->tipe_produk ?></td>
+                                                <td><?php echo $data->pabrik_produk ?></td>
+                                                <td><?php echo $data->status ?></td>
+                                                <td>
+                                                    <a href="#!" class="btn btn-sm btn-outline-success"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#edit-<?= $data->id_jadwal ?>">
+                                                        <i class="fas fa-edit" data-toggle="tooltip"
+                                                            data-placement="bottom" title="Edit"></i>
+                                                    </a>
+
+                                                    <?php if ($data->status == 'Baru') : ?>
+                                                    <a onclick="verifConfirm('<?php echo site_url('user/verifuser/' . $data->id_jadwal) ?>')"
+                                                        href="#!" class="btn btn-sm btn-outline-primary">
+                                                        <i class="fas fa-check" data-toggle="tooltip"
+                                                            data-placement="bottom" title="Verifikasi"></i>
+                                                    </a>
+                                                    <?php else : ?>
+                                                    <a href="" class="btn btn-sm btn-outline-primary disabled"
+                                                        aria-disabled="true">
+                                                        <i class="fas fa-check" data-toggle="tooltip"
+                                                            data-placement="bottom" title="Verifikasi"></i>
+                                                    </a>
+                                                    <?php endif; ?>
+
+                                                    <a onclick="deleteConfirm('<?php echo site_url('Jadwal_Teknisi/delete_jadtek/' . $data->id_jadwal) ?>')"
+                                                        href="#!" class="btn btn-sm btn-outline-danger">
+                                                        <i class="icon-trash" data-toggle="tooltip"
+                                                            data-placement="bottom" title="Hapus"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                             <?php endforeach; ?>
                                         </tbody>
                                     </table>
@@ -168,25 +191,32 @@
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Form Tambah Jadwal</h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo base_url('Jadwal_Teknisi/save_jadtek') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
+                    <form action="<?php echo base_url('Jadwal_Teknisi/save_jadtek') ?>" method="post"
+                        enctype="multipart/form-data" class="pl-3 pr-3">
                         <div class="form-group">
                             <div class="form-floating">
-                                <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?php $no_permohonan = "SIP-" . date("dmY") . substr(md5(time()), 0, 5);
+                                <input type="hidden" name="no_permohonan" id="no_permohonan"
+                                    value="<?php $no_permohonan = "SIP-" . date("dmY") . substr(md5(time()), 0, 5);
                                                                                                     echo $no_permohonan; ?>">
-                                <input type="text" class="form-control" id="kode" placeholder="No Permohonan" value="<?php $no_permohonan = "SIP-" . date("dmY") . substr(md5(time()), 0, 5);
+                                <input type="text" class="form-control" id="kode" placeholder="No Permohonan"
+                                    value="<?php $no_permohonan = "SIP-" . date("dmY") . substr(md5(time()), 0, 5);
                                                                                                                         echo $no_permohonan; ?>" disabled>
                                 <label for="No">No Permohonan</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-floating">
-                                <select class="form-select" data-live-search="true" id="id_produk" name="id_produk" aria-label="Floating label select example" required>
+                                <select class="form-select" data-live-search="true" id="id_produk" name="id_produk"
+                                    aria-label="Floating label select example" required>
                                     <option disabled value="" selected>Pilih salah satu...</option>
                                     <?php foreach ($produk as $p) { ?>
-                                        <option value="<?php echo $p['id_produk']; ?>"><?php echo $p['jenis_produk'] . " - " . $p['nama_produk'] . " - " . $p['tipe_produk']; ?> </option>
+                                    <option value="<?php echo $p['id_produk']; ?>">
+                                        <?php echo $p['jenis_produk'] . " - " . $p['nama_produk'] . " - " . $p['tipe_produk']; ?>
+                                    </option>
                                     <?php } ?>
                                 </select>
                                 <label for="id_produk">Jenis, Nama dan Tipe Produk</label>
@@ -194,7 +224,8 @@
                         </div>
                         <div class="form-group">
                             <div class="form-floating">
-                                <input type="text" class="form-control form-control-user" name="pabrik_produk" id="pabrik_produk" placeholder="Pabrik" required>
+                                <input type="text" class="form-control form-control-user" name="pabrik_produk"
+                                    id="pabrik_produk" placeholder="Pabrik" required>
                                 <label for="pabrik_produk">Pabrik</label>
                             </div>
                         </div>
@@ -202,7 +233,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i
+                            class="fa fa-window-close"></i> Batal</button>
                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                 </div>
                 </form>
@@ -213,99 +245,93 @@
 
     <!-- Modal Edit -->
     <?php foreach ($jadwal_tek as $data) : ?>
-        <div class="modal fade" id="edit-<?= $data->id_jadwal ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary text-white">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Form Edit Jadwal Teknisi</h1>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <form action="<?php echo base_url('Jadwal_Teknisi/update_jadtek') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
-                            <input type="text" hidden name="id_jadwal" id="id_jadwal" value="<?= $data->id_jadwal ?>">
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?= $data->no_permohonan ?>">
-                                    <input type="text" class="form-control" id="no_permohonan" placeholder="No Permohonan" value="<?= $data->no_permohonan ?>" disabled>
-                                    <label for="No">No Permohonan</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <select class="form-select" id="jenis_produk" name="jenis_produk" aria-label="Floating label select example" required>
-                                        <option selected>Choose One</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                    <label for="jenis_produk">Jenis Produk</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <select class="form-select" id="nama_produk" name="nama_produk" aria-label="Floating label select example" required>
-                                        <option selected>Choose One</option>
-                                        <option value="1">Proslide </option>
-                                        <option value="2">DR </option>
-                                        <option value="3">PACS </option>
-                                    </select>
-                                    <label for="nama_produk">Nama Produk</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <select class="form-select" id="tipe_produk" name="tipe_produk" aria-label="Floating label select example" required>
-                                        <option selected>Choose One</option>
-                                        <option value="1">32A</option>
-                                        <option value="2">32B</option>
-                                        <option value="3">32C</option>
-                                    </select>
-                                    <label for="tipe_produk">Tipe Produk</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control form-control-user" name="pabrik_produk" id="pabrik_produk" placeholder="Pabrik" required>
-                                    <label for="pabrik_produk">Pabrik</label>
-                                </div>
-                            </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <a href="<?php echo site_url('brosurs') ?>" class="btn btn-danger" data-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</a>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
-                    </div>
-                    </form>
+    <div class="modal fade" id="edit-<?= $data->id_jadwal ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Form Edit Jadwal Teknisi</h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
+
+                <div class="modal-body">
+                    <form action="<?php echo base_url('Jadwal_Teknisi/update_jadtek') ?>" method="post"
+                        enctype="multipart/form-data" class="pl-3 pr-3">
+                        <input type="text" hidden name="id_jadwal" id="id_jadwal" value="<?= $data->id_jadwal ?>">
+                        <div class="form-group">
+                            <div class="form-floating">
+                                <input type="hidden" name="no_permohonan" id="no_permohonan"
+                                    value="<?= $data->no_permohonan ?>">
+                                <input type="text" class="form-control" id="no_permohonan" placeholder="No Permohonan"
+                                    value="<?= $data->no_permohonan ?>" disabled>
+                                <label for="No">No Permohonan</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-floating">
+                                <select class="form-select" data-live-search="true" id="id_produk" name="id_produk"
+                                    aria-label="Floating label select example" required>
+                                    <option disabled value="" selected>Pilih salah satu...</option>
+                                    <?php foreach ($produk as $p) { ?>
+                                    <?php if($p['id_produk']==$data->id_produk):?>
+                                    <option value="<?php echo $p['id_produk']; ?>">
+                                        <?php echo $p['jenis_produk'] . " - " . $p['nama_produk'] . " - " . $p['tipe_produk']; ?>
+                                    </option>
+                                    <?php else:?>
+                                    <option value="<?php echo $p['id_produk']; ?>">
+                                        <?php echo $p['jenis_produk'] . " - " . $p['nama_produk'] . " - " . $p['tipe_produk']; ?>
+                                    </option>
+                                    <?php endif;?>
+                                    <?php } ?>
+                                </select>
+                                <label for="id_produk">Jenis, Nama dan Tipe Produk</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-floating">
+                                <input type="text" class="form-control form-control-user" name="pabrik_produk"
+                                    id="pabrik_produk" placeholder="Pabrik" required>
+                                <label for="pabrik_produk">Pabrik</label>
+                            </div>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <a href="<?php echo site_url('brosurs') ?>" class="btn btn-danger" data-dismiss="modal"> <i
+                            class="fa fa-window-close"></i> Batal</a>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
+                </div>
+                </form>
             </div>
         </div>
-        <!-- Modal Edit End -->
+    </div>
+    <!-- Modal Edit End -->
     <?php endforeach; ?>
     <script>
-        $(function() {
-            $('[data-toggle="tooltip"]').tooltip();
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
 
-            function filterColumn(value) {
-                table.column(2).search(value).draw();
-            }
-
-
-
-            var table = $('#multi_col_order').DataTable();
-
-            $('#button1').on('click', function() {
-                filterColumn('X-Ray');
-            })
-            $('#button2').on('click', function() {
-                filterColumn('Umum');
-            })
+        function filterColumn(value) {
+            table.column(2).search(value).draw();
+        }
 
 
-        });
-        var select_box_element = document.querySelector('#id_produk');
 
-        dselect(select_box_element, {
-            search: true
-        });
+        var table = $('#multi_col_order').DataTable();
+
+        $('#button1').on('click', function() {
+            filterColumn('X-Ray');
+        })
+        $('#button2').on('click', function() {
+            filterColumn('Umum');
+        })
+
+
+    });
+    var select_box_element = document.querySelector('#id_produk');
+
+    dselect(select_box_element, {
+        search: true
+    });
     </script>
