@@ -1074,7 +1074,7 @@ pre {
   color: #7c8798; }
   .table th,
   .table td {
-    padding: 1rem;
+    padding: .7rem;
     vertical-align: top;
     border-top: 1px solid #e8eef3; }
   .table thead th {

@@ -57,55 +57,20 @@
                                     <div class="btn-list">
                                         <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i
                                                 class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom"
-                                                title="refresh"></i> </a>
+                                                title="Refresh"></i> </a>
                                         <button class="btn btn-outline-success float-right" data-bs-toggle="modal"
                                             data-bs-target="#tambah"><i class="fas fa-user-plus" data-toggle="tooltip"
                                                 data-placement="bottom" title="Add"></i></button>
+                                        <button type="button" class="btn-outline-dark btn float-left" disabled>Status</button>
+                                        <button type="button" class="btn btn-outline-primary float-left" id="baru" >Baru</button>
+                                        <button type="button" class="btn btn-outline-warning float-left" id="dijadwalkan" >Dijadwalkan</button>
+                                        <button type="button" class="btn btn-outline-success float-left" id="selesai">Selesai</button>
+                                        <button type="button" class="btn btn-outline-danger float-left" id="tidak_selesai">Tidak Selesai</button>
                                     </div>
                                 </h6>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="card  bg-secondary  mb-3 " style="max-width: 10rem ;">
-                                                <div class="card-body">
-                                                    <h5 class="card-title text-white">Status</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card text-white bg-success mb-3 " style="max-width: 10rem;">
-                                                <div class="card-body text-success">
-                                                    <h5 class="card-title ">Baru</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card text-white bg-success mb-3 " style="max-width: 10rem;">
-                                                <div class="card-body text-success">
-                                                    <h5 class="card-title ">Dijadwalkan</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card text-white bg-success mb-3 " style="max-width: 10rem;">
-                                                <div class="card-body text-success">
-                                                    <h5 class="card-title ">Selesai</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card text-white bg-danger mb-3 " style="max-width: 10rem;">
-                                                <div class="card-body text-success">
-                                                    <h5 class="card-title ">Tidak Selesai</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="table-responsive">
-                                    <table id="multi_col_order"
-                                        class="table table-striped table-bordered display no-wrap" style="width:100%">
+                                    <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
                                         <thead class="bg-primary text-white">
                                             <tr>
                                                 <th>#</th>
@@ -183,65 +148,90 @@
 
     <!-- Jquery -->
     <?php $this->load->view('component/_jquery') ?>
-    <!-- End JQuery -->
-
-    <!-- Form Add Modal -->
-    <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+    
+    <!-- Form Add Modal End -->
+    <div class="modal fade" id="tambah" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Form Tambah Jadwal</h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form action="<?php echo base_url('Jadwal_Teknisi/save_jadtek') ?>" method="post"
-                        enctype="multipart/form-data" class="pl-3 pr-3">
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <input type="hidden" name="no_permohonan" id="no_permohonan"
-                                    value="<?php $no_permohonan = "SIP-" . date("dmY") . substr(md5(time()), 0, 5);
-                                                                                                    echo $no_permohonan; ?>">
-                                <input type="text" class="form-control" id="kode" placeholder="No Permohonan"
-                                    value="<?php $no_permohonan = "SIP-" . date("dmY") . substr(md5(time()), 0, 5);
-                                                                                                                        echo $no_permohonan; ?>" disabled>
-                                <label for="No">No Permohonan</label>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <form action="<?php echo base_url('Jadwal_Teknisi/save_jadtek') ?>" method="post" autocomplete="off" enctype="multipart/form-data" class="pl-3 pr-3">
+                            <div class="form-group">
+                                <div class="form-floating">
+                                    <input type="hidden" name="no_permohonan" id="no_permohonan"
+                                        value="<?php $no_permohonan = "SIP-P" . date("dmY") . substr(md5(time()), 0, 5); echo $no_permohonan; ?>">
+                                    <input type="text" class="form-control" id="kode" placeholder="No Permohonan"
+                                        value="<?php $no_permohonan = "SIP-P" . date("dmY") . substr(md5(time()), 0, 5); echo $no_permohonan; ?>" disabled>
+                                    <label for="No">No Permohonan</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <select class="form-select" data-live-search="true" id="id_produk" name="id_produk"
-                                    aria-label="Floating label select example" required>
-                                    <option disabled value="" selected>Pilih salah satu...</option>
-                                    <?php foreach ($produk as $p) { ?>
-                                    <option value="<?php echo $p['id_produk']; ?>">
-                                        <?php echo $p['jenis_produk'] . " - " . $p['nama_produk'] . " - " . $p['tipe_produk']; ?>
-                                    </option>
-                                    <?php } ?>
-                                </select>
-                                <label for="id_produk">Jenis, Nama dan Tipe Produk</label>
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" name="id_produk" id="id_produk">
+                                <!-- <div class="input-group"> -->
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" name="sproduk" id="sproduk" placeholder="Produk" required>
+                                        <label for="sproduk">Pilih Produk disamping</label>
+                                    </div>
+                                    <!-- <a class="btn btn-primary text-white" data-bs-target="#modal-produk" data-bs-toggle="modal" data-bs-dismiss="modal"><i class="fas fa-search" style="vertical-align: -webkit-baseline-middle;"></i></a> -->
+                                <!-- </div> -->
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <input type="text" class="form-control form-control-user" name="pabrik_produk"
-                                    id="pabrik_produk" placeholder="Pabrik" required>
-                                <label for="pabrik_produk">Pabrik</label>
+                            <div class="form-group">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control form-control-user" name="pabrik_produk"
+                                        id="pabrik_produk" placeholder="Pabrik" required>
+                                    <label for="pabrik_produk">Pabrik</label>
+                                </div>
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i
+                                        class="fa fa-window-close"></i> Batal</button>
+                                <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+                            </div>
+                        </form>    
+                    </div>
+                    <div class="col">
+                        <p>Pilih Produk</p>
+                        <div class="form-group table-responsive">
+                            <table id="produk" class="table table-striped table-bordered display no-wrap" style="width:100%">
+                                <thead class="bg-primary text-white">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nama Produk</th>
+                                        <th>Jenis Produk</th>
+                                        <th>Tipe Produk</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $i=1; foreach ($produk as $p): ?>
+                                    <tr>
+                                        <td><?= $i++?></td>
+                                        <td><?php echo $p['nama_produk'] ?></td>
+                                        <td><?php echo $p['jenis_produk'] ?></td>
+                                        <td><?php echo $p['tipe_produk'] ?></td>
+                                        <td>
+                                            <h5>
+                                                <button class="btn badge bg-primary text-white" id="select" data-id="<?php echo $p['id_produk'] ?>" data-nama="<?php echo $p['nama_produk'] ?>" 
+                                                data-jenis="<?php echo $p['jenis_produk'] ?>" data-tipe="<?php echo $p['tipe_produk'] ?>">Pilih </button>
+                                            </h5>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
                         </div>
-
-
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i
-                            class="fa fa-window-close"></i> Batal</button>
-                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-                </div>
-                </form>
+            </div>
             </div>
         </div>
     </div>
-    <!-- Form Add Modal End -->
 
     <!-- Modal Edit -->
     <?php foreach ($jadwal_tek as $data) : ?>
@@ -309,29 +299,45 @@
     <!-- Modal Edit End -->
     <?php endforeach; ?>
     <script>
+        $(document).ready(function() {
+            $(document).on('click','#select', function() {
+                var id = $(this).data('id');
+                var nama_produk = $(this).data('nama');
+                var jenis_produk = $(this).data('jenis');
+                var tipe_produk = $(this).data('tipe');
+                var data = jenis_produk+" - "+nama_produk+" - "+tipe_produk;
+
+                $('#id_produk').val(id);
+                $('#sproduk').val(data);
+                // $('#tambah').modal('hide');
+            });
+
+            var table = $('#produk').DataTable(); 
+            $('#sproduk').on( 'keyup', function () {
+                table.search( this.value ).draw();  
+            } );
+        });
     $(function() {
         $('[data-toggle="tooltip"]').tooltip();
 
         function filterColumn(value) {
-            table.column(2).search(value).draw();
+            table.column(6).search(value).draw();
         }
-
-
 
         var table = $('#multi_col_order').DataTable();
 
-        $('#button1').on('click', function() {
-            filterColumn('X-Ray');
-        })
-        $('#button2').on('click', function() {
-            filterColumn('Umum');
-        })
+        $('#baru').on('click', function() {
+            filterColumn('Baru');
+        });
+        $('#dijadwalkan').on('click', function() {
+            filterColumn('Dijadwalkan');
+        });
+        $('#selesai').on('click', function() {
+            filterColumn('Selesai');
+        });
+        $('#tidak_selesai').on('click', function() {
+            filterColumn('Tidak Selesai');
+        });
 
-
-    });
-    var select_box_element = document.querySelector('#id_produk');
-
-    dselect(select_box_element, {
-        search: true
     });
     </script>

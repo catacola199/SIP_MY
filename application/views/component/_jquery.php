@@ -15,16 +15,23 @@
 <script src="<?= base_url('src') ?>/assets/extra-libs/c3/c3.min.js"></script>
 <script src="<?= base_url('src') ?>/assets/extra-libs/sparkline/sparkline.js"></script>
 <script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/b-2.2.3/b-html5-2.2.3/datatables.min.js"></script>
+<!-- <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <!-- Separate -->
+<!-- selectpicker -->
+<!-- <script src="https://unpkg.com/@jarstone/dselect/dist/js/dselect.js"></script> -->
+
 <script>
+
     $(document).ready(function() {
         $('#multi_col_order').DataTable();
-    });
+        $('table.display').DataTable();
+        $('#produk').DataTable();
 
+    });
     function deleteConfirm(url) {
         Swal.fire({
             icon: 'warning',
