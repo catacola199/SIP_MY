@@ -20,10 +20,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<!-- Separate -->
 <!-- selectpicker -->
 <!-- <script src="https://unpkg.com/@jarstone/dselect/dist/js/dselect.js"></script> -->
-
+<!-- ckedior -->
+<!-- <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script> -->
 <script>
 
     $(document).ready(function() {

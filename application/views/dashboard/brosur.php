@@ -143,6 +143,8 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <!-- <textarea class="form-control" name="deskripsi_brosur" placeholder="Deskripsi" id="deskripsi_brosur" style="height: 100px" required autocomplete="off"></textarea> -->
+
                             <div class="form-floating">
                                 <textarea class="form-control" name="deskripsi_brosur" placeholder="Deskripsi" id="deskripsi_brosur" style="height: 100px" required autocomplete="off"></textarea>
                                 <label for="deskripsi_brosur">Deskripsi</label>
@@ -236,6 +238,7 @@
         <!-- Modal Edit End -->
     <?php endforeach; ?>
     <script>
+        ClassicEditor.create(document.querySelector("#deskripsi_brosur"));
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });

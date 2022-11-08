@@ -61,7 +61,8 @@
                                         <button class="btn btn-outline-success float-right" data-bs-toggle="modal"
                                             data-bs-target="#tambah"><i class="fas fa-user-plus" data-toggle="tooltip"
                                                 data-placement="bottom" title="Add"></i></button>
-                                        <button type="button" class="btn-outline-dark btn float-left" disabled>Status</button>
+                                        <button type="button" class="btn-outline-dark btn float-left" style="border:none;" disabled>Status</button>
+                                        <button type="button" class="btn-outline-info btn float-left" id="all">Semua</button>
                                         <button type="button" class="btn btn-outline-primary float-left" id="baru" >Baru</button>
                                         <button type="button" class="btn btn-outline-warning float-left" id="dijadwalkan" >Dijadwalkan</button>
                                         <button type="button" class="btn btn-outline-success float-left" id="selesai">Selesai</button>
@@ -196,7 +197,8 @@
                         </form>    
                     </div>
                     <div class="col">
-                        <p>Pilih Produk</p>
+                        <h4 class="card-title text-dark">Pilih Produk</h4>
+                        <hr>
                         <div class="form-group table-responsive">
                             <table id="produk" class="table table-striped table-bordered display no-wrap" style="width:100%">
                                 <thead class="bg-primary text-white">
@@ -325,7 +327,9 @@
         }
 
         var table = $('#multi_col_order').DataTable();
-
+        $('#all').on('click', function() {
+            filterColumn('');
+        });
         $('#baru').on('click', function() {
             filterColumn('Baru');
         });
