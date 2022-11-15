@@ -30,21 +30,19 @@
         <!-- Login box.scss -->
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative" style="background-color:#3C7FB0;">
             <div class="auth-box row">
-                <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url(<?= base_url('src') ?>/assets/images/LoginPage.png);">
-                    <div class="cards">
-                        <img src="<?= base_url('src') ?>/assets/images/SIPMEDic.png" class="card-img" alt="...">
-                    </div>
+                <div class="col-lg-7 col-md-5" >
+                    <img class="mw-100" src="<?= base_url('src') ?>/assets/images/logo_only.png" alt="Max-width 100%">
                 </div>
                 <div class="col-lg-5 col-md-7 bg-white" style="border-radius: 2%;">
                     <div class="p-3">
-                        <div class="text-center">
-                            <img src="<?= base_url('src') ?>/assets/images/sipmedic1.png" alt="wrapkit">
-                        </div>
+
                         <h4 class="mt-3 text-center">
                             Welcome
                         </h4>
                         <p class="text-center">
                             <small>We Are Happy To Have You Back</small>
+                            <br>
+                            <small>Sri Intan Perkasa Employee</small>
                         </p>
                         <form class="mt-4" action="<?= site_url('login') ?>" method="POST" autocomplete="off">
                             <div class="row">
