@@ -18,10 +18,16 @@ class M_JadwalTeknisi extends CI_Model
         $this->db->insert('jadwal_teknisi', $data);
         return TRUE;
     }
-
-    public function _uploadFileJadtek()
+    
+    public function simpandataterjadwal($data)
     {
-        $config['upload_path']          = './upload/brosur/file_brosur/';
+        $this->db->insert('teknisi_terjadwal', $data);
+        return TRUE;
+    }
+
+    public function _uploadFileInvoice()
+    {
+        $config['upload_path']          = './upload/teknisi/file_invoice/';
 		$config['allowed_types']        = 'pdf|doc|docx';
         // $config['file_name']            = $this->input->post('nama_brosur');
         $config['encrypt_name']         = false;
@@ -29,6 +35,23 @@ class M_JadwalTeknisi extends CI_Model
         $config['max_size']             = 5094; // 1MB
 
         $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('file_invoice')) {
+            return $this->upload->data("file_name");
+        }
+        // print_r($this->upload->display_errors());
+        return "default.pdf";
+    }
+    public function _uploadFileBuktiBayar()
+    {
+        $config1['upload_path']          = './upload/teknisi/bukti_bayar/';
+		$config1['allowed_types']        = 'pdf|doc|docx';
+        // $config['file_name']            = $this->input->post('nama_brosur');
+        $config1['encrypt_name']         = false;
+        $config1['overwrite']            = true;
+        $config1['max_size']             = 5094; // 1MB
+
+        $this->load->library('upload', $config1);
 
         if ($this->upload->do_upload('file_jadwal_teknisi')) {
             return $this->upload->data("file_name");
