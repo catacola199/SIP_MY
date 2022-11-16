@@ -35,7 +35,7 @@ class Jadwal_Teknisi extends CI_Controller
 
 		);
 		$this->M_JadwalTeknisi->simpandatajadtek($data);
-		$this->session->set_flashdata('notif', 'Jadwal berhasil disimpan');
+		$this->session->set_flashdata('notif', 'Permohonan berhasil disimpan');
 		redirect(base_url('teknisis'));
 	}
 
@@ -51,7 +51,7 @@ class Jadwal_Teknisi extends CI_Controller
 	public function update_jadtek()
 	{
 		$id = array(
-			'id_produk' => $this->input->post('id_produk')
+			'id_jadwal' => $this->input->post('id_jadwal')
 		);
 
 		$data = array(
@@ -66,7 +66,7 @@ class Jadwal_Teknisi extends CI_Controller
 		redirect(base_url('teknisis'));
 	}
 
-	// Delete User akun
+	// Delete jadwal
 	public function delete_jadtek($id = null)
 	{
 		if (!isset($id)) show_404();
@@ -76,4 +76,31 @@ class Jadwal_Teknisi extends CI_Controller
 			redirect(base_url('teknisis'));
 		}
 	}
+
+	// Update Terjadwal
+	public function update_terjadwal()
+	{
+		$id = array(
+			'id_jadwal' => $this->input->post('id_jadwal')
+		);
+		$data = array(
+			'id_jadwal' 		=> $this->input->post('id_jadwal'),
+			'nama_teknisi'	    => $this->input->post('nama_teknisi'),
+			'nama_driver'	    => $this->input->post('nama_driver'),
+			'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
+			'file_invoice'   	=> $this->M_JadwalTeknisi->_uploadFileInvoice()
+		);
+
+		$data1 = array(
+			'status'			=>"Terjadwal"
+		);
+		//tambah data 
+		$this->M_JadwalTeknisi->simpandataterjadwal($data);
+		// update status
+		$this->M_JadwalTeknisi->update_jadtek($data1, $id);
+
+		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
+		redirect(base_url('teknisis'));
+	}
+
 }
