@@ -59,7 +59,7 @@
                                         <button type="button" class="btn-outline-dark btn float-left" style="border:none;" disabled>Status</button>
                                         <button type="button" class="btn-outline-info btn float-left" id="all">Semua</button>
                                         <button type="button" class="btn btn-outline-primary float-left" id="baru">Baru</button>
-                                        <button type="button" class="btn btn-outline-warning float-left" id="dijadwalkan">Dijadwalkan</button>
+                                        <button type="button" class="btn btn-outline-warning float-left" id="terjadwal">Terjadwal</button>
                                         <button type="button" class="btn btn-outline-success float-left" id="selesai">Selesai</button>
                                         <button type="button" class="btn btn-outline-danger float-left" id="tidak_selesai">Tidak Selesai</button>
                                     </div>
@@ -370,8 +370,8 @@
             $('#baru').on('click', function() {
                 filterColumn('Baru');
             });
-            $('#dijadwalkan').on('click', function() {
-                filterColumn('Dijadwalkan');
+            $('#terjadwal').on('click', function() {
+                filterColumn('Terjadwal');
             });
             $('#selesai').on('click', function() {
                 filterColumn('Selesai');
