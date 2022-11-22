@@ -67,10 +67,15 @@ class M_JadwalTeknisi extends CI_Model
     }
 
    
-    public function del_jadtek($id)
+    public function del_all($id)
     {
-        return $this->db->delete('jadwal_teknisi', array("id_jadwal" => $id));
+        $this->db->delete('jadwal_teknisi', array("id_jadwal" => $id));
+        $this->db->delete('teknisi_terjadwal', array("id_jadwal" => $id));
+        $this->db->delete('teknisi_selesai', array("id_jadwal" => $id));
+        return TRUE;
     }
+
+   
 
     public function update_jadtek($data, $id)
     {
