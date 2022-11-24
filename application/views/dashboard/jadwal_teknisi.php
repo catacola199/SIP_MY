@@ -92,8 +92,8 @@
 
                                                     <td><?php echo $data->status ?></td>
                                                     <td>
-                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#edit-<?= $data->id_jadwal ?>">
-                                                            <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
+                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_jadwal ?>">
+                                                            <i class="fas fa-file" data-toggle="tooltip" data-placement="bottom" title="Detail"></i>
                                                         </a>
 
                                                         <?php if ($data->status == 'Baru') : ?>
@@ -386,6 +386,57 @@
                                 <div class="form-floating">
                                     <input type="text" class="form-control form-control-user" name="keterangan" id="keterangan" placeholder="Keterangan" required>
                                     <label for="keterangan">Keterangan</label>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Selesai</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+    <!-- Modal Selesai End -->
+
+    <!-- Modal Selesai -->
+    <?php foreach ($jadwal_tek as $data) : ?>
+        <div class="modal fade" id="detail-<?= $data->id_jadwal ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Jadwal </h1>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="<?php echo base_url('Jadwal_Teknisi/update_selesai') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
+                            <input type="text" hidden name="id_jadwal" id="id_jadwal" value="<?= $data->id_jadwal ?>">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">No Permohonan :</li>
+                                            <li class="list-group-item">Jenis Produk :</li>
+                                            <li class="list-group-item">Nama Produk :</li>
+                                            <li class="list-group-item">Tipe Produk :</li>
+                                            <li class="list-group-item">Pabrik :</li>
+                                            <li class="list-group-item">Status :</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><?= $data->no_permohonan ?></li>
+                                            <li class="list-group-item"><?= $data->jenis_produk ?></li>
+                                            <li class="list-group-item"><?= $data->nama_produk ?></li>
+                                            <li class="list-group-item"><?= $data->tipe_produk ?></li>
+                                            <li class="list-group-item"><?= $data->pabrik_produk ?></li>
+                                            <li class="list-group-item"><?= $data->status ?></li>
+                                            
+                                        </ul>
+                                    </div>
+                                    
                                 </div>
                             </div>
                     </div>
