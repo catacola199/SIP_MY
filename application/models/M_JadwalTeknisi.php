@@ -12,6 +12,16 @@ class M_JadwalTeknisi extends CI_Model
         $query = $this->db->get();
         return  $query->result();
     }
+    public function getTeknisi()
+    {
+        // return $this->db->query("SELECT pengguna.`id_pengguna`,pengguna.`foto_pengguna`,pengguna.`nama_pengguna` FROM pengguna
+        // WHERE pengguna.`id_role` = 4")->result();
+        $this->db->select('id_pengguna,nama_pengguna,instansi_pengguna');
+        $this->db->from('pengguna');
+        $this->db->where('id_role', 4);
+        $query = $this->db->get();
+        return  $query->result();
+    }
 
     public function simpandatajadtek($data)
     {

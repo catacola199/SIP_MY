@@ -18,6 +18,7 @@ class Jadwal_Teknisi extends CI_Controller
 	{
 		$data["role"] = $this->All_model->getAllRole();
 		$data["jadwal_tek"] = $this->M_JadwalTeknisi->getAllJadtek();
+		$data["teknisi"] = $this->M_JadwalTeknisi->getTeknisi();
 		$data["produk"] = $this->M_Produk->getAllprodukshow();
 		$this->load->view("dashboard/jadwal_teknisi", $data);
 	}

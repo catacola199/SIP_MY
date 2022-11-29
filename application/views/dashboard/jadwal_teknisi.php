@@ -93,12 +93,12 @@
                                                     <td><?php echo $data->status ?></td>
                                                     <td>
                                                         <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#edit-<?= $data->id_jadwal ?>">
-                                                            <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
+                                                            <i class="far fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
                                                         </a>
 
                                                         <?php if ($data->status == 'Baru') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#jadwal-<?= $data->id_jadwal ?>">
-                                                                <i class="fas fa-calendar" data-toggle="tooltip" data-placement="bottom" title="Bikin Jadwal"></i>
+                                                                <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Bikin Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'Terjadwal') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_jadwal ?>">
@@ -141,7 +141,7 @@
     <?php $this->load->view('component/_jquery') ?>
 
     <!-- Form Add Modal End -->
-    <div class="modal fade" id="tambah" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal fade" id="tambah" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
@@ -154,11 +154,21 @@
                             <form action="<?php echo base_url('Jadwal_Teknisi/save_jadtek') ?>" method="post" autocomplete="off" enctype="multipart/form-data" class="pl-3 pr-3">
                                 <div class="form-group">
                                     <div class="form-floating">
-                                        <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?php $no_permohonan = "SIP-P" . date("dmY") . substr(md5(time()), 0, 5);
-                                                                                                            echo $no_permohonan; ?>">
-                                        <input type="text" class="form-control" id="kode" placeholder="No Permohonan" value="<?php $no_permohonan = "SIP-P" . date("dmY") . substr(md5(time()), 0, 5);
-                                                                                                                                echo $no_permohonan; ?>" disabled>
+                                        <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?php $no_permohonan = "SIP-P" . date("dmY") . substr(md5(time()), 0, 5); echo $no_permohonan; ?>">
+                                        <input type="text" class="form-control" id="kode" placeholder="No Permohonan" value="<?php $no_permohonan = "SIP-P" . date("dmY") . substr(md5(time()), 0, 5); echo $no_permohonan; ?>" disabled>
                                         <label for="No">No Permohonan</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="kategori_jadwal" name="kategori_jadwal" aria-label=".." required>
+                                            <option disabled value="" selected>Pilih salah satu...</option>
+                                            <option value="1">Instalasi</option>
+                                            <option value="2">Kalibrasi</option>
+                                            <option value="3">Pemeliharaan</option>
+                                            <option value="4">Service</option>
+                                        </select>
+                                        <label for="kategori_jadwal">Kategori</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -206,9 +216,9 @@
                                                 <td><?php echo $p['jenis_produk'] ?></td>
                                                 <td><?php echo $p['tipe_produk'] ?></td>
                                                 <td>
-                                                    <h5>
+                                                    <h4>
                                                         <button class="btn badge bg-primary text-white" id="select" data-id="<?php echo $p['id_produk'] ?>" data-nama="<?php echo $p['nama_produk'] ?>" data-jenis="<?php echo $p['jenis_produk'] ?>" data-tipe="<?php echo $p['tipe_produk'] ?>">Pilih </button>
-                                                    </h5>
+                                                    </h4>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -224,7 +234,7 @@
 
     <!-- Modal Edit -->
     <?php foreach ($jadwal_tek as $data) : ?>
-        <div class="modal fade" id="edit-<?= $data->id_jadwal ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="edit-<?= $data->id_jadwal ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
@@ -233,7 +243,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <form action="<?php echo base_url('Jadwal_Teknisi/update_baru') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
+                        <form action="<?php echo base_url('Jadwal_Teknisi/update_baru') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3"  autocomplete="off">
                             <input type="text" hidden name="id_jadwal" id="id_jadwal" value="<?= $data->id_jadwal ?>">
                             <div class="form-group">
                                 <div class="form-floating">
@@ -282,8 +292,8 @@
 
     <!-- Modal Terjadwalkan -->
     <?php foreach ($jadwal_tek as $data) : ?>
-        <div class="modal fade" id="jadwal-<?= $data->id_jadwal ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal fade" id="jadwal-<?= $data->id_jadwal ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Form Edit Jadwal Teknisi</h1>
@@ -291,50 +301,84 @@
                     </div>
 
                     <div class="modal-body">
-                        <form action="<?php echo base_url('Jadwal_Teknisi/update_terjadwal') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
-                            <input type="text" hidden name="id_jadwal" id="id_jadwal" value="<?= $data->id_jadwal ?>">
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?= $data->no_permohonan ?>">
-                                    <input type="text" class="form-control" id="no_permohonan" placeholder="No Permohonan" value="<?= $data->no_permohonan ?>" disabled>
-                                    <label for="No">No Permohonan</label>
+                        <div class="row">
+                            <div class="col">
+                                <form action="<?php echo base_url('Jadwal_Teknisi/update_terjadwal') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3" autocomplete="off">
+                                    <input type="text" hidden name="id_jadwal" id="id_jadwal" value="<?= $data->id_jadwal ?>">
+                                    <div class="form-group">
+                                        <div class="form-floating">
+                                            <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?= $data->no_permohonan ?>">
+                                            <input type="text" class="form-control" id="no_permohonan" placeholder="No Permohonan" value="<?= $data->no_permohonan ?>" disabled>
+                                            <label for="No">No Permohonan</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="hidden" class="form-control" name="id_teknisi" id="id_teknisi">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control form-control-user" name="nama_teknisi" id="nama_teknisi" placeholder="Nama Teknisi" required>
+                                            <label for="nama_teknisi">Nama Teknisi</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control form-control-user" name="nama_driver" id="nama_driver" placeholder="Nama Driver" required>
+                                            <label for="nama_driver">Nama Driver</label>
+                                        </div>
+                                    </div>
+                                    <div class="input-group date" id="pengadaan_alat">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" name="tgl_jadwal" id="tgl_jadwal" placeholder="Pilih Tanggal" autocomplete="off" required />
+                                            <label for="tgl_jadwal">Tanggal Jadwal</label>
+                                        </div>
+                                        <span class="input-group-append">
+                                            <span class="input-group-text bg-light">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="form-group mt-1">
+                                        <label for="file_invoice">File Invoice</label>
+                                        <input type="file" class="form-control form-control-file" name="file_invoice" id="file_invoice" accept=".pdf">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
+                                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col">
+                                <h4 class="card-title text-dark">Pilih Produk</h4>
+                                <hr>
+                                <div class="form-group table-responsive">
+                                    <table id="teknisi" class="table table-striped table-bordered display no-wrap" style="width:100%">
+                                        <thead class="bg-primary text-white">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Nama Teknisi</th>
+                                                <th>Instansi</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i = 1;
+                                            foreach ($teknisi as $data) : ?>
+                                                <tr>
+                                                    <td><?= $i++ ?></td>
+                                                    <td><?php echo $data->nama_pengguna ?></td>
+                                                    <td><?php echo $data->instansi_pengguna?></td>
+                                                    <td class="text-center">
+                                                        <h4>
+                                                            <button class="btn badge bg-primary text-white" id="pilih_teknisi" data-id_teknisi="<?php echo $data->id_pengguna ?>" data-nama_teknisi="<?php echo $data->nama_pengguna ?>">Pilih </button>
+                                                        </h4>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control form-control-user" name="nama_teknisi" id="nama_teknisi" placeholder="Nama Teknisi" required autocomplete="off">
-                                    <label for="nama_teknisi">Nama Teknisi</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control form-control-user" name="nama_driver" id="nama_driver" placeholder="Nama Driver" required>
-                                    <label for="nama_driver">Nama Driver</label>
-                                </div>
-                            </div>
-                            <div class="input-group date" id="pengadaan_alat">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" name="tgl_jadwal" id="tgl_jadwal" placeholder="Pilih Tanggal" autocomplete="off" required />
-                                    <label for="tgl_jadwal">Tanggal Jadwal</label>
-                                </div>
-                                <span class="input-group-append">
-                                    <span class="input-group-text bg-light">
-                                        <i class="fa fa-calendar"></i>
-                                    </span>
-                                </span>
-                            </div>
-                            <div class="form-group">
-                                <label for="file_invoice">File Invoice</label>
-                                <input type="file" class="form-control form-control-file" name="file_invoice" id="file_invoice" accept=".pdf">
-
-                            </div>
-
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
-                    </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -343,7 +387,7 @@
 
     <!-- Modal Selesai -->
     <?php foreach ($jadwal_tek as $data) : ?>
-        <div class="modal fade" id="selesai-<?= $data->id_jadwal ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="selesai-<?= $data->id_jadwal ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
@@ -413,19 +457,33 @@
                 $('#sproduk').val(data);
                 // $('#tambah').modal('hide');
             });
-
-
-
+            
             var table = $('#produk').DataTable();
             $('#sproduk').on('keyup', function() {
                 table.search(this.value).draw();
+            });
+        });
+
+        $(document).ready(function() {
+            $(document).on('click', '#pilih_teknisi', function() {
+                var teknisi_id = $(this).data('id_teknisi');
+                var teknisi_nama = $(this).data('nama_teknisi');
+                console.log(teknisi_nama+"-"+teknisi_id);
+
+                $('#id_teknisi').val(teknisi_id);
+                $('#nama_teknisi').val(teknisi_nama);
+            });
+
+            var teknisi = $('#teknisi').DataTable();
+            $('#nama_teknisi').on('keyup', function() {
+                teknisi.search(this.value).draw();
             });
         });
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
 
             function filterColumn(value) {
-                table.column(6).search(value).draw();
+                table.column(5).search(value).draw();
             }
 
             var table = $('#multi_col_order').DataTable();

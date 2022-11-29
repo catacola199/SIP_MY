@@ -30,6 +30,7 @@
         $('#multi_col_order').DataTable();
         $('table.display').DataTable();
         $('#produk').DataTable();
+        $('#teknisi').DataTable();
 
     });
     function deleteConfirm(url) {
