@@ -484,59 +484,79 @@
                                             <div class="col-12">
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <h4 class="card-title">Multiple Column</h4>
+                                                        <h4 class="card-title">Detail</h4>
                                                     </div>
                                                     <div class="card-content">
                                                         <div class="card-body">
                                                             <form class="form">
                                                                 <div class="row">
                                                                     <div class="col-md-6 col-12">
-                                                                        <div class="form-group">
-                                                                            <label for="first-name-column">First Name</label>
-                                                                            <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="fname-column">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6 col-12">
-                                                                        <div class="form-group">
-                                                                            <label for="last-name-column">Last Name</label>
-                                                                            <input type="text" id="last-name-column" class="form-control" placeholder="Last Name" name="lname-column">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6 col-12">
-                                                                        <div class="form-group">
-                                                                            <label for="city-column">City</label>
-                                                                            <input type="text" id="city-column" class="form-control" placeholder="City" name="city-column">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6 col-12">
-                                                                        <div class="form-group">
-                                                                            <label for="country-floating">Country</label>
-                                                                            <input type="text" id="country-floating" class="form-control" name="country-floating" placeholder="Country">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6 col-12">
-                                                                        <div class="form-group">
-                                                                            <label for="company-column">Company</label>
-                                                                            <input type="text" id="company-column" class="form-control" name="company-column" placeholder="Company">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6 col-12">
-                                                                        <div class="form-group">
-                                                                            <label for="email-id-column">Email</label>
-                                                                            <input type="email" id="email-id-column" class="form-control" name="email-id-column" placeholder="Email">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group col-12">
-                                                                        <div class='form-check'>
-                                                                            <div class="checkbox">
-                                                                                <input type="checkbox" id="checkbox5" class='form-check-input' checked>
-                                                                                <label for="checkbox5">Remember Me</label>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4">
+                                                                                <label>Jenis Produk</label>
+                                                                            </div>
+                                                                            <div class="col-md-8 form-group">
+                                                                                <label>: <?= $data->jenis_produk ?></label>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label>Nama Produk</label>
+                                                                            </div>
+                                                                            <div class="col-md-8 form-group">
+                                                                                <label>: <?= $data->nama_produk ?></label>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label>Tipe Produk</label>
+                                                                            </div>
+                                                                            <div class="col-md-8 form-group">
+                                                                                <label>: <?= $data->tipe_produk ?></label>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label>Pabrik</label>
+                                                                            </div>
+                                                                            <div class="col-md-8 form-group">
+                                                                                <label>: <?= $data->pabrik_produk ?></label>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label>Status</label>
+                                                                            </div>
+                                                                            <div class="col-md-8 form-group">
+                                                                                <label>: <?= $data->status ?></label>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-12 d-flex justify-content-end">
-                                                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                                                    <div class="col-md-6 col-12">
+                                                                        <div class="row">
+                                                                            <div class="col-md-4">
+                                                                                <label>Jenis Produk</label>
+                                                                            </div>
+                                                                            <div class="col-md-8 form-group">
+                                                                                <label>: <?= $data->jenis_produk ?></label>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label>Nama Produk</label>
+                                                                            </div>
+                                                                            <div class="col-md-8 form-group">
+                                                                                <label>: <?= $data->nama_produk ?></label>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label>Tipe Produk</label>
+                                                                            </div>
+                                                                            <div class="col-md-8 form-group">
+                                                                                <label>: <?= $data->tipe_produk ?></label>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label>Pabrik</label>
+                                                                            </div>
+                                                                            <div class="col-md-8 form-group">
+                                                                                <label>: <?= $data->pabrik_produk ?></label>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label>Status</label>
+                                                                            </div>
+                                                                            <div class="col-md-8 form-group">
+                                                                                <label>: <?= $data->status ?></label>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </form>
@@ -650,67 +670,68 @@
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
-        <!-- Modal Detail End -->
+        </div>
+    <?php endforeach; ?>
+    <!-- Modal Detail End -->
 
-        <script>
-            $(document).ready(function() {
-                $(document).on('click', '#select', function() {
-                    var id = $(this).data('id');
-                    var nama_produk = $(this).data('nama');
-                    var jenis_produk = $(this).data('jenis');
-                    var tipe_produk = $(this).data('tipe');
-                    var data = jenis_produk + " - " + nama_produk + " - " + tipe_produk;
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', '#select', function() {
+                var id = $(this).data('id');
+                var nama_produk = $(this).data('nama');
+                var jenis_produk = $(this).data('jenis');
+                var tipe_produk = $(this).data('tipe');
+                var data = jenis_produk + " - " + nama_produk + " - " + tipe_produk;
 
-                    $('#id_produk').val(id);
-                    $('#sproduk').val(data);
-                    // $('#tambah').modal('hide');
-                });
-
-                var table = $('#produk').DataTable();
-                $('#sproduk').on('keyup', function() {
-                    table.search(this.value).draw();
-                });
+                $('#id_produk').val(id);
+                $('#sproduk').val(data);
+                // $('#tambah').modal('hide');
             });
 
-            $(document).ready(function() {
-                $(document).on('click', '#pilih_teknisi', function() {
-                    var teknisi_id = $(this).data('id_teknisi');
-                    var teknisi_nama = $(this).data('nama_teknisi');
-                    console.log(teknisi_nama + "-" + teknisi_id);
-
-                    $('#id_teknisi').val(teknisi_id);
-                    $('#nama_teknisi').val(teknisi_nama);
-                });
-
-                var teknisi = $('#teknisi').DataTable();
-                $('#nama_teknisi').on('keyup', function() {
-                    teknisi.search(this.value).draw();
-                });
+            var table = $('#produk').DataTable();
+            $('#sproduk').on('keyup', function() {
+                table.search(this.value).draw();
             });
-            $(function() {
-                $('[data-toggle="tooltip"]').tooltip();
+        });
 
-                function filterColumn(value) {
-                    table.column(5).search(value).draw();
-                }
+        $(document).ready(function() {
+            $(document).on('click', '#pilih_teknisi', function() {
+                var teknisi_id = $(this).data('id_teknisi');
+                var teknisi_nama = $(this).data('nama_teknisi');
+                console.log(teknisi_nama + "-" + teknisi_id);
 
-                var table = $('#multi_col_order').DataTable();
-                $('#all').on('click', function() {
-                    filterColumn('');
-                });
-                $('#baru').on('click', function() {
-                    filterColumn('Baru');
-                });
-                $('#terjadwal').on('click', function() {
-                    filterColumn('Terjadwal');
-                });
-                $('#selesai').on('click', function() {
-                    filterColumn('Selesai');
-                });
-                $('#tidak_selesai').on('click', function() {
-                    filterColumn('Tidak Selesai');
-                });
-
+                $('#id_teknisi').val(teknisi_id);
+                $('#nama_teknisi').val(teknisi_nama);
             });
-        </script>
+
+            var teknisi = $('#teknisi').DataTable();
+            $('#nama_teknisi').on('keyup', function() {
+                teknisi.search(this.value).draw();
+            });
+        });
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+
+            function filterColumn(value) {
+                table.column(5).search(value).draw();
+            }
+
+            var table = $('#multi_col_order').DataTable();
+            $('#all').on('click', function() {
+                filterColumn('');
+            });
+            $('#baru').on('click', function() {
+                filterColumn('Baru');
+            });
+            $('#terjadwal').on('click', function() {
+                filterColumn('Terjadwal');
+            });
+            $('#selesai').on('click', function() {
+                filterColumn('Selesai');
+            });
+            $('#tidak_selesai').on('click', function() {
+                filterColumn('Tidak Selesai');
+            });
+
+        });
+    </script>
