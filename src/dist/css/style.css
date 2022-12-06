@@ -65,9 +65,16 @@
 *::after {
   box-sizing: border-box; }
 
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
+  overflow: scroll;
+  overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
