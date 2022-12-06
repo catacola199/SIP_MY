@@ -7,8 +7,8 @@ class M_JadwalTeknisi extends CI_Model
     public function getAllJadtek()
     {
         $this->db->select('*');
-        $this->db->from('jadwal_teknisi');
-        $this->db->join('produk', 'produk.id_produk = jadwal_teknisi.id_produk');
+        $this->db->from('teknisi_nopermohonan');
+        $this->db->join('produk', 'produk.id_produk = teknisi_nopermohonan.id_produk');
         $query = $this->db->get();
         return  $query->result();
     }
@@ -25,13 +25,18 @@ class M_JadwalTeknisi extends CI_Model
 
     public function simpandatajadtek($data)
     {
-        $this->db->insert('jadwal_teknisi', $data);
+        $this->db->insert('teknisi_nopermohonan', $data);
         return TRUE;
     }
     
     public function simpandataterjadwal($data)
     {
         $this->db->insert('teknisi_terjadwal', $data);
+        return TRUE;
+    }
+    public function simpandataselesai($data)
+    {
+        $this->db->insert('teknisi_selesai', $data);
         return TRUE;
     }
 
@@ -63,7 +68,7 @@ class M_JadwalTeknisi extends CI_Model
 
         $this->load->library('upload', $config1);
 
-        if ($this->upload->do_upload('file_jadwal_teknisi')) {
+        if ($this->upload->do_upload('bukti_bayar')) {
             return $this->upload->data("file_name");
         }
         // print_r($this->upload->display_errors());
@@ -73,13 +78,13 @@ class M_JadwalTeknisi extends CI_Model
 
     public function getID($id)
     {
-        return $this->db->get_where('jadwal_teknisi', ['id' => $id])->row();
+        return $this->db->get_where('teknisi_nopermohonan', ['id' => $id])->row();
     }
 
    
     public function del_all($id)
     {
-        $this->db->delete('jadwal_teknisi', array("id_jadwal" => $id));
+        $this->db->delete('teknisi_nopermohonan', array("id_jadwal" => $id));
         $this->db->delete('teknisi_terjadwal', array("id_jadwal" => $id));
         $this->db->delete('teknisi_selesai', array("id_jadwal" => $id));
         return TRUE;
@@ -89,7 +94,7 @@ class M_JadwalTeknisi extends CI_Model
 
     public function update_jadtek($data, $id)
     {
-        $this->db->update('jadwal_teknisi', $data, $id);
+        $this->db->update('teknisi_nopermohonan', $data, $id);
         return TRUE;
     }
 }

@@ -92,16 +92,16 @@
 
                                                     <td><?php echo $data->status ?></td>
                                                     <td>
-                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_jadwal ?>">
+                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>">
                                                             <i class="fas fa-file" data-toggle="tooltip" data-placement="bottom" title="Detail"></i>
                                                         </a>
 
                                                         <?php if ($data->status == 'Baru') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#jadwal-<?= $data->id_jadwal ?>">
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#jadwal-<?= $data->id_permohonan ?>">
                                                                 <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Bikin Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'Terjadwal') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_jadwal ?>">
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_permohonan ?>">
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
                                                             </a>
                                                         <?php else : ?>
@@ -110,7 +110,7 @@
                                                             </a>
                                                         <?php endif; ?>
 
-                                                        <a onclick="deleteConfirm('<?php echo site_url('Jadwal_Teknisi/delete_jadtek/' . $data->id_jadwal) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
+                                                        <a onclick="deleteConfirm('<?php echo site_url('Jadwal_Teknisi/delete_jadtek/' . $data->id_permohonan) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
                                                             <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
                                                         </a>
                                                     </td>
@@ -238,7 +238,7 @@
 
     <!-- Modal Edit -->
     <?php foreach ($jadwal_tek as $data) : ?>
-        <div class="modal fade" id="edit-<?= $data->id_jadwal ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="edit-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
@@ -248,7 +248,7 @@
 
                     <div class="modal-body">
                         <form action="<?php echo base_url('Jadwal_Teknisi/update_baru') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3" autocomplete="off">
-                            <input type="text" hidden name="id_jadwal" id="id_jadwal" value="<?= $data->id_jadwal ?>">
+                            <input type="text" hidden name="id_permohonan" id="id_permohonan" value="<?= $data->id_permohonan ?>">
                             <div class="form-group">
                                 <div class="form-floating">
                                     <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?= $data->no_permohonan ?>">
@@ -296,7 +296,7 @@
 
     <!-- Form Terjadwal Modal -->
     <?php foreach ($jadwal_tek as $data) : ?>
-        <div class="modal fade" id="jadwal-<?= $data->id_jadwal ?>" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal fade" id="jadwal-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
@@ -307,7 +307,7 @@
                         <div class="row">
                             <div class="col">
                                 <form action="<?php echo base_url('Jadwal_Teknisi/update_terjadwal') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3" autocomplete="off">
-                                    <input type="text" hidden name="id_jadwal" id="id_jadwal" value="<?= $data->id_jadwal ?>">
+                                    <input type="text" hidden name="id_permohonan" id="id_permohonan" value="<?= $data->id_permohonan ?>">
                                     <div class="form-group">
                                         <div class="form-floating">
                                             <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?= $data->no_permohonan ?>">
@@ -399,7 +399,7 @@
 
     <!-- Modal Selesai -->
     <?php foreach ($jadwal_tek as $data) : ?>
-        <div class="modal fade" id="selesai-<?= $data->id_jadwal ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="selesai-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
@@ -409,7 +409,7 @@
 
                     <div class="modal-body">
                         <form action="<?php echo base_url('Jadwal_Teknisi/update_selesai') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
-                            <input type="text" hidden name="id_jadwal" id="id_jadwal" value="<?= $data->id_jadwal ?>">
+                            <input type="text" hidden name="id_permohonan" id="id_permohonan" value="<?= $data->id_permohonan ?>">
                             <div class="form-group">
                                 <div class="form-floating">
                                     <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?= $data->no_permohonan ?>">
@@ -458,7 +458,7 @@
 
     <!-- Modal Detail -->
     <?php foreach ($jadwal_tek as $data) : ?>
-        <div class="modal fade" id="detail-<?= $data->id_jadwal ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="detail-<?= $data->id_permohonan ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
@@ -469,7 +469,7 @@
                     <div class="modal-body">
                         <section id="basic-horizontal-layouts">
                             <form action="<?php echo base_url('Jadwal_Teknisi/update_selesai') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
-                                <input type="text" hidden name="id_jadwal" id="id_jadwal" value="<?= $data->id_jadwal ?>">
+                                <input type="text" hidden name="id_permohonan" id="id_permohonan" value="<?= $data->id_permohonan ?>">
                                 <div class="row match-height">
                                     <div class="row justify-content-md-center">
                                         <div class="col-md-6 col-12">
@@ -478,10 +478,81 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Detail Jadwal -->
+                                    <section id="multiple-column-form">
+                                        <div class="row match-height">
+                                            <div class="col-12">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title">Multiple Column</h4>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body">
+                                                            <form class="form">
+                                                                <div class="row">
+                                                                    <div class="col-md-6 col-12">
+                                                                        <div class="form-group">
+                                                                            <label for="first-name-column">First Name</label>
+                                                                            <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="fname-column">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-12">
+                                                                        <div class="form-group">
+                                                                            <label for="last-name-column">Last Name</label>
+                                                                            <input type="text" id="last-name-column" class="form-control" placeholder="Last Name" name="lname-column">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-12">
+                                                                        <div class="form-group">
+                                                                            <label for="city-column">City</label>
+                                                                            <input type="text" id="city-column" class="form-control" placeholder="City" name="city-column">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-12">
+                                                                        <div class="form-group">
+                                                                            <label for="country-floating">Country</label>
+                                                                            <input type="text" id="country-floating" class="form-control" name="country-floating" placeholder="Country">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-12">
+                                                                        <div class="form-group">
+                                                                            <label for="company-column">Company</label>
+                                                                            <input type="text" id="company-column" class="form-control" name="company-column" placeholder="Company">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-12">
+                                                                        <div class="form-group">
+                                                                            <label for="email-id-column">Email</label>
+                                                                            <input type="email" id="email-id-column" class="form-control" name="email-id-column" placeholder="Email">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-12">
+                                                                        <div class='form-check'>
+                                                                            <div class="checkbox">
+                                                                                <input type="checkbox" id="checkbox5" class='form-check-input' checked>
+                                                                                <label for="checkbox5">Remember Me</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 d-flex justify-content-end">
+                                                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- Detail Jadwal End -->
+
+                                    <!-- Detail Produk -->
                                     <div class="col-md-6 col-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title"><?= $data->jenis_produk ?></h4>
+                                                <h4 class="card-title text-center"><?= $data->jenis_produk ?></h4>
                                             </div>
                                             <div class="card-content">
                                                 <div class="card-body">
@@ -528,7 +599,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title"><?= $data->jenis_produk ?></h4>
+                                                <h4 class="card-title text-center"><?= $data->jenis_produk ?></h4>
                                             </div>
                                             <div class="card-content">
                                                 <div class="card-body">
@@ -572,6 +643,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Detail Produk End -->
                                 </div>
                             </form>
                         </section>
