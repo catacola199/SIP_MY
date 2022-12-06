@@ -52,7 +52,7 @@ class Jadwal_Teknisi extends CI_Controller
 	public function update_baru()
 	{
 		$id = array(
-			'id_jadwal' => $this->input->post('id_jadwal')
+			'id_permohonan' => $this->input->post('id_permohonan')
 		);
 
 		$data = array(
@@ -82,10 +82,10 @@ class Jadwal_Teknisi extends CI_Controller
 	public function update_terjadwal()
 	{
 		$id = array(
-			'id_jadwal' => $this->input->post('id_jadwal')
+			'id_permohonan' => $this->input->post('id_permohonan')
 		);
 		$data = array(
-			'id_jadwal' 		=> $this->input->post('id_jadwal'),
+			'id_permohonan' 		=> $this->input->post('id_permohonan'),
 			'nama_rs' 			=> $this->input->post('nama_rs'),
 			'alamat_rs' 		=> $this->input->post('alamat_rs'),
 			'pic_name' 			=> $this->input->post('pic_name'),
@@ -111,10 +111,10 @@ class Jadwal_Teknisi extends CI_Controller
 	public function update_selesai()
 	{
 		$id = array(
-			'id_jadwal' => $this->input->post('id_jadwal')
+			'id_permohonan' => $this->input->post('id_permohonan')
 		);
 		$data = array(
-			'no_permohonan'	    => $this->input->post('no_permohonan'),
+			'id_permohonan'	    => $this->input->post('id_permohonan'),
 			'metode_bayar'	    => $this->input->post('pembayaran'),
 			'bukti_bayar'   	=> $this->M_JadwalTeknisi->_uploadFileBuktiBayar(),
 			'keterangan'   		=> $this->input->post('keterangan')
