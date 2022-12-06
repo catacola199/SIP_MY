@@ -90,7 +90,16 @@
                                                     <td><?php echo $data->nama_produk ?></td>
                                                     <td><?php echo $data->tipe_produk ?></td>
 
-                                                    <td><?php echo $data->status ?></td>
+                                                    <td>
+                                                        <?php if ($data->status == 'Baru') : ?>
+                                                            <p class="spstatus bg-info text-white"><?php echo $data->status ?></p>
+                                                        <?php elseif ($data->status == 'Terjadwal') : ?>
+                                                            <p class="spstatus bg-warning text-white"><?php echo $data->status ?></p>
+                                                        <?php else : ?>
+                                                            <p class="spstatus bg-success text-white"><?php echo $data->status ?></p>
+                                                        <?php endif; ?>
+                                                        
+                                                    </td>
                                                     <td>
                                                         <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>">
                                                             <i class="fas fa-file" data-toggle="tooltip" data-placement="bottom" title="Detail"></i>
