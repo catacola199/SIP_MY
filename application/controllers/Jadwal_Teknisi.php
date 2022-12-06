@@ -52,7 +52,7 @@ class Jadwal_Teknisi extends CI_Controller
 	public function update_baru()
 	{
 		$id = array(
-			'id_jadwal' => $this->input->post('id_jadwal')
+			'id_permohonan' => $this->input->post('id_permohonan')
 		);
 
 		$data = array(
@@ -82,10 +82,14 @@ class Jadwal_Teknisi extends CI_Controller
 	public function update_terjadwal()
 	{
 		$id = array(
-			'id_jadwal' => $this->input->post('id_jadwal')
+			'id_permohonan' => $this->input->post('id_permohonan')
 		);
 		$data = array(
-			'id_jadwal' 		=> $this->input->post('id_jadwal'),
+			'id_permohonan' 		=> $this->input->post('id_permohonan'),
+			'nama_rs' 			=> $this->input->post('nama_rs'),
+			'alamat_rs' 		=> $this->input->post('alamat_rs'),
+			'pic_name' 			=> $this->input->post('pic_name'),
+			'pic_phone' 		=> $this->input->post('pic_phone'),
 			'nama_teknisi'	    => $this->input->post('nama_teknisi'),
 			'nama_driver'	    => $this->input->post('nama_driver'),
 			'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
@@ -107,21 +111,20 @@ class Jadwal_Teknisi extends CI_Controller
 	public function update_selesai()
 	{
 		$id = array(
-			'id_jadwal' => $this->input->post('id_jadwal')
+			'id_permohonan' => $this->input->post('id_permohonan')
 		);
 		$data = array(
-			'id_jadwal' 		=> $this->input->post('id_jadwal'),
-			'nama_teknisi'	    => $this->input->post('nama_teknisi'),
-			'nama_driver'	    => $this->input->post('nama_driver'),
-			'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
-			'file_invoice'   	=> $this->M_JadwalTeknisi->_uploadFileInvoice()
+			'id_permohonan'	    => $this->input->post('id_permohonan'),
+			'metode_bayar'	    => $this->input->post('pembayaran'),
+			'bukti_bayar'   	=> $this->M_JadwalTeknisi->_uploadFileBuktiBayar(),
+			'keterangan'   		=> $this->input->post('keterangan')
 		);
 
 		$data1 = array(
-			'status'			=>"Selesai"
+			'status'			=> $this->input->post('status')
 		);
 		//tambah data 
-		$this->M_JadwalTeknisi->simpandataterjadwal($data);
+		$this->M_JadwalTeknisi->simpandataselesai($data);
 		// update status
 		$this->M_JadwalTeknisi->update_jadtek($data1, $id);
 
