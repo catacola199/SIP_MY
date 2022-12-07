@@ -3695,10 +3695,19 @@ input[type="button"].btn-block {
   border-top-right-radius: 1px;
   border-bottom-right-radius: 1px; }
 
+.spstatus{
+  padding: 4px 10px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 100%;
+  width: 55%;
+  border-radius: 4px;
+}
+
 .badge {
   display: inline-block;
   padding: 4px 10px;
-  font-size: 75%;
+  font-size: 100%;
   font-weight: 400;
   line-height: 1;
   text-align: center;
@@ -4912,7 +4921,7 @@ button.bg-success:focus {
   background-color: #1b9e64 !important; }
 
 .bg-info {
-  background-color: #5f76e8 !important; }
+  background-color: #0DCAF0 !important; }
 
 a.bg-info:hover, a.bg-info:focus,
 button.bg-info:hover,
@@ -9075,6 +9084,11 @@ strong {
   margin: 5px;
   font-size: 11px; }
 
+  #status {
+    background-color: green;
+    border-radius: 2px;
+  }
+
 @media (max-width: 767.98px) {
   .fc-toolbar .fc-left,
   .fc-toolbar .fc-right,
@@ -9087,6 +9101,7 @@ strong {
     float: none; }
   .fc-today-button {
     display: none; } }
+    
 
 @font-face {
   font-family: 'TofinoPersonal-Medium';
