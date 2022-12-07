@@ -28,14 +28,16 @@ class Jadwal_Teknisi extends CI_Controller
 	// Get Save User
 	public function save_jadtek()
 	{
-		$data = array(
-			'no_permohonan'	    => $this->input->post('no_permohonan'),
-			'id_produk'	    	=> $this->input->post('id_produk'),
-			'pabrik_produk'   	=> $this->input->post('pabrik_produk'),
-			'status'			=>"Baru"
-
-		);
-		$this->M_JadwalTeknisi->simpandatajadtek($data);
+		$result = array();
+		foreach ($this->input->post('id_produk_baru') as $key => $val) {
+			$result[] = array(
+				'no_permohonan'	    => $this->input->post('no_permohonan'),
+				'id_produk'		    => $this->input->post('id_produk_baru')[$key],
+				'pabrik_produk'   	=> $this->input->post('pabrik_produk')[$key]
+			);
+		}
+		
+		$this->M_JadwalTeknisi->simpandatajadtek($result);
 		$this->session->set_flashdata('notif', 'Permohonan berhasil disimpan');
 		redirect(base_url('teknisis'));
 	}

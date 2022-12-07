@@ -142,7 +142,7 @@
 
     <!-- Form Add Modal -->
     <div class="modal fade" id="tambah" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Form Tambah Permohonan</h1>
@@ -154,10 +154,8 @@
                             <form action="<?php echo base_url('Jadwal_Teknisi/save_jadtek') ?>" method="post" autocomplete="off" enctype="multipart/form-data" class="pl-3 pr-3">
                                 <div class="form-group">
                                     <div class="form-floating">
-                                        <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?php $no_permohonan = "SIP-P" . date("dmY") . substr(md5(time()), 0, 5);
-                                                                                                            echo $no_permohonan; ?>">
-                                        <input type="text" class="form-control" id="kode" placeholder="No Permohonan" value="<?php $no_permohonan = "SIP-P" . date("dmY") . substr(md5(time()), 0, 5);
-                                                                                                                                echo $no_permohonan; ?>" disabled>
+                                        <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?php $no_permohonan = "SIP-J" . date("dmY") . substr(md5(time()), 0, 5);echo $no_permohonan; ?>">
+                                        <input type="text" class="form-control" id="kode" placeholder="No Permohonan" value="<?php $no_permohonan = "SIP-J" . date("dmY") . substr(md5(time()), 0, 5);echo $no_permohonan; ?>" disabled>
                                         <label for="No">No Permohonan</label>
                                     </div>
                                 </div>
@@ -174,59 +172,38 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="hidden" class="form-control" name="id_produk" id="id_produk">
-                                    <!-- <div class="input-group"> -->
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" name="sproduk" id="sproduk" placeholder="Produk" required>
-                                        <label for="sproduk">Pilih Produk disamping</label>
-                                    </div>
-                                    <!-- <a class="btn btn-primary text-white" data-bs-target="#modal-produk" data-bs-toggle="modal" data-bs-dismiss="modal"><i class="fas fa-search" style="vertical-align: -webkit-baseline-middle;"></i></a> -->
-                                    <!-- </div> -->
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control form-control-user" name="pabrik_produk" id="pabrik_produk" placeholder="Pabrik" required>
-                                        <label for="pabrik_produk">Pabrik</label>
-                                    </div>
+                                    <table class="table-borderless col-md-12" id="dynamic_field">
+                                        <tr>
+                                            <td class="col-6 col-sm-6 col-lg-6 col-md-6">
+                                                <div class="form-floating">
+                                                    <select class="form-select" id="id_produk_baru[]" name="id_produk_baru[]" aria-label="Floating label select example" required>
+                                                        <option disabled value="" selected>Pilih salah satu...</option>
+                                                        <?php foreach ($produk as $l) { ?>
+                                                            <option value="<?php echo $l['id_produk']; ?>">
+                                                                <?php echo $l['jenis_produk'] . " - " . $l['nama_produk'] . " - " . $l['tipe_produk']; ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    </select>
+                                                    <label for="id_produk_baru[]">Produk</label>
+                                                </div>
+                                            </td>
+                                            <td class="col-5 col-sm-5 col-lg-5 col-md-5">
+                                                <div class="form-floating">
+                                                    <input type="text" name="pabrik[]" id="pabrik[]" placeholder="Pabrik" class="form-control" autocomplete="off" required />
+                                                    <label for="pabrik[]">Pabrik</label>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" name="add" id="add" class="btn btn-success "><i class="fa fa-plus"></i></button>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
                                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                                 </div>
                             </form>
-                        </div>
-                        <div class="col">
-                            <h4 class="card-title text-dark">Pilih Produk</h4>
-                            <hr>
-                            <div class="form-group table-responsive">
-                                <table id="produk" class="table table-striped table-bordered display no-wrap" style="width:100%">
-                                    <thead class="bg-primary text-white">
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Nama Produk</th>
-                                            <th>Jenis Produk</th>
-                                            <th>Tipe Produk</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1;
-                                        foreach ($produk as $p) : ?>
-                                            <tr>
-                                                <td><?= $i++ ?></td>
-                                                <td><?php echo $p['nama_produk'] ?></td>
-                                                <td><?php echo $p['jenis_produk'] ?></td>
-                                                <td><?php echo $p['tipe_produk'] ?></td>
-                                                <td>
-                                                    <h4>
-                                                        <button class="btn badge bg-primary text-white" id="select" data-id="<?php echo $p['id_produk'] ?>" data-nama="<?php echo $p['nama_produk'] ?>" data-jenis="<?php echo $p['jenis_produk'] ?>" data-tipe="<?php echo $p['tipe_produk'] ?>">Pilih </button>
-                                                    </h4>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -456,259 +433,30 @@
     <?php endforeach; ?>
     <!-- Modal Selesai End -->
 
-    <!-- Modal Detail -->
-    <?php foreach ($jadwal_tek as $data) : ?>
-        <div class="modal fade" id="detail-<?= $data->id_permohonan ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary text-white">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Jadwal </h1>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <section id="basic-horizontal-layouts">
-                            <form action="<?php echo base_url('Jadwal_Teknisi/update_selesai') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
-                                <input type="text" hidden name="id_permohonan" id="id_permohonan" value="<?= $data->id_permohonan ?>">
-                                <div class="row match-height">
-                                    <div class="row justify-content-md-center">
-                                        <div class="col-md-6 col-12">
-                                            <div class="card text-center text-black">
-                                                <h4><?= $data->no_permohonan ?> </h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Detail Jadwal -->
-                                    <section id="multiple-column-form">
-                                        <div class="row match-height">
-                                            <div class="col-12">
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        <h4 class="card-title">Detail</h4>
-                                                    </div>
-                                                    <div class="card-content">
-                                                        <div class="card-body">
-                                                            <form class="form">
-                                                                <div class="row">
-                                                                    <div class="col-md-6 col-12">
-                                                                        <div class="row">
-                                                                            <div class="col-md-4">
-                                                                                <label>Jenis Produk</label>
-                                                                            </div>
-                                                                            <div class="col-md-8 form-group">
-                                                                                <label>: <?= $data->jenis_produk ?></label>
-                                                                            </div>
-                                                                            <div class="col-md-4">
-                                                                                <label>Nama Produk</label>
-                                                                            </div>
-                                                                            <div class="col-md-8 form-group">
-                                                                                <label>: <?= $data->nama_produk ?></label>
-                                                                            </div>
-                                                                            <div class="col-md-4">
-                                                                                <label>Tipe Produk</label>
-                                                                            </div>
-                                                                            <div class="col-md-8 form-group">
-                                                                                <label>: <?= $data->tipe_produk ?></label>
-                                                                            </div>
-                                                                            <div class="col-md-4">
-                                                                                <label>Pabrik</label>
-                                                                            </div>
-                                                                            <div class="col-md-8 form-group">
-                                                                                <label>: <?= $data->pabrik_produk ?></label>
-                                                                            </div>
-                                                                            <div class="col-md-4">
-                                                                                <label>Status</label>
-                                                                            </div>
-                                                                            <div class="col-md-8 form-group">
-                                                                                <label>: <?= $data->status ?></label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6 col-12">
-                                                                        <div class="row">
-                                                                            <div class="col-md-4">
-                                                                                <label>Jenis Produk</label>
-                                                                            </div>
-                                                                            <div class="col-md-8 form-group">
-                                                                                <label>: <?= $data->jenis_produk ?></label>
-                                                                            </div>
-                                                                            <div class="col-md-4">
-                                                                                <label>Nama Produk</label>
-                                                                            </div>
-                                                                            <div class="col-md-8 form-group">
-                                                                                <label>: <?= $data->nama_produk ?></label>
-                                                                            </div>
-                                                                            <div class="col-md-4">
-                                                                                <label>Tipe Produk</label>
-                                                                            </div>
-                                                                            <div class="col-md-8 form-group">
-                                                                                <label>: <?= $data->tipe_produk ?></label>
-                                                                            </div>
-                                                                            <div class="col-md-4">
-                                                                                <label>Pabrik</label>
-                                                                            </div>
-                                                                            <div class="col-md-8 form-group">
-                                                                                <label>: <?= $data->pabrik_produk ?></label>
-                                                                            </div>
-                                                                            <div class="col-md-4">
-                                                                                <label>Status</label>
-                                                                            </div>
-                                                                            <div class="col-md-8 form-group">
-                                                                                <label>: <?= $data->status ?></label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <!-- Detail Jadwal End -->
-
-                                    <!-- Detail Produk -->
-                                    <div class="col-md-6 col-12">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h4 class="card-title text-center"><?= $data->jenis_produk ?></h4>
-                                            </div>
-                                            <div class="card-content">
-                                                <div class="card-body">
-                                                    <form class="form form-horizontal">
-                                                        <div class="form-body">
-                                                            <div class="row">
-                                                                <div class="col-md-4">
-                                                                    <label>Jenis Produk</label>
-                                                                </div>
-                                                                <div class="col-md-8 form-group">
-                                                                    <label>: <?= $data->jenis_produk ?></label>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Nama Produk</label>
-                                                                </div>
-                                                                <div class="col-md-8 form-group">
-                                                                    <label>: <?= $data->nama_produk ?></label>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Tipe Produk</label>
-                                                                </div>
-                                                                <div class="col-md-8 form-group">
-                                                                    <label>: <?= $data->tipe_produk ?></label>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Pabrik</label>
-                                                                </div>
-                                                                <div class="col-md-8 form-group">
-                                                                    <label>: <?= $data->pabrik_produk ?></label>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Status</label>
-                                                                </div>
-                                                                <div class="col-md-8 form-group">
-                                                                    <label>: <?= $data->status ?></label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h4 class="card-title text-center"><?= $data->jenis_produk ?></h4>
-                                            </div>
-                                            <div class="card-content">
-                                                <div class="card-body">
-                                                    <form class="form form-horizontal">
-                                                        <div class="form-body">
-                                                            <div class="row">
-                                                                <div class="col-md-4">
-                                                                    <label>Jenis Produk</label>
-                                                                </div>
-                                                                <div class="col-md-8 form-group">
-                                                                    <label>: <?= $data->jenis_produk ?></label>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Nama Produk</label>
-                                                                </div>
-                                                                <div class="col-md-8 form-group">
-                                                                    <label>: <?= $data->nama_produk ?></label>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Tipe Produk</label>
-                                                                </div>
-                                                                <div class="col-md-8 form-group">
-                                                                    <label>: <?= $data->tipe_produk ?></label>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Pabrik</label>
-                                                                </div>
-                                                                <div class="col-md-8 form-group">
-                                                                    <label>: <?= $data->pabrik_produk ?></label>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Status</label>
-                                                                </div>
-                                                                <div class="col-md-8 form-group">
-                                                                    <label>: <?= $data->status ?></label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Detail Produk End -->
-                                </div>
-                            </form>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endforeach; ?>
-    <!-- Modal Detail End -->
+    <!-- Modal detail -->
+    <?php $this->load->view('component/_modal-detail') ?>
+   
 
     <script>
         $(document).ready(function() {
-            $(document).on('click', '#select', function() {
-                var id = $(this).data('id');
-                var nama_produk = $(this).data('nama');
-                var jenis_produk = $(this).data('jenis');
-                var tipe_produk = $(this).data('tipe');
-                var data = jenis_produk + " - " + nama_produk + " - " + tipe_produk;
+            var i = 1;
 
-                $('#id_produk').val(id);
-                $('#sproduk').val(data);
-                // $('#tambah').modal('hide');
+            $('#add').click(function() {
+                i++;
+                $('#dynamic_field').append(
+                    '<tr id="row' + i + '" class="dynamic-added"><td class="col-6 col-sm-6 col-lg-6 col-md-6"><div class="form-floating"><select class="form-select" id="id_produk_baru[]" name="id_produk_baru[]" aria-label="Floating label select example" required><option disabled value="" selected>Pilih salah satu...</option><?php foreach ($produk as $l) { ?><option value="<?php echo $l['id_produk']; ?>"><?php echo $l['jenis_produk'] . " - " . $l['nama_produk'] . " - " . $l['tipe_produk']; ?></option><?php } ?></select><label for="id_produk_baru[]">Produk</label></div></td><td class="col-5 col-sm-5 col-lg-5 col-md-5"><div class="form-floating"><input type="text" name="pabrik[]" id="pabrik[]" placeholder="Pabrik" class="form-control" autocomplete="off" required /><label for="pabrik[]">Pabrik</label></div></td><td class="text-center"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove"><i class="fa fa-times"></i></button></td></tr>'
+                );
+
             });
 
-            var table = $('#produk').DataTable();
-            $('#sproduk').on('keyup', function() {
-                table.search(this.value).draw();
+
+            $(document).on('click', '.btn_remove', function() {
+                var button_id = $(this).attr("id");
+                $('#row' + button_id + '').remove();
             });
+
         });
 
-        $(document).ready(function() {
-            $(document).on('click', '#pilih_teknisi', function() {
-                var teknisi_id = $(this).data('id_teknisi');
-                var teknisi_nama = $(this).data('nama_teknisi');
-                console.log(teknisi_nama + "-" + teknisi_id);
-
-                $('#id_teknisi').val(teknisi_id);
-                $('#nama_teknisi').val(teknisi_nama);
-            });
-
-            var teknisi = $('#teknisi').DataTable();
-            $('#nama_teknisi').on('keyup', function() {
-                teknisi.search(this.value).draw();
-            });
-        });
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
 

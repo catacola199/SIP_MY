@@ -25,7 +25,7 @@ class M_JadwalTeknisi extends CI_Model
 
     public function simpandatajadtek($data)
     {
-        $this->db->insert('teknisi_nopermohonan', $data);
+		$this->db->insert_batch('teknisi_nopermohonan', $data);
         return TRUE;
     }
     
