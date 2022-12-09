@@ -25,31 +25,77 @@ class Jadwal_Teknisi extends CI_Controller
 
 
 
-	// Get Save User
+	// Save No Permohonan
 	public function save_jadtek()
 	{
 		$result = array();
 		foreach ($this->input->post('id_produk_baru') as $key => $val) {
 			$result[] = array(
 				'no_permohonan'	    => $this->input->post('no_permohonan'),
+				'nama_rs' 			=> $this->input->post('nama_rs'),
+				'alamat_rs' 		=> $this->input->post('alamat_rs'),
+				'pic_name' 			=> $this->input->post('pic_name'),
+				'pic_phone' 		=> $this->input->post('pic_phone'),
 				'id_produk'		    => $this->input->post('id_produk_baru')[$key],
 				'pabrik_produk'   	=> $this->input->post('pabrik_produk')[$key]
 			);
 		}
-		
+
 		$this->M_JadwalTeknisi->simpandatajadtek($result);
 		$this->session->set_flashdata('notif', 'Permohonan berhasil disimpan');
 		redirect(base_url('teknisis'));
 	}
 
-	// Edit User
-	public function edit_jadtek($id)
+	// Update Terjadwal
+	public function update_terjadwal()
 	{
-		// $data["role"] = $this->All_model->getAllRole();
-		$data["jadwal_tek"] = $this->M_JadwalTeknisi->getID($id);
-		$this->load->view("component/_editBrosur", $data);
+		$id = array(
+			'no_permohonan' => $this->input->post('no_permohonan')
+		);
+		$data = array(
+			'no_permohonan' 	=> $this->input->post('no_permohonan'),
+			'id_pengguna'	    => $this->input->post('id_pengguna'),
+			'nama_driver'	    => $this->input->post('nama_driver'),
+			'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
+			'file_invoice'   	=> $this->M_JadwalTeknisi->_uploadFileInvoice()
+		);
+
+		$data1 = array(
+			'status'			=> "Terjadwal"
+		);
+		//tambah data 
+		$this->M_JadwalTeknisi->simpandataterjadwal($data);
+		// update status
+		$this->M_JadwalTeknisi->update_jadtek($data1, $id);
+
+		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
+		redirect(base_url('teknisis'));
 	}
 
+	// Update Selesai Jadwal
+	public function update_selesai()
+	{
+		$id = array(
+			'no_permohonan' => $this->input->post('no_permohonan')
+		);
+		$data = array(
+			'no_permohonan'	    => $this->input->post('no_permohonan'),
+			'metode_bayar'	    => $this->input->post('pembayaran'),
+			'bukti_bayar'   	=> $this->M_JadwalTeknisi->_uploadFileBuktiBayar(),
+			'keterangan'   		=> $this->input->post('keterangan')
+		);
+
+		$data1 = array(
+			'status'			=> $this->input->post('status')
+		);
+		//tambah data 
+		$this->M_JadwalTeknisi->simpandataselesai($data);
+		// update status
+		$this->M_JadwalTeknisi->update_jadtek($data1, $id);
+
+		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
+		redirect(base_url('teknisis'));
+	}
 	// Update User
 	public function update_baru()
 	{
@@ -80,58 +126,11 @@ class Jadwal_Teknisi extends CI_Controller
 		}
 	}
 
-	// Update Terjadwal
-	public function update_terjadwal()
+	// Edit User
+	public function edit_jadtek($id)
 	{
-		$id = array(
-			'id_permohonan' => $this->input->post('id_permohonan')
-		);
-		$data = array(
-			'id_permohonan' 		=> $this->input->post('id_permohonan'),
-			'nama_rs' 			=> $this->input->post('nama_rs'),
-			'alamat_rs' 		=> $this->input->post('alamat_rs'),
-			'pic_name' 			=> $this->input->post('pic_name'),
-			'pic_phone' 		=> $this->input->post('pic_phone'),
-			'nama_teknisi'	    => $this->input->post('nama_teknisi'),
-			'nama_driver'	    => $this->input->post('nama_driver'),
-			'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
-			'file_invoice'   	=> $this->M_JadwalTeknisi->_uploadFileInvoice()
-		);
-
-		$data1 = array(
-			'status'			=>"Terjadwal"
-		);
-		//tambah data 
-		$this->M_JadwalTeknisi->simpandataterjadwal($data);
-		// update status
-		$this->M_JadwalTeknisi->update_jadtek($data1, $id);
-
-		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
-		redirect(base_url('teknisis'));
+		// $data["role"] = $this->All_model->getAllRole();
+		$data["jadwal_tek"] = $this->M_JadwalTeknisi->getID($id);
+		$this->load->view("component/_editBrosur", $data);
 	}
-
-	public function update_selesai()
-	{
-		$id = array(
-			'id_permohonan' => $this->input->post('id_permohonan')
-		);
-		$data = array(
-			'id_permohonan'	    => $this->input->post('id_permohonan'),
-			'metode_bayar'	    => $this->input->post('pembayaran'),
-			'bukti_bayar'   	=> $this->M_JadwalTeknisi->_uploadFileBuktiBayar(),
-			'keterangan'   		=> $this->input->post('keterangan')
-		);
-
-		$data1 = array(
-			'status'			=> $this->input->post('status')
-		);
-		//tambah data 
-		$this->M_JadwalTeknisi->simpandataselesai($data);
-		// update status
-		$this->M_JadwalTeknisi->update_jadtek($data1, $id);
-
-		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
-		redirect(base_url('teknisis'));
-	}
-
 }
