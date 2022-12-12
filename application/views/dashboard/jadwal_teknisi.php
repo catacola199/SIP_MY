@@ -190,7 +190,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control form-control-user" name="alamat_rs" id="nama_teknalamat_rsisi" placeholder="Alamat Rumah Sakit" required>
+                                        <textarea class="form-control" name="alamat_rs" placeholder="Alamat Rumah Sakit" id="alamat_rs" style="height: 100px" required></textarea>
                                         <label for="alamat_rs">Alamat Rumah Sakit</label>
                                     </div>
                                 </div>
@@ -198,13 +198,13 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control form-control-user" name="pic_name" id="pic_name" placeholder="PIC Name" required>
+                                                <input type="text" class="form-control" name="pic_name" id="pic_name" placeholder="PIC Name" required>
                                                 <label for="pic_name">Nama PIC </label>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control form-control-user" name="pic_phone" id="pic_phone" placeholder="PIC Phone" required>
+                                                <input type="number" class="form-control" name="pic_phone" id="pic_phone" placeholder="PIC Phone" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==12) return false;" required>
                                                 <label for="pic_phone"> Phone PIC </label>
                                             </div>
                                         </div>
@@ -313,7 +313,7 @@
     <!-- Form Terjadwal Modal -->
     <?php foreach ($jadwal_tek as $data) : ?>
         <div class="modal fade" id="jadwal-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Form Tambah Permohonan</h1>
