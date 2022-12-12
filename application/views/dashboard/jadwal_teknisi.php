@@ -98,7 +98,7 @@
                                                         <?php else : ?>
                                                             <p class="spstatus bg-success text-white"><?php echo $data->status ?></p>
                                                         <?php endif; ?>
-                                                        
+
                                                     </td>
                                                     <td>
                                                         <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>">
@@ -156,15 +156,17 @@
                 <div class="modal-header bg-primary text-white">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Form Tambah Permohonan</h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+                </div>`
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
                             <form action="<?php echo base_url('Jadwal_Teknisi/save_jadtek') ?>" method="post" autocomplete="off" enctype="multipart/form-data" class="pl-3 pr-3">
                                 <div class="form-group">
                                     <div class="form-floating">
-                                        <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?php $no_permohonan = "SIP-J" . date("dmY") . substr(md5(time()), 0, 5);echo $no_permohonan; ?>">
-                                        <input type="text" class="form-control" id="kode" placeholder="No Permohonan" value="<?php $no_permohonan = "SIP-J" . date("dmY") . substr(md5(time()), 0, 5);echo $no_permohonan; ?>" disabled>
+                                        <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?php $no_permohonan = "SIP-J" . date("dmY") . substr(md5(time()), 0, 5);
+                                                                                                            echo $no_permohonan; ?>">
+                                        <input type="text" class="form-control" id="kode" placeholder="No Permohonan" value="<?php $no_permohonan = "SIP-J" . date("dmY") . substr(md5(time()), 0, 5);
+                                                                                                                                echo $no_permohonan; ?>" disabled>
                                         <label for="No">No Permohonan</label>
                                     </div>
                                 </div>
@@ -334,7 +336,7 @@
                                             <select class="form-select" id="id_pengguna" name="id_pengguna" aria-label="Floating label select example" required>
                                                 <option disabled value="" selected>Pilih salah satu...</option>
                                                 <?php foreach ($teknisi as $l) { ?>
-                                                    <option value="<?php echo $l->id_pengguna; ?>"><?php echo $l->nama_pengguna . " - " . $l->instansi_pengguna; ?> </option>
+                                                    <option value="<?php echo $l['id_pengguna']; ?>"><?php echo $l['nama_pengguna'] . " - " . $l['instansi_pengguna']; ?> </option>
                                                 <?php } ?>
                                             </select>
                                             <label for="nama_teknisi">Nama Teknisi</label>
@@ -437,7 +439,7 @@
 
     <!-- Modal detail -->
     <?php $this->load->view('component/_modal-detail') ?>
-   
+
 
     <script>
         $(document).ready(function() {

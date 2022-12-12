@@ -3711,7 +3711,7 @@ input[type="button"].btn-block {
   text-align: center;
   font-weight: 500;
   font-size: 100%;
-  width: 55%;
+ 
   border-radius: 4px;
 }
 
@@ -9095,10 +9095,7 @@ strong {
   margin: 5px;
   font-size: 11px; }
 
-  #status {
-    background-color: green;
-    border-radius: 2px;
-  }
+ 
 
 @media (max-width: 767.98px) {
   .fc-toolbar .fc-left,

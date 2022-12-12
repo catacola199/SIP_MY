@@ -9,9 +9,20 @@ class M_JadwalTeknisi extends CI_Model
         $this->db->select('*');
         $this->db->from('teknisi_nopermohonan');
         $this->db->join('produk', 'produk.id_produk = teknisi_nopermohonan.id_produk');
+        $this->db->group_by('teknisi_nopermohonan.no_permohonan');
         $query = $this->db->get();
         return  $query->result();
     }
+
+    public function getDetails()
+    {
+        $this->db->select('*');
+        $this->db->from('teknisi_nopermohonan');
+        $this->db->join('produk', 'produk.id_produk = teknisi_nopermohonan.id_produk');
+        $query = $this->db->get();
+        return  $query->result();
+    }
+
     public function getTeknisi()
     {
         // return $this->db->query("SELECT pengguna.`id_pengguna`,pengguna.`foto_pengguna`,pengguna.`nama_pengguna` FROM pengguna
@@ -20,8 +31,10 @@ class M_JadwalTeknisi extends CI_Model
         $this->db->from('pengguna');
         $this->db->where('id_role', 4);
         $query = $this->db->get();
-        return  $query->result();
+        return  $query->result_array();
     }
+
+    
 
     public function simpandatajadtek($data)
     {
