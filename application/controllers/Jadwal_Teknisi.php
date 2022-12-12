@@ -32,8 +32,13 @@ class Jadwal_Teknisi extends CI_Controller
 		foreach ($this->input->post('id_produk_baru') as $key => $val) {
 			$result[] = array(
 				'no_permohonan'	    => $this->input->post('no_permohonan'),
+				'kategori'	    	=> $this->input->post('kategori_jadwal'),
 				'id_produk'		    => $this->input->post('id_produk_baru')[$key],
-				'pabrik_produk'   	=> $this->input->post('pabrik_produk')[$key]
+				'pabrik_produk'   	=> $this->input->post('pabrik')[$key],
+				'nama_rs' 			=> $this->input->post('nama_rs'),
+				'alamat_rs' 		=> $this->input->post('alamat_rs'),
+				'pic_name' 			=> $this->input->post('pic_name'),
+				'pic_phone' 		=> $this->input->post('pic_phone')
 			);
 		}
 		
@@ -88,10 +93,6 @@ class Jadwal_Teknisi extends CI_Controller
 		);
 		$data = array(
 			'id_permohonan' 		=> $this->input->post('id_permohonan'),
-			'nama_rs' 			=> $this->input->post('nama_rs'),
-			'alamat_rs' 		=> $this->input->post('alamat_rs'),
-			'pic_name' 			=> $this->input->post('pic_name'),
-			'pic_phone' 		=> $this->input->post('pic_phone'),
 			'nama_teknisi'	    => $this->input->post('nama_teknisi'),
 			'nama_driver'	    => $this->input->post('nama_driver'),
 			'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),

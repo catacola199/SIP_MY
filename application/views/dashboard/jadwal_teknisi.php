@@ -181,6 +181,34 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control form-control-user" name="nama_rs" id="nama_rs" placeholder="Nama Rumah Sakit" required>
+                                        <label for="nama_rs">Nama Rumah Sakit</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" name="alamat_rs" placeholder="Alamat Rumah Sakit" id="alamat_rs" style="height: 100px" required></textarea>
+                                        <label for="alamat_rs">Alamat Rumah Sakit</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" name="pic_name" id="pic_name" placeholder="PIC Name" required>
+                                                <label for="pic_name">Nama PIC </label>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-floating">
+                                                <input type="number" class="form-control" name="pic_phone" id="pic_phone" placeholder="PIC Phone" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==12) return false;" required>
+                                                <label for="pic_phone"> Phone PIC </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <table class="table-borderless col-md-12" id="dynamic_field">
                                         <tr>
                                             <td class="col-6 col-sm-6 col-lg-6 col-md-6">
@@ -283,7 +311,7 @@
     <!-- Form Terjadwal Modal -->
     <?php foreach ($jadwal_tek as $data) : ?>
         <div class="modal fade" id="jadwal-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Form Tambah Permohonan</h1>
@@ -303,45 +331,10 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control form-control-user" name="nama_rs" id="nama_rs" placeholder="Nama Rumah Sakit" required>
-                                            <label for="nama_rs">Nama Rumah Sakit</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control form-control-user" name="alamat_rs" id="nama_teknalamat_rsisi" placeholder="Alamat Rumah Sakit" required>
-                                            <label for="alamat_rs">Alamat Rumah Sakit</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control form-control-user" name="pic_name" id="pic_name" placeholder="PIC Name" required>
-                                                    <label for="pic_name">Nama PIC </label>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control form-control-user" name="pic_phone" id="pic_phone" placeholder="PIC Phone" required>
-                                                    <label for="pic_phone"> Phone PIC </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="hidden" class="form-control" name="id_teknisi" id="id_teknisi">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control form-control-user" name="nama_teknisi" id="nama_teknisi" placeholder="Nama Teknisi" required>
-                                            <label for="nama_teknisi">Nama Teknisi</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-floating">
                                             <select class="form-select" id="id_pengguna" name="id_pengguna" aria-label="Floating label select example" required>
                                                 <option disabled value="" selected>Pilih salah satu...</option>
-                                                <?php foreach ($instansi as $l) { ?>
-                                                    <option value="<?php echo $l['id_pengguna']; ?>"><?php echo $l['nama_pengguna'] . " - " . $l['instansi_pengguna']; ?> </option>
+                                                <?php foreach ($teknisi as $l) { ?>
+                                                    <option value="<?php echo $l->id_pengguna; ?>"><?php echo $l->nama_pengguna . " - " . $l->instansi_pengguna; ?> </option>
                                                 <?php } ?>
                                             </select>
                                             <label for="nama_teknisi">Nama Teknisi</label>
