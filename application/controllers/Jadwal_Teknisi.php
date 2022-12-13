@@ -60,8 +60,6 @@ class Jadwal_Teknisi extends CI_Controller
 		$data = array(
 			'no_permohonan' 	=> $this->input->post('no_permohonan'),
 			'id_pengguna'	    => $this->input->post('id_pengguna'),
-			'id_permohonan' 		=> $this->input->post('id_permohonan'),
-			'nama_teknisi'	    => $this->input->post('nama_teknisi'),
 			'nama_driver'	    => $this->input->post('nama_driver'),
 			'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
 			'file_invoice'   	=> $this->M_JadwalTeknisi->_uploadFileInvoice()
