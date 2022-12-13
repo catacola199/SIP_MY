@@ -1094,7 +1094,7 @@ pre {
   .table td {
     padding: .7rem;
     vertical-align: middle;
-    text-transform: capitalize !important;
+    text-transform: capitalize;
     border-top: 1px solid #e8eef3; }
   .table thead th {
     vertical-align: bottom;

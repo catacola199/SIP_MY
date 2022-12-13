@@ -81,7 +81,7 @@
                                                     <td><img src="<?php if(file_exists(FCPATH.'upload/pengguna/'.$data->foto_pengguna) != 1){echo base_url('upload/pengguna/default.png');}else{ echo base_url('upload/pengguna/').$data->foto_pengguna;} ?>" class="rounded-circle pp" alt="Foto" width="55" height="55" /></td>
                                                     <td><?php echo ucfirst($data->nama_pengguna) ?></td>
                                                     <td><?php echo ucfirst($data->instansi_pengguna) ?></td>
-                                                    <td><?php echo $data->email_pengguna ?></td>
+                                                    <td class="text-lowercase"><?php echo $data->email_pengguna ?></td>
                                                     <td><?php if ($data->terverifikasi == 0) {
                                                             echo "Tidak";
                                                         } else {
