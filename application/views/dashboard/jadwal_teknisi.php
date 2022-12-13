@@ -86,7 +86,7 @@
                                                     <td><?= $i++ ?></td>
                                                     <td><?php echo $data->no_permohonan ?></td>
                                                     <td><?php echo $data->kategori?></td>
-                                                    <td><?php echo $data->nama_rs ?></td>
+                                                    <td class="text-truncate" style="max-width:250px"><?php echo $data->nama_rs ?></td>
                                                     <td><?php echo $data->pic_name ?></td>
 
                                                     <td>
