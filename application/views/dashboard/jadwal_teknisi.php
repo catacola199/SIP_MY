@@ -71,10 +71,9 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>No Permohonan</th>
-                                                <th>Jenis Produk</th>
-                                                <th>Nama Produk</th>
-                                                <th>Tipe Produk</th>
-
+                                                <th>Kategori</th>
+                                                <th>Rumah Sakit</th>
+                                                <th>PIC</th>
                                                 <th> Status</th>
                                                 <th>Action</th>
 
@@ -82,13 +81,13 @@
                                         </thead>
                                         <tbody>
                                             <?php $i = 1;
-                                            foreach ($jadwal_tek as $data) : ?>
+                                            foreach ($jadwal_teknisi as $data) : ?>
                                                 <tr>
                                                     <td><?= $i++ ?></td>
                                                     <td><?php echo $data->no_permohonan ?></td>
-                                                    <td><?php echo $data->jenis_produk ?></td>
-                                                    <td><?php echo $data->nama_produk ?></td>
-                                                    <td><?php echo $data->tipe_produk ?></td>
+                                                    <td><?php echo $data->kategori?></td>
+                                                    <td><?php echo $data->nama_rs ?></td>
+                                                    <td><?php echo $data->pic_name ?></td>
 
                                                     <td>
                                                         <?php if ($data->status == 'Baru') : ?>
@@ -101,7 +100,7 @@
 
                                                     </td>
                                                     <td>
-                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>">
+                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>" >
                                                             <i class="fas fa-file" data-toggle="tooltip" data-placement="bottom" title="Detail"></i>
                                                         </a>
 
@@ -156,7 +155,7 @@
                 <div class="modal-header bg-primary text-white">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Form Tambah Permohonan</h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>`
+                </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
@@ -174,10 +173,10 @@
                                     <div class="form-floating">
                                         <select class="form-select" id="kategori_jadwal" name="kategori_jadwal" aria-label=".." required>
                                             <option disabled value="" selected>Pilih salah satu...</option>
-                                            <option value="1">Instalasi</option>
-                                            <option value="2">Kalibrasi</option>
-                                            <option value="3">Pemeliharaan</option>
-                                            <option value="4">Service</option>
+                                            <option value="instalasi">Instalasi</option>
+                                            <option value="kalibrasi">Kalibrasi</option>
+                                            <option value="pemeliharaan">Pemeliharaan</option>
+                                            <option value="service">Service</option>
                                         </select>
                                         <label for="kategori_jadwal">Kategori</label>
                                     </div>

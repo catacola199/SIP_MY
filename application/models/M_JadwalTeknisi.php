@@ -4,24 +4,36 @@ class M_JadwalTeknisi extends CI_Model
 {
     private $_table = "jadwal_teknisi";
 
-    public function getAllJadtek()
+    public function getProdukperPermohonan()
     {
-        $this->db->select('*');
+        $this->db->select('teknisi_nopermohonan.`no_permohonan`, produk.`id_produk`, produk.`nama_produk`,produk.`tipe_produk`, produk.`jenis_produk`');
         $this->db->from('teknisi_nopermohonan');
         $this->db->join('produk', 'produk.id_produk = teknisi_nopermohonan.id_produk');
-        $this->db->group_by('teknisi_nopermohonan.no_permohonan');
+        $query = $this->db->get();
+        return  $query->result();
+    }
+
+    public function getJadwal()
+    {
+        $this->db->select('id_permohonan,no_permohonan, kategori, nama_rs, pic_name,status');
+        $this->db->from('teknisi_nopermohonan');
+        $this->db->group_by('no_permohonan');
         $query = $this->db->get();
         return  $query->result();
     }
 
     public function getDetails()
     {
-        $this->db->select('*');
+        $this->db->select('teknisi_nopermohonan.`id_permohonan`,teknisi_nopermohonan.`no_permohonan`, teknisi_nopermohonan.`kategori`, teknisi_nopermohonan.`nama_rs`, teknisi_nopermohonan.`alamat_rs`,
+        teknisi_nopermohonan.`pic_name`, teknisi_nopermohonan.`pic_phone`, teknisi_nopermohonan.`status`, pengguna.`nama_pengguna`, teknisi_terjadwal.`nama_driver`,
+        teknisi_terjadwal.`tgl_jadwal`, teknisi_terjadwal.`file_invoice`, teknisi_selesai.`metode_bayar`, teknisi_selesai.`bukti_bayar`, teknisi_selesai.`keterangan`');
         $this->db->from('teknisi_nopermohonan');
-        $this->db->join('produk', 'produk.id_produk = teknisi_nopermohonan.id_produk');
+        $this->db->join('teknisi_terjadwal', 'teknisi_terjadwal.no_permohonan = teknisi_nopermohonan.no_permohonan','left');
+        $this->db->join('pengguna', 'teknisi_terjadwal.id_pengguna = pengguna.id_pengguna','left');
+        $this->db->join('teknisi_selesai', 'teknisi_selesai.no_permohonan = teknisi_nopermohonan.no_permohonan','left');
         $query = $this->db->get();
         return  $query->result();
-    }
+    } 
 
     public function getTeknisi()
     {
@@ -33,8 +45,6 @@ class M_JadwalTeknisi extends CI_Model
         $query = $this->db->get();
         return  $query->result_array();
     }
-
-    
 
     public function simpandatajadtek($data)
     {
