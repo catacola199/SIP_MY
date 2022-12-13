@@ -1093,7 +1093,8 @@ pre {
   .table th,
   .table td {
     padding: .7rem;
-    vertical-align: top;
+    vertical-align: middle;
+    text-transform: capitalize !important;
     border-top: 1px solid #e8eef3; }
   .table thead th {
     vertical-align: bottom;
@@ -2311,10 +2312,12 @@ fieldset:disabled a.btn {
   border-radius: 2px; }
 
 .btn-sm, .btn-group-sm > .btn {
+  width: 2rem;
+  height: 2rem;
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
-  border-radius: 1px; }
+  border-radius: 5px; }
 
 .btn-block {
   display: block;
@@ -3711,7 +3714,7 @@ input[type="button"].btn-block {
   text-align: center;
   font-weight: 500;
   font-size: 100%;
- 
+ margin-bottom: 0;
   border-radius: 4px;
 }
 

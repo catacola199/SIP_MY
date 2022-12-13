@@ -101,9 +101,8 @@
                                                     </td>
                                                     <td>
                                                         <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>" >
-                                                            <i class="fas fa-file" data-toggle="tooltip" data-placement="bottom" title="Detail"></i>
+                                                            <i class="fas fa-info" data-toggle="tooltip" data-placement="bottom" title="Detail"></i>
                                                         </a>
-
                                                         <?php if ($data->status == 'Baru') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#jadwal-<?= $data->id_permohonan ?>">
                                                                 <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Bikin Jadwal"></i>
