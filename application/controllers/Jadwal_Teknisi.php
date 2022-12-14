@@ -22,7 +22,17 @@ class Jadwal_Teknisi extends CI_Controller
 		$data["teknisi"] = $this->M_JadwalTeknisi->getTeknisi();
 		$data["produk"] = $this->M_Produk->getAllprodukshow();
 		$data["jadwal_produk"] = $this->M_JadwalTeknisi->getProdukperPermohonan();
-		$this->load->view("dashboard/jadwal_teknisi", $data);
+		$this->load->view("dashboard/jadwal_teknisi_admin", $data);
+	}
+	public function usertek()
+	{
+		$data["role"] = $this->All_model->getAllRole();
+		$data["jadwal_tek"] = $this->M_JadwalTeknisi->getDetails();
+		$data["jadwal_teknisi"] = $this->M_JadwalTeknisi->getJadwal();
+		$data["teknisi"] = $this->M_JadwalTeknisi->getTeknisi();
+		$data["produk"] = $this->M_Produk->getAllprodukshow();
+		$data["jadwal_produk"] = $this->M_JadwalTeknisi->getProdukperPermohonan();
+		$this->load->view("dashboard/user_teknisi", $data);
 	}
 
 	// Save No Permohonan
