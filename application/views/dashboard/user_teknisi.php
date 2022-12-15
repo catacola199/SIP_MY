@@ -55,7 +55,7 @@
                                 <h6 class="card-subtitle">
                                     <div class="btn-list">
                                         <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="Refresh"></i> </a>
-                                       
+
                                         <button type="button" class="btn-outline-dark btn float-left" style="border:none;" disabled>Status</button>
                                         <button type="button" class="btn-outline-info btn float-left" id="all">Semua</button>
                                         <button type="button" class="btn btn-outline-primary float-left" id="baru">Baru</button>
@@ -85,25 +85,37 @@
                                                 <tr>
                                                     <td><?= $i++ ?></td>
                                                     <td><?php echo $data->no_permohonan ?></td>
-                                                    <td><?php echo $data->kategori?></td>
+                                                    <td><?php echo $data->kategori ?></td>
                                                     <td class="text-truncate" style="max-width:250px"><?php echo $data->nama_rs ?></td>
                                                     <td><?php echo $data->pic_name ?></td>
 
                                                     <td>
-                                                        <?php if ($data->status == 'Baru') : ?>
+                                                        <?php if ($data->status == 'BARU') : ?>
                                                             <p class="spstatus bg-info text-white"><?php echo $data->status ?></p>
-                                                        <?php elseif ($data->status == 'Terjadwal') : ?>
+                                                        <?php elseif ($data->status == 'TERJADWAL') : ?>
                                                             <p class="spstatus bg-warning text-white"><?php echo $data->status ?></p>
+                                                        <?php elseif ($data->status == 'TERLAKSANA') : ?>
+                                                            <p class="spstatus bg-secondary text-white"><?php echo $data->status ?></p>
                                                         <?php else : ?>
                                                             <p class="spstatus bg-success text-white"><?php echo $data->status ?></p>
                                                         <?php endif; ?>
 
+
+
                                                     </td>
                                                     <td>
-                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>" >
+                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>">
                                                             <i class="fas fa-info" data-toggle="tooltip" data-placement="bottom" title="Detail"></i>
                                                         </a>
-                                                        
+                                                        <?php if ($data->status == 'TERJADWAL') : ?>
+                                                            <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifteknisi/' . $data->no_permohonan) ?>')" href="#!" class="btn btn-sm btn-outline-primary">
+                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Terlaksana"></i>
+                                                            </a>
+                                                        <?php else : ?>
+                                                            <a href="" class="btn btn-sm btn-outline-primary disabled" aria-disabled="true">
+                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Terlaksana"></i>
+                                                            </a>
+                                                        <?php endif; ?>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>

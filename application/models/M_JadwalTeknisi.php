@@ -120,4 +120,9 @@ class M_JadwalTeknisi extends CI_Model
         $this->db->update('teknisi_nopermohonan', $data, $id);
         return TRUE;
     }
+
+    public function verif_teknisi($data, $id)
+    {
+        return $this->db->update('teknisi_nopermohonan', $data, $id);
+    }
 }
