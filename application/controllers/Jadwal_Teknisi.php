@@ -22,7 +22,17 @@ class Jadwal_Teknisi extends CI_Controller
 		$data["teknisi"] = $this->M_JadwalTeknisi->getTeknisi();
 		$data["produk"] = $this->M_Produk->getAllprodukshow();
 		$data["jadwal_produk"] = $this->M_JadwalTeknisi->getProdukperPermohonan();
-		$this->load->view("dashboard/jadwal_teknisi", $data);
+		$this->load->view("dashboard/jadwal_teknisi_admin", $data);
+	}
+	public function usertek()
+	{
+		$data["role"] = $this->All_model->getAllRole();
+		$data["jadwal_tek"] = $this->M_JadwalTeknisi->getDetails();
+		$data["jadwal_teknisi"] = $this->M_JadwalTeknisi->getJadwal();
+		$data["teknisi"] = $this->M_JadwalTeknisi->getTeknisi();
+		$data["produk"] = $this->M_Produk->getAllprodukshow();
+		$data["jadwal_produk"] = $this->M_JadwalTeknisi->getProdukperPermohonan();
+		$this->load->view("dashboard/user_teknisi", $data);
 	}
 
 	// Save No Permohonan
@@ -66,7 +76,7 @@ class Jadwal_Teknisi extends CI_Controller
 		);
 
 		$data1 = array(
-			'status'			=> "Terjadwal"
+			'status'			=> "TERJADWAL"
 		);
 		//tambah data 
 		$this->M_JadwalTeknisi->simpandataterjadwal($data);
@@ -137,5 +147,20 @@ class Jadwal_Teknisi extends CI_Controller
 		// $data["role"] = $this->All_model->getAllRole();
 		$data["jadwal_tek"] = $this->M_JadwalTeknisi->getID($id);
 		$this->load->view("component/_editBrosur", $data);
+	}
+
+	// Verif User Teknisi
+	public function verifteknisi($id = null)
+	{
+		$idp = array(
+			'no_permohonan' => $id
+		);
+		$nama = $this->db->get_where('teknisi_nopermohonan', ["no_permohonan" => $id])->row()->nama_rs;
+		$data = array(
+			'status'			=> "TERLAKSANA"
+		);
+		$this->M_JadwalTeknisi->verif_teknisi($data, $idp);
+		$this->session->set_flashdata('notif', ucfirst($nama) . ' berhasil Terlaksana');
+		redirect(base_url('teknisis'));
 	}
 }

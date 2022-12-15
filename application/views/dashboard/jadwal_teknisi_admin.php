@@ -50,7 +50,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Daftar Jadwal Teknisi</h4>
+                                <h4 class="card-title">Daftar Jadwal Admin Teknisi</h4>
                                 <hr>
                                 <h6 class="card-subtitle">
                                     <div class="btn-list">
@@ -90,9 +90,9 @@
                                                     <td><?php echo $data->pic_name ?></td>
 
                                                     <td>
-                                                        <?php if ($data->status == 'Baru') : ?>
+                                                        <?php if ($data->status == 'BARU') : ?>
                                                             <p class="spstatus bg-info text-white"><?php echo $data->status ?></p>
-                                                        <?php elseif ($data->status == 'Terjadwal') : ?>
+                                                        <?php elseif ($data->status == 'TERJADWAL') : ?>
                                                             <p class="spstatus bg-warning text-white"><?php echo $data->status ?></p>
                                                         <?php else : ?>
                                                             <p class="spstatus bg-success text-white"><?php echo $data->status ?></p>
@@ -103,11 +103,11 @@
                                                         <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>" >
                                                             <i class="fas fa-info" data-toggle="tooltip" data-placement="bottom" title="Detail"></i>
                                                         </a>
-                                                        <?php if ($data->status == 'Baru') : ?>
+                                                        <?php if ($data->status == 'BARU') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#jadwal-<?= $data->id_permohonan ?>">
                                                                 <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Bikin Jadwal"></i>
                                                             </a>
-                                                        <?php elseif ($data->status == 'Terjadwal') : ?>
+                                                        <?php elseif ($data->status == 'TERJADWAL') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_permohonan ?>">
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
                                                             </a>
