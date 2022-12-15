@@ -110,6 +110,10 @@
                                                                 <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Bikin Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary disabled" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_permohonan ?>">
+                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
+                                                            </a>
+                                                        <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_permohonan ?>">
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
                                                             </a>
