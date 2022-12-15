@@ -121,21 +121,15 @@
                                         <div class="form-group">
                                             <div class="form-floating">
                                                 <?php if (($this->fungsi->user_login()->id_role) != 1){?>
-                                                    <select class="form-select" id="id_role" name="id_role" aria-label="Floating label select example" required>
-                                                        <option disabled value="" selected>Pilih salah satu...</option>
+                                                    <input type="text" hidden name="id_role" id="id_role" value="<?= $this->fungsi->user_login()->id_role?>">
                                                         <?php foreach ($role as $data) { ?>
                                                             <?php if($data->id_role == $this->fungsi->user_login()->id_role):?>
-                                                                <option value="<?php echo $data->id_role; ?>" <?= 'selected ="selected"'?> ><?php echo $data->nama_role; ?> </option>
-                                                            <?php else: ?>
-                                                                <option value="<?php echo $data->id_role; ?>"><?php echo $data->nama_role; ?> </option>
+                                                                <input type="text" class="form-control form-control-user" placeholder="role"  value="<?= $data->nama_role ?>"required disabled>
                                                             <?php endif;?>
                                                         <?php } ?>
-                                                    </select>
                                                 <?php }else{ ?>
                                                     <input type="text" hidden name="id_role" id="id_role" value="1">
-                                                    <select class="form-select" aria-label="Floating label select example" disabled required>
-                                                        <option value="1" selected>Superadmin</option>
-                                                    </select>
+                                                    <input type="text" class="form-control form-control-user" placeholder="role"  value="Superadmin" required disabled>
                                                 <?php } ?>
                                                 <label for="id_role">Role Pengguna</label>
                                             </div>

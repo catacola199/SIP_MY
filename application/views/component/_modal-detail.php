@@ -70,10 +70,14 @@
                                     </div>
                                     <div class="mb-1 row">
                                         <label class="col-sm-4 col-md-5 col-lg-4 col-form-label">Status</label>
-                                        <?php if ($data->status == 'Baru') : ?>
+                                        <?php if ($data->status == 'BARU') : ?>
                                             <p class="ml-2 col-sm-4 col-form-label spstatus bg-info text-white"><?php echo $data->status ?></p>
-                                        <?php elseif ($data->status == 'Terjadwal') : ?>
+                                        <?php elseif ($data->status == 'TERJADWAL') : ?>
                                             <p class="ml-2 col-sm-4 col-form-label spstatus bg-warning text-white"><?php echo $data->status ?></p>
+                                        <?php elseif ($data->status == 'TERLAKSANA') : ?>
+                                            <p class="ml-2 col-sm-4 col-form-label spstatus bg-secondary text-white"><?php echo $data->status ?></p>
+                                        <?php elseif ($data->status == 'TIDAK SELESAI') : ?>
+                                            <p class="ml-2 col-sm-4 col-form-label spstatus bg-danger text-white"><?php echo $data->status ?></p>
                                         <?php else : ?>
                                             <p class="ml-2 col-sm-4 col-form-label spstatus bg-success text-white"><?php echo $data->status ?></p>
                                         <?php endif; ?>

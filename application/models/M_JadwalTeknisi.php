@@ -22,6 +22,19 @@ class M_JadwalTeknisi extends CI_Model
         return  $query->result();
     }
 
+    public function getJadwalperTeknisi()
+    {
+        $this->db->select('teknisi_nopermohonan.id_permohonan,teknisi_nopermohonan.no_permohonan, teknisi_nopermohonan.kategori, 
+        teknisi_nopermohonan.nama_rs, teknisi_nopermohonan.pic_name,teknisi_nopermohonan.`status`, pengguna.`id_pengguna`, pengguna.`nama_pengguna`');
+        $this->db->from('teknisi_nopermohonan');
+        $this->db->join('teknisi_terjadwal', 'teknisi_nopermohonan.no_permohonan = teknisi_terjadwal.`no_permohonan`');
+        $this->db->join('pengguna','teknisi_terjadwal.`id_pengguna` = pengguna.`id_pengguna`');
+        $this->db->where('pengguna.id_pengguna', $this->session->userdata('id_pengguna'));
+        $this->db->group_by('teknisi_nopermohonan.`no_permohonan`');
+        $query = $this->db->get();
+        return  $query->result();
+    }
+
     public function getDetails()
     {
         $this->db->select('teknisi_nopermohonan.`id_permohonan`,teknisi_nopermohonan.`no_permohonan`, teknisi_nopermohonan.`kategori`, teknisi_nopermohonan.`nama_rs`, teknisi_nopermohonan.`alamat_rs`,

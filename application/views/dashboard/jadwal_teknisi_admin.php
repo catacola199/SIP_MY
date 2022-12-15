@@ -60,6 +60,7 @@
                                         <button type="button" class="btn-outline-info btn float-left" id="all">Semua</button>
                                         <button type="button" class="btn btn-outline-primary float-left" id="baru">Baru</button>
                                         <button type="button" class="btn btn-outline-warning float-left" id="terjadwal">Terjadwal</button>
+                                        <button type="button" class="btn btn-outline-secondary float-left" id="terlaksana">Terlaksana</button>
                                         <button type="button" class="btn btn-outline-success float-left" id="selesai">Selesai</button>
                                         <button type="button" class="btn btn-outline-danger float-left" id="tidak_selesai">Tidak Selesai</button>
                                     </div>
@@ -91,15 +92,17 @@
 
                                                     <td>
                                                         <?php if ($data->status == 'BARU') : ?>
-                                                            <p class="spstatus bg-info text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-info text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
-                                                            <p class="spstatus bg-warning text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-warning text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
-                                                            <p class="spstatus bg-secondary text-white"><?php echo $data->status ?></p>
-                                                        <?php else : ?>
-                                                            <p class="spstatus bg-success text-white"><?php echo $data->status ?></p>
-                                                        <?php endif; ?>
+                                                            <p class=" spstatus bg-secondary text-white"><?php echo $data->status ?></p>
+                                                        <?php elseif ($data->status == 'TIDAK SELESAI') : ?>
+                                                            <p class=" spstatus bg-danger text-white"><?php echo $data->status ?></p>
 
+                                                        <?php else : ?>
+                                                            <p class=" spstatus bg-success text-white"><?php echo $data->status ?></p>
+                                                        <?php endif; ?>
                                                     </td>
                                                     <td>
                                                         <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>">
@@ -481,6 +484,9 @@
             });
             $('#terjadwal').on('click', function() {
                 filterColumn('Terjadwal');
+            });
+            $('#terlaksana').on('click', function() {
+                filterColumn('Terlaksana');
             });
             $('#selesai').on('click', function() {
                 filterColumn('Selesai');

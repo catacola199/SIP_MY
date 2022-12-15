@@ -15,11 +15,27 @@
                     <li class="nav-small-cap">
                         <span class="hide-menu">Applications</span>
                     </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('compro') ?>" aria-expanded="false">
+                            <i data-feather="book" class="feather-icon"></i>
+                            <span class="hide-menu">Company Profile</span>
+                        </a>
+                    </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link sidebar-link" href="<?= base_url('teknisis') ?>" aria-expanded="false">
-                            <i data-feather="file-text" class="feather-icon"></i>
-                            <span class="hide-menu">JADWAL</span>
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('produk') ?>" aria-expanded="false">
+                            <i data-feather="shopping-cart" class="feather-icon"></i>
+                            <span class="hide-menu">Produk</span>
+                        </a>
+                    </li>
+                    <li class="list-divider"></li>
+                    <li class="nav-small-cap">
+                        <span class="hide-menu">Teknisi</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('usertek') ?>" aria-expanded="false">
+                        <i data-feather="file-text" class="feather-icon"></i>
+                            <span class="hide-menu">Jadwal</span>
                         </a>
                     </li>
                 <?php } ?>
@@ -49,13 +65,7 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link sidebar-link" href="<?= base_url('teknisis') ?>" aria-expanded="false">
                             <i data-feather="file-text" class="feather-icon"></i>
-                            <span class="hide-menu">JADWAL</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link sidebar-link" href="<?= base_url('usertek') ?>" aria-expanded="false">
-                            <i data-feather="users" class="feather-icon"></i>
-                            <span class="hide-menu">USER</span>
+                            <span class="hide-menu">Jadwal</span>
                         </a>
                     </li>
                 <?php } ?>

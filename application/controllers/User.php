@@ -10,6 +10,7 @@ class User extends CI_Controller
 		$this->load->model('All_model');
 		$this->load->model('M_User');
 		if ($this->All_model->isNotLogin()) redirect(site_url(''));
+		if ($this->All_model->rolePengguna()) redirect(site_url('404_override'));
 		$this->load->helper('url');
 	}
 

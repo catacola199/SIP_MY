@@ -16,6 +16,8 @@ class Jadwal_Teknisi extends CI_Controller
 
 	public function index()
 	{
+		if ($this->All_model->rolePengguna()) redirect(site_url('404_override'));
+
 		$data["role"] = $this->All_model->getAllRole();
 		$data["jadwal_tek"] = $this->M_JadwalTeknisi->getDetails();
 		$data["jadwal_teknisi"] = $this->M_JadwalTeknisi->getJadwal();
@@ -24,11 +26,12 @@ class Jadwal_Teknisi extends CI_Controller
 		$data["jadwal_produk"] = $this->M_JadwalTeknisi->getProdukperPermohonan();
 		$this->load->view("dashboard/jadwal_teknisi_admin", $data);
 	}
+
 	public function usertek()
 	{
 		$data["role"] = $this->All_model->getAllRole();
 		$data["jadwal_tek"] = $this->M_JadwalTeknisi->getDetails();
-		$data["jadwal_teknisi"] = $this->M_JadwalTeknisi->getJadwal();
+		$data["jadwal_teknisi"] = $this->M_JadwalTeknisi->getJadwalperTeknisi();
 		$data["teknisi"] = $this->M_JadwalTeknisi->getTeknisi();
 		$data["produk"] = $this->M_Produk->getAllprodukshow();
 		$data["jadwal_produk"] = $this->M_JadwalTeknisi->getProdukperPermohonan();
