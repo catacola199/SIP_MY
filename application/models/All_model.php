@@ -35,6 +35,11 @@ class All_model extends CI_Model
     public function isNotLogin(){
         return $this->session->userdata('id_pengguna') === null;
     }
+
+    public function rolePengguna(){
+        return $this->session->userdata('id_role') === "4";
+    }
+
     // private function _updateLastLogin($user_id){
     //     $sql = "UPDATE {$this->_user} SET last_login=now() WHERE user_id={$user_id}";
     //     $this->db->query($sql);
