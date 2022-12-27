@@ -409,8 +409,8 @@
                                 <label for="pembayaran"><strong>Status</strong></label>
                                 <select id="status" name="status" class="form-control">
                                     <option selected>Choose...</option>
-                                    <option value="selesai">Selesai</option>
-                                    <option value="tselesai">Tidak Selesai</option>
+                                    <option value="SELESAI">Selesai</option>
+                                    <option value="TIDAK SELESAI">Tidak Selesai</option>
                                 </select>
                             </div>
 
