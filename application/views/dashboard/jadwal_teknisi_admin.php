@@ -358,7 +358,7 @@
                                     <div class="input-group date" id="pengadaan_alat">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" name="tgl_jadwal" id="tgl_jadwal" placeholder="Pilih Tanggal" autocomplete="off" required />
-                                            <label for="tgl_jadwal">Tanggal Jadwal</label>
+                                            <label for="tgl_jadwal">Tanggal Jadwal </label>
                                         </div>
                                         <span class="input-group-append">
                                             <span class="input-group-text bg-light">
@@ -366,9 +366,10 @@
                                             </span>
                                         </span>
                                     </div>
+                                    
                                     <div class="form-group mt-1">
-                                        <label for="file_invoice">File Invoice</label>
-                                        <input type="file" class="form-control form-control-file" name="file_invoice" id="file_invoice" accept=".pdf">
+                                        <label for="file_penawaran">File Penawaran</label>
+                                        <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
@@ -422,8 +423,37 @@
                                     <option>Tidak Garansi</option>
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" name="pic_name" id="pic_name" placeholder="PIC Name" required>
+                                            <label for="pic_name">Nama PIC </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-floating">
+                                            <input type="number" class="form-control" name="pic_phone" id="pic_phone" placeholder="PIC Phone" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==12) return false;" required>
+                                            <label for="pic_phone"> Phone PIC </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="bukti_bayar">Bukti Bayar</label>
+                                <input type="file" class="form-control form-control-file" name="bukti_bayar" id="bukti_bayar" accept=".pdf">
+                            </div>
+                            <div class="form-group">
+                                <label for="bukti_bayar">Invoice</label>
+                                <input type="file" class="form-control form-control-file" name="bukti_bayar" id="bukti_bayar" accept=".pdf">
+                            </div>
+                            <div class="form-group">
+                                <label for="bukti_bayar">Pernawaran</label>
+                                <input type="file" class="form-control form-control-file" name="bukti_bayar" id="bukti_bayar" accept=".pdf">
+                            </div>
+                            <div class="form-group">
+                                <label for="bukti_bayar">BAP</label>
                                 <input type="file" class="form-control form-control-file" name="bukti_bayar" id="bukti_bayar" accept=".pdf">
                             </div>
                             <div class="form-group">

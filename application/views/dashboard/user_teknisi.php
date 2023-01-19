@@ -97,6 +97,8 @@
                                                             <p class="spstatus bg-warning text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                                             <p class="spstatus bg-secondary text-white"><?php echo $data->status ?></p>
+                                                        <?php elseif ($data->status == 'TIDAK SELESAI') : ?>
+                                                            <p class="spstatus bg-danger text-white"><?php echo $data->status ?></p>
                                                         <?php else : ?>
                                                             <p class="spstatus bg-success text-white"><?php echo $data->status ?></p>
                                                         <?php endif; ?>
