@@ -61,6 +61,7 @@
                                         <button type="button" class="btn btn-outline-primary float-left" id="baru">Baru</button>
                                         <button type="button" class="btn btn-outline-warning float-left" id="terjadwal">Terjadwal</button>
                                         <button type="button" class="btn btn-outline-secondary float-left" id="terlaksana">Terlaksana</button>
+                                        <button type="button" class="btn btn-outline-dark float-left" id="upload">Upload Doc</button>
                                         <button type="button" class="btn btn-outline-success float-left" id="selesai">Selesai</button>
                                         <button type="button" class="btn btn-outline-danger float-left" id="tidak_selesai">Tidak Selesai</button>
                                     </div>
@@ -113,6 +114,18 @@
                                                         <?php if ($data->status == 'TERJADWAL') : ?>
                                                             <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifteknisi/' . $data->no_permohonan) ?>')" href="#!" class="btn btn-sm btn-outline-primary">
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Terlaksana"></i>
+                                                            </a>
+                                                        <?php elseif ($data->status == 'BARU') : ?>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary disabled" aria-disabled="true">
+                                                                <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Bikin Jadwal"></i>
+                                                            </a>
+                                                        <?php elseif ($data->status == 'TERLAKSANA') : ?>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary disabled" aria-disabled="true">
+                                                                <i class="fas fa-file" data-toggle="tooltip" data-placement="bottom" title="Upload Doc"></i>
+                                                            </a>
+                                                        <?php elseif ($data->status == 'UPLOAD') : ?>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary disabled" aria-disabled="true">
+                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
                                                             </a>
                                                         <?php else : ?>
                                                             <a href="" class="btn btn-sm btn-outline-primary disabled" aria-disabled="true">
@@ -189,6 +202,9 @@
             });
             $('#terlaksana').on('click', function() {
                 filterColumn('Terlaksana');
+            });
+            $('#upload').on('click', function() {
+                filterColumn('Upload');
             });
             $('#selesai').on('click', function() {
                 filterColumn('Selesai');

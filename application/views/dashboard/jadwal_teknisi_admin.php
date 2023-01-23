@@ -115,12 +115,12 @@
                                                                 <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Bikin Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary disabled" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_permohonan ?>">
-                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary disabled" data-bs-toggle="modal">
+                                                                <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_permohonan ?>">
-                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Upload Doc"></i>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#upload-<?= $data->id_permohonan ?>">
+                                                                <i class="fas fa-file" data-toggle="tooltip" data-placement="bottom" title="Upload Doc"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'UPLOAD') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_permohonan ?>">
@@ -392,6 +392,46 @@
     <?php endforeach; ?>
     <!-- Form Add Modal End -->
 
+    <!-- Modal Upload -->
+    <?php foreach ($jadwal_tek as $data) : ?>
+        <div class="modal fade" id="upload-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Form Upload Dokumen </h1>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="<?php echo base_url('Jadwal_Teknisi/update_uploadDoc') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
+                            <input type="text" hidden name="id_permohonan" id="id_permohonan" value="<?= $data->id_permohonan ?>">
+                            <div class="form-group">
+                                <div class="form-floating">
+                                    <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?= $data->no_permohonan ?>">
+                                    <input type="text" class="form-control" id="no_permohonan" placeholder="No Permohonan" value="<?= $data->no_permohonan ?>" disabled>
+                                    <label for="No">No Permohonan</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="file_penawaran">File Penawaran</label>
+                                <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf">
+                            </div>
+                            <div class="form-group">
+                                <label for="file_bap">File BAP</label>
+                                <input type="file" class="form-control form-control-file" name="file_bap" id="file_bap" accept=".pdf">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Selesai</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+    <!-- Modal Upload End -->
+
     <!-- Modal Selesai -->
     <?php foreach ($jadwal_tek as $data) : ?>
         <div class="modal fade" id="selesai-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -447,21 +487,14 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="bukti_bayar">Bukti Bayar</label>
-                                <input type="file" class="form-control form-control-file" name="bukti_bayar" id="bukti_bayar" accept=".pdf">
+                                <label for="file_buktibayar">File Bukti Bayar</label>
+                                <input type="file" class="form-control form-control-file" name="file_buktibayar" id="file_buktibayar" accept=".pdf">
                             </div>
                             <div class="form-group">
-                                <label for="bukti_bayar">Invoice</label>
-                                <input type="file" class="form-control form-control-file" name="bukti_bayar" id="bukti_bayar" accept=".pdf">
+                                <label for="file_invoice">File Invoice</label>
+                                <input type="file" class="form-control form-control-file" name="file_invoice" id="file_invoice" accept=".pdf">
                             </div>
-                            <div class="form-group">
-                                <label for="bukti_bayar">Pernawaran</label>
-                                <input type="file" class="form-control form-control-file" name="bukti_bayar" id="bukti_bayar" accept=".pdf">
-                            </div>
-                            <div class="form-group">
-                                <label for="bukti_bayar">BAP</label>
-                                <input type="file" class="form-control form-control-file" name="bukti_bayar" id="bukti_bayar" accept=".pdf">
-                            </div>
+
                             <div class="form-group">
                                 <div class="form-floating">
                                     <input type="text" class="form-control form-control-user" name="keterangan" id="keterangan" placeholder="Keterangan" required>
