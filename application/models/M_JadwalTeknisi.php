@@ -28,7 +28,7 @@ class M_JadwalTeknisi extends CI_Model
         teknisi_nopermohonan.nama_rs, teknisi_nopermohonan.pic_name,teknisi_nopermohonan.`status`, pengguna.`id_pengguna`, pengguna.`nama_pengguna`');
         $this->db->from('teknisi_nopermohonan');
         $this->db->join('teknisi_terjadwal', 'teknisi_nopermohonan.no_permohonan = teknisi_terjadwal.`no_permohonan`');
-        $this->db->join('pengguna','teknisi_terjadwal.`id_pengguna` = pengguna.`id_pengguna`');
+        $this->db->join('pengguna', 'teknisi_terjadwal.`id_pengguna` = pengguna.`id_pengguna`');
         $this->db->where('pengguna.id_pengguna', $this->session->userdata('id_pengguna'));
         $this->db->group_by('teknisi_nopermohonan.`no_permohonan`');
         $query = $this->db->get();
@@ -39,14 +39,14 @@ class M_JadwalTeknisi extends CI_Model
     {
         $this->db->select('teknisi_nopermohonan.`id_permohonan`,teknisi_nopermohonan.`no_permohonan`, teknisi_nopermohonan.`kategori`, teknisi_nopermohonan.`nama_rs`, teknisi_nopermohonan.`alamat_rs`,
         teknisi_nopermohonan.`pic_name`, teknisi_nopermohonan.`pic_phone`, teknisi_nopermohonan.`status`, pengguna.`nama_pengguna`, teknisi_terjadwal.`nama_driver`,
-        teknisi_terjadwal.`tgl_jadwal`, teknisi_terjadwal.`file_invoice`, teknisi_selesai.`metode_bayar`, teknisi_selesai.`bukti_bayar`, teknisi_selesai.`keterangan`');
+        teknisi_terjadwal.`tgl_jadwal`, teknisi_terjadwal.`file_invoice`, teknisi_selesai.`metode_bayar`, teknisi_selesai.`file_buktibayar`, teknisi_selesai.`keterangan`');
         $this->db->from('teknisi_nopermohonan');
-        $this->db->join('teknisi_terjadwal', 'teknisi_terjadwal.no_permohonan = teknisi_nopermohonan.no_permohonan','left');
-        $this->db->join('pengguna', 'teknisi_terjadwal.id_pengguna = pengguna.id_pengguna','left');
-        $this->db->join('teknisi_selesai', 'teknisi_selesai.no_permohonan = teknisi_nopermohonan.no_permohonan','left');
+        $this->db->join('teknisi_terjadwal', 'teknisi_terjadwal.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');
+        $this->db->join('pengguna', 'teknisi_terjadwal.id_pengguna = pengguna.id_pengguna', 'left');
+        $this->db->join('teknisi_selesai', 'teknisi_selesai.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');
         $query = $this->db->get();
         return  $query->result();
-    } 
+    }
 
     public function getTeknisi()
     {
@@ -61,10 +61,10 @@ class M_JadwalTeknisi extends CI_Model
 
     public function simpandatajadtek($data)
     {
-		$this->db->insert_batch('teknisi_nopermohonan', $data);
+        $this->db->insert_batch('teknisi_nopermohonan', $data);
         return TRUE;
     }
-    
+
     public function simpandataterjadwal($data)
     {
         $this->db->insert('teknisi_terjadwal', $data);
@@ -84,7 +84,7 @@ class M_JadwalTeknisi extends CI_Model
     public function _uploadFileInvoice()
     {
         $config['upload_path']          = './upload/teknisi/file_invoice/';
-		$config['allowed_types']        = 'pdf|doc|docx';
+        $config['allowed_types']        = 'pdf|doc|docx';
         // $config['file_name']            = $this->input->post('nama_brosur');
         $config['encrypt_name']         = false;
         $config['overwrite']            = true;
@@ -101,7 +101,7 @@ class M_JadwalTeknisi extends CI_Model
     public function _uploadFileBap()
     {
         $config['upload_path']          = './upload/teknisi/file_invoice/';
-		$config['allowed_types']        = 'pdf|doc|docx';
+        $config['allowed_types']        = 'pdf|doc|docx';
         // $config['file_name']            = $this->input->post('nama_brosur');
         $config['encrypt_name']         = false;
         $config['overwrite']            = true;
@@ -109,7 +109,7 @@ class M_JadwalTeknisi extends CI_Model
 
         $this->load->library('upload', $config);
 
-        if ($this->upload->do_upload('file_invoice')) {
+        if ($this->upload->do_upload('file_bap')) {
             return $this->upload->data("file_name");
         }
         // print_r($this->upload->display_errors());
@@ -118,7 +118,7 @@ class M_JadwalTeknisi extends CI_Model
     public function _uploadFilePenawaran()
     {
         $config['upload_path']          = './upload/teknisi/file_invoice/';
-		$config['allowed_types']        = 'pdf|doc|docx';
+        $config['allowed_types']        = 'pdf|doc|docx';
         // $config['file_name']            = $this->input->post('nama_brosur');
         $config['encrypt_name']         = false;
         $config['overwrite']            = true;
@@ -126,7 +126,7 @@ class M_JadwalTeknisi extends CI_Model
 
         $this->load->library('upload', $config);
 
-        if ($this->upload->do_upload('file_invoice')) {
+        if ($this->upload->do_upload('file_penawaran')) {
             return $this->upload->data("file_name");
         }
         // print_r($this->upload->display_errors());
@@ -135,7 +135,7 @@ class M_JadwalTeknisi extends CI_Model
     public function _uploadFileBuktiBayar()
     {
         $config1['upload_path']          = './upload/teknisi/bukti_bayar/';
-		$config1['allowed_types']        = 'pdf|doc|docx';
+        $config1['allowed_types']        = 'pdf|doc|docx';
         // $config['file_name']            = $this->input->post('nama_brosur');
         $config1['encrypt_name']         = false;
         $config1['overwrite']            = true;
@@ -143,20 +143,20 @@ class M_JadwalTeknisi extends CI_Model
 
         $this->load->library('upload', $config1);
 
-        if ($this->upload->do_upload('bukti_bayar')) {
+        if ($this->upload->do_upload('file_buktibayar')) {
             return $this->upload->data("file_name");
         }
         // print_r($this->upload->display_errors());
         return "default.pdf";
     }
-    
+
 
     public function getID($id)
     {
         return $this->db->get_where('teknisi_nopermohonan', ['id' => $id])->row();
     }
 
-   
+
     public function del_all($id)
     {
         $this->db->delete('teknisi_nopermohonan', array("id_jadwal" => $id));
@@ -165,7 +165,7 @@ class M_JadwalTeknisi extends CI_Model
         return TRUE;
     }
 
-   
+
 
     public function update_jadtek($data, $id)
     {

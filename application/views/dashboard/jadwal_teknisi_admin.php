@@ -98,7 +98,7 @@
                                                             <p class=" spstatus bg-warning text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                                             <p class=" spstatus bg-secondary text-white"><?php echo $data->status ?></p>
-                                                        <?php elseif ($data->status == 'UPLOAD') : ?>
+                                                        <?php elseif ($data->status == 'UPLOAD DOC') : ?>
                                                             <p class=" spstatus bg-dark text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TIDAK SELESAI') : ?>
                                                             <p class=" spstatus bg-danger text-white"><?php echo $data->status ?></p>
@@ -122,7 +122,7 @@
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#upload-<?= $data->id_permohonan ?>">
                                                                 <i class="fas fa-file" data-toggle="tooltip" data-placement="bottom" title="Upload Doc"></i>
                                                             </a>
-                                                        <?php elseif ($data->status == 'UPLOAD') : ?>
+                                                        <?php elseif ($data->status == 'UPLOAD DOC') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_permohonan ?>">
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
                                                             </a>
@@ -420,12 +420,13 @@
                                 <label for="file_bap">File BAP</label>
                                 <input type="file" class="form-control form-control-file" name="file_bap" id="file_bap" accept=".pdf">
                             </div>
-                        </form>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
                         <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Selesai</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -468,23 +469,6 @@
                                     <option>Garansi</option>
                                     <option>Tidak Garansi</option>
                                 </select>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" name="pic_name" id="pic_name" placeholder="PIC Name" required>
-                                            <label for="pic_name">Nama PIC </label>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-floating">
-                                            <input type="number" class="form-control" name="pic_phone" id="pic_phone" placeholder="PIC Phone" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==12) return false;" required>
-                                            <label for="pic_phone"> Phone PIC </label>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="file_buktibayar">File Bukti Bayar</label>
