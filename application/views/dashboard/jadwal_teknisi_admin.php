@@ -61,6 +61,7 @@
                                         <button type="button" class="btn btn-outline-primary float-left" id="baru">Baru</button>
                                         <button type="button" class="btn btn-outline-warning float-left" id="terjadwal">Terjadwal</button>
                                         <button type="button" class="btn btn-outline-secondary float-left" id="terlaksana">Terlaksana</button>
+                                        <button type="button" class="btn btn-outline-dark float-left" id="upload">Upload Doc</button>
                                         <button type="button" class="btn btn-outline-success float-left" id="selesai">Selesai</button>
                                         <button type="button" class="btn btn-outline-danger float-left" id="tidak_selesai">Tidak Selesai</button>
                                     </div>
@@ -86,7 +87,7 @@
                                                 <tr>
                                                     <td><?= $i++ ?></td>
                                                     <td><?php echo $data->no_permohonan ?></td>
-                                                    <td><?php echo $data->kategori?></td>
+                                                    <td><?php echo $data->kategori ?></td>
                                                     <td class="text-truncate" style="max-width:250px"><?php echo $data->nama_rs ?></td>
                                                     <td><?php echo $data->pic_name ?></td>
 
@@ -97,6 +98,8 @@
                                                             <p class=" spstatus bg-warning text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                                             <p class=" spstatus bg-secondary text-white"><?php echo $data->status ?></p>
+                                                        <?php elseif ($data->status == 'UPLOAD') : ?>
+                                                            <p class=" spstatus bg-dark text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TIDAK SELESAI') : ?>
                                                             <p class=" spstatus bg-danger text-white"><?php echo $data->status ?></p>
                                                         <?php else : ?>
@@ -104,7 +107,7 @@
                                                         <?php endif; ?>
                                                     </td>
                                                     <td>
-                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>" >
+                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>">
                                                             <i class="fas fa-info" data-toggle="tooltip" data-placement="bottom" title="Detail"></i>
                                                         </a>
                                                         <?php if ($data->status == 'BARU') : ?>
@@ -112,6 +115,14 @@
                                                                 <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Bikin Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary disabled" data-bs-toggle="modal">
+                                                                <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
+                                                            </a>
+                                                        <?php elseif ($data->status == 'TERLAKSANA') : ?>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#upload-<?= $data->id_permohonan ?>">
+                                                                <i class="fas fa-file" data-toggle="tooltip" data-placement="bottom" title="Upload Doc"></i>
+                                                            </a>
+                                                        <?php elseif ($data->status == 'UPLOAD') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_permohonan ?>">
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
                                                             </a>
@@ -353,7 +364,7 @@
                                     <div class="input-group date" id="pengadaan_alat">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" name="tgl_jadwal" id="tgl_jadwal" placeholder="Pilih Tanggal" autocomplete="off" required />
-                                            <label for="tgl_jadwal">Tanggal Jadwal</label>
+                                            <label for="tgl_jadwal">Tanggal Jadwal </label>
                                         </div>
                                         <span class="input-group-append">
                                             <span class="input-group-text bg-light">
@@ -361,9 +372,10 @@
                                             </span>
                                         </span>
                                     </div>
+
                                     <div class="form-group mt-1">
-                                        <label for="file_invoice">File Invoice</label>
-                                        <input type="file" class="form-control form-control-file" name="file_invoice" id="file_invoice" accept=".pdf">
+                                        <label for="file_penawaran">File Penawaran</label>
+                                        <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
@@ -379,6 +391,46 @@
         </div>
     <?php endforeach; ?>
     <!-- Form Add Modal End -->
+
+    <!-- Modal Upload -->
+    <?php foreach ($jadwal_tek as $data) : ?>
+        <div class="modal fade" id="upload-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Form Upload Dokumen </h1>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="<?php echo base_url('Jadwal_Teknisi/update_uploadDoc') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
+                            <input type="text" hidden name="id_permohonan" id="id_permohonan" value="<?= $data->id_permohonan ?>">
+                            <div class="form-group">
+                                <div class="form-floating">
+                                    <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?= $data->no_permohonan ?>">
+                                    <input type="text" class="form-control" id="no_permohonan" placeholder="No Permohonan" value="<?= $data->no_permohonan ?>" disabled>
+                                    <label for="No">No Permohonan</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="file_penawaran">File Penawaran</label>
+                                <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf">
+                            </div>
+                            <div class="form-group">
+                                <label for="file_bap">File BAP</label>
+                                <input type="file" class="form-control form-control-file" name="file_bap" id="file_bap" accept=".pdf">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Selesai</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+    <!-- Modal Upload End -->
 
     <!-- Modal Selesai -->
     <?php foreach ($jadwal_tek as $data) : ?>
@@ -404,8 +456,8 @@
                                 <label for="pembayaran"><strong>Status</strong></label>
                                 <select id="status" name="status" class="form-control">
                                     <option selected>Choose...</option>
-                                    <option value="selesai">Selesai</option>
-                                    <option value="tselesai">Tidak Selesai</option>
+                                    <option value="SELESAI">Selesai</option>
+                                    <option value="TIDAK SELESAI">Tidak Selesai</option>
                                 </select>
                             </div>
 
@@ -417,10 +469,32 @@
                                     <option>Tidak Garansi</option>
                                 </select>
                             </div>
+
                             <div class="form-group">
-                                <label for="bukti_bayar">Bukti Bayar</label>
-                                <input type="file" class="form-control form-control-file" name="bukti_bayar" id="bukti_bayar" accept=".pdf">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" name="pic_name" id="pic_name" placeholder="PIC Name" required>
+                                            <label for="pic_name">Nama PIC </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-floating">
+                                            <input type="number" class="form-control" name="pic_phone" id="pic_phone" placeholder="PIC Phone" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==12) return false;" required>
+                                            <label for="pic_phone"> Phone PIC </label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="form-group">
+                                <label for="file_buktibayar">File Bukti Bayar</label>
+                                <input type="file" class="form-control form-control-file" name="file_buktibayar" id="file_buktibayar" accept=".pdf">
+                            </div>
+                            <div class="form-group">
+                                <label for="file_invoice">File Invoice</label>
+                                <input type="file" class="form-control form-control-file" name="file_invoice" id="file_invoice" accept=".pdf">
+                            </div>
+
                             <div class="form-group">
                                 <div class="form-floating">
                                     <input type="text" class="form-control form-control-user" name="keterangan" id="keterangan" placeholder="Keterangan" required>
@@ -482,6 +556,9 @@
             });
             $('#terlaksana').on('click', function() {
                 filterColumn('Terlaksana');
+            });
+            $('#upload').on('click', function() {
+                filterColumn('Upload');
             });
             $('#selesai').on('click', function() {
                 filterColumn('Selesai');
