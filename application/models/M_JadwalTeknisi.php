@@ -39,9 +39,11 @@ class M_JadwalTeknisi extends CI_Model
     {
         $this->db->select('teknisi_nopermohonan.`id_permohonan`,teknisi_nopermohonan.`no_permohonan`, teknisi_nopermohonan.`kategori`, teknisi_nopermohonan.`nama_rs`, teknisi_nopermohonan.`alamat_rs`,
         teknisi_nopermohonan.`pic_name`, teknisi_nopermohonan.`pic_phone`, teknisi_nopermohonan.`status`, pengguna.`nama_pengguna`, teknisi_terjadwal.`nama_driver`,
-        teknisi_terjadwal.`tgl_jadwal`, teknisi_terjadwal.`file_invoice`, teknisi_selesai.`metode_bayar`, teknisi_selesai.`file_buktibayar`, teknisi_selesai.`keterangan`');
+        teknisi_terjadwal.`tgl_jadwal`, teknisi_terjadwal.`file_invoice`, teknisi_selesai.`metode_bayar`, teknisi_selesai.`file_buktibayar`, teknisi_selesai.`keterangan`,
+        teknisi_upload.`file_bap`,teknisi_upload.`file_penawaran`,');
         $this->db->from('teknisi_nopermohonan');
         $this->db->join('teknisi_terjadwal', 'teknisi_terjadwal.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');
+        $this->db->join('teknisi_upload', 'teknisi_upload.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');
         $this->db->join('pengguna', 'teknisi_terjadwal.id_pengguna = pengguna.id_pengguna', 'left');
         $this->db->join('teknisi_selesai', 'teknisi_selesai.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');
         $query = $this->db->get();
