@@ -61,6 +61,7 @@
                                         <button type="button" class="btn btn-outline-primary float-left" id="baru">Baru</button>
                                         <button type="button" class="btn btn-outline-warning float-left" id="terjadwal">Terjadwal</button>
                                         <button type="button" class="btn btn-outline-secondary float-left" id="terlaksana">Terlaksana</button>
+                                        <button type="button" class="btn btn-outline-dark float-left" id="upload">Upload Doc</button>
                                         <button type="button" class="btn btn-outline-success float-left" id="selesai">Selesai</button>
                                         <button type="button" class="btn btn-outline-danger float-left" id="tidak_selesai">Tidak Selesai</button>
                                     </div>
@@ -97,9 +98,10 @@
                                                             <p class=" spstatus bg-warning text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                                             <p class=" spstatus bg-secondary text-white"><?php echo $data->status ?></p>
+                                                        <?php elseif ($data->status == 'UPLOAD') : ?>
+                                                            <p class=" spstatus bg-dark text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TIDAK SELESAI') : ?>
                                                             <p class=" spstatus bg-danger text-white"><?php echo $data->status ?></p>
-
                                                         <?php else : ?>
                                                             <p class=" spstatus bg-success text-white"><?php echo $data->status ?></p>
                                                         <?php endif; ?>
@@ -117,6 +119,10 @@
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_permohonan ?>">
+                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Upload Doc"></i>
+                                                            </a>
+                                                        <?php elseif ($data->status == 'UPLOAD') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_permohonan ?>">
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
                                                             </a>
@@ -366,7 +372,7 @@
                                             </span>
                                         </span>
                                     </div>
-                                    
+
                                     <div class="form-group mt-1">
                                         <label for="file_penawaran">File Penawaran</label>
                                         <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf">
@@ -517,6 +523,9 @@
             });
             $('#terlaksana').on('click', function() {
                 filterColumn('Terlaksana');
+            });
+            $('#upload').on('click', function() {
+                filterColumn('Upload');
             });
             $('#selesai').on('click', function() {
                 filterColumn('Selesai');
