@@ -161,9 +161,9 @@ class M_JadwalTeknisi extends CI_Model
 
     public function del_all($id)
     {
-        $this->db->delete('teknisi_nopermohonan', array("id_jadwal" => $id));
-        $this->db->delete('teknisi_terjadwal', array("id_jadwal" => $id));
-        $this->db->delete('teknisi_selesai', array("id_jadwal" => $id));
+        $this->db->delete('teknisi_nopermohonan', array("no_permohonan" => $id));
+        $this->db->delete('teknisi_terjadwal', array("no_permohonan" => $id));
+        $this->db->delete('teknisi_selesai', array("no_permohonan" => $id));
         return TRUE;
     }
 

@@ -132,7 +132,7 @@
                                                             </a>
                                                         <?php endif; ?>
 
-                                                        <a onclick="deleteConfirm('<?php echo site_url('Jadwal_Teknisi/delete_jadtek/' . $data->id_permohonan) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
+                                                        <a onclick="deleteConfirm('<?php echo site_url('Jadwal_Teknisi/delete_jadtek/' . $data->no_permohonan) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
                                                             <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
                                                         </a>
                                                     </td>
