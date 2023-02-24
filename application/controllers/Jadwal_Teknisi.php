@@ -96,12 +96,12 @@ class Jadwal_Teknisi extends CI_Controller
 		);
 		$data = array(
 			'no_permohonan' 	=> $this->input->post('no_permohonan'),
-			'file_bap'   	=> $this->M_JadwalTeknisi->_uploadFileBap(),
+			'file_bap'   		=> $this->M_JadwalTeknisi->_uploadFileBap(),
 			'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFilePenawaran()
 		);
 
 		$data1 = array(
-			'status'			=> "TERJADWAL"
+			'status'			=> "UPLOAD DOC"
 		);
 		//tambah data 
 		$this->M_JadwalTeknisi->simpandataupload($data);
@@ -121,7 +121,8 @@ class Jadwal_Teknisi extends CI_Controller
 		$data = array(
 			'no_permohonan'	    => $this->input->post('no_permohonan'),
 			'metode_bayar'	    => $this->input->post('pembayaran'),
-			'bukti_bayar'   	=> $this->M_JadwalTeknisi->_uploadFileBuktiBayar(),
+			'file_buktibayar'  	=> $this->M_JadwalTeknisi->_uploadFileBuktiBayar(),
+			'file_invoice'  	=> $this->M_JadwalTeknisi->_uploadFileInvoice(),
 			'keterangan'   		=> $this->input->post('keterangan')
 		);
 
