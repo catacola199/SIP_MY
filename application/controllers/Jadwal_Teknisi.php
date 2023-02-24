@@ -187,6 +187,6 @@ class Jadwal_Teknisi extends CI_Controller
 		);
 		$this->M_JadwalTeknisi->verif_teknisi($data, $idp);
 		$this->session->set_flashdata('notif', ucfirst($nama) . ' berhasil Terlaksana');
-		redirect(base_url('teknisis'));
+		redirect(base_url('usertek'));
 	}
 }

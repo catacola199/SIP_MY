@@ -145,37 +145,40 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card border-primary  mb-3">
-                        <div class="card-header">Produk</div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="" class="table table-striped table-bordered display no-wrap" style="width:100%">
-                                    <thead class="bg-primary text-white">
-                                        <tr>
-                                            <th>#</th>
-                                            <th>No Permohonan</th>
-                                            <th>Nama Produk</th>
-                                            <th>Tipe Produk</th>
-                                            <th>Jenis Produk</th>
-                                            <th>Action</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1;
-                                        foreach ($jadwal_produk as $produk) : ?>
-                                            <?php if ($produk->no_permohonan == $data->no_permohonan) : ?>
+                        <div class="card border-primary  mb-3">
+                            <div class="card-header">Produk</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="" class="table table-striped table-bordered display no-wrap" style="width:100%">
+                                        <thead class="bg-primary text-white">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>No Permohonan</th>
+                                                <th>Nama Produk</th>
+                                                <th>Tipe Produk</th>
+                                                <th>Jenis Produk</th>
+                                                <?php if(($this->fungsi->user_login()->id_role) != 4):?>
+                                                    <th>Action</th>
+                                                <?php endif;?>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i = 1;
+                                            foreach ($jadwal_produk as $produk) : ?>
+                                                <?php if ($produk->no_permohonan == $data->no_permohonan ):?>
                                                 <tr>
                                                     <td><?= $i++ ?></td>
                                                     <td class="text-capitalize"><?php echo $produk->no_permohonan ?></td>
                                                     <td class="text-capitalize"><?php echo $produk->nama_produk ?></td>
                                                     <td class="text-capitalize"><?php echo $produk->tipe_produk ?></td>
                                                     <td class="text-capitalize"><?php echo $produk->jenis_produk ?></td>
-                                                    <td>
+                                                    <?php if(($this->fungsi->user_login()->id_role) != 4):?>
+                                                        <td>
                                                         <a onclick="deleteConfirm('<?php echo site_url('Jadwal_Teknisi/delete_jadtek/' . $produk->id_produk) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
                                                             <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
                                                         </a>
                                                     </td>
+                                                    <?php endif;?>
                                                 </tr>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
