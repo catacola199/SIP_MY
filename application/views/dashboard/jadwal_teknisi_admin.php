@@ -52,6 +52,23 @@
                             <div class="card-body">
                                 <h4 class="card-title">Daftar Jadwal Admin Teknisi</h4>
                                 <hr>
+                                <!-- <div class="form-group">
+                                    <div class="form-floating">
+                                        <select id="status" name="status" class="form-control" required>
+                                            <option disabled selected>Pilih salah satu...</option>
+                                            <option value="1">Selesai</option>
+                                            <option value="0">Tidak Selesai</option>
+                                        </select>
+                                        <label for="status">Status</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="form-floating" disabled>
+                                        <textarea class="form-control" placeholder="Tulis disini" id="keterangan" name="keterangan" autocomplete="off" required disabled></textarea>
+                                        <label for="keterangan">Keterangan</label>
+                                    </div>
+                                </div> -->
                                 <h6 class="card-subtitle">
                                     <div class="btn-list">
                                         <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="Segarkan"></i> </a>
@@ -66,7 +83,6 @@
                                         <button type="button" class="btn btn-outline-danger float-left" id="gagal">Tidak Selesai</button>
                                     </div>
                                 </h6>
-
                                 <div class="table-responsive">
                                     <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
                                         <thead class="bg-primary text-white">
@@ -180,7 +196,6 @@
     <!-- Modal detail -->
     <?php $this->load->view('component/_modal-detail') ?>
 
-
     <script>
         $(document).ready(function() {
             var i = 1;
@@ -193,13 +208,21 @@
 
             });
 
-
             $(document).on('click', '.btn_remove', function() {
                 var button_id = $(this).attr("id");
                 $('#row' + button_id + '').remove();
             });
 
+            $(document).on('change','#status' ,function(){
+                if($('#status option:selected').text() === "Selesai"){
+                    $('#keterangan').prop('disabled', true);      
+                }else{
+                    $('#keterangan').removeAttr("disabled");
+                }
+            });
         });
+
+        
 
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();

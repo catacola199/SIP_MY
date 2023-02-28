@@ -89,6 +89,24 @@ class M_JadwalTeknisi extends CI_Model
         return TRUE;
     }
 
+    // Terjadwal
+    public function _uploadFileterjadwal()
+    {
+        $config['upload_path']          = './upload/penawaran/';
+        $config['allowed_types']        = 'pdf|doc|docx';
+        // $config['file_name']            = $this->input->post('nama_brosur');
+        $config['encrypt_name']         = false;
+        $config['overwrite']            = true;
+        $config['max_size']             = 5094; // 1MB
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('file_penawaran')) {
+            return $this->upload->data("file_name");
+        }
+        //  print_r($this->upload->display_errors());
+        return "default.pdf";
+    }
     // Upload Dokumen
     
     public function _uploadFileBap()

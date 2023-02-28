@@ -19,22 +19,12 @@
                         </div>
                         <div class="form-group">
                             <div class="form-floating">
-                                <select id="status" name="status" class="form-control" required>
-                                    <option disabled value="" selected>Pilih salah satu...</option>
-                                    <option value="SELESAI">Selesai</option>
-                                    <option value="TIDAK SELESAI">Tidak Selesai</option>
-                                </select>
-                                <label for="status">Status</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating">
                                 <select id="pembayaran" name="pembayaran" class="form-control" required>
                                     <option disabled value="" selected>Pilih salah satu...</option>
                                     <option value="Garansi">Garansi</option>
                                     <option value="Tidak Garansi">Tidak Garansi</option>
                                 </select>
-                                <label for="pembayaran">pembayaran</label>
+                                <label for="pembayaran">Pilihan Pembayaran</label>
                             </div>
                         </div>
 
@@ -49,7 +39,18 @@
 
                         <div class="form-group">
                             <div class="form-floating">
-                                <input type="text" class="form-control form-control-user" name="keterangan" id="keterangan" autocomplete="off" placeholder="Keterangan" required>
+                                <select id="status" name="status" class="form-control" required>
+                                    <option disabled selected>Pilih salah satu...</option>
+                                    <option value="SELESAI">Selesai</option>
+                                    <option value="TIDAK SELESAI">Tidak Selesai</option>
+                                </select>
+                                <label for="status">Status</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-floating" disabled>
+                                <textarea class="form-control" placeholder="Tulis disini" id="keterangan" name="keterangan" autocomplete="off" required disabled></textarea>
                                 <label for="keterangan">Keterangan</label>
                             </div>
                         </div>
