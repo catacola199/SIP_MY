@@ -79,6 +79,8 @@
                                         <p class="ml-2 col-sm-4 col-form-label spstatus bg-secondary text-white"><?php echo $data->status ?></p>
                                     <?php elseif ($data->status == 'TIDAK SELESAI') : ?>
                                         <p class="ml-2 col-sm-4 col-form-label spstatus bg-danger text-white"><?php echo $data->status ?></p>
+                                    <?php elseif ($data->status == 'TERUNGGAH') : ?>
+                                        <p class="ml-2 col-sm-4 col-form-label spstatus bg-dark text-white"><?php echo $data->status ?></p>
                                     <?php else : ?>
                                         <p class="ml-2 col-sm-4 col-form-label spstatus bg-success text-white"><?php echo $data->status ?></p>
                                     <?php endif; ?>

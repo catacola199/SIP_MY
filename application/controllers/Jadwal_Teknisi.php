@@ -89,26 +89,28 @@ class Jadwal_Teknisi extends CI_Controller
 		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
 		redirect(base_url('teknisis'));
 	}
+
 	public function update_uploadDoc()
 	{
 		$id = array(
-			'no_permohonan' => $this->input->post('no_permohonan')
+			'no_permohonan' 	=> $this->input->post('no_permohonan')
 		);
 		$data = array(
 			'no_permohonan' 	=> $this->input->post('no_permohonan'),
-			'file_bap'   		=> $this->M_JadwalTeknisi->_uploadFileBap(),
 			'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFilePenawaran()
 		);
 
 		$data1 = array(
-			'status'			=> "UPLOAD DOC"
+			'status'			=> "TERUNGGAH"
 		);
 		//tambah data 
 		$this->M_JadwalTeknisi->simpandataupload($data);
+		//Upload Dokumen
+		$this->M_JadwalTeknisi->_uploadFileBap();
 		// update status
 		$this->M_JadwalTeknisi->update_jadtek($data1, $id);
 
-		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
+		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate'. $filename);
 		redirect(base_url('teknisis'));
 	}
 

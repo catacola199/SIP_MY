@@ -54,16 +54,16 @@
                                 <hr>
                                 <h6 class="card-subtitle">
                                     <div class="btn-list">
-                                        <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="Refresh"></i> </a>
-                                        <button class="btn btn-outline-success float-right" data-bs-toggle="modal" data-bs-target="#tambah"><i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="Add"></i></button>
+                                        <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="Segarkan"></i> </a>
+                                        <button class="btn btn-outline-success float-right" data-bs-toggle="modal" data-bs-target="#tambah"><i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="Tambah Data"></i></button>
                                         <button type="button" class="btn-outline-dark btn float-left" style="border:none;" disabled>Status</button>
                                         <button type="button" class="btn-outline-info btn float-left" id="all">Semua</button>
                                         <button type="button" class="btn btn-outline-primary float-left" id="baru">Baru</button>
                                         <button type="button" class="btn btn-outline-warning float-left" id="terjadwal">Terjadwal</button>
                                         <button type="button" class="btn btn-outline-secondary float-left" id="terlaksana">Terlaksana</button>
-                                        <button type="button" class="btn btn-outline-dark float-left" id="upload">Upload Doc</button>
+                                        <button type="button" class="btn btn-outline-dark float-left" id="upload">Terunggah</button>
                                         <button type="button" class="btn btn-outline-success float-left" id="selesai">Selesai</button>
-                                        <button type="button" class="btn btn-outline-danger float-left" id="tidak_selesai">Tidak Selesai</button>
+                                        <button type="button" class="btn btn-outline-danger float-left" id="gagal">Tidak Selesai</button>
                                     </div>
                                 </h6>
 
@@ -98,7 +98,7 @@
                                                             <p class=" spstatus bg-warning text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                                             <p class=" spstatus bg-secondary text-white"><?php echo $data->status ?></p>
-                                                        <?php elseif ($data->status == 'UPLOAD DOC') : ?>
+                                                        <?php elseif ($data->status == 'TERUNGGAH') : ?>
                                                             <p class=" spstatus bg-dark text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TIDAK SELESAI') : ?>
                                                             <p class=" spstatus bg-danger text-white"><?php echo $data->status ?></p>
@@ -112,7 +112,7 @@
                                                         </a>
                                                         <?php if ($data->status == 'BARU') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#jadwal-<?= $data->id_permohonan ?>">
-                                                                <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Bikin Jadwal"></i>
+                                                                <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Buat Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary disabled" data-bs-toggle="modal">
@@ -120,11 +120,11 @@
                                                             </a>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#upload-<?= $data->id_permohonan ?>">
-                                                                <i class="fas fa-file" data-toggle="tooltip" data-placement="bottom" title="Upload Doc"></i>
+                                                                <i class="fas fa-file" data-toggle="tooltip" data-placement="bottom" title="Unggah Dokumen"></i>
                                                             </a>
-                                                        <?php elseif ($data->status == 'UPLOAD DOC') : ?>
+                                                        <?php elseif ($data->status == 'TERUNGGAH') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_permohonan ?>">
-                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
+                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Selesaikan Jadwal"></i>
                                                             </a>
                                                         <?php else : ?>
                                                             <a href="" class="btn btn-sm btn-outline-primary disabled" aria-disabled="true">
@@ -163,339 +163,19 @@
     <?php $this->load->view('component/_jquery') ?>
 
     <!-- Form Add Modal -->
-    <div class="modal fade" id="tambah" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Form Tambah Permohonan</h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col">
-                            <form action="<?php echo base_url('Jadwal_Teknisi/save_jadtek') ?>" method="post" autocomplete="off" enctype="multipart/form-data" class="pl-3 pr-3">
-                                <div class="form-group">
-                                    <div class="form-floating">
-                                        <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?php $no_permohonan = "SIP-J" . date("dmY") . substr(md5(time()), 0, 5);
-                                                                                                            echo $no_permohonan; ?>">
-                                        <input type="text" class="form-control" id="kode" placeholder="No Permohonan" value="<?php $no_permohonan = "SIP-J" . date("dmY") . substr(md5(time()), 0, 5);
-                                                                                                                                echo $no_permohonan; ?>" disabled>
-                                        <label for="No">No Permohonan</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="kategori_jadwal" name="kategori_jadwal" aria-label=".." required>
-                                            <option disabled value="" selected>Pilih salah satu...</option>
-                                            <option value="instalasi">Instalasi</option>
-                                            <option value="kalibrasi">Kalibrasi</option>
-                                            <option value="pemeliharaan">Pemeliharaan</option>
-                                            <option value="service">Service</option>
-                                        </select>
-                                        <label for="kategori_jadwal">Kategori</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control form-control-user" name="nama_rs" id="nama_rs" placeholder="Nama Rumah Sakit" required>
-                                        <label for="nama_rs">Nama Rumah Sakit</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" name="alamat_rs" placeholder="Alamat Rumah Sakit" id="alamat_rs" style="height: 100px" required></textarea>
-                                        <label for="alamat_rs">Alamat Rumah Sakit</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" name="pic_name" id="pic_name" placeholder="PIC Name" required>
-                                                <label for="pic_name">Nama PIC </label>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-floating">
-                                                <input type="number" class="form-control" name="pic_phone" id="pic_phone" placeholder="PIC Phone" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==12) return false;" required>
-                                                <label for="pic_phone"> Phone PIC </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <table class="table-borderless col-md-12" id="dynamic_field">
-                                        <tr>
-                                            <td class="col-6 col-sm-6 col-lg-6 col-md-6">
-                                                <div class="form-floating">
-                                                    <select class="form-select" id="id_produk_baru[]" name="id_produk_baru[]" aria-label="Floating label select example" required>
-                                                        <option disabled value="" selected>Pilih salah satu...</option>
-                                                        <?php foreach ($produk as $l) { ?>
-                                                            <option value="<?php echo $l['id_produk']; ?>">
-                                                                <?php echo $l['jenis_produk'] . " - " . $l['nama_produk'] . " - " . $l['tipe_produk']; ?>
-                                                            </option>
-                                                        <?php } ?>
-                                                    </select>
-                                                    <label for="id_produk_baru[]">Produk</label>
-                                                </div>
-                                            </td>
-                                            <td class="col-5 col-sm-5 col-lg-5 col-md-5">
-                                                <div class="form-floating">
-                                                    <input type="text" name="pabrik[]" id="pabrik[]" placeholder="Pabrik" class="form-control" autocomplete="off" required />
-                                                    <label for="pabrik[]">Pabrik</label>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <button type="button" name="add" id="add" class="btn btn-success "><i class="fa fa-plus"></i></button>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Form Add Modal End -->
-
+    <?php $this->load->view('dashboard/modal_jadwal/modal-baru') ?>
 
     <!-- Modal Edit -->
-    <?php foreach ($jadwal_tek as $data) : ?>
-        <div class="modal fade" id="edit-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary text-white">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Form Edit Jadwal Teknisi</h1>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <form action="<?php echo base_url('Jadwal_Teknisi/update_baru') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3" autocomplete="off">
-                            <input type="text" hidden name="id_permohonan" id="id_permohonan" value="<?= $data->id_permohonan ?>">
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?= $data->no_permohonan ?>">
-                                    <input type="text" class="form-control" id="no_permohonan" placeholder="No Permohonan" value="<?= $data->no_permohonan ?>" disabled>
-                                    <label for="No">No Permohonan</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <select class="form-select" data-live-search="true" id="id_produk" name="id_produk" aria-label="Floating label select example" required>
-                                        <option disabled value="" selected>Pilih salah satu...</option>
-                                        <?php foreach ($produk as $p) { ?>
-                                            <?php if ($p['id_produk'] == $data->id_produk) : ?>
-                                                <option value="<?php echo $p['id_produk']; ?>">
-                                                    <?php echo $p['jenis_produk'] . " - " . $p['nama_produk'] . " - " . $p['tipe_produk']; ?>
-                                                </option>
-                                            <?php else : ?>
-                                                <option value="<?php echo $p['id_produk']; ?>">
-                                                    <?php echo $p['jenis_produk'] . " - " . $p['nama_produk'] . " - " . $p['tipe_produk']; ?>
-                                                </option>
-                                            <?php endif; ?>
-                                        <?php } ?>
-                                    </select>
-                                    <label for="id_produk">Jenis, Nama dan Tipe Produk</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control form-control-user" name="pabrik_produk" id="pabrik_produk" placeholder="Pabrik" required>
-                                    <label for="pabrik_produk">Pabrik</label>
-                                </div>
-                            </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    <?php endforeach; ?>
-    <!-- Modal Edit End -->
+    <?php $this->load->view('dashboard/modal_jadwal/modal-edit') ?>
 
     <!-- Form Terjadwal Modal -->
-    <?php foreach ($jadwal_tek as $data) : ?>
-        <div class="modal fade" id="jadwal-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary text-white">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Form Tambah Permohonan</h1>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col">
-                                <form action="<?php echo base_url('Jadwal_Teknisi/update_terjadwal') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3" autocomplete="off">
-                                    <input type="text" hidden name="id_permohonan" id="id_permohonan" value="<?= $data->id_permohonan ?>">
-                                    <div class="form-group">
-                                        <div class="form-floating">
-                                            <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?= $data->no_permohonan ?>">
-                                            <input type="text" class="form-control" id="no_permohonan" placeholder="No Permohonan" value="<?= $data->no_permohonan ?>" disabled>
-                                            <label for="No">No Permohonan</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-floating">
-                                            <select class="form-select" id="id_pengguna" name="id_pengguna" aria-label="Floating label select example" required>
-                                                <option disabled value="" selected>Pilih salah satu...</option>
-                                                <?php foreach ($teknisi as $l) { ?>
-                                                    <option value="<?php echo $l['id_pengguna']; ?>"><?php echo $l['nama_pengguna'] . " - " . $l['instansi_pengguna']; ?> </option>
-                                                <?php } ?>
-                                            </select>
-                                            <label for="nama_teknisi">Nama Teknisi</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control form-control-user" name="nama_driver" id="nama_driver" placeholder="Nama Driver" required>
-                                            <label for="nama_driver">Nama Driver</label>
-                                        </div>
-                                    </div>
-                                    <div class="input-group date" id="pengadaan_alat">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" name="tgl_jadwal" id="tgl_jadwal" placeholder="Pilih Tanggal" autocomplete="off" required />
-                                            <label for="tgl_jadwal">Tanggal Jadwal </label>
-                                        </div>
-                                        <span class="input-group-append">
-                                            <span class="input-group-text bg-light">
-                                                <i class="fa fa-calendar"></i>
-                                            </span>
-                                        </span>
-                                    </div>
-
-                                    <div class="form-group mt-1">
-                                        <label for="file_penawaran">File Penawaran</label>
-                                        <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endforeach; ?>
-    <!-- Form Add Modal End -->
+    <?php $this->load->view('dashboard/modal_jadwal/modal-terjadwal') ?>
 
     <!-- Modal Upload -->
-    <?php foreach ($jadwal_tek as $data) : ?>
-        <div class="modal fade" id="upload-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary text-white">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Form Upload Dokumen </h1>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <form action="<?php echo base_url('Jadwal_Teknisi/update_uploadDoc') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
-                            <input type="text" hidden name="id_permohonan" id="id_permohonan" value="<?= $data->id_permohonan ?>">
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?= $data->no_permohonan ?>">
-                                    <input type="text" class="form-control" id="no_permohonan" placeholder="No Permohonan" value="<?= $data->no_permohonan ?>" disabled>
-                                    <label for="No">No Permohonan</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="file_penawaran">File Penawaran</label>
-                                <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf">
-                            </div>
-                            <div class="form-group">
-                                <label for="file_bap">File BAP</label>
-                                <input type="file" class="form-control form-control-file" name="file_bap" id="file_bap" accept=".pdf">
-                            </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Selesai</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    <?php endforeach; ?>
-    <!-- Modal Upload End -->
+    <?php $this->load->view('dashboard/modal_jadwal/modal-upload') ?>
 
     <!-- Modal Selesai -->
-    <?php foreach ($jadwal_tek as $data) : ?>
-        <div class="modal fade" id="selesai-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary text-white">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Form Selesai </h1>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <form action="<?php echo base_url('Jadwal_Teknisi/update_selesai') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
-                            <input type="text" hidden name="id_permohonan" id="id_permohonan" value="<?= $data->id_permohonan ?>">
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?= $data->no_permohonan ?>">
-                                    <input type="text" class="form-control" id="no_permohonan" placeholder="No Permohonan" value="<?= $data->no_permohonan ?>" disabled>
-                                    <label for="No">No Permohonan</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="pembayaran"><strong>Status</strong></label>
-                                <select id="status" name="status" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option value="SELESAI">Selesai</option>
-                                    <option value="TIDAK SELESAI">Tidak Selesai</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="pembayaran"><strong>Pembayaran</strong></label>
-                                <select id="pembayaran" name="pembayaran" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>Garansi</option>
-                                    <option>Tidak Garansi</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="file_buktibayar">File Bukti Bayar</label>
-                                <input type="file" class="form-control form-control-file" name="file_buktibayar" id="file_buktibayar" accept=".pdf">
-                            </div>
-                            <div class="form-group">
-                                <label for="file_invoice">File Invoice</label>
-                                <input type="file" class="form-control form-control-file" name="file_invoice" id="file_invoice" accept=".pdf">
-                            </div>
-
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control form-control-user" name="keterangan" id="keterangan" placeholder="Keterangan" required>
-                                    <label for="keterangan">Keterangan</label>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Selesai</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    <?php endforeach; ?>
-    <!-- Modal Selesai End -->
+    <?php $this->load->view('dashboard/modal_jadwal/modal-selesai') ?>
 
     <!-- Modal detail -->
     <?php $this->load->view('component/_modal-detail') ?>
@@ -542,13 +222,13 @@
                 filterColumn('Terlaksana');
             });
             $('#upload').on('click', function() {
-                filterColumn('Upload');
+                filterColumn('Terunggah');
             });
             $('#selesai').on('click', function() {
                 filterColumn('Selesai');
             });
-            $('#tidak_selesai').on('click', function() {
-                filterColumn('Tidak Selesai');
+            $('#gagal').on('click', function() {
+                filterColumn('tidak');
             });
 
         });
