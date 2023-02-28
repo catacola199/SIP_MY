@@ -52,7 +52,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Daftar Produk</h4>
                                 <hr>
-                                <h6 class="card-subtitle">
+                                <h6 class="card-subtitle mt-4">
                                     <div class="btn-list">
                                         <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="refresh"></i> </a>
                                         <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#success-header-modal"><i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="Add"></i></button>

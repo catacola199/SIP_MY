@@ -52,18 +52,17 @@
                             <div class="card-body">
                                 <h4 class="card-title">Daftar Jadwal Teknisi</h4>
                                 <hr>
-                                <h6 class="card-subtitle">
+                                <h6 class="card-subtitle mt-4">
                                     <div class="btn-list">
-                                        <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="Refresh"></i> </a>
-
+                                        <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="Segarkan"></i> </a>
                                         <button type="button" class="btn-outline-dark btn float-left" style="border:none;" disabled>Status</button>
                                         <button type="button" class="btn-outline-info btn float-left" id="all">Semua</button>
                                         <button type="button" class="btn btn-outline-primary float-left" id="baru">Baru</button>
                                         <button type="button" class="btn btn-outline-warning float-left" id="terjadwal">Terjadwal</button>
                                         <button type="button" class="btn btn-outline-secondary float-left" id="terlaksana">Terlaksana</button>
-                                        <button type="button" class="btn btn-outline-dark float-left" id="upload">Upload Doc</button>
+                                        <button type="button" class="btn btn-outline-dark float-left" id="upload">Terunggah</button>
                                         <button type="button" class="btn btn-outline-success float-left" id="selesai">Selesai</button>
-                                        <button type="button" class="btn btn-outline-danger float-left" id="tidak_selesai">Tidak Selesai</button>
+                                        <button type="button" class="btn btn-outline-danger float-left" id="gagal">Tidak Selesai</button>
                                     </div>
                                 </h6>
 
@@ -103,32 +102,13 @@
                                                         <?php else : ?>
                                                             <p class="spstatus bg-success text-white"><?php echo $data->status ?></p>
                                                         <?php endif; ?>
-
-
-
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center">
                                                         <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>">
                                                             <i class="fas fa-info" data-toggle="tooltip" data-placement="bottom" title="Detail"></i>
                                                         </a>
                                                         <?php if ($data->status == 'TERJADWAL') : ?>
                                                             <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifteknisi/' . $data->no_permohonan) ?>')" href="#!" class="btn btn-sm btn-outline-primary">
-                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Terlaksana"></i>
-                                                            </a>
-                                                        <?php elseif ($data->status == 'BARU') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary disabled" aria-disabled="true">
-                                                                <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Bikin Jadwal"></i>
-                                                            </a>
-                                                        <?php elseif ($data->status == 'TERLAKSANA') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary disabled" aria-disabled="true">
-                                                                <i class="fas fa-file" data-toggle="tooltip" data-placement="bottom" title="Upload Doc"></i>
-                                                            </a>
-                                                        <?php elseif ($data->status == 'UPLOAD') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary disabled" aria-disabled="true">
-                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
-                                                            </a>
-                                                        <?php else : ?>
-                                                            <a href="" class="btn btn-sm btn-outline-primary disabled" aria-disabled="true">
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Terlaksana"></i>
                                                             </a>
                                                         <?php endif; ?>
@@ -164,25 +144,6 @@
 
 
     <script>
-        $(document).ready(function() {
-            var i = 1;
-
-            $('#add').click(function() {
-                i++;
-                $('#dynamic_field').append(
-                    '<tr id="row' + i + '" class="dynamic-added"><td class="col-6 col-sm-6 col-lg-6 col-md-6"><div class="form-floating"><select class="form-select" id="id_produk_baru[]" name="id_produk_baru[]" aria-label="Floating label select example" required><option disabled value="" selected>Pilih salah satu...</option><?php foreach ($produk as $l) { ?><option value="<?php echo $l['id_produk']; ?>"><?php echo $l['jenis_produk'] . " - " . $l['nama_produk'] . " - " . $l['tipe_produk']; ?></option><?php } ?></select><label for="id_produk_baru[]">Produk</label></div></td><td class="col-5 col-sm-5 col-lg-5 col-md-5"><div class="form-floating"><input type="text" name="pabrik[]" id="pabrik[]" placeholder="Pabrik" class="form-control" autocomplete="off" required /><label for="pabrik[]">Pabrik</label></div></td><td class="text-center"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove"><i class="fa fa-times"></i></button></td></tr>'
-                );
-
-            });
-
-
-            $(document).on('click', '.btn_remove', function() {
-                var button_id = $(this).attr("id");
-                $('#row' + button_id + '').remove();
-            });
-
-        });
-
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
 
@@ -204,13 +165,13 @@
                 filterColumn('Terlaksana');
             });
             $('#upload').on('click', function() {
-                filterColumn('Upload');
+                filterColumn('Terunggah');
             });
             $('#selesai').on('click', function() {
                 filterColumn('Selesai');
             });
-            $('#tidak_selesai').on('click', function() {
-                filterColumn('Tidak Selesai');
+            $('#gagal').on('click', function() {
+                filterColumn('tidak');
             });
 
         });
