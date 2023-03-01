@@ -17,9 +17,10 @@
                                 <label for="No">No Permohonan</label>
                             </div>
                         </div>
+                        <input type="hidden" name="file_penawaran_old" id="file_penawaran_old" value="<?= $data->file_penawaran?>">
                         <div class="form-group">
                             <label for="file_penawaran">File Penawaran</label>
-                            <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf" required>
+                            <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf">
                         </div>
                         <div class="form-group">
                             <label for="upload">Upload BAP</label>

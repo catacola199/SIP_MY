@@ -122,7 +122,7 @@
                                                             <p class=" spstatus bg-success text-white"><?php echo $data->status ?></p>
                                                         <?php endif; ?>
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center">
                                                         <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>">
                                                             <i class="fas fa-info" data-toggle="tooltip" data-placement="bottom" title="Detail"></i>
                                                         </a>

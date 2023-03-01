@@ -75,7 +75,7 @@ class Jadwal_Teknisi extends CI_Controller
 			'id_pengguna'	    => $this->input->post('id_pengguna'),
 			'nama_driver'	    => $this->input->post('nama_driver'),
 			'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
-			'file_invoice'   	=> $this->M_JadwalTeknisi->_uploadFileterjadwal()
+			'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFileterjadwal()
 		);
 
 		$data1 = array(
@@ -92,25 +92,33 @@ class Jadwal_Teknisi extends CI_Controller
 
 	public function update_uploadDoc()
 	{
-		$id = array(
-			'no_permohonan' 	=> $this->input->post('no_permohonan')
+		$id = $this->input->post('no_permohonan');
+		$idpermohonan = array(
+			'no_permohonan' => $this->input->post('no_permohonan')
 		);
-		$data = array(
-			'no_permohonan' 	=> $this->input->post('no_permohonan'),
-			'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFilePenawaran()
-		);
-
 		$data1 = array(
 			'status'			=> "TERUNGGAH"
 		);
+		
+		if (!empty($_FILES["file_penawaran"]["name"])) {
+			$data = array(
+				'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFileterjadwal()
+			);
+			$this->M_JadwalTeknisi->_deleteFilePenawaran($id);
+        } else {
+			$data = array(
+				'file_penawaran'   	=> $this->input->post('file_penawaran_old')
+			);
+        }
+
 		//tambah data 
-		$this->M_JadwalTeknisi->simpandataupload($data);
+		$this->M_JadwalTeknisi->update_filePenawaran($data,$idpermohonan);
 		//Upload Dokumen
 		$this->M_JadwalTeknisi->_uploadFileBap();
 		// update status
-		$this->M_JadwalTeknisi->update_jadtek($data1, $id);
+		$this->M_JadwalTeknisi->update_jadtek($data1, $idpermohonan);
 
-		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate'. $filename);
+		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
 		redirect(base_url('teknisis'));
 	}
 
