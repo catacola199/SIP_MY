@@ -7,7 +7,6 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Jadwal </h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-
                 <div class="modal-body">
                     <div class="row mb-3 justify-content-md-center">
                         <div class="col">
@@ -116,7 +115,9 @@
                                     <?php if ($data->file_invoice == null) : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
-                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black text-capitalize"><?= $data->file_invoice ?></label>
+                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
+                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#invoice-<?= $data->id_permohonan ?>"><?= $data->file_invoice?></a>
+                                        </label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="mb-1 row">
@@ -189,6 +190,26 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="invoice-<?= $data->id_permohonan ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-toggle="modal" href="#detail-<?= $data->id_permohonan ?>" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><?= base_url('upload/invoice/'.$data->file_invoice)?></p>
+                <iframe
+                    src="https://drive.google.com/viewerng/viewer?embedded=true&url=<?= base_url('upload/invoice/'.$data->file_invoice)?>#toolbar=0&scrollbar=0"
+                    frameBorder="0"
+                    scrolling="auto"
+                    height="100%"
+                    width="100%"
+                ></iframe>
                 </div>
             </div>
         </div>
