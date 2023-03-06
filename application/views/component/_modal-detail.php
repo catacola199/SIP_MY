@@ -116,6 +116,9 @@
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
+                                        <a target="_blank" href="<?php echo site_url('Jadwal_Teknisi/viewInvoice/'.$data->no_permohonan) ?>"><?= $data->file_invoice?></a>
+                                        </label>
+                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
                                             <a href="#!" data-bs-toggle="modal" data-bs-target="#invoice-<?= $data->id_permohonan ?>"><?= $data->file_invoice?></a>
                                         </label>
                                     <?php endif; ?>
@@ -197,19 +200,12 @@
     <div class="modal fade" id="invoice-<?= $data->id_permohonan ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-toggle="modal" href="#detail-<?= $data->id_permohonan ?>" aria-label="Close"></button>
-                </div>
                 <div class="modal-body">
-                    <p><?= base_url('upload/invoice/'.$data->file_invoice)?></p>
-                <iframe
-                    src="https://drive.google.com/viewerng/viewer?embedded=true&url=<?= base_url('upload/invoice/'.$data->file_invoice)?>#toolbar=0&scrollbar=0"
-                    frameBorder="0"
-                    scrolling="auto"
-                    height="100%"
-                    width="100%"
-                ></iframe>
+                    <button type="button" class="btn-close float-end" data-bs-toggle="modal" href="#detail-<?= $data->id_permohonan ?>" aria-label="Close"></button>
+                    <p><?= $data->file_invoice?></p>
+                    <div class="row">
+                        <embed type="application/pdf" src="<?= base_url('upload/invoice/'.$data->file_invoice)?>" height="550"></embed>
+                    </div>
                 </div>
             </div>
         </div>
