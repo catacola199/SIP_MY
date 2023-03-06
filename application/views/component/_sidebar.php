@@ -34,7 +34,7 @@
                     </li>
                     <li class="sidebar-item">
                         <a class="sidebar-link sidebar-link" href="<?= base_url('usertek') ?>" aria-expanded="false">
-                        <i data-feather="file-text" class="feather-icon"></i>
+                            <i data-feather="file-text" class="feather-icon"></i>
                             <span class="hide-menu">Jadwal</span>
                         </a>
                     </li>
@@ -44,7 +44,7 @@
                     <li class="nav-small-cap">
                         <span class="hide-menu">Applications</span>
                     </li>
-                   
+
                     <li class="sidebar-item">
                         <a class="sidebar-link sidebar-link" href="<?= base_url('compro') ?>" aria-expanded="false">
                             <i data-feather="book" class="feather-icon"></i>
@@ -63,7 +63,7 @@
                         <span class="hide-menu">Teknisi</span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link sidebar-link" href="<?= base_url('teknisis') ?>" aria-expanded="false">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('teknisii') ?>" aria-expanded="false">
                             <i data-feather="file-text" class="feather-icon"></i>
                             <span class="hide-menu">Jadwal</span>
                         </a>
@@ -132,8 +132,8 @@
 
                         </ul>
                     </li>
-                    
-                    
+
+
                     <!-- <li class="list-divider"></li> -->
                     <li class="sidebar-item">
                         <a class="sidebar-link has-arrow btn btn-outline-light" href="javascript:void(0)" aria-expanded="false" style="border:0; border-radius: 0 50px 50px 0;"><i data-feather="sliders" class="feather-icon"></i>
