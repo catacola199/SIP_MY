@@ -115,7 +115,7 @@
                                     <?php if ($data->file_penawaran == null) : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
-                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black text-capitalize"><?= $data->file_buktibayar ?></label>
+                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black text-capitalize"><?= $data->file_penawaran ?></label>
 
                                     <?php endif; ?>
                                 </div>
