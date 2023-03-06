@@ -99,20 +99,21 @@ class Jadwal_Teknisi extends CI_Controller
 		$data1 = array(
 			'status'			=> "TERUNGGAH"
 		);
-		
+
 		if (!empty($_FILES["file_penawaran"]["name"])) {
 			$data = array(
-				'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFileterjadwal()
+				'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFileterjadwal(),
+				'file_st'   		=> $this->M_JadwalTeknisi->_uploadFileSuratTugas()
 			);
 			$this->M_JadwalTeknisi->_deleteFilePenawaran($id);
-        } else {
+		} else {
 			$data = array(
 				'file_penawaran'   	=> $this->input->post('file_penawaran_old')
 			);
-        }
+		}
 
 		//tambah data 
-		$this->M_JadwalTeknisi->update_filePenawaran($data,$idpermohonan);
+		$this->M_JadwalTeknisi->update_filePenawaran($data, $idpermohonan);
 		//Upload Dokumen
 		$this->M_JadwalTeknisi->_uploadFileBap();
 		// update status
@@ -200,30 +201,34 @@ class Jadwal_Teknisi extends CI_Controller
 		redirect(base_url('usertek'));
 	}
 
-	public function viewInvoice($id){
+	public function viewInvoice($id)
+	{
 		$file = $this->db->get_where('teknisi_selesai', ["no_permohonan" => $id])->row()->file_invoice;
-		$filename = 'upload/invoice/'.$file;
+		$filename = 'upload/invoice/' . $file;
 		header("Content-type: application/pdf");
 		header("Content-Length: " . filesize($filename));
 		readfile($filename);
 	}
-	public function viewBukti($id){
+	public function viewBukti($id)
+	{
 		$file = $this->db->get_where('teknisi_selesai', ["no_permohonan" => $id])->row()->file_buktibayar;
-		$filename = 'upload/bukti_bayar/'.$file;
+		$filename = 'upload/bukti_bayar/' . $file;
 		header("Content-type: application/pdf");
 		header("Content-Length: " . filesize($filename));
 		readfile($filename);
 	}
-	public function viewBap($id){
+	public function viewBap($id)
+	{
 		$file = $this->db->get_where('teknisi_selesai', ["no_permohonan" => $id])->row()->file_invoice;
-		$filename = 'upload/invoice/'.$file;
+		$filename = 'upload/invoice/' . $file;
 		header("Content-type: application/pdf");
 		header("Content-Length: " . filesize($filename));
 		readfile($filename);
 	}
-	public function viewPenawaran($id){
+	public function viewPenawaran($id)
+	{
 		$file = $this->db->get_where('teknisi_terjadwal', ["no_permohonan" => $id])->row()->file_penawaran;
-		$filename = 'upload/penawaran/'.$file;
+		$filename = 'upload/penawaran/' . $file;
 		header("Content-type: application/pdf");
 		header("Content-Length: " . filesize($filename));
 		readfile($filename);

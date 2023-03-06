@@ -184,8 +184,11 @@
     <!-- Modal Edit -->
     <?php $this->load->view('dashboard/modal_jadwal/modal-edit') ?>
 
-    <!-- Form Terjadwal Modal -->
+    <!-- Modal Terjadwal  -->
     <?php $this->load->view('dashboard/modal_jadwal/modal-terjadwal') ?>
+
+    <!-- Modal Tertunda -->
+
 
     <!-- Modal Upload -->
     <?php $this->load->view('dashboard/modal_jadwal/modal-upload') ?>
@@ -213,16 +216,16 @@
                 $('#row' + button_id + '').remove();
             });
 
-            $(document).on('change','#status' ,function(){
-                if($('#status option:selected').text() === "Selesai"){
-                    $('#keterangan').prop('disabled', true);      
-                }else{
+            $(document).on('change', '#status', function() {
+                if ($('#status option:selected').text() === "Selesai") {
+                    $('#keterangan').prop('disabled', true);
+                } else {
                     $('#keterangan').removeAttr("disabled");
                 }
             });
         });
 
-        
+
 
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
