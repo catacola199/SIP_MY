@@ -115,8 +115,9 @@
                                     <?php if ($data->file_penawaran == null) : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
-                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black text-capitalize"><?= $data->file_penawaran ?></label>
-
+                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black text-capitalize">
+                                            <a href="<?php echo base_url('upload/penawaran/' . $data->file_penawaran) ?>" target="_blank"> <?= $data->file_penawaran ?> </a>
+                                        </label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="mb-1 row">
@@ -124,11 +125,12 @@
                                     <?php if ($data->file_invoice == null) : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
-                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
+                                        <!-- <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
                                             <a target="_blank" href="<?php echo site_url('Jadwal_Teknisi/viewInvoice/' . $data->no_permohonan) ?>"><?= $data->file_invoice ?></a>
-                                        </label>
+                                        </label> -->
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
-                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#invoice-<?= $data->id_permohonan ?>"><?= $data->file_invoice ?></a>
+                                            <a href="<?php echo base_url('upload/invoice/' . $data->file_invoice) ?>" target="_blank"> <?= $data->file_invoice ?> </a>
+                                            <!-- <a href="#!" data-bs-toggle="modal" data-bs-target="#invoice-<?= $data->id_permohonan ?>"><?= $data->file_invoice ?></a> -->
                                         </label>
                                     <?php endif; ?>
                                 </div>
@@ -137,7 +139,9 @@
                                     <?php if ($data->file_buktibayar == null) : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
-                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black text-capitalize"><?= $data->file_buktibayar ?></label>
+                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black text-capitalize">
+                                            <a href="<?php echo base_url('upload/bukti_bayar/' . $data->file_buktibayar) ?>" target="_blank"> <?= $data->file_buktibayar ?> </a>
+                                        </label>
 
                                     <?php endif; ?>
                                 </div>
@@ -173,7 +177,7 @@
                                             <th>Tipe Produk</th>
                                             <th>Jenis Produk</th>
                                             <th>Lampiran</th>
-                                            <?php if (($this->fungsi->user_login()->id_role) != 4) : ?>
+                                            <?php if ((($this->fungsi->user_login()->id_role) != 4) && ($data->status == 'BARU')): ?>
                                                 <th>Action</th>
                                             <?php endif; ?>
                                         </tr>
@@ -188,8 +192,14 @@
                                                     <td class="text-capitalize"><?php echo $produk->nama_produk ?></td>
                                                     <td class="text-capitalize"><?php echo $produk->tipe_produk ?></td>
                                                     <td class="text-capitalize"><?php echo $produk->jenis_produk ?></td>
-                                                    <td><a class="btn btn-sm btn-outline-primary" href="<?php echo base_url('upload/penawaran/' . $data->file_penawaran) ?>" target="_blank"> D </a></td>
-                                                    <?php if (($this->fungsi->user_login()->id_role) != 4) : ?>
+                                                    <td>
+                                                        <?php if($produk->dokumen_bap != null):?>
+                                                            <a class="btn btn-primary" href="<?php echo base_url('upload/dokumen_bap/' . $produk->dokumen_bap) ?>" target="_blank"> Lihat Lampiran </a>
+                                                        <?php else:?>
+                                                            <a class="btn btn-primary disabled" href="#!" target="_blank" > Lihat Lampiran </a>
+                                                        <?php endif;?>
+                                                    </td>
+                                                    <?php if ((($this->fungsi->user_login()->id_role) != 4) && ($data->status == 'BARU')): ?>
                                                         <td>
                                                             <a onclick="deleteConfirm('<?php echo site_url('Jadwal_Teknisi/delete_jadtek/' . $produk->id_produk) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
                                                                 <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>

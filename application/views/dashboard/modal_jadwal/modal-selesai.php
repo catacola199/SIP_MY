@@ -49,8 +49,8 @@
                         </div>
                         
                         <div class="form-group">
-                            <div class="form-floating" disabled>
-                                <textarea class="form-control" placeholder="Tulis disini" id="keterangan" name="keterangan" autocomplete="off" required disabled></textarea>
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Tulis disini" id="keterangan" name="keterangan" autocomplete="off"></textarea>
                                 <label for="keterangan">Keterangan</label>
                             </div>
                         </div>

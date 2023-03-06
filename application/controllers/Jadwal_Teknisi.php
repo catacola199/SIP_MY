@@ -207,4 +207,25 @@ class Jadwal_Teknisi extends CI_Controller
 		header("Content-Length: " . filesize($filename));
 		readfile($filename);
 	}
+	public function viewBukti($id){
+		$file = $this->db->get_where('teknisi_selesai', ["no_permohonan" => $id])->row()->file_buktibayar;
+		$filename = 'upload/bukti_bayar/'.$file;
+		header("Content-type: application/pdf");
+		header("Content-Length: " . filesize($filename));
+		readfile($filename);
+	}
+	public function viewBap($id){
+		$file = $this->db->get_where('teknisi_selesai', ["no_permohonan" => $id])->row()->file_invoice;
+		$filename = 'upload/invoice/'.$file;
+		header("Content-type: application/pdf");
+		header("Content-Length: " . filesize($filename));
+		readfile($filename);
+	}
+	public function viewPenawaran($id){
+		$file = $this->db->get_where('teknisi_terjadwal', ["no_permohonan" => $id])->row()->file_penawaran;
+		$filename = 'upload/penawaran/'.$file;
+		header("Content-type: application/pdf");
+		header("Content-Length: " . filesize($filename));
+		readfile($filename);
+	}
 }

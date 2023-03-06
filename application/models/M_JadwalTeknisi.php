@@ -6,9 +6,10 @@ class M_JadwalTeknisi extends CI_Model
 
     public function getProdukperPermohonan()
     {
-        $this->db->select('teknisi_nopermohonan.`no_permohonan`,teknisi_nopermohonan.`id_permohonan`, produk.`id_produk`, produk.`nama_produk`,produk.`tipe_produk`, produk.`jenis_produk`');
+        $this->db->select('teknisi_nopermohonan.`no_permohonan`,teknisi_nopermohonan.`id_permohonan`, produk.`id_produk`, produk.`nama_produk`,produk.`tipe_produk`, produk.`jenis_produk`, teknisi_dokumen.`dokumen_bap`');
         $this->db->from('teknisi_nopermohonan');
-        $this->db->join('produk', 'produk.id_produk = teknisi_nopermohonan.id_produk');
+        $this->db->join('produk', 'teknisi_nopermohonan.id_produk = produk.id_produk','left');
+        $this->db->join('teknisi_dokumen', ' teknisi_nopermohonan.`id_permohonan`= teknisi_dokumen.`id_permohonan`','left');
         $query = $this->db->get();
         return  $query->result();
     }
