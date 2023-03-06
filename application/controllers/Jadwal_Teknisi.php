@@ -61,7 +61,7 @@ class Jadwal_Teknisi extends CI_Controller
 
 		$this->M_JadwalTeknisi->simpandatajadtek($result);
 		$this->session->set_flashdata('notif', 'Permohonan berhasil disimpan');
-		redirect(base_url('teknisis'));
+		redirect(base_url('teknisii'));
 	}
 
 	// Update Terjadwal
@@ -87,7 +87,7 @@ class Jadwal_Teknisi extends CI_Controller
 		$this->M_JadwalTeknisi->update_jadtek($data1, $id);
 
 		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
-		redirect(base_url('teknisis'));
+		redirect(base_url('teknisii'));
 	}
 
 	public function update_uploadDoc()
@@ -119,7 +119,7 @@ class Jadwal_Teknisi extends CI_Controller
 		$this->M_JadwalTeknisi->update_jadtek($data1, $idpermohonan);
 
 		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
-		redirect(base_url('teknisis'));
+		redirect(base_url('teknisii'));
 	}
 
 	// Update Selesai Jadwal
@@ -145,7 +145,7 @@ class Jadwal_Teknisi extends CI_Controller
 		$this->M_JadwalTeknisi->update_jadtek($data1, $id);
 
 		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
-		redirect(base_url('teknisis'));
+		redirect(base_url('teknisii'));
 	}
 	// Update User
 	public function update_baru()
@@ -163,7 +163,7 @@ class Jadwal_Teknisi extends CI_Controller
 		);
 		$this->M_JadwalTeknisi->update_jadtek($data, $id);
 		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
-		redirect(base_url('teknisis'));
+		redirect(base_url('teknisii'));
 	}
 
 	// Delete jadwal
@@ -173,7 +173,7 @@ class Jadwal_Teknisi extends CI_Controller
 
 		if ($this->M_JadwalTeknisi->del_all($id)) {
 			$this->session->set_flashdata('notif', 'Jadwal berhasil dihapus');
-			redirect(base_url('teknisis'));
+			redirect(base_url('teknisii'));
 		}
 	}
 
