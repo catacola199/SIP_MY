@@ -63,5 +63,5 @@ $route['permintaans'] = 'permintaan';
 $route['profiles'] = 'profile';
 $route['compro'] = 'brosur/brosur';
 $route['usertek'] = 'Jadwal_Teknisi/usertek';
-$route['teknisii'] = '=Jadwal_Teknisi';
+$route['teknisii'] = 'Jadwal_Teknisi';
 // $route['login'] = 'login/auth';
