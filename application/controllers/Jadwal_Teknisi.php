@@ -199,4 +199,12 @@ class Jadwal_Teknisi extends CI_Controller
 		$this->session->set_flashdata('notif', ucfirst($nama) . ' berhasil Terlaksana');
 		redirect(base_url('usertek'));
 	}
+
+	public function viewInvoice($id){
+		$file = $this->db->get_where('teknisi_selesai', ["no_permohonan" => $id])->row()->file_invoice;
+		$filename = 'upload/invoice/'.$file;
+		header("Content-type: application/pdf");
+		header("Content-Length: " . filesize($filename));
+		readfile($filename);
+	}
 }
