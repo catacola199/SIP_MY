@@ -1,6 +1,6 @@
 <!-- Modal Detail -->
 <?php foreach ($jadwal_tek as $data) : ?>
-    <div class="modal fade" id="detail-<?= $data->id_permohonan ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="detail-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
@@ -115,8 +115,8 @@
                                     <?php if ($data->file_penawaran == null) : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
-                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black text-capitalize">
-                                            <a href="<?php echo base_url('upload/penawaran/' . $data->file_penawaran) ?>" target="_blank"> <?= $data->file_penawaran ?> </a>
+                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
+                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#penawaran-<?= $data->id_permohonan ?>"><?= $data->file_penawaran ?></a>
                                         </label>
                                     <?php endif; ?>
                                 </div>
@@ -125,12 +125,8 @@
                                     <?php if ($data->file_invoice == null) : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
-                                        <!-- <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
-                                            <a target="_blank" href="<?php echo site_url('Jadwal_Teknisi/viewInvoice/' . $data->no_permohonan) ?>"><?= $data->file_invoice ?></a>
-                                        </label> -->
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
-                                            <a href="<?php echo base_url('upload/invoice/' . $data->file_invoice) ?>" target="_blank"> <?= $data->file_invoice ?> </a>
-                                            <!-- <a href="#!" data-bs-toggle="modal" data-bs-target="#invoice-<?= $data->id_permohonan ?>"><?= $data->file_invoice ?></a> -->
+                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#inovice-<?= $data->id_permohonan ?>"><?= $data->file_invoice ?></a>
                                         </label>
                                     <?php endif; ?>
                                 </div>
@@ -139,10 +135,9 @@
                                     <?php if ($data->file_buktibayar == null) : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
-                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black text-capitalize">
-                                            <a href="<?php echo base_url('upload/bukti_bayar/' . $data->file_buktibayar) ?>" target="_blank"> <?= $data->file_buktibayar ?> </a>
+                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
+                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#bayar-<?= $data->id_permohonan ?>"><?= $data->file_buktibayar ?></a>
                                         </label>
-
                                     <?php endif; ?>
                                 </div>
                                 <div class="mb-1 row">
@@ -218,14 +213,40 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="invoice-<?= $data->id_permohonan ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="inovice-<?= $data->id_permohonan ?>" tabindex="-1"  data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-body">
                     <button type="button" class="btn-close float-end" data-bs-toggle="modal" href="#detail-<?= $data->id_permohonan ?>" aria-label="Close"></button>
                     <p><?= $data->file_invoice ?></p>
                     <div class="row">
-                        <embed type="application/pdf" src="<?= base_url('upload/invoice/' . $data->file_invoice) ?>" height="550"></embed>
+                        <embed type="application/pdf" src="<?= base_url('upload/invoice/' . $data->file_invoice) ?>" height="530"></embed>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="bayar-<?= $data->id_permohonan ?>" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"  ria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close float-end" data-bs-toggle="modal" href="#detail-<?= $data->id_permohonan ?>" aria-label="Close"></button>
+                    <p><?= $data->file_buktibayar ?></p>
+                    <div class="row">
+                        <embed type="application/pdf" src="<?= base_url('upload/bukti_bayar/' . $data->file_buktibayar) ?>" height="530"></embed>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="penawaran-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close float-end" data-bs-toggle="modal" href="#detail-<?= $data->id_permohonan ?>" aria-label="Close"></button>
+                    <p><?= $data->file_penawaran ?></p>
+                    <div class="row">
+                        <embed type="application/pdf" src="<?= base_url('upload/penawaran/' . $data->file_penawaran) ?>" height="530"></embed>
                     </div>
                 </div>
             </div>
