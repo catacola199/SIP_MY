@@ -41,15 +41,37 @@
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ============================================================== -->
-                <li class="nav-item d-none d-md-block" id="fullscreen">
-                    <a class="nav-link" href="javascript:void(0)" onclick="document.documentElement.requestFullscreen()">
+                <li class="nav-item d-none d-md-block">
+                    <a class="nav-link" href="javascript:void(0)" id="fullscreen" onclick="document.documentElement.requestFullscreen()">
                         <span><i data-feather="maximize" class="feather-icon"></i></span>
                     </a>
                 </li>
-                <li class="nav-item d-none d-md-block" id="exit-fullscreen">
-                    <a class="nav-link" href="javascript:void(0)" onclick="document.exitFullscreen()" style="display:none;">
+                <li class="nav-item d-none d-md-block">
+                    <a class="nav-link" href="javascript:void(0)"  id="exit_fullscreen" onclick="document.exitFullscreen()" style="display:none;">
                         <span><i data-feather="minimize" class="feather-icon"></i></span>
                     </a>
+                </li>
+                
+               
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle position-relative" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i data-feather="bell" class="feather-icon"></i>
+                        <span class="position-absolute translate-middle badge rounded-pill bg-danger" style="top:25px; right:-20px">
+                        <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" style="width:400px">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                                <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">List group item heading</h5>
+                                <small>3 days ago</small>
+                                </div>
+                                <p class="mb-1">Some placeholder content in a paragraph.</p>
+                                <small>And some small print.</small>
+                            </a>
+                        </div>
+                    </ul>
                 </li>
                 <!-- ============================================================== -->
                 <!-- User profile and search -->

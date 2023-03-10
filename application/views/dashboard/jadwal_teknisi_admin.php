@@ -52,35 +52,22 @@
                             <div class="card-body">
                                 <h4 class="card-title">Daftar Jadwal Admin Teknisi</h4>
                                 <hr>
-                                <!-- <div class="form-group">
-                                    <div class="form-floating">
-                                        <select id="status" name="status" class="form-control" required>
-                                            <option disabled selected>Pilih salah satu...</option>
-                                            <option value="1">Selesai</option>
-                                            <option value="0">Tidak Selesai</option>
-                                        </select>
-                                        <label for="status">Status</label>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <div class="form-floating" disabled>
-                                        <textarea class="form-control" placeholder="Tulis disini" id="keterangan" name="keterangan" autocomplete="off" required disabled></textarea>
-                                        <label for="keterangan">Keterangan</label>
-                                    </div>
-                                </div> -->
                                 <h6 class="card-subtitle mt-4">
                                     <div class="btn-list">
+                                        <button type="button" class="btn-outline-dark btn float-left" style="border:none;" disabled>Status</button>
+                                        <select class="form-select float-left col-2" aria-label="Default select example" id="status">
+                                            <option value="all">Semua</option>
+                                            <option value="baru">Baru</option>
+                                            <option value="terjadwal">Terjadwal</option>
+                                            <option value="tertunda">Tertunda</option>
+                                            <option value="terlaksana">Terlaksana</option>
+                                            <option value="terunggah">Terunggah</option>
+                                            <option value="selesai">Selesai</option>
+                                            <option value="gagal">Tidak Selesai</option>
+                                        </select>
                                         <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="Segarkan"></i> </a>
                                         <button class="btn btn-outline-success float-right" data-bs-toggle="modal" data-bs-target="#tambah"><i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="Tambah Data"></i></button>
-                                        <button type="button" class="btn-outline-dark btn float-left" style="border:none;" disabled>Status</button>
-                                        <button type="button" class="btn-outline-info btn float-left" id="all">Semua</button>
-                                        <button type="button" class="btn btn-outline-primary float-left" id="baru">Baru</button>
-                                        <button type="button" class="btn btn-outline-warning float-left" id="terjadwal">Terjadwal</button>
-                                        <button type="button" class="btn btn-outline-secondary float-left" id="terlaksana">Terlaksana</button>
-                                        <button type="button" class="btn btn-outline-dark float-left" id="upload">Terunggah</button>
-                                        <button type="button" class="btn btn-outline-success float-left" id="selesai">Selesai</button>
-                                        <button type="button" class="btn btn-outline-danger float-left" id="gagal">Tidak Selesai</button>
+                                        
                                     </div>
                                 </h6>
                                 <div class="table-responsive">
@@ -212,13 +199,16 @@
                 var button_id = $(this).attr("id");
                 $('#row' + button_id + '').remove();
             });
+           
+            $('#fullscreen').on('click', function() {
+                document.getElementById('exit_fullscreen').style.removeProperty("display");
+                document.getElementById('fullscreen').style.display = 'none';
 
-            $(document).on('change','#status' ,function(){
-                if($('#status option:selected').text() === "Selesai"){
-                    $('#keterangan').prop('disabled', true);      
-                }else{
-                    $('#keterangan').removeAttr("disabled");
-                }
+            });
+            $('#exit_fullscreen').on('click', function() {
+                document.getElementById('fullscreen').style.removeProperty("display");
+                document.getElementById('exit_fullscreen').style.display = 'none';
+
             });
         });
 
@@ -230,28 +220,34 @@
             function filterColumn(value) {
                 table.column(5).search(value).draw();
             }
-
             var table = $('#multi_col_order').DataTable();
-            $('#all').on('click', function() {
-                filterColumn('');
-            });
-            $('#baru').on('click', function() {
-                filterColumn('Baru');
-            });
-            $('#terjadwal').on('click', function() {
-                filterColumn('Terjadwal');
-            });
-            $('#terlaksana').on('click', function() {
-                filterColumn('Terlaksana');
-            });
-            $('#upload').on('click', function() {
-                filterColumn('Terunggah');
-            });
-            $('#selesai').on('click', function() {
-                filterColumn('Selesai');
-            });
-            $('#gagal').on('click', function() {
-                filterColumn('tidak');
+
+            $(document).on('change','#status' ,function(){
+                if($('#status option:selected').val() === "all"){
+                    filterColumn('');
+                    console.log("1");
+                }else if($('#status option:selected').val() === "baru"){
+                    filterColumn('Baru');
+                    console.log("2");
+                }else if($('#status option:selected').val() === "terjadwal"){
+                    filterColumn('Terjadwal');
+                    console.log("3");
+                }else if($('#status option:selected').val() === "tertunda"){
+                    filterColumn('Tertunda');
+                    console.log("4");
+                }else if($('#status option:selected').val() === "terlaksana"){
+                    filterColumn('Terlaksana');
+                    console.log("5");
+                }else if($('#status option:selected').val() === "terunggah"){
+                    filterColumn('Terunggah');
+                    console.log("6");
+                }else if($('#status option:selected').val() === "selesai"){
+                    filterColumn('Selesai');
+                    console.log("7");
+                }else{
+                    filterColumn('Tidak');
+                    console.log("0");
+                }
             });
 
         });
