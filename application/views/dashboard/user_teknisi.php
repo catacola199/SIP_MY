@@ -92,15 +92,17 @@
 
                                                     <td>
                                                         <?php if ($data->status == 'BARU') : ?>
-                                                            <p class="spstatus bg-info text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-info text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
-                                                            <p class="spstatus bg-warning text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-warning text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
-                                                            <p class="spstatus bg-secondary text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-secondary text-white"><?php echo $data->status ?></p>
+                                                        <?php elseif ($data->status == 'TERUNGGAH') : ?>
+                                                            <p class=" spstatus bg-dark text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TIDAK SELESAI') : ?>
-                                                            <p class="spstatus bg-danger text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-danger text-white"><?php echo $data->status ?></p>
                                                         <?php else : ?>
-                                                            <p class="spstatus bg-success text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-success text-white"><?php echo $data->status ?></p>
                                                         <?php endif; ?>
                                                     </td>
                                                     <td class="text-center">
@@ -108,6 +110,9 @@
                                                             <i class="fas fa-info" data-toggle="tooltip" data-placement="bottom" title="Detail"></i>
                                                         </a>
                                                         <?php if ($data->status == 'TERJADWAL') : ?>
+                                                            <a href="#!" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#tunda-<?= $data->id_permohonan ?>">
+                                                                <i class="fas fa-exclamation-circle" data-toggle="tooltip" data-placement="bottom" title="Tertunda"></i>
+                                                            </a>
                                                             <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifteknisi/' . $data->no_permohonan) ?>')" href="#!" class="btn btn-sm btn-outline-primary">
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Terlaksana"></i>
                                                             </a>
@@ -141,6 +146,9 @@
 
     <!-- Modal detail -->
     <?php $this->load->view('component/_modal-detail') ?>
+
+    <!-- Modal tertunda -->
+    <?php $this->load->view('dashboard/modal_jadwal/modal-tertunda') ?>
 
 
     <script>

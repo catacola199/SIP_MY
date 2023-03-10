@@ -67,7 +67,6 @@
                                         </select>
                                         <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="Segarkan"></i> </a>
                                         <button class="btn btn-outline-success float-right" data-bs-toggle="modal" data-bs-target="#tambah"><i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="Tambah Data"></i></button>
-                                        
                                     </div>
                                 </h6>
                                 <div class="table-responsive">
@@ -121,6 +120,10 @@
                                                             <a href="#!" class="btn btn-sm btn-outline-primary disabled" data-bs-toggle="modal">
                                                                 <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
                                                             </a>
+                                                        <?php elseif ($data->status == 'TERTUNDA') : ?>
+                                                            <a href="#!" class="btn btn-sm btn-outline-orange disabled" data-bs-toggle="modal">
+                                                                <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Tertunda"></i>
+                                                            </a>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#upload-<?= $data->id_permohonan ?>">
                                                                 <i class="fas fa-file" data-toggle="tooltip" data-placement="bottom" title="Unggah Dokumen"></i>
@@ -171,8 +174,12 @@
     <!-- Modal Edit -->
     <?php $this->load->view('dashboard/modal_jadwal/modal-edit') ?>
 
-    <!-- Form Terjadwal Modal -->
+    <!-- Modal Terjadwal  -->
     <?php $this->load->view('dashboard/modal_jadwal/modal-terjadwal') ?>
+
+    <!-- Modal Tertunda -->
+    
+    
 
     <!-- Modal Upload -->
     <?php $this->load->view('dashboard/modal_jadwal/modal-upload') ?>
@@ -208,11 +215,10 @@
             $('#exit_fullscreen').on('click', function() {
                 document.getElementById('fullscreen').style.removeProperty("display");
                 document.getElementById('exit_fullscreen').style.display = 'none';
-
             });
         });
 
-        
+
 
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
@@ -221,7 +227,6 @@
                 table.column(5).search(value).draw();
             }
             var table = $('#multi_col_order').DataTable();
-
             $(document).on('change','#status' ,function(){
                 if($('#status option:selected').val() === "all"){
                     filterColumn('');

@@ -8,8 +8,8 @@ class M_JadwalTeknisi extends CI_Model
     {
         $this->db->select('teknisi_nopermohonan.`no_permohonan`,teknisi_nopermohonan.`id_permohonan`, produk.`id_produk`, produk.`nama_produk`,produk.`tipe_produk`, produk.`jenis_produk`, teknisi_dokumen.`dokumen_bap`');
         $this->db->from('teknisi_nopermohonan');
-        $this->db->join('produk', 'teknisi_nopermohonan.id_produk = produk.id_produk','left');
-        $this->db->join('teknisi_dokumen', ' teknisi_nopermohonan.`id_permohonan`= teknisi_dokumen.`id_permohonan`','left');
+        $this->db->join('produk', 'teknisi_nopermohonan.id_produk = produk.id_produk', 'left');
+        $this->db->join('teknisi_dokumen', ' teknisi_nopermohonan.`id_permohonan`= teknisi_dokumen.`id_permohonan`', 'left');
         $query = $this->db->get();
         return  $query->result();
     }
@@ -74,6 +74,12 @@ class M_JadwalTeknisi extends CI_Model
         return TRUE;
     }
 
+    public function simpandatatertunda($data)
+    {
+        $this->db->insert_batch('teknisi_tertunda', $data);
+        return TRUE;
+    }
+
     public function simpandataterjadwal($data)
     {
         $this->db->insert('teknisi_terjadwal', $data);
@@ -101,7 +107,7 @@ class M_JadwalTeknisi extends CI_Model
         $config['overwrite']            = true;
         $config['max_size']             = 5094; // 1MB
 
-        $this->load->library('upload', $config,'uploadpenawaran');
+        $this->load->library('upload', $config, 'uploadpenawaran');
         $this->uploadpenawaran->initialize($config);
 
         if ($this->uploadpenawaran->do_upload('file_penawaran')) {
@@ -110,46 +116,67 @@ class M_JadwalTeknisi extends CI_Model
         //  print_r($this->upload->display_errors());
         return null;
     }
+
+    // Upload Dokumen 
+    public function _uploadFileSuratTugas()
+    {
+        $config = array();
+        $config['upload_path']          = './upload/surattugas/';
+        $config['allowed_types']        = 'pdf|doc|docx';
+        // $config['file_name']            = $this->input->post('nama_brosur');
+        $config['encrypt_name']         = false;
+        $config['overwrite']            = true;
+        $config['max_size']             = 5094; // 1MB
+
+        $this->load->library('upload', $config, 'uploadsurattugas');
+        $this->uploadsurattugas->initialize($config);
+
+        if ($this->uploadsurattugas->do_upload('file_st')) {
+            return $this->uploadsurattugas->data("file_name");
+        }
+        //  print_r($this->upload->display_errors());
+        return null;
+    }
+
     // Upload Dokumen
-    
+
     public function _uploadFileBap()
     {
         $config = array();
         $config['upload_path']          = './upload/dokumen_bap/';
         $config['allowed_types']        = 'pdf|doc|docx';
         // $config['file_name']            = $this->input->post('id_permohon[]');
-		$config['encrypt_name']         = false;
+        $config['encrypt_name']         = false;
         $config['overwrite']            = true;
         $config['max_size']             = 5094; // 1MB
 
-		$this->load->library('upload',$config,'dokumenbap');
+        $this->load->library('upload', $config, 'dokumenbap');
         $this->dokumenbap->initialize($config);
 
-		$jumlah_berkas = count($_FILES['file_bap']['name']);
-		for($i = 0; $i < $jumlah_berkas;$i++)
-		{
-            if(!empty($_FILES['file_bap']['name'][$i])){
+        $jumlah_berkas = count($_FILES['file_bap']['name']);
+        for ($i = 0; $i < $jumlah_berkas; $i++) {
+            if (!empty($_FILES['file_bap']['name'][$i])) {
 
-				$_FILES['file']['name'] = $_FILES['file_bap']['name'][$i];
-				$_FILES['file']['type'] = $_FILES['file_bap']['type'][$i];
-				$_FILES['file']['tmp_name'] = $_FILES['file_bap']['tmp_name'][$i];
-				$_FILES['file']['error'] = $_FILES['file_bap']['error'][$i];
-				$_FILES['file']['size'] = $_FILES['file_bap']['size'][$i];
-	   
-				if($this->dokumenbap->do_upload('file')){
-					
-					$uploadData = $this->dokumenbap->data();
-					$data['id_permohonan'] = $this->input->post('id_permohonan')[$i];
-					$data['no_permohonan'] = $this->input->post('no_permohon')[$i];
-					$data['dokumen_bap'] = $uploadData['file_name'];
-					$this->db->insert('teknisi_dokumen',$data);
-				}
-			}
-		}
+                $_FILES['file']['name'] = $_FILES['file_bap']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['file_bap']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['file_bap']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['file_bap']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['file_bap']['size'][$i];
+
+                if ($this->dokumenbap->do_upload('file')) {
+
+                    $uploadData = $this->dokumenbap->data();
+                    $data['id_permohonan'] = $this->input->post('id_permohonan')[$i];
+                    $data['no_permohonan'] = $this->input->post('no_permohon')[$i];
+                    $data['dokumen_bap'] = $uploadData['file_name'];
+                    $this->db->insert('teknisi_dokumen', $data);
+                }
+            }
+        }
         // print_r($this->upload->display_errors());
         return "default.pdf";
     }
-    
+
     // Form Selesai
 
     public function _uploadFileBuktiBayar()
@@ -162,7 +189,7 @@ class M_JadwalTeknisi extends CI_Model
         $config['overwrite']            = true;
         $config['max_size']             = 5094; // 1MB
 
-        $this->load->library('upload', $config,'buktibayar');
+        $this->load->library('upload', $config, 'buktibayar');
         $this->buktibayar->initialize($config);
 
         if ($this->buktibayar->do_upload('file_buktibayar')) {
@@ -182,7 +209,7 @@ class M_JadwalTeknisi extends CI_Model
         $config['overwrite']            = true;
         $config['max_size']             = 5094; // 1MB
 
-        $this->load->library('upload', $config,'invoice');
+        $this->load->library('upload', $config, 'invoice');
         $this->invoice->initialize($config);
 
         if ($this->invoice->do_upload('file_invoice')) {
@@ -208,7 +235,7 @@ class M_JadwalTeknisi extends CI_Model
         $file = $this->getIdTerjadwal($id);
         if ($file->file_penawaran != "default.pdf") {
             $filename = explode(".", $file->file_penawaran)[0];
-            return array_map('unlink', glob(FCPATH."upload/penawaran/$filename.*"));
+            return array_map('unlink', glob(FCPATH . "upload/penawaran/$filename.*"));
         }
     }
 

@@ -26,6 +26,9 @@
                                         <option value="kalibrasi">Kalibrasi</option>
                                         <option value="pemeliharaan">Pemeliharaan</option>
                                         <option value="service">Service</option>
+                                        <option value="service">Setting Ukes</option>
+                                        <option value="service">Presentasi</option>
+                                        <option value="service">Pre-Instal</option>
                                     </select>
                                     <label for="kategori_jadwal">Kategori</label>
                                 </div>
