@@ -74,13 +74,14 @@
                                         <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="Segarkan"></i> </a>
                                         <button class="btn btn-outline-success float-right" data-bs-toggle="modal" data-bs-target="#tambah"><i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="Tambah Data"></i></button>
                                         <button type="button" class="btn-outline-dark btn float-left" style="border:none;" disabled>Status</button>
-                                        <button type="button" class="btn-outline-info btn float-left" id="all">Semua</button>
-                                        <button type="button" class="btn btn-outline-primary float-left" id="baru">Baru</button>
-                                        <button type="button" class="btn btn-outline-warning float-left" id="terjadwal">Terjadwal</button>
-                                        <button type="button" class="btn btn-outline-secondary float-left" id="terlaksana">Terlaksana</button>
-                                        <button type="button" class="btn btn-outline-dark float-left" id="upload">Terunggah</button>
-                                        <button type="button" class="btn btn-outline-success float-left" id="selesai">Selesai</button>
-                                        <button type="button" class="btn btn-outline-danger float-left" id="gagal">Tidak Selesai</button>
+                                        <button type="button" class="btn-outline-info btn float-left" id="all">SEMUA</button>
+                                        <button type="button" class="btn btn-outline-primary float-left" id="baru">BARU</button>
+                                        <button type="button" class="btn btn-outline-warning float-left" id="terjadwal">TERJADWAL</button>
+                                        <button type="button" class="btn btn-outline-orange float-left" id="tertunda">TERTUNDA</button>
+                                        <button type="button" class="btn btn-outline-secondary float-left" id="terlaksana">TERLAKSANA</button>
+                                        <button type="button" class="btn btn-outline-dark float-left" id="upload">TERUNGGAH</button>
+                                        <button type="button" class="btn btn-outline-success float-left" id="selesai">SELESAI</button>
+                                        <button type="button" class="btn btn-outline-danger float-left" id="gagal">TIDAK SELESAI</button>
                                     </div>
                                 </h6>
                                 <div class="table-responsive">
@@ -133,6 +134,10 @@
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary disabled" data-bs-toggle="modal">
                                                                 <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
+                                                            </a>
+                                                        <?php elseif ($data->status == 'TERTUNDA') : ?>
+                                                            <a href="#!" class="btn btn-sm btn-outline-orange disabled" data-bs-toggle="modal">
+                                                                <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Tertunda"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#upload-<?= $data->id_permohonan ?>">
@@ -188,7 +193,8 @@
     <?php $this->load->view('dashboard/modal_jadwal/modal-terjadwal') ?>
 
     <!-- Modal Tertunda -->
-
+    
+    
 
     <!-- Modal Upload -->
     <?php $this->load->view('dashboard/modal_jadwal/modal-upload') ?>
@@ -243,6 +249,9 @@
             });
             $('#terjadwal').on('click', function() {
                 filterColumn('Terjadwal');
+            });
+            $('#tertunda').on('click', function() {
+                filterColumn('Tertunda');
             });
             $('#terlaksana').on('click', function() {
                 filterColumn('Terlaksana');

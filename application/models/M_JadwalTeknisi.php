@@ -74,6 +74,12 @@ class M_JadwalTeknisi extends CI_Model
         return TRUE;
     }
 
+    public function simpandatatertunda($data)
+    {
+        $this->db->insert_batch('teknisi_tertunda', $data);
+        return TRUE;
+    }
+
     public function simpandataterjadwal($data)
     {
         $this->db->insert('teknisi_terjadwal', $data);

@@ -90,6 +90,29 @@ class Jadwal_Teknisi extends CI_Controller
 		redirect(base_url('teknisii'));
 	}
 
+	public function update_tertunda()
+	{
+		$id = array(
+			'no_permohonan' => $this->input->post('no_permohonan')
+		);
+		$data = array(
+			'no_permohonan' 	=> $this->input->post('no_permohonan'),
+			'ket_tunda'	    	=> $this->input->post('ket_tunda')
+
+		);
+
+		$data1 = array(
+			'status'			=> "TERTUNDA"
+		);
+		//tambah data 
+		$this->M_JadwalTeknisi->simpandatatertunda($data);
+		// update status
+		$this->M_JadwalTeknisi->update_jadtek($data1, $id);
+
+		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
+		redirect(base_url('teknisii'));
+	}
+
 	public function update_uploadDoc()
 	{
 		$id = $this->input->post('no_permohonan');
