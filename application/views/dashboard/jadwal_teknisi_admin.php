@@ -123,8 +123,8 @@
                                                                 <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Ganti Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERTUNDA') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary disabled" data-bs-toggle="modal">
-                                                                <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Tertunda"></i>
+                                                            <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifadminteknisi/' . $data->no_permohonan) ?>')" href="#!" class="btn btn-sm btn-outline-primary">
+                                                                <i class="fas fa-share" data-toggle="tooltip" data-placement="bottom" title="Terlaksana"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#upload-<?= $data->id_permohonan ?>">

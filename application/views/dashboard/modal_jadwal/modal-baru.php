@@ -26,9 +26,10 @@
                                         <option value="kalibrasi">Kalibrasi</option>
                                         <option value="pemeliharaan">Pemeliharaan</option>
                                         <option value="service">Service</option>
-                                        <option value="service">Setting Ukes</option>
-                                        <option value="service">Presentasi</option>
-                                        <option value="service">Pre-Instal</option>
+                                        <option value="Survey">Survey</option>
+                                        <option value="Setting Ukes">Setting Ukes</option>
+                                        <option value="Presentasi">Presentasi</option>
+                                        <option value="Pre-Instal">Pre-Instal</option>
                                     </select>
                                     <label for="kategori_jadwal">Kategori</label>
                                 </div>
@@ -80,7 +81,7 @@
                                         <td class="col-5 col-sm-5 col-lg-5 col-md-5">
                                             <div class="form-floating">
                                                 <input type="text" name="pabrik[]" id="pabrik[]" placeholder="Pabrik" class="form-control" autocomplete="off" required />
-                                                <label for="pabrik[]">Pabrik</label>
+                                                <label for="pabrik[]">Spare Part</label>
                                             </div>
                                         </td>
                                         <td class="text-center">

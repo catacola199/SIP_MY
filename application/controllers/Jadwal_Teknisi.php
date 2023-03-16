@@ -243,6 +243,20 @@ class Jadwal_Teknisi extends CI_Controller
 		redirect(base_url('usertek'));
 	}
 
+	public function verifadminteknisi($id = null)
+	{
+		$idp = array(
+			'no_permohonan' => $id
+		);
+		$nama = $this->db->get_where('teknisi_nopermohonan', ["no_permohonan" => $id])->row()->nama_rs;
+		$data = array(
+			'status'			=> "TERLAKSANA"
+		);
+		$this->M_JadwalTeknisi->verif_teknisi($data, $idp);
+		$this->session->set_flashdata('notif', ucfirst($nama) . ' berhasil Terlaksana');
+		redirect(base_url('teknisii'));
+	}
+
 	public function viewInvoice($id)
 	{
 		$file = $this->db->get_where('teknisi_selesai', ["no_permohonan" => $id])->row()->file_invoice;
