@@ -41,11 +41,7 @@
                                         </span>
                                     </span>
                                 </div>
-
-                                <div class="form-group mt-1">
-                                    <label for="file_penawaran">File Penawaran</label>
-                                    <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf">
-                                </div>
+                                
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
                                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
