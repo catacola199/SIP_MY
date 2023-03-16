@@ -97,7 +97,7 @@
                                                         <?php if ($data->status == 'BARU') : ?>
                                                             <p class=" spstatus bg-info text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
-                                                            <p class=" spstatus bg-yellow text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-yellow"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                                             <p class=" spstatus bg-secondary text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERTUNDA') : ?>
