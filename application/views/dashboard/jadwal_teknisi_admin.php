@@ -119,7 +119,7 @@
                                                                 <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Buat Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary " data-bs-toggle="modal">
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary " data-bs-toggle="modal" data-bs-target="#gantijadwal-<?= $data->id_permohonan ?>">
                                                                 <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Ganti Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERTUNDA') : ?>
@@ -178,6 +178,9 @@
 
     <!-- Modal Terjadwal  -->
     <?php $this->load->view('dashboard/modal_jadwal/modal-terjadwal') ?>
+    
+    <!-- Modal Terjadwal  -->
+    <?php $this->load->view('dashboard/modal_jadwal/modal-gantijadwal') ?>
 
     <!-- Modal Tertunda -->
     

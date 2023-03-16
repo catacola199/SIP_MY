@@ -1,15 +1,15 @@
 <?php foreach ($jadwal_tek as $data) : ?>
-    <div class="modal fade" id="jadwal-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal fade" id="gantijadwal-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Form Bikin Jadwal</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Form Update Jadwal</h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
-                            <form action="<?php echo base_url('Jadwal_Teknisi/update_terjadwal') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3" autocomplete="off">
+                            <form action="<?php echo base_url('Jadwal_Teknisi/update_jadwal') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3" autocomplete="off">
                                 <input type="text" hidden name="id_permohonan" id="id_permohonan" value="<?= $data->id_permohonan ?>">
                                 <div class="form-group">
                                     <div class="form-floating">
@@ -29,12 +29,7 @@
                                         <label for="nama_teknisi">Nama Teknisi</label>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control form-control-user" name="nama_driver" id="nama_driver" placeholder="Nama Driver" autocomplete="off" required>
-                                        <label for="nama_driver">Nama Driver</label>
-                                    </div>
-                                </div>
+
                                 <div class="input-group date" id="pengadaan_alat">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" name="tgl_jadwal" id="tgl_jadwal" placeholder="Pilih Tanggal" autocomplete="off" required />
