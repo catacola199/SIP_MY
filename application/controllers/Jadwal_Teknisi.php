@@ -90,15 +90,16 @@ class Jadwal_Teknisi extends CI_Controller
 		redirect(base_url('teknisii'));
 	}
 
+
+
 	public function update_tertunda()
 	{
 		$id = array(
 			'no_permohonan' => $this->input->post('no_permohonan')
 		);
 		$data = array(
-			'no_permohonan' 	=> $this->input->post('no_permohonan'),
+			'no_permohonan'	    => $this->input->post('no_permohonan'),
 			'ket_tertunda'	    	=> $this->input->post('ket_tunda')
-
 		);
 
 		$data1 = array(
@@ -110,7 +111,7 @@ class Jadwal_Teknisi extends CI_Controller
 		$this->M_JadwalTeknisi->update_jadtek($data1, $id);
 
 		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
-		redirect(base_url('teknisii'));
+		redirect(base_url('usertek'));
 	}
 
 	public function update_uploadDoc()
@@ -126,7 +127,8 @@ class Jadwal_Teknisi extends CI_Controller
 		if (!empty($_FILES["file_penawaran"]["name"])) {
 			$data = array(
 				'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFileterjadwal(),
-				'file_st'   		=> $this->M_JadwalTeknisi->_uploadFileSuratTugas()
+				'file_st'   		=> $this->M_JadwalTeknisi->_uploadFileSuratTugas(),
+				'tgl_uploadfile'   		=> date('d-m-y')
 			);
 			$this->M_JadwalTeknisi->_deleteFilePenawaran($id);
 		} else {

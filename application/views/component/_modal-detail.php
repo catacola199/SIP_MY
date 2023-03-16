@@ -118,7 +118,7 @@
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
-                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#penawaran-<?= $data->id_permohonan ?>"><?= $data->file_penawaran ?></a>
+                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#penawaran-<?= $data->id_permohonan ?>" title="<?= $data->tgl_uploadfile ?>"><?= $data->file_penawaran ?></a>
                                         </label>
                                     <?php endif; ?>
                                 </div>
@@ -128,7 +128,7 @@
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
-                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#inovice-<?= $data->id_permohonan ?>"><?= $data->file_invoice ?></a>
+                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#inovice-<?= $data->id_permohonan ?>" title="<?= $data->tgl_selesai ?>"><?= $data->file_invoice ?></a>
                                         </label>
                                     <?php endif; ?>
                                 </div>
@@ -138,7 +138,7 @@
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
-                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#bayar-<?= $data->id_permohonan ?>"><?= $data->file_buktibayar ?></a>
+                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#bayar-<?= $data->id_permohonan ?>" title="<?= $data->tgl_selesai ?>"><?= $data->file_buktibayar ?></a>
                                         </label>
                                     <?php endif; ?>
                                 </div>
