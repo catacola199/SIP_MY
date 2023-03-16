@@ -97,7 +97,7 @@ class Jadwal_Teknisi extends CI_Controller
 		);
 		$data = array(
 			'no_permohonan' 	=> $this->input->post('no_permohonan'),
-			'ket_tunda'	    	=> $this->input->post('ket_tunda')
+			'ket_tertunda'	    	=> $this->input->post('ket_tunda')
 
 		);
 
