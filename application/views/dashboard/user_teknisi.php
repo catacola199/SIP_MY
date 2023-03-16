@@ -55,14 +55,16 @@
                                 <h6 class="card-subtitle mt-4">
                                     <div class="btn-list">
                                         <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="Segarkan"></i> </a>
-                                        <button type="button" class="btn-outline-dark btn float-left" style="border:none;" disabled>Status</button>
-                                        <button type="button" class="btn-outline-info btn float-left" id="all">Semua</button>
-                                        <button type="button" class="btn btn-outline-primary float-left" id="baru">Baru</button>
-                                        <button type="button" class="btn btn-outline-warning float-left" id="terjadwal">Terjadwal</button>
-                                        <button type="button" class="btn btn-outline-secondary float-left" id="terlaksana">Terlaksana</button>
-                                        <button type="button" class="btn btn-outline-dark float-left" id="upload">Terunggah</button>
-                                        <button type="button" class="btn btn-outline-success float-left" id="selesai">Selesai</button>
-                                        <button type="button" class="btn btn-outline-danger float-left" id="gagal">Tidak Selesai</button>
+                                        <select class="form-select float-left col-2" aria-label="Default select example" id="status">
+                                            <option value="all">Semua</option>
+                                            <option value="baru">Baru</option>
+                                            <option value="terjadwal">Terjadwal</option>
+                                            <option value="tertunda">Tertunda</option>
+                                            <option value="terlaksana">Terlaksana</option>
+                                            <option value="terunggah">Terunggah</option>
+                                            <option value="selesai">Selesai</option>
+                                            <option value="gagal">Tidak Selesai</option>
+                                        </select>
                                     </div>
                                 </h6>
 
@@ -94,9 +96,11 @@
                                                         <?php if ($data->status == 'BARU') : ?>
                                                             <p class=" spstatus bg-info text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
-                                                            <p class=" spstatus bg-warning text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-yellow text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                                             <p class=" spstatus bg-secondary text-white"><?php echo $data->status ?></p>
+                                                        <?php elseif ($data->status == 'TERTUNDA') : ?>
+                                                            <p class=" spstatus bg-orange text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERUNGGAH') : ?>
                                                             <p class=" spstatus bg-dark text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TIDAK SELESAI') : ?>
@@ -160,26 +164,32 @@
             }
 
             var table = $('#multi_col_order').DataTable();
-            $('#all').on('click', function() {
-                filterColumn('');
-            });
-            $('#baru').on('click', function() {
-                filterColumn('Baru');
-            });
-            $('#terjadwal').on('click', function() {
-                filterColumn('Terjadwal');
-            });
-            $('#terlaksana').on('click', function() {
-                filterColumn('Terlaksana');
-            });
-            $('#upload').on('click', function() {
-                filterColumn('Terunggah');
-            });
-            $('#selesai').on('click', function() {
-                filterColumn('Selesai');
-            });
-            $('#gagal').on('click', function() {
-                filterColumn('tidak');
+            $(document).on('change', '#status', function() {
+                if ($('#status option:selected').val() === "all") {
+                    filterColumn('');
+                    console.log("1");
+                } else if ($('#status option:selected').val() === "baru") {
+                    filterColumn('Baru');
+                    console.log("2");
+                } else if ($('#status option:selected').val() === "terjadwal") {
+                    filterColumn('Terjadwal');
+                    console.log("3");
+                } else if ($('#status option:selected').val() === "tertunda") {
+                    filterColumn('Tertunda');
+                    console.log("4");
+                } else if ($('#status option:selected').val() === "terlaksana") {
+                    filterColumn('Terlaksana');
+                    console.log("5");
+                } else if ($('#status option:selected').val() === "terunggah") {
+                    filterColumn('Terunggah');
+                    console.log("6");
+                } else if ($('#status option:selected').val() === "selesai") {
+                    filterColumn('Selesai');
+                    console.log("7");
+                } else {
+                    filterColumn('Tidak');
+                    console.log("0");
+                }
             });
 
         });

@@ -1,6 +1,6 @@
 <!-- Modal Detail -->
 <?php foreach ($jadwal_tek as $data) : ?>
-    <div class="modal fade" id="detail-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="detail-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
@@ -25,7 +25,7 @@
                                     <?php if ($data->no_permohonan == null) : ?>
                                         <label class="col-sm-8  col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
-                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black text-capitalize"><?= $data->no_permohonan ?></label>
+                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black text-capitalize" title="<?= $data->tgl_dibuat ?>"><?= $data->no_permohonan ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="mb-1 row">
@@ -74,14 +74,16 @@
                                         <p class="ml-2 col-sm-4 col-form-label spstatus bg-info text-white"><?php echo $data->status ?></p>
                                     <?php elseif ($data->status == 'TERJADWAL') : ?>
                                         <p class="ml-2 col-sm-4 col-form-label spstatus bg-warning text-white"><?php echo $data->status ?></p>
+                                    <?php elseif ($data->status == 'TERTUNDA') : ?>
+                                        <p class="ml-2 col-sm-4 col-form-label spstatus bg-secondary text-white" title="<?= $data->tgl_tunda ?>"><?php echo $data->status ?></p>
                                     <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                         <p class="ml-2 col-sm-4 col-form-label spstatus bg-secondary text-white"><?php echo $data->status ?></p>
                                     <?php elseif ($data->status == 'TIDAK SELESAI') : ?>
-                                        <p class="ml-2 col-sm-4 col-form-label spstatus bg-danger text-white"><?php echo $data->status ?></p>
+                                        <p class="ml-2 col-sm-4 col-form-label spstatus bg-danger text-white" title="<?= $data->tgl_selesai ?>"><?php echo $data->status ?></p>
                                     <?php elseif ($data->status == 'TERUNGGAH') : ?>
                                         <p class="ml-2 col-sm-4 col-form-label spstatus bg-dark text-white"><?php echo $data->status ?></p>
                                     <?php else : ?>
-                                        <p class="ml-2 col-sm-4 col-form-label spstatus bg-success text-white"><?php echo $data->status ?></p>
+                                        <p class="ml-2 col-sm-4 col-form-label spstatus bg-success text-white" title="<?= $data->tgl_selesai ?>"><?php echo $data->status ?></p>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -116,7 +118,7 @@
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
-                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#penawaran-<?= $data->id_permohonan ?>"><?= $data->file_penawaran ?></a>
+                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#penawaran-<?= $data->id_permohonan ?>" title="<?= $data->tgl_uploadfile ?>"><?= $data->file_penawaran ?></a>
                                         </label>
                                     <?php endif; ?>
                                 </div>
@@ -126,7 +128,7 @@
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
-                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#inovice-<?= $data->id_permohonan ?>"><?= $data->file_invoice ?></a>
+                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#inovice-<?= $data->id_permohonan ?>" title="<?= $data->tgl_selesai ?>"><?= $data->file_invoice ?></a>
                                         </label>
                                     <?php endif; ?>
                                 </div>
@@ -136,7 +138,7 @@
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
-                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#bayar-<?= $data->id_permohonan ?>"><?= $data->file_buktibayar ?></a>
+                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#bayar-<?= $data->id_permohonan ?>" title="<?= $data->tgl_selesai ?>"><?= $data->file_buktibayar ?></a>
                                         </label>
                                     <?php endif; ?>
                                 </div>
@@ -172,7 +174,7 @@
                                             <th>Tipe Produk</th>
                                             <th>Jenis Produk</th>
                                             <th>Lampiran</th>
-                                            <?php if ((($this->fungsi->user_login()->id_role) != 4) && ($data->status == 'BARU')): ?>
+                                            <?php if ((($this->fungsi->user_login()->id_role) != 4) && ($data->status == 'BARU')) : ?>
                                                 <th>Action</th>
                                             <?php endif; ?>
                                         </tr>
@@ -188,13 +190,13 @@
                                                     <td class="text-capitalize"><?php echo $produk->tipe_produk ?></td>
                                                     <td class="text-capitalize"><?php echo $produk->jenis_produk ?></td>
                                                     <td>
-                                                        <?php if($produk->dokumen_bap != null):?>
+                                                        <?php if ($produk->dokumen_bap != null) : ?>
                                                             <a class="btn btn-primary" href="<?php echo base_url('upload/dokumen_bap/' . $produk->dokumen_bap) ?>" target="_blank"> Lihat Lampiran </a>
-                                                        <?php else:?>
-                                                            <a class="btn btn-primary disabled" href="#!" target="_blank" > Lihat Lampiran </a>
-                                                        <?php endif;?>
+                                                        <?php else : ?>
+                                                            <a class="btn btn-primary disabled" href="#!" target="_blank"> Lihat Lampiran </a>
+                                                        <?php endif; ?>
                                                     </td>
-                                                    <?php if ((($this->fungsi->user_login()->id_role) != 4) && ($data->status == 'BARU')): ?>
+                                                    <?php if ((($this->fungsi->user_login()->id_role) != 4) && ($data->status == 'BARU')) : ?>
                                                         <td>
                                                             <a onclick="deleteConfirm('<?php echo site_url('Jadwal_Teknisi/delete_jadtek/' . $produk->id_produk) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
                                                                 <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
@@ -213,7 +215,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="inovice-<?= $data->id_permohonan ?>" tabindex="-1"  data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="inovice-<?= $data->id_permohonan ?>" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-body">
@@ -226,7 +228,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="bayar-<?= $data->id_permohonan ?>" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"  ria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="bayar-<?= $data->id_permohonan ?>" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" ria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-body">

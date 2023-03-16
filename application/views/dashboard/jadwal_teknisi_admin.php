@@ -78,7 +78,7 @@
                                                 <th>Kategori</th>
                                                 <th>Rumah Sakit</th>
                                                 <th>PIC</th>
-                                                <th> Status</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
 
                                             </tr>
@@ -97,9 +97,11 @@
                                                         <?php if ($data->status == 'BARU') : ?>
                                                             <p class=" spstatus bg-info text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
-                                                            <p class=" spstatus bg-warning text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-yellow text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                                             <p class=" spstatus bg-secondary text-white"><?php echo $data->status ?></p>
+                                                        <?php elseif ($data->status == 'TERTUNDA') : ?>
+                                                            <p class=" spstatus bg-orange text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERUNGGAH') : ?>
                                                             <p class=" spstatus bg-dark text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TIDAK SELESAI') : ?>
@@ -117,11 +119,11 @@
                                                                 <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Buat Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary disabled" data-bs-toggle="modal">
-                                                                <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary " data-bs-toggle="modal">
+                                                                <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Ganti Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERTUNDA') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-orange disabled" data-bs-toggle="modal">
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary disabled" data-bs-toggle="modal">
                                                                 <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Tertunda"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>

@@ -38,13 +38,14 @@ class M_JadwalTeknisi extends CI_Model
 
     public function getDetails()
     {
-        $this->db->select('teknisi_nopermohonan.`id_permohonan`,teknisi_nopermohonan.`no_permohonan`, teknisi_nopermohonan.`kategori`, teknisi_nopermohonan.`nama_rs`, teknisi_nopermohonan.`alamat_rs`,
-        teknisi_nopermohonan.`pic_name`, teknisi_nopermohonan.`pic_phone`, teknisi_nopermohonan.`status`, pengguna.`nama_pengguna`, teknisi_terjadwal.`nama_driver`,
-        teknisi_terjadwal.`tgl_jadwal`, teknisi_terjadwal.`file_penawaran`, teknisi_selesai.`metode_bayar`, teknisi_selesai.`file_buktibayar`, teknisi_selesai.`keterangan`, teknisi_selesai.`file_invoice`,
+        $this->db->select('teknisi_nopermohonan.`id_permohonan`,teknisi_nopermohonan.`no_permohonan`, teknisi_nopermohonan.`kategori`, teknisi_nopermohonan.`nama_rs`, teknisi_nopermohonan.`alamat_rs`,teknisi_dokumen.`tgl_dok`,teknisi_nopermohonan.`tgl_selesai`,
+        teknisi_nopermohonan.`pic_name`, teknisi_nopermohonan.`pic_phone`, teknisi_nopermohonan.`status`, pengguna.`nama_pengguna`, teknisi_terjadwal.`nama_driver`,teknisi_nopermohonan.`tgl_dibuat`,teknisi_tertunda.`ket_tertunda`,teknisi_terjadwal.`tgl_uploadfile`,
+        teknisi_terjadwal.`tgl_jadwal`, teknisi_terjadwal.`file_penawaran`, teknisi_selesai.`metode_bayar`, teknisi_selesai.`file_buktibayar`, teknisi_selesai.`keterangan`, teknisi_selesai.`file_invoice`,teknisi_tertunda.`tgl_tunda`,
         teknisi_dokumen.`dokumen_bap`');
         $this->db->from('teknisi_nopermohonan');
         $this->db->join('teknisi_terjadwal', 'teknisi_terjadwal.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');
         $this->db->join('teknisi_dokumen', 'teknisi_dokumen.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');
+        $this->db->join('teknisi_tertunda', 'teknisi_tertunda.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');
         $this->db->join('pengguna', 'teknisi_terjadwal.id_pengguna = pengguna.id_pengguna', 'left');
         $this->db->join('teknisi_selesai', 'teknisi_selesai.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');
         $query = $this->db->get();
@@ -76,7 +77,7 @@ class M_JadwalTeknisi extends CI_Model
 
     public function simpandatatertunda($data)
     {
-        $this->db->insert_batch('teknisi_tertunda', $data);
+        $this->db->insert('teknisi_tertunda', $data);
         return TRUE;
     }
 
