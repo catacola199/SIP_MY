@@ -32,7 +32,18 @@
         $('#produk').DataTable();
         $('#teknisi').DataTable();
 
+        $('#fullscreen').on('click', function() {
+            document.getElementById('exit_fullscreen').style.removeProperty("display");
+            document.getElementById('fullscreen').style.display = 'none';
+
+        });
+        $('#exit_fullscreen').on('click', function() {
+            document.getElementById('fullscreen').style.removeProperty("display");
+            document.getElementById('exit_fullscreen').style.display = 'none';
+        });
     });
+
+    
     function deleteConfirm(url) {
         Swal.fire({
             icon: 'warning',

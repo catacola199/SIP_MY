@@ -97,7 +97,7 @@
                                                         <?php if ($data->status == 'BARU') : ?>
                                                             <p class=" spstatus bg-info text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
-                                                            <p class=" spstatus bg-yellow text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-yellow"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
                                                             <p class=" spstatus bg-secondary text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERTUNDA') : ?>
@@ -210,16 +210,6 @@
             $(document).on('click', '.btn_remove', function() {
                 var button_id = $(this).attr("id");
                 $('#row' + button_id + '').remove();
-            });
-           
-            $('#fullscreen').on('click', function() {
-                document.getElementById('exit_fullscreen').style.removeProperty("display");
-                document.getElementById('fullscreen').style.display = 'none';
-
-            });
-            $('#exit_fullscreen').on('click', function() {
-                document.getElementById('fullscreen').style.removeProperty("display");
-                document.getElementById('exit_fullscreen').style.display = 'none';
             });
         });
 
