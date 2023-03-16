@@ -52,26 +52,39 @@
                     </a>
                 </li>
                 
-               
+                <?php $query = $this->db->query("SELECT * from notifikasi");?>
+                
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle position-relative" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i data-feather="bell" class="feather-icon"></i>
-                        <span class="position-absolute translate-middle badge rounded-pill bg-danger" style="top:25px; right:-20px">
-                        <span class="visually-hidden">unread messages</span>
-                        </span>
+                        <?php if($query->num_rows() != 0):?>
+                            <span class="position-absolute translate-middle bg-danger border border-light rounded-circle" style="padding:.35rem !important; left: 62% !important; top: 40% !important">
+                                <span class="visually-hidden">New alerts</span>
+                            </span>
+                        <?php endif;?>
+
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-right" style="width:400px">
-                        <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                                <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">List group item heading</h5>
-                                <small>3 days ago</small>
+                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in " aria-labelledby="messagesDropdown" style="width: 400px;">
+                        <h6 class="dropdown-header">
+                            Notification Center
+                        </h6>
+
+                        <?php foreach ($query->result() as $row) : ?>
+                            <a class="dropdown-item align-items-center" href="#">
+                                <div class="row">
+                                    <div class="col-2 text-center">
+                                        <img src="<?= base_url("assets/logo_only.png")?>" alt=".." class="img-fluid">
+                                    </div>
+                                    <div class="col">
+                                        <div class="small text-black-50"><?= $row->kategori ?></div>
+                                        <div class="text-truncate"><?= $row->nama_rs ?></div>
+                                        <div class="small text-black-50">Tanggal : <?= $row->tgl_jadwal ?></div>
+                                    </div>
                                 </div>
-                                <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                <small>And some small print.</small>
                             </a>
-                        </div>
-                    </ul>
+                        <?php endforeach; ?>
+                        <a class="dropdown-item text-center small text-black-50" href="#">Read More Notification</a>
+                    </div>
                 </li>
                 <!-- ============================================================== -->
                 <!-- User profile and search -->

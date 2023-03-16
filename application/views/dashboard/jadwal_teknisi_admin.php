@@ -206,16 +206,6 @@
                 var button_id = $(this).attr("id");
                 $('#row' + button_id + '').remove();
             });
-           
-            $('#fullscreen').on('click', function() {
-                document.getElementById('exit_fullscreen').style.removeProperty("display");
-                document.getElementById('fullscreen').style.display = 'none';
-
-            });
-            $('#exit_fullscreen').on('click', function() {
-                document.getElementById('fullscreen').style.removeProperty("display");
-                document.getElementById('exit_fullscreen').style.display = 'none';
-            });
         });
 
 
