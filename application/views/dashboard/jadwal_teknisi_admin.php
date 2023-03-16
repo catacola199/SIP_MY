@@ -78,7 +78,7 @@
                                                 <th>Kategori</th>
                                                 <th>Rumah Sakit</th>
                                                 <th>PIC</th>
-                                                <th> Status</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
 
                                             </tr>
@@ -117,8 +117,8 @@
                                                                 <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Buat Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary disabled" data-bs-toggle="modal">
-                                                                <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Selesai Jadwal"></i>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary " data-bs-toggle="modal">
+                                                                <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Ganti Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERTUNDA') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-orange disabled" data-bs-toggle="modal">
