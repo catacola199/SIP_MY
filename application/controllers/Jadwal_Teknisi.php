@@ -59,8 +59,17 @@ class Jadwal_Teknisi extends CI_Controller
 			);
 		}
 
+		$data = array(
+			'no_permohonan' 	=> $this->input->post('no_permohonan'),
+			'id_pengguna'	    => $this->input->post('id_pengguna'),
+			'nama_driver'	    => $this->input->post('nama_driver'),
+			'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
+			'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFileterjadwal()
+		);
+
 		$this->M_JadwalTeknisi->simpandatajadtek($result);
-		$this->session->set_flashdata('notif', 'Permohonan berhasil disimpan');
+		$this->M_JadwalTeknisi->simpandataterjadwal($data);
+		$this->session->set_flashdata('notif', 'Jadwal berhasil disimpan');
 		redirect(base_url('teknisii'));
 	}
 
@@ -241,6 +250,20 @@ class Jadwal_Teknisi extends CI_Controller
 		$this->M_JadwalTeknisi->verif_teknisi($data, $idp);
 		$this->session->set_flashdata('notif', ucfirst($nama) . ' berhasil Terlaksana');
 		redirect(base_url('usertek'));
+	}
+
+	public function verifadminteknisi($id = null)
+	{
+		$idp = array(
+			'no_permohonan' => $id
+		);
+		$nama = $this->db->get_where('teknisi_nopermohonan', ["no_permohonan" => $id])->row()->nama_rs;
+		$data = array(
+			'status'			=> "TERLAKSANA"
+		);
+		$this->M_JadwalTeknisi->verif_teknisi($data, $idp);
+		$this->session->set_flashdata('notif', ucfirst($nama) . ' berhasil Terlaksana');
+		redirect(base_url('teknisii'));
 	}
 
 	public function viewInvoice($id)

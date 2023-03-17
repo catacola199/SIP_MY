@@ -120,6 +120,10 @@
                                                             <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifteknisi/' . $data->no_permohonan) ?>')" href="#!" class="btn btn-sm btn-outline-primary">
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Terlaksana"></i>
                                                             </a>
+                                                        <?php elseif ($data->status == 'TERTUNDA') : ?>
+                                                            <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifteknisi/' . $data->no_permohonan) ?>')" href="#!" class="btn btn-sm btn-outline-primary">
+                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Terlaksana"></i>
+                                                            </a>
                                                         <?php endif; ?>
                                                     </td>
                                                 </tr>

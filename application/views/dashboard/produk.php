@@ -162,8 +162,11 @@
                             <div class="form-floating">
                                 <select class="form-select" id="jenis_produk" name="jenis_produk" aria-label="Floating label select example" required>
                                     <option disabled value="" selected>Pilih salah satu...</option>
-                                    <option value="Umum">Umum</option>
-                                    <option value="X-Ray">X-Ray</option>
+                                    <option value="DR">DR</option>
+                                    <option value="CR">CR</option>
+                                    <option value="Printer">Printer</option>
+                                    <option value="X-Ray Mobile">X-Ray Mobile</option>
+                                    <option value="X-Ray Stationery">X-Ray Stationery</option>
                                 </select>
                                 <label for="jenis_produk">Jenis Produk</label>
                             </div>
