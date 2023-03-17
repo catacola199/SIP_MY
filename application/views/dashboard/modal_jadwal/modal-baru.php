@@ -25,8 +25,6 @@
                                     <select class="form-select" id="kategori_jadwal" name="kategori_jadwal" aria-label=".." required>
                                         <option disabled value="" selected>Pilih salah satu...</option>
                                         <option value="instalasi">Instalasi</option>
-                                        <option value="kalibrasi">Kalibrasi</option>
-                                        <option value="pemeliharaan">Pemeliharaan</option>
                                         <option value="service">Service</option>
                                         <option value="Survey">Survey</option>
                                         <option value="Setting Ukes">Setting Ukes</option>
