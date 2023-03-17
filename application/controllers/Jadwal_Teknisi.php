@@ -59,8 +59,17 @@ class Jadwal_Teknisi extends CI_Controller
 			);
 		}
 
+		$data = array(
+			'no_permohonan' 	=> $this->input->post('no_permohonan'),
+			'id_pengguna'	    => $this->input->post('id_pengguna'),
+			'nama_driver'	    => $this->input->post('nama_driver'),
+			'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
+			'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFileterjadwal()
+		);
+
 		$this->M_JadwalTeknisi->simpandatajadtek($result);
-		$this->session->set_flashdata('notif', 'Permohonan berhasil disimpan');
+		$this->M_JadwalTeknisi->simpandataterjadwal($data);
+		$this->session->set_flashdata('notif', 'Jadwal berhasil disimpan');
 		redirect(base_url('teknisii'));
 	}
 
