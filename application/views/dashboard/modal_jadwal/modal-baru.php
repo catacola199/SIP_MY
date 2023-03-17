@@ -82,7 +82,7 @@
                                         <td class="col-5 col-sm-5 col-lg-5 col-md-5">
                                             <div class="form-floating">
                                                 <input type="text" name="pabrik[]" id="pabrik[]" placeholder="Spare Part" class="form-control" autocomplete="off" required />
-                                                <label for="pabrik[]">Spare Part</label>
+                                                <label for="Spare Part[]">Spare Part</label>
                                             </div>
                                         </td>
                                         <td class="text-center">
