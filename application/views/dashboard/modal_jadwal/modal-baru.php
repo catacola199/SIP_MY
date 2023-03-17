@@ -72,7 +72,7 @@
                                                     <option disabled value="" selected>Pilih salah satu...</option>
                                                     <?php foreach ($produk as $l) { ?>
                                                         <option value="<?php echo $l['id_produk']; ?>">
-                                                            <?php echo $l['jenis_produk'] . " - " . $l['nama_produk'] . " - " . $l['tipe_produk']; ?>
+                                                            <?php echo $l['merk_produk'] . " - " . $l['nama_produk'] . " - " . $l['tipe_produk']; ?>
                                                         </option>
                                                     <?php } ?>
                                                 </select>
