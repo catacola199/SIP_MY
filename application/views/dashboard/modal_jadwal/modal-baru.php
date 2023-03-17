@@ -27,6 +27,7 @@
                                         <option value="instalasi">Instalasi</option>
                                         <option value="service">Service</option>
                                         <option value="Survey">Survey</option>
+                                        <option value="Training">Training</option>
                                         <option value="Setting Ukes">Setting Ukes</option>
                                         <option value="Presentasi">Presentasi</option>
                                         <option value="Pre-Instal">Pre-Instal</option>
