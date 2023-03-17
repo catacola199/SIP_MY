@@ -74,7 +74,7 @@
                                         <thead class="bg-primary text-white">
                                             <tr>
                                                 <th>#</th>
-                                                <th>No Permohonan</th>
+                                                <th>No BAP</th>
                                                 <th>Kategori</th>
                                                 <th>Rumah Sakit</th>
                                                 <th>PIC</th>
