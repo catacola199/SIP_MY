@@ -65,7 +65,7 @@
                                                 <th>#</th>
                                                 
                                                 <th>Nama Produk</th>
-                                                <th>Jenis</th>
+                                                
                                                 <th>Merk</th>
                                                 <th>Tipe</th>
                                                 <th>Action</th>
@@ -79,7 +79,7 @@
                                                     <td><?php echo $i++ ?></td>
                                                     
                                                     <td><?php echo $data->nama_produk ?></td>
-                                                    <td><?php echo $data->jenis_produk ?></td>
+                                                    
                                                     <td><?php echo $data->merk_produk ?></td>
                                                     <td><?php echo $data->tipe_produk ?></td>
                                                     <td>
