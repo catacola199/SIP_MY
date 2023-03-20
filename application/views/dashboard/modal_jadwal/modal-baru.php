@@ -1,4 +1,4 @@
-<form action="<?php echo base_url('Jadwal_Teknisi/save_jadtek') ?>" method="post" autocomplete="off" enctype="multipart/form-data" class="pl-3 pr-3">
+<form action="<?php echo base_url('Jadwal_Teknisi/save_jadtek') ?>" method="post" autocomplete="off" enctype="multipart/form-data">
     <!--MODAL BIKIN BARU-->
     <div class="modal fade" id="tambah" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
@@ -17,7 +17,7 @@
                                         <input type="text" readonly class="form-control-plaintext" name="no_permohonan_a" id="no_permohonan_a" value="NO.">
                                     </div>
                                     <div class="col-2 p-0" style="max-width: 10%">
-                                        <input type="text" class="form-control" name="no_permohonan_b" id="no_permohonan_b" placeholder="xxx">
+                                        <input type="text" class="form-control" name="no_permohonan_b" id="no_permohonan_b" placeholder="xxx" required>
                                     </div>
                                     <div class="col-auto p-0" style="margin-left: 2px">
                                         <input type="text" readonly class="form-control-plaintext" name="no_permohonan_c" id="no_permohonan_c" value="/SRV/SIP/<?= date("m") ?>/<?= date("Y") ?>">
@@ -152,7 +152,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                    <button type="submit" class="btn btn-success" data-bs-target="#Jadwal2" data-bs-toggle="modal"><i class="fa fa-save"></i> Simpan</button>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                 </div>
             </div>
         </div>

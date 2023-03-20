@@ -177,7 +177,6 @@
     <?php $this->load->view('dashboard/modal_jadwal/modal-edit') ?>
 
     <!-- Modal Terjadwal  -->
-    <?php $this->load->view('dashboard/modal_jadwal/modal-terjadwal') ?>
     
     <!-- Modal Terjadwal  -->
     <?php $this->load->view('dashboard/modal_jadwal/modal-gantijadwal') ?>
@@ -196,6 +195,7 @@
     <?php $this->load->view('component/_modal-detail') ?>
 
     <script>
+        
         $(document).ready(function() {
             var i = 1;
 
@@ -212,8 +212,6 @@
                 $('#row' + button_id + '').remove();
             });
         });
-
-
 
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
