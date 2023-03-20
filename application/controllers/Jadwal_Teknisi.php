@@ -42,9 +42,10 @@ class Jadwal_Teknisi extends CI_Controller
 	public function save_jadtek()
 	{
 		$result = array();
+		$no_permohonan = $this->input->post('no_permohonan_a').$this->input->post('no_permohonan_b').$this->input->post('no_permohonan_c');
 		foreach ($this->input->post('id_produk_baru') as $key => $val) {
 			$result[] = array(
-				'no_permohonan'	    => $this->input->post('no_permohonan'),
+				'no_permohonan'	    => $no_permohonan,
 				'nama_rs' 			=> $this->input->post('nama_rs'),
 				'alamat_rs' 		=> $this->input->post('alamat_rs'),
 				'pic_name' 			=> $this->input->post('pic_name'),
@@ -60,7 +61,7 @@ class Jadwal_Teknisi extends CI_Controller
 		}
 
 		$data = array(
-			'no_permohonan' 	=> $this->input->post('no_permohonan'),
+			'no_permohonan' 	=> $no_permohonan,
 			'id_pengguna'	    => $this->input->post('id_pengguna'),
 			'nama_driver'	    => $this->input->post('nama_driver'),
 			'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
