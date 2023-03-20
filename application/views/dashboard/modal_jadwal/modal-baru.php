@@ -9,15 +9,19 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col">
-
+                        <div class="col pl-4 pr-4">
                             <div class="form-group">
-                                <div class="form-floating">
-                                    <input type="hidden" name="no_permohonan" id="no_permohonan" value="<?php $no_permohonan = "SIP-J" . date("dmY") . substr(md5(time()), 0, 5);
-                                                                                                        echo $no_permohonan; ?>">
-                                    <input type="text" class="form-control" id="kode" placeholder="No Permohonan" value="<?php $no_permohonan = "SIP-J" . date("dmY") . substr(md5(time()), 0, 5);
-                                                                                                                            echo $no_permohonan; ?>" disabled>
-                                    <label for="No">No Permohonan</label>
+                                <label for="no_permohonan" class="form-label">Nomor Permohonan</label>
+                                <div class="row ml-0">
+                                    <div class="col-1 p-0" style="max-width: 4%">
+                                        <input type="text" readonly class="form-control-plaintext" name="no_permohonan_a" id="no_permohonan_a" value="NO.">
+                                    </div>                                   
+                                    <div class="col-2 p-0" style="max-width: 10%">
+                                        <input type="text" class="form-control" name="no_permohonan_b" id="no_permohonan_b" placeholder="xxx">
+                                    </div>
+                                    <div class="col-auto p-0" style="margin-left: 2px">
+                                        <input type="text" readonly class="form-control-plaintext" name="no_permohonan_c" id="no_permohonan_c" value="/SRV/SIP/<?= date("m")?>/<?= date("Y")?>">
+                                    </div> 
                                 </div>
                             </div>
                             <div class="form-group">
@@ -92,12 +96,12 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                                <button class="btn btn-success" data-bs-target="#Jadwal2" data-bs-toggle="modal"><i class="fa fa-arrow-right"></i> Lanjut</button>
-                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
+                    <button class="btn btn-success" data-bs-target="#Jadwal2" data-bs-toggle="modal"><i class="fa fa-arrow-right"></i> Lanjut</button>
                 </div>
             </div>
         </div>
@@ -114,8 +118,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col">
-
+                        <div class="col pl-4 pr-4">
                             <div class="form-group">
                                 <div class="form-floating">
                                     <select class="form-select" id="id_pengguna" name="id_pengguna" aria-label="Floating label select example" required>
@@ -148,12 +151,12 @@
                                 <label for="file_penawaran">File Penawaran</label>
                                 <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf">
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                                <button type="submit" class="btn btn-success" data-bs-target="#Jadwal2" data-bs-toggle="modal"><i class="fa fa-save"></i> Simpan</button>
-                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
+                    <button type="submit" class="btn btn-success" data-bs-target="#Jadwal2" data-bs-toggle="modal"><i class="fa fa-save"></i> Simpan</button>
                 </div>
             </div>
         </div>

@@ -64,7 +64,7 @@
                         <?php endif;?>
 
                     </a>
-                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in " aria-labelledby="messagesDropdown" style="width: 400px;">
+                    <div id="notif" class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in " aria-labelledby="messagesDropdown" style="width: 400px; max-height: 300px; overflow-y:auto;">
                         <h6 class="dropdown-header">
                             Notification Center
                         </h6>
