@@ -29,10 +29,9 @@
                                     <select class="form-select" id="kategori_jadwal" name="kategori_jadwal" aria-label=".." required>
                                         <option disabled value="" selected>Pilih salah satu...</option>
                                         <option value="instalasi">Instalasi</option>
-                                        <option value="kalibrasi">Kalibrasi</option>
-                                        <option value="pemeliharaan">Pemeliharaan</option>
                                         <option value="service">Service</option>
                                         <option value="Survey">Survey</option>
+                                        <option value="Training">Training</option>
                                         <option value="Setting Ukes">Setting Ukes</option>
                                         <option value="Presentasi">Presentasi</option>
                                         <option value="Pre-Instal">Pre-Instal</option>
@@ -77,7 +76,7 @@
                                                     <option disabled value="" selected>Pilih salah satu...</option>
                                                     <?php foreach ($produk as $l) { ?>
                                                         <option value="<?php echo $l['id_produk']; ?>">
-                                                            <?php echo $l['jenis_produk'] . " - " . $l['nama_produk'] . " - " . $l['tipe_produk']; ?>
+                                                            <?php echo $l['merk_produk'] . " - " . $l['nama_produk'] . " - " . $l['tipe_produk']; ?>
                                                         </option>
                                                     <?php } ?>
                                                 </select>
@@ -86,8 +85,8 @@
                                         </td>
                                         <td class="col-5 col-sm-5 col-lg-5 col-md-5">
                                             <div class="form-floating">
-                                                <input type="text" name="pabrik[]" id="pabrik[]" placeholder="Pabrik" class="form-control" autocomplete="off" required />
-                                                <label for="pabrik[]">Spare Part</label>
+                                                <input type="text" name="pabrik[]" id="pabrik[]" placeholder="Spare Part" class="form-control" autocomplete="off" required />
+                                                <label for="Spare Part[]">Spare Part</label>
                                             </div>
                                         </td>
                                         <td class="text-center">

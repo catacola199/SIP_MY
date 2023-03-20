@@ -26,7 +26,6 @@
 			$data = array(
 				
 				'nama_produk'	    => $this->input->post('nama_produk'),
-				'jenis_produk'	    => $this->input->post('jenis_produk'),
 				'merk_produk'	    => $this->input->post('merk_produk'),
 				'tipe_produk'	    => $this->input->post('tipe_produk')
 
