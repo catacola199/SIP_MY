@@ -15,28 +15,25 @@
                                 <div class="row ml-0">
                                     <div class="col-1 p-0" style="max-width: 4%">
                                         <input type="text" readonly class="form-control-plaintext" name="no_permohonan_a" id="no_permohonan_a" value="NO.">
-                                    </div>                                   
+                                    </div>
                                     <div class="col-2 p-0" style="max-width: 10%">
                                         <input type="text" class="form-control" name="no_permohonan_b" id="no_permohonan_b" placeholder="xxx">
                                     </div>
                                     <div class="col-auto p-0" style="margin-left: 2px">
-                                        <input type="text" readonly class="form-control-plaintext" name="no_permohonan_c" id="no_permohonan_c" value="/SRV/SIP/<?= date("m")?>/<?= date("Y")?>">
-                                    </div> 
+                                        <input type="text" readonly class="form-control-plaintext" name="no_permohonan_c" id="no_permohonan_c" value="/SRV/SIP/<?= date("m") ?>/<?= date("Y") ?>">
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="kategori_jadwal">Kategori</label>
                                 <div class="form-floating">
-                                    <select class="form-select" id="kategori_jadwal" name="kategori_jadwal" aria-label=".." required>
-                                        <option disabled value="" selected>Pilih salah satu...</option>
-                                        <option value="instalasi">Instalasi</option>
-                                        <option value="service">Service</option>
-                                        <option value="Survey">Survey</option>
-                                        <option value="Training">Training</option>
-                                        <option value="Setting Ukes">Setting Ukes</option>
-                                        <option value="Presentasi">Presentasi</option>
-                                        <option value="Pre-Instal">Pre-Instal</option>
-                                    </select>
-                                    <label for="kategori_jadwal">Kategori</label>
+                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Instalasi"> Instalasi
+                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Service"> Service
+                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Survey"> Survey
+                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Training"> Training
+                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Setting Ukes"> Setting Ukes
+                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Presentasi"> Presentasi
+                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Pre-Instal"> Pre-Instal
                                 </div>
                             </div>
                             <div class="form-group">
