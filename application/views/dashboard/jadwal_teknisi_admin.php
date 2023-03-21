@@ -57,7 +57,6 @@
                                         <button type="button" class="btn-outline-dark btn float-left" style="border:none;" disabled>Status</button>
                                         <select class="form-select float-left col-md-2 col-sm-4 mb-4" aria-label="Default select example" id="status">
                                             <option value="all">Semua</option>
-                                            <option value="baru">Baru</option>
                                             <option value="terjadwal">Terjadwal</option>
                                             <option value="tertunda">Tertunda</option>
                                             <option value="terlaksana">Terlaksana</option>
@@ -94,16 +93,14 @@
                                                     <td><?php echo $data->pic_name ?></td>
 
                                                     <td>
-                                                        <?php if ($data->status == 'BARU') : ?>
-                                                            <p class=" spstatus bg-info text-white"><?php echo $data->status ?></p>
-                                                        <?php elseif ($data->status == 'TERJADWAL') : ?>
-                                                            <p class=" spstatus bg-yellow"><?php echo $data->status ?></p>
+                                                        <?php if ($data->status == 'TERJADWAL') : ?>
+                                                            <p class=" spstatus bg-yellow text-dark"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
-                                                            <p class=" spstatus bg-secondary text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-dark text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERTUNDA') : ?>
                                                             <p class=" spstatus bg-orange text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERUNGGAH') : ?>
-                                                            <p class=" spstatus bg-dark text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-primary text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TIDAK SELESAI') : ?>
                                                             <p class=" spstatus bg-danger text-white"><?php echo $data->status ?></p>
                                                         <?php else : ?>
@@ -224,9 +221,6 @@
                 if($('#status option:selected').val() === "all"){
                     filterColumn('');
                     console.log("1");
-                }else if($('#status option:selected').val() === "baru"){
-                    filterColumn('Baru');
-                    console.log("2");
                 }else if($('#status option:selected').val() === "terjadwal"){
                     filterColumn('Terjadwal');
                     console.log("3");

@@ -53,11 +53,10 @@
                                 <h4 class="card-title">Daftar Jadwal Teknisi</h4>
                                 <hr>
                                 <h6 class="card-subtitle mt-4">
-                                    <div class="btn-list">
-                                        <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="Segarkan"></i> </a>
-                                        <select class="form-select float-left col-2" aria-label="Default select example" id="status">
+                                <div class="btn-list">
+                                        <button type="button" class="btn-outline-dark btn float-left" style="border:none;" disabled>Status</button>
+                                        <select class="form-select float-left col-md-2 col-sm-4 mb-4" aria-label="Default select example" id="status">
                                             <option value="all">Semua</option>
-                                            <option value="baru">Baru</option>
                                             <option value="terjadwal">Terjadwal</option>
                                             <option value="tertunda">Tertunda</option>
                                             <option value="terlaksana">Terlaksana</option>
@@ -65,6 +64,7 @@
                                             <option value="selesai">Selesai</option>
                                             <option value="gagal">Tidak Selesai</option>
                                         </select>
+                                        <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="Segarkan"></i> </a>
                                     </div>
                                 </h6>
 
@@ -77,7 +77,7 @@
                                                 <th>Kategori</th>
                                                 <th>Rumah Sakit</th>
                                                 <th>PIC</th>
-                                                <th> Status</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
 
                                             </tr>
@@ -93,16 +93,14 @@
                                                     <td><?php echo $data->pic_name ?></td>
 
                                                     <td>
-                                                        <?php if ($data->status == 'BARU') : ?>
-                                                            <p class=" spstatus bg-info text-white"><?php echo $data->status ?></p>
-                                                        <?php elseif ($data->status == 'TERJADWAL') : ?>
-                                                            <p class=" spstatus bg-yellow text-white"><?php echo $data->status ?></p>
+                                                        <?php if ($data->status == 'TERJADWAL') : ?>
+                                                            <p class=" spstatus bg-yellow text-dark"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
-                                                            <p class=" spstatus bg-secondary text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-dark text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERTUNDA') : ?>
                                                             <p class=" spstatus bg-orange text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TERUNGGAH') : ?>
-                                                            <p class=" spstatus bg-dark text-white"><?php echo $data->status ?></p>
+                                                            <p class=" spstatus bg-primary text-white"><?php echo $data->status ?></p>
                                                         <?php elseif ($data->status == 'TIDAK SELESAI') : ?>
                                                             <p class=" spstatus bg-danger text-white"><?php echo $data->status ?></p>
                                                         <?php else : ?>
@@ -115,7 +113,7 @@
                                                         </a>
                                                         <?php if ($data->status == 'TERJADWAL') : ?>
                                                             <a href="#!" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#tunda-<?= $data->id_permohonan ?>">
-                                                                <i class="fas fa-exclamation-circle" data-toggle="tooltip" data-placement="bottom" title="Tertunda"></i>
+                                                                <i class="fas fa-exclamation-circle" data-toggle="tooltip" data-placement="bottom" title="Ditunda"></i>
                                                             </a>
                                                             <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifteknisi/' . $data->no_permohonan) ?>')" href="#!" class="btn btn-sm btn-outline-primary">
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Terlaksana"></i>
@@ -172,9 +170,6 @@
                 if ($('#status option:selected').val() === "all") {
                     filterColumn('');
                     console.log("1");
-                } else if ($('#status option:selected').val() === "baru") {
-                    filterColumn('Baru');
-                    console.log("2");
                 } else if ($('#status option:selected').val() === "terjadwal") {
                     filterColumn('Terjadwal');
                     console.log("3");
