@@ -55,7 +55,7 @@
                                 <h6 class="card-subtitle mt-4">
                                     <div class="btn-list">
                                         <button type="button" class="btn-outline-dark btn float-left" style="border:none;" disabled>Status</button>
-                                        <select class="form-select float-left col-2" aria-label="Default select example" id="status">
+                                        <select class="form-select float-left col-md-2 col-sm-4 mb-4" aria-label="Default select example" id="status">
                                             <option value="all">Semua</option>
                                             <option value="baru">Baru</option>
                                             <option value="terjadwal">Terjadwal</option>

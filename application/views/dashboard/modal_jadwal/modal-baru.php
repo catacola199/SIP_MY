@@ -12,16 +12,18 @@
                         <div class="col pl-4 pr-4">
                             <div class="form-group">
                                 <label for="no_permohonan" class="form-label">Nomor Permohonan</label>
-                                <div class="row ml-0">
-                                    <div class="col-1 p-0" style="max-width: 4%">
-                                        <input type="text" readonly class="form-control-plaintext" name="no_permohonan_a" id="no_permohonan_a" value="NO.">
-                                    </div>                                   
-                                    <div class="col-2 p-0" style="max-width: 10%">
-                                        <input type="text" class="form-control" name="no_permohonan_b" id="no_permohonan_b" placeholder="xxx" required>
+                                <div class="container ml-0">
+                                    <div class="row">
+                                        <div class="col-md-1 col-sm-2 p-0">
+                                            <input type="text" readonly class="form-control-plaintext" name="no_permohonan_a" id="no_permohonan_a" value="NO.">
+                                        </div>                                   
+                                        <div class="col-md-3 col-sm-4 p-0"  style="margin-left: 2px">
+                                            <input type="text" class="form-control" name="no_permohonan_b" id="no_permohonan_b" placeholder="xxx" required>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6 p-0" style="margin-left: 2px">
+                                            <input type="text" readonly class="form-control-plaintext" name="no_permohonan_c" id="no_permohonan_c" value="/SRV/SIP/<?= date("m")?>/<?= date("Y")?>">
+                                        </div> 
                                     </div>
-                                    <div class="col-auto p-0" style="margin-left: 2px">
-                                        <input type="text" readonly class="form-control-plaintext" name="no_permohonan_c" id="no_permohonan_c" value="/SRV/SIP/<?= date("m")?>/<?= date("Y")?>">
-                                    </div> 
                                 </div>
                             </div>
                             <div class="form-group">
