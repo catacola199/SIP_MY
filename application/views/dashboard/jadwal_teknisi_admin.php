@@ -120,7 +120,7 @@
                                                                 <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Ganti Jadwal"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERTUNDA') : ?>
-                                                            <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifadminteknisi/' . $data->no_permohonan) ?>')" href="#!" class="btn btn-sm btn-outline-primary">
+                                                            <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifadminteknisi/' . md5($data->no_permohonan)) ?>')" href="#!" class="btn btn-sm btn-outline-primary">
                                                                 <i class="fas fa-share" data-toggle="tooltip" data-placement="bottom" title="Terlaksana"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
