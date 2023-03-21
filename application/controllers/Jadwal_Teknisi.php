@@ -224,9 +224,15 @@ class Jadwal_Teknisi extends CI_Controller
 	// Delete jadwal
 	public function delete_jadtek($id = null)
 	{
+		$query = $this->db->get('teknisi_nopermohonan')->result();
+		foreach ($query as $data){
+			if(md5($data->no_permohonan) === $id){
+				$no = $data->no_permohonan;
+			}
+		}
 		if (!isset($id)) show_404();
 
-		if ($this->M_JadwalTeknisi->del_all($id)) {
+		if ($this->M_JadwalTeknisi->del_all($no)) {
 			$this->session->set_flashdata('notif', 'Jadwal berhasil dihapus');
 			redirect(base_url('teknisii'));
 		}
