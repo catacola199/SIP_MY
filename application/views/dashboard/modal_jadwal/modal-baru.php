@@ -27,18 +27,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="kategori_jadwal">Kategori</label>
                                 <div class="form-floating">
-                                    <select class="form-select" id="kategori_jadwal" name="kategori_jadwal" aria-label=".." required>
-                                        <option disabled value="" selected>Pilih salah satu...</option>
-                                        <option value="instalasi">Instalasi</option>
-                                        <option value="service">Service</option>
-                                        <option value="Survey">Survey</option>
-                                        <option value="Training">Training</option>
-                                        <option value="Setting Ukes">Setting Ukes</option>
-                                        <option value="Presentasi">Presentasi</option>
-                                        <option value="Pre-Instal">Pre-Instal</option>
-                                    </select>
-                                    <label for="kategori_jadwal">Kategori</label>
+                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Instalasi"> Instalasi
+                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Service"> Service
+                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Survey"> Survey
+                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Training"> Training
+                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Setting Ukes"> Setting Ukes
+                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Presentasi"> Presentasi
+                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Pre-Instal"> Pre-Instal
                                 </div>
                             </div>
                             <div class="form-group">
