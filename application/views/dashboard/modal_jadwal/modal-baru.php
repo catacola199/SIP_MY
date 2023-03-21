@@ -10,9 +10,17 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col pl-4 pr-4">
-                            <div class="form-group">
+                            <label for="no_permohonan_b" class="form-label">Nomor Permohonan</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-white border border-0 p-0 mr-2">NO.</span>
+                                    <input type="hidden" name="no_permohonan_a" id="no_permohonan_a" value="NO.">
+                                    <input type="text" class="form-control rounded-2 border-opacity-10" name="no_permohonan_b" id="no_permohonan_b" placeholder="xxxx" required style="max-width:30%">
+                                    <input type="hidden" name="no_permohonan_c" id="no_permohonan_c" value="/SRV/SIP/<?= date("m")?>/<?= date("Y")?>">
+                                <span class="input-group-text bg-white border border-0">/SRV/SIP/<?= date("m")?>/<?= date("Y")?></span>
+                            </div>
+                            <!-- <div class="form-group ml-1">
                                 <label for="no_permohonan" class="form-label">Nomor Permohonan</label>
-                                <div class="container ml-0">
+                                <div class="container ml-1">
                                     <div class="row">
                                         <div class="col-md-1 col-sm-2 p-0">
                                             <input type="text" readonly class="form-control-plaintext" name="no_permohonan_a" id="no_permohonan_a" value="NO.">
@@ -25,17 +33,62 @@
                                         </div> 
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
+                            </div> -->
+                            <div class="form-group ml-1">
                                 <label for="kategori_jadwal">Kategori</label>
-                                <div class="form-floating">
-                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Instalasi"> Instalasi
-                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Service"> Service
-                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Survey"> Survey
-                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Training"> Training
-                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Setting Ukes"> Setting Ukes
-                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Presentasi"> Presentasi
-                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Pre-Instal"> Pre-Instal
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-text rounded-2">
+                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Instalasi"> 
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" value=" Instalasi">
+                                        </div>
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-text rounded-2">
+                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Service">
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" value=" Service">
+                                        </div>
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-text rounded-2">
+                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Service">
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" value=" Service">
+                                        </div>
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-text rounded-2">
+                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Survey">
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" value=" Survey">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-text rounded-2">
+                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Training">
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" value=" Training">
+                                        </div>
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-text rounded-2">
+                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Setting Ukes">
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" value=" Setting Ukes">
+                                        </div>
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-text rounded-2">
+                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Presentasi">
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" value=" Presentasi">
+                                        </div>
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-text rounded-2">
+                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Pre-Install">
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" value=" Preinstall">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
