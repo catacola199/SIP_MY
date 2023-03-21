@@ -170,9 +170,10 @@
                                         <tr>
                                             <th>#</th>
                                             <th>No Permohonan</th>
-                                            <th>Nama Produk</th>
-                                            <th>Tipe Produk</th>
-                                            <th>Jenis Produk</th>
+                                            <th>Nama Alat</th>
+                                            <th>Merk Alat</th>
+                                            <th>Tipe Alat</th>
+                                            <th>Spare Alat</th>
                                             <th>Lampiran</th>
                                             <?php if ((($this->fungsi->user_login()->id_role) != 4) && ($data->status == 'BARU')) : ?>
                                                 <th>Action</th>
@@ -187,8 +188,9 @@
                                                     <td><?= $i++ ?></td>
                                                     <td class="text-capitalize"><?php echo $produk->no_permohonan ?></td>
                                                     <td class="text-capitalize"><?php echo $produk->nama_produk ?></td>
+                                                    <td class="text-capitalize"><?php echo $produk->merk_produk ?></td>
                                                     <td class="text-capitalize"><?php echo $produk->tipe_produk ?></td>
-                                                    <td class="text-capitalize"><?php echo $produk->jenis_produk ?></td>
+                                                    <td class="text-capitalize"><?php echo $produk->pabrik_produk ?></td>
                                                     <td>
                                                         <?php if ($produk->dokumen_bap != null) : ?>
                                                             <a class="btn btn-primary" href="<?php echo base_url('upload/dokumen_bap/' . $produk->dokumen_bap) ?>" target="_blank"> Lihat Lampiran </a>
