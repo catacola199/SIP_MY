@@ -169,7 +169,6 @@
                                     <thead class="bg-primary text-white">
                                         <tr>
                                             <th>#</th>
-                                            <th>No Permohonan</th>
                                             <th>Nama Alat</th>
                                             <th>Merk Alat</th>
                                             <th>Tipe Alat</th>
@@ -186,7 +185,7 @@
                                             <?php if ($produk->no_permohonan == $data->no_permohonan) : ?>
                                                 <tr>
                                                     <td><?= $i++ ?></td>
-                                                    <td class="text-capitalize"><?php echo $produk->no_permohonan ?></td>
+                                                    
                                                     <td class="text-capitalize"><?php echo $produk->nama_produk ?></td>
                                                     <td class="text-capitalize"><?php echo $produk->merk_produk ?></td>
                                                     <td class="text-capitalize"><?php echo $produk->tipe_produk ?></td>
