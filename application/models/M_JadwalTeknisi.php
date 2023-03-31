@@ -115,7 +115,7 @@ class M_JadwalTeknisi extends CI_Model
             return $this->uploadpenawaran->data("file_name");
         }
         //  print_r($this->upload->display_errors());
-        return null;
+        return "default.pdf";
     }
 
     // Upload Dokumen 
@@ -136,7 +136,7 @@ class M_JadwalTeknisi extends CI_Model
             return $this->uploadsurattugas->data("file_name");
         }
         //  print_r($this->upload->display_errors());
-        return null;
+        return "default.pdf";
     }
 
     // Upload Dokumen

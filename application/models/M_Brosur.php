@@ -17,38 +17,41 @@ class M_Brosur extends CI_Model
 
     public function _uploadFileBrosur()
     {
-        $config['upload_path']          = './upload/brosur/file_brosur/';
-		$config['allowed_types']        = 'pdf|doc|docx';
+        $config = array();
+        $config['upload_path']          = './upload/brosur/file';
+        $config['allowed_types']        = 'pdf|doc|docx';
         // $config['file_name']            = $this->input->post('nama_brosur');
         $config['encrypt_name']         = false;
         $config['overwrite']            = true;
         $config['max_size']             = 5094; // 1MB
 
-        $this->load->library('upload', $config,'uploadFileBrosur');
-        $this->uploadFileBrosur->initialize($config);      
+        $this->load->library('upload', $config, 'uploadFileBrosur');
+        $this->uploadFileBrosur->initialize($config);
 
-        if ($this->upload->do_upload('file_brosur')) {
-            return $this->upload->data("file_name");
+        if ($this->uploadFileBrosur->do_upload('file_brosur')) {
+            return $this->uploadFileBrosur->data("file_name");
         }
         // print_r($this->upload->display_errors());
         return "default.pdf";
     }
     public function _uploadImageBrosur()
     {
-        $config['upload_path']          = './upload/brosur/thumbnail/';
-        $config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
-        $config['file_name']            = $this->input->post('nama_brosur');
+        $config = array();
+        $config['upload_path']          = './upload/brosur/thumbnail';
+        $config['allowed_types']        = 'png|jpg|jpeg';
+        // $config['file_name']            = $this->input->post('nama_brosur');
         $config['encrypt_name']         = false;
         $config['overwrite']            = true;
         $config['max_size']             = 5094; // 1MB
 
-        $this->load->library('upload', $config);
+        $this->load->library('upload', $config, 'uploadImageBrosur');
+        $this->uploadImageBrosur->initialize($config);
 
-        if ($this->upload->do_upload('thumb_brosur')) {
-            return $this->upload->data("file_name");
+        if ($this->uploadImageBrosur->do_upload('thumb_brosur')) {
+            return $this->uploadImageBrosur->data("file_name");
         }
         // print_r($this->upload->display_errors());
-        return "./assets/pdf.png";
+        return "default.png";
     }
 
     public function getID($id)

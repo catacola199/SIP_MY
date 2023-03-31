@@ -51,11 +51,11 @@
                     <?php foreach ($brosur as $data):?>
                         <?php if($data->link_youtube == null):?>
                             <div class="card shadow-sm">
-                                <img src="<?= base_url('upload/brosur/thumbnail/'.$data->thumb_brosur) ?>" class="img-fluid card-img-top" alt="...">
+                                <img src="<?= base_url('upload/brosur/thumbnail/'.$data->thumb_brosur)?>" class="card-img-top pp" style="height:10rem;"alt="...">
                                 <div class="card-body ">
                                     <h5 class="card-title"><?= $data->nama_brosur?></h5>
                                     <p class="card-text"><?= $data->deskripsi_brosur?></p>
-                                    <a href="#!" class="btn btn-primary"><i class='bx bx-download mr-2'></i>Download</a>
+                                    <a class="btn btn-outline-primary" href="<?= base_url('upload/brosur/file/'.$data->file_brosur)?>"><i class='bx bx-download mr-2'></i>Download</a>
                                 </div>
                             </div>
                         <?php else:?> 
@@ -64,7 +64,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $data->nama_brosur?></h5>
                                     <p class="card-text"><?= $data->deskripsi_brosur?></p>
-                                    <a href="#!" class="btn btn-primary"><i class='bx bx-download mr-2'></i>Download</a>
+                                    <a class="btn btn-outline-primary" href="<?= base_url('upload/brosur/file/'.$data->file_brosur)?>"><i class='bx bx-download mr-2'></i>Download</a>
                                 </div>
                             </div>
                         <?php endif;?>
