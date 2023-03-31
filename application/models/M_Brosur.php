@@ -24,7 +24,8 @@ class M_Brosur extends CI_Model
         $config['overwrite']            = true;
         $config['max_size']             = 5094; // 1MB
 
-        $this->load->library('upload', $config);
+        $this->load->library('upload', $config,'uploadFileBrosur');
+        $this->uploadFileBrosur->initialize($config);      
 
         if ($this->upload->do_upload('file_brosur')) {
             return $this->upload->data("file_name");
@@ -47,7 +48,7 @@ class M_Brosur extends CI_Model
             return $this->upload->data("file_name");
         }
         // print_r($this->upload->display_errors());
-        return "default.png";
+        return "./assets/pdf.png";
     }
 
     public function getID($id)

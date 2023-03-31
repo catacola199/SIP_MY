@@ -27,16 +27,6 @@
                                 <label for="pembayaran">Pilihan Pembayaran</label>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="file_buktibayar">File Bukti Bayar</label>
-                            <input type="file" class="form-control form-control-file" name="file_buktibayar" id="file_buktibayar" accept=".pdf" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="file_invoice">File Invoice</label>
-                            <input type="file" class="form-control form-control-file" name="file_invoice" id="file_invoice" accept=".pdf" required>
-                        </div>
-
                         <div class="form-group">
                             <div class="form-floating">
                                 <select id="status" name="status" class="form-control" required>
