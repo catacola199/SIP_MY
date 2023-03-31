@@ -36,24 +36,18 @@
                                         </div>
                                         <div class="input-group mb-1">
                                             <div class="input-group-text rounded-2">
-                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Service">
-                                            </div>
-                                            <input type="text" readonly class="form-control-plaintext" value=" Service">
-                                        </div>
-                                        <div class="input-group mb-1">
-                                            <div class="input-group-text rounded-2">
                                                 <input type="checkbox" name="check_list[]" alt="Checkbox" value="Survey">
                                             </div>
                                             <input type="text" readonly class="form-control-plaintext" value=" Survey">
                                         </div>
-                                    </div>
-                                    <div class="col">
                                         <div class="input-group mb-1">
                                             <div class="input-group-text rounded-2">
                                                 <input type="checkbox" name="check_list[]" alt="Checkbox" value="Training">
                                             </div>
                                             <input type="text" readonly class="form-control-plaintext" value=" Training">
                                         </div>
+                                    </div>
+                                    <div class="col">
                                         <div class="input-group mb-1">
                                             <div class="input-group-text rounded-2">
                                                 <input type="checkbox" name="check_list[]" alt="Checkbox" value="Setting Ukes">
@@ -136,7 +130,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                    <button class="btn btn-success" data-bs-target="#Jadwal2" data-bs-toggle="modal"><i class="fa fa-arrow-right"></i> Lanjut</button>
+                    <button class="btn btn-success" data-bs-target="#Jadwal2" data-bs-toggle="modal"><i class="fa fa-arrow-right"></i> Selanjutnya</button>
                 </div>
             </div>
         </div>
@@ -191,6 +185,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
+                    <button class="btn btn-primary" data-bs-target="#tambah" data-bs-toggle="modal"><i class="fa fa-arrow-left"></i> Sebelumnya</button>
                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                 </div>
             </div>
