@@ -36,7 +36,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                     <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>">Dashboard</a>
-                                        <i class="fas fa-angle-double-right"></i> Company Profile
+                                        <i class="fas fa-angle-double-right"></i> Presentasi Training
                                     </li>
                                 </ol>
                             </nav>

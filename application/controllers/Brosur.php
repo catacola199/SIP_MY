@@ -27,6 +27,22 @@ class Brosur extends CI_Controller
 		$this->load->view("user/brosur", $data);
 	}
 
+		public function produk()
+	{
+		$data["role"] = $this->All_model->getAllRole();
+		$data["brosur"] = $this->M_Brosur->getAllPreProduk();
+		$this->load->view("user/produk", $data);
+	}
+
+
+		public function training()
+	{
+		$data["role"] = $this->All_model->getAllRole();
+		$data["brosur"] = $this->M_Brosur->getAllPreTraining();
+		$this->load->view("user/training", $data);
+	}
+
+
 	// Get Save User
 	public function save_brosur()
 	{	
