@@ -9,6 +9,23 @@ class M_Brosur extends CI_Model
         return $this->db->get($this->_table)->result();
     }
 
+    public function getAllPreTraining()
+    {
+        $this->db->select('*');
+        $this->db->from('brosur');
+        $this->db->where('jenis_brosur', 'pretraining');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function getAllPreProduk()
+    {
+        $this->db->select('*');
+        $this->db->from('brosur');
+        $this->db->where('jenis_brosur', 'preproduk');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function simpandatabrosur($data)
     {
         $this->db->insert('brosur', $data);

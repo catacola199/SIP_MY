@@ -17,10 +17,22 @@
                         <span class="hide-menu">Applications</span>
                     </li>
 
-                    <li class="sidebar-item">
+                   <li class="sidebar-item">
                         <a class="sidebar-link sidebar-link" href="<?= base_url('compro') ?>" aria-expanded="false">
                             <i data-feather="book" class="feather-icon"></i>
-                            <span class="hide-menu">Company Profile</span>
+                            <span class="hide-menu">Brosur</span>
+                        </a>
+                    </li>
+                     <li class="sidebar-item">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('pretraining') ?>" aria-expanded="false">
+                            <i data-feather="book" class="feather-icon"></i>
+                            <span class="hide-menu">Presentasi Training</span>
+                        </a>
+                    </li>
+                     <li class="sidebar-item">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('preproduk') ?>" aria-expanded="false">
+                            <i data-feather="book" class="feather-icon"></i>
+                            <span class="hide-menu">Presentasi Produk</span>
                         </a>
                     </li>
 
@@ -80,9 +92,6 @@
                                 </li>
                             </ul>
                         </li>
-
-
-
                         <!-- <li class="list-divider"></li> -->
                         <li class="sidebar-item">
                             <a class="sidebar-link has-arrow btn btn-outline-light" href="javascript:void(0)" aria-expanded="false" style="border:0; border-radius: 0 50px 50px 0;"><i data-feather="sliders" class="feather-icon"></i>
@@ -100,11 +109,7 @@
                         <span class="hide-menu"> Profile</span>
                     </a>
                 </li> -->
-
-
-
-
-
+                <!--User Teknisi -->       
                 <?php if ($this->fungsi->user_login()->id_role == "4") { ?>
                     <li class="list-divider"></li>
                     <li class="nav-small-cap">
@@ -116,8 +121,6 @@
                             <span class="hide-menu">Company Profile</span>
                         </a>
                     </li>
-
-
                     <li class="list-divider"></li>
                     <li class="nav-small-cap">
                         <span class="hide-menu">Teknisi</span>
@@ -130,6 +133,31 @@
                     </li>
                 <?php } ?>
 
+                <!--User Distributor -->       
+                <?php if ($this->fungsi->user_login()->id_role == "4") { ?>
+                    <li class="list-divider"></li>
+                    <li class="nav-small-cap">
+                        <span class="hide-menu">Applications</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('compro') ?>" aria-expanded="false">
+                            <i data-feather="book" class="feather-icon"></i>
+                            <span class="hide-menu">Brosur</span>
+                        </a>
+                    </li>
+                     <li class="sidebar-item">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('pretraining') ?>" aria-expanded="false">
+                            <i data-feather="book" class="feather-icon"></i>
+                            <span class="hide-menu">Presentasi Training</span>
+                        </a>
+                    </li>
+                     <li class="sidebar-item">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('preproduk') ?>" aria-expanded="false">
+                            <i data-feather="book" class="feather-icon"></i>
+                            <span class="hide-menu">Presentasi Produk</span>
+                        </a>
+                    </li>
+                <?php } ?>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->
