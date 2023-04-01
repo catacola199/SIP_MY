@@ -55,7 +55,7 @@
                                 <div class="card-body ">
                                     <h5 class="card-title"><?= $data->nama_brosur?></h5>
                                     <p class="card-text"><?= $data->deskripsi_brosur?></p>
-                                    <a class="btn btn-outline-primary" href="<?= base_url('upload/brosur/file/'.$data->file_brosur)?>"><i class='bx bx-download mr-2'></i>Download</a>
+                                    <a class="btn btn-outline-primary" href="#!" data-bs-toggle="modal" data-bs-target="#brosur-<?= $data->id ?>"><i class='bx bx-download mr-2'></i>Download</a>
                                 </div>
                             </div>
                         <?php else:?> 
@@ -64,11 +64,33 @@
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $data->nama_brosur?></h5>
                                     <p class="card-text"><?= $data->deskripsi_brosur?></p>
-                                    <a class="btn btn-outline-primary" href="<?= base_url('upload/brosur/file/'.$data->file_brosur)?>"><i class='bx bx-download mr-2'></i>Download</a>
+                                    <a class="btn btn-outline-primary" target="_blank" href="<?= base_url('upload/brosur/file/'.$data->file_brosur)?>"><i class='bx bx-download mr-2'></i>Download</a>
                                 </div>
                             </div>
                         <?php endif;?>
+                        <div class="modal fade" id="brosur-<?= $data->id ?>" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" ria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"><?= $data->file_brosur ?></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <embed type="application/pdf" src="<?= base_url('upload/brosur/file/' . $data->file_brosur) ?>" height="530"></embed>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     <?php endforeach;?>
+                    
                 </div>
                 <?php $this->load->view('component/_footer') ?>
             </div>
