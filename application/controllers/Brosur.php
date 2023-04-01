@@ -53,6 +53,7 @@ class Brosur extends CI_Controller
 		$data = array(
 			'nama_brosur'	        => $this->input->post('nama_brosur'),
 			'deskripsi_brosur'	    => $this->input->post('deskripsi_brosur'),
+			'jenis_brosur'	    	=> $this->input->post('jenis_brosur'),
 			'thumb_brosur'     		=> $this->M_Brosur->_uploadImageBrosur(),
 			'file_brosur'	        => $this->M_Brosur->_uploadFileBrosur(),
 			'link_youtube'	 	    => $video_id

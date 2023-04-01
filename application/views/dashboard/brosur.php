@@ -58,7 +58,7 @@
                                         <button class="btn btn-outline-success float-right" data-bs-toggle="modal" data-bs-target="#tambah"><i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="Add"></i></button>
                                     </div>
                                 </h6>
-                                <div class="table-responsive">
+                                <div class="table-responsive" >
                                     <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
                                         <thead class="bg-primary text-white">
                                             <tr>
@@ -80,7 +80,7 @@
                                                     <td><img src="<?php echo base_url('upload/brosur/thumbnail/' . $data->thumb_brosur) ?>" alt="Foto" width="60" class="img-thumbnail rounded" /></td>
                                                     <td><?php echo $data->nama_brosur ?></td>
                                                     <td class="text-truncate" style="max-width:100px;"><?php echo $data->deskripsi_brosur ?></td>
-                                                    <td><?php echo $data->file_brosur ?></td>
+                                                    <td class="text-truncate" style="max-width:100px;"><?php echo $data->file_brosur ?></td>
                                                     <td>
                                                         <?php if ($data->link_youtube != null) : ?>
                                                             <a href="<?php echo "https://youtu.be/" . $data->link_youtube ?>"> <?php echo "https://youtu.be/" . $data->link_youtube ?></a>
@@ -144,7 +144,18 @@
                         </div>
                         <div class="form-group">
                             <!-- <textarea class="form-control" name="deskripsi_brosur" placeholder="Deskripsi" id="deskripsi_brosur" style="height: 100px" required autocomplete="off"></textarea> -->
-
+                            <div class="form-floating">
+                                <select class="form-select" id="jenis_brosur" name="jenis_brosur" aria-label="Default select example">
+                                    <option selected disabled>Pilih salah satu</option>
+                                    <option value="pretraining">Presentasi Training</option>
+                                    <option value="preproduk">Presentasi Produk</option>
+                                    <option value="brosur">Brosur</option>
+                                </select>
+                                <label for="deskripsi_brosur">Jenis</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <!-- <textarea class="form-control" name="deskripsi_brosur" placeholder="Deskripsi" id="deskripsi_brosur" style="height: 100px" required autocomplete="off"></textarea> -->
                             <div class="form-floating">
                                 <textarea class="form-control" name="deskripsi_brosur" placeholder="Deskripsi" id="deskripsi_brosur" style="height: 100px" required autocomplete="off"></textarea>
                                 <label for="deskripsi_brosur">Deskripsi</label>
