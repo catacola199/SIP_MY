@@ -51,7 +51,7 @@
                     <?php foreach ($brosur as $data):?>
                         <?php if($data->link_youtube == null):?>
                             <div class="card shadow-sm">
-                                <img src="<?= base_url('upload/brosur/thumbnail/'.$data->thumb_brosur)?>" class="card-img-top pp" style="height:10rem;"alt="...">
+                                <img src="<?= base_url('upload/brosur/thumbnail/'.$data->thumb_brosur)?>" class="card-img-top pp" style="object-fit:none;aspect-ratio:2"alt="...">
                                 <div class="card-body ">
                                     <h5 class="card-title"><?= $data->nama_brosur?></h5>
                                     <p class="card-text"><?= $data->deskripsi_brosur?></p>

@@ -64,6 +64,7 @@ $route['profiles'] = 'profile';
 $route['compro'] = 'brosur/brosur';
 $route['pretraining'] = 'brosur/training';
 $route['preproduk'] = 'brosur/produk';
+$route['dst'] = 'distributor';
 $route['usertek'] = 'Jadwal_Teknisi/usertek';
 $route['teknisii'] = 'Jadwal_Teknisi';
 // $route['login'] = 'login/auth';
