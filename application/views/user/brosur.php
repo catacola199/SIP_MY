@@ -51,7 +51,7 @@
                     <?php foreach ($brosur as $data):?>
                         <?php if($data->link_youtube == null):?>
                             <div class="card shadow-sm">
-                                <img src="<?= base_url('upload/brosur/thumbnail/'.$data->thumb_brosur)?>" class="card-img-top pp" style="height:10rem;"alt="...">
+                                <img src="<?= base_url('upload/brosur/thumbnail/'.$data->thumb_brosur)?>" class="card-img-top" style="object-fit:none;aspect-ratio:2" alt="...">
                                 <div class="card-body ">
                                     <h5 class="card-title"><?= $data->nama_brosur?></h5>
                                     <p class="card-text"><?= $data->deskripsi_brosur?></p>
@@ -69,7 +69,7 @@
                             </div>
                         <?php endif;?>
                         <div class="modal fade" id="brosur-<?= $data->id ?>" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" ria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
+                            <div class="modal-dialog modal-xl modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title"><?= $data->file_brosur ?></h5>
@@ -90,7 +90,20 @@
                             </div>
                         </div>
                     <?php endforeach;?>
-                    
+                    <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="..." class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
                 </div>
                 <?php $this->load->view('component/_footer') ?>
             </div>

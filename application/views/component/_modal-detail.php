@@ -217,7 +217,7 @@
         </div>
     </div>
     <div class="modal fade" id="inovice-<?= $data->id_permohonan ?>" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
                     <button type="button" class="btn-close float-end" data-bs-toggle="modal" href="#detail-<?= $data->id_permohonan ?>" aria-label="Close"></button>
@@ -230,7 +230,7 @@
         </div>
     </div>
     <div class="modal fade" id="bayar-<?= $data->id_permohonan ?>" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" ria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
                     <button type="button" class="btn-close float-end" data-bs-toggle="modal" href="#detail-<?= $data->id_permohonan ?>" aria-label="Close"></button>
@@ -243,7 +243,7 @@
         </div>
     </div>
     <div class="modal fade" id="penawaran-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
                     <button type="button" class="btn-close float-end" data-bs-toggle="modal" href="#detail-<?= $data->id_permohonan ?>" aria-label="Close"></button>
