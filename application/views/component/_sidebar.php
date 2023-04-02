@@ -76,6 +76,11 @@
                                     </a>
                                 </li>
                                 <li class="sidebar-item">
+                                    <a href="<?= base_url('dst') ?>" class="sidebar-link">
+                                        <span class="hide-menu">Distributor </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
                                     <a href="<?= base_url('produks') ?>" class="sidebar-link">
                                         <span class="hide-menu">Produk </span>
                                     </a>
@@ -92,7 +97,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- <li class="list-divider"></li> -->
+                        <!-- 
                         <li class="sidebar-item">
                             <a class="sidebar-link has-arrow btn btn-outline-light" href="javascript:void(0)" aria-expanded="false" style="border:0; border-radius: 0 50px 50px 0;"><i data-feather="sliders" class="feather-icon"></i>
                                 <span class="hide-menu">Settings </span>
@@ -101,6 +106,7 @@
 
                             </ul>
                         </li>
+                    -->
                     <?php } ?>
                 <?php } ?>
                 <!-- <li class="sidebar-item">
