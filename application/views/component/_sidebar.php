@@ -10,6 +10,12 @@
                         <span class="hide-menu">Dashboard</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link sidebar-link" href="<?= base_url('overview') ?>" aria-expanded="false">
+                        <i data-feather="grid" class="feather-icon"></i>
+                        <span class="hide-menu">Overview</span>
+                    </a>
+                </li>
 
                 <?php if ($this->fungsi->user_login()->id_role == "1" || $this->fungsi->user_login()->id_role == "2") { ?>
                     <li class="list-divider"></li>

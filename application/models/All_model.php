@@ -26,6 +26,16 @@ class All_model extends CI_Model
         parent::__construct();
     }
 
+    public function chart()
+    {
+        $this->db->select('COUNT(tgl_invoice) AS jumlah, DAY(STR_TO_DATE(tgl_invoice,"%d/%m/%Y")) AS tgl');
+        $this->db->from('jual_distributor');
+        $this->db->where('STR_TO_DATE(tgl_invoice,"%d/%m/%Y") BETWEEN DATE_FORMAT(NOW(), "%Y-%m-01") AND LAST_DAY(NOW())');
+        $this->db->group_by('tgl_invoice');
+        $query = $this->db->get();
+        return  $query->result();
+    }
+
     public function getAllUser()
     {
         return $this->db->get($this->_user)->result();

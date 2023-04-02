@@ -179,7 +179,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                 </div>
                 </form>
             </div>
@@ -188,54 +188,61 @@
     <!-- Form Add Modal End -->
 
     <!-- Modal Edit -->
-    <?php foreach ($dst as $data) : ?>
-        <div class="modal fade" id="edit-<?= $data->id_penjualan ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <?php foreach($dst as $data):?>
+        <div class="modal fade" id="edit-<?=$data->id_penjualan?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Form Edit Brosur</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Form Edit Penjualan</h1>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-
-                    <div class="modal-body">
-                        <form action="<?php echo base_url('brosur/update_brosur') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
-
-                            <input type="text" hidden name="id" id="id" value="<?= $data->id ?>">
-
+                    <form action="<?php echo base_url('distributor/update_distributor') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
+                        <div class="modal-body">
+                            <input type="text" hidden name="id" id="id" value="<?= $data->id_penjualan ?>">
+                            <input type="text" hidden name="id_pengguna" id="id_pengguna" value="<?= $data->id_pengguna ?>">
+                            <input type="text" hidden name="old_invoice" id="old_invoice" value="<?= $data->invoice ?>">
                             <div class="form-group">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control form-control-user" name="nama_brosur" id="nama_brosur" placeholder="Nama Brosur" required autocomplete="off" value="<?= $data->nama_brosur ?>">
+                                    <input type="text" class="form-control form-control-user" name="nama_rs" id="nama_rs" placeholder="Nama Rumah Sakit" required autocomplete="off" value="<?= $data->nama_rs_dst ?>">
                                     <label for="nama_brosur">Nama Brosur</label>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="input-group date" id="pengadaan_alat">
                                 <div class="form-floating">
-                                    <textarea class="form-control" name="deskripsi_brosur" placeholder="Deskripsi" id="deskripsi_brosur" style="height: 100px" required autocomplete="off"><?= $data->deskripsi_brosur ?></textarea>
-                                    <label for="deskripsi_brosur">Deskripsi</label>
+                                    <input type="text" class="form-control" name="tgl_invoice" id="tgl_invoice" placeholder="Pilih Tanggal" value="<?= $data->tgl_invoice ?>" autocomplete="off" required />
+                                    <label for="tgl_invoice">Tanggal Inovice </label>
                                 </div>
+                                <span class="input-group-append">
+                                    <span class="input-group-text bg-light">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                </span>
                             </div>
                             <div class="form-group">
-                                <label for="thumb_brosur">Thumbnail Brosur</label>
-                                <input type="hidden" name="old_thumb" value="<?= $data->thumb_brosur ?>" />
-                                <input type="file" class="form-control form-control-file" name="thumb_brosur" id="thumb_brosur" accept=".png,.jpg,.jpeg">
+                                <label for="file_dst">File Invoice</label>
+                                <input type="file" class="form-control form-control-file" name="file_dst" id="file_dst" accept=".pdf">
                             </div>
-                            <div class="form-group">
-                                <label for="file_brosur">File Brosur</label>
-                                <input type="hidden" name="old_file" value="<?= $data->file_brosur ?>" />
-                                <input type="file" class="form-control form-control-file" name="file_brosur" id="file_brosur" accept=".pdf">
-
+                            <div class="input-group date" id="pengadaan_alat">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="jatuh_tempo" id="jatuh_tempo" placeholder="Pilih Tanggal" value="<?= $data->jatuh_tempo ?>" autocomplete="off" required />
+                                    <label for="jatuh_tempo">Tanggal Jatuh Tempo </label>
+                                </div>
+                                <span class="input-group-append">
+                                    <span class="input-group-text bg-light">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                </span>
                             </div>
-                    </div>
-                            <div class="modal-footer">
-                                <a href="<?php echo site_url('brosurs') ?>" class="btn btn-danger" data-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</a>
-                                <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
-                            </div>
-                        </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+                            <button type="button" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <!-- Modal Edit End -->
-    <?php endforeach; ?>
+    <?php endforeach;?>
     <script>
         ClassicEditor.create(document.querySelector("#deskripsi_brosur"));
         $(function() {

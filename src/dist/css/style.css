@@ -3641,7 +3641,6 @@ input[type="button"].btn-block {
 
 .card-columns .card {
   margin-bottom: 20px; }
-
 @media (min-width: 576px) {
   .card-columns {
     column-count: 5;
