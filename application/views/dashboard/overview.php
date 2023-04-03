@@ -66,13 +66,34 @@
     },
     options: {
         scales: {
-        yAxes: [
-            {
+        xAxes: [{
+            gridLines: {
+                display: false
+            },
             ticks: {
-                beginAtZero: true
+                fontColor: '#6a6b6a',
+                fontSize: 12
+            },
+            scaleLabel: {
+                display: true,
+                labelString: 'Tanggal per Bulan',
+                fontColor: '#6a6b6a',
+                fontSize: 15
             }
+        }],
+        yAxes: [{
+            ticks: {
+                beginAtZero: true,
+                fontColor: '#6a6b6a',
+                fontSize: 12
+            },
+            scaleLabel: {
+                display: true,
+                labelString: 'Jumlah per Hari',
+                fontColor: '#6a6b6a',
+                fontSize: 15
             }
-        ]
+        }]
         }
     }
     });
