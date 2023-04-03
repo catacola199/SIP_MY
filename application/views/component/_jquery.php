@@ -3,13 +3,14 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
 <script src="<?= base_url('src') ?>/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 
 <script src="<?= base_url('src') ?>/dist/js/feather.min.js"></script>
 <script src="<?= base_url('src') ?>/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
 <script src="<?= base_url('src') ?>/dist/js/sidebarmenu.js"></script>
 <!--Custom JavaScript -->
 <script src="<?= base_url('src') ?>/dist/js/custom.js"></script>
-<script src="<?= base_url('src') ?>/dist/js/pages/dashboards/dashboard1.min.js"></script>
+<!-- <script src="<?= base_url('src') ?>/dist/js/pages/dashboards/dashboard1.min.js"></script> -->
 <script src="<?= base_url('src') ?>/dist/js/app-style-switcher.js"></script>
 <script src="<?= base_url('src') ?>/assets/extra-libs/c3/d3.min.js"></script>
 <script src="<?= base_url('src') ?>/assets/extra-libs/c3/c3.min.js"></script>

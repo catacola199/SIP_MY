@@ -182,7 +182,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                 </div>
                 </form>
             </div>
@@ -239,7 +239,7 @@
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="<?php echo site_url('brosurs') ?>" class="btn btn-danger" data-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</a>
+                        <a href="#" class="btn btn-danger" data-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</a>
                         <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
                     </div>
                     </form>
