@@ -47,8 +47,8 @@
 <script>
     var labels = [];
     var values = [];
-
-        // Membuat chart.js dengan data awal
+    var colors = [];
+    var borders = [];
     var ctx = document.getElementById("myChart").getContext("2d");
     var chart = new Chart(ctx, {
     type: "bar",
@@ -56,9 +56,9 @@
         labels: [],
         datasets: [
         {
-            label: "Jumlah Penjualan pada Bulan Ini",
-            backgroundColor: "rgb(39, 210, 254, 0.2)",
-            borderColor: "rgb(39, 210, 254, 1)",
+            label: "Jumlah",
+            backgroundColor: colors,//"rgb(39, 210, 254, 0.2)"
+            borderColor: colors,//"rgb(39, 210, 254, 1)"
             borderWidth: 1,
             data: []
         }
@@ -76,7 +76,7 @@
             },
             scaleLabel: {
                 display: true,
-                labelString: 'Tanggal per Bulan',
+                labelString: 'Bulan',
                 fontColor: '#6a6b6a',
                 fontSize: 15
             }
@@ -89,7 +89,7 @@
             },
             scaleLabel: {
                 display: true,
-                labelString: 'Jumlah per Hari',
+                labelString: 'Jumlah per Bulan',
                 fontColor: '#6a6b6a',
                 fontSize: 15
             }
@@ -104,6 +104,17 @@
         url: '<?php echo base_url()?>/overview/data_penjualan',
         type: "GET",
         success: function(data) {
+
+        // Buat warna random untuk setiap bar
+        for (var i = 0; i < data.length; i++) {
+            var r = Math.floor(Math.random() * 256);
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            var color = 'rgb(' + r + ',' + g + ',' + b + ','+0.3+')';
+            var border = 'rgb(' + r + ',' + g + ',' + b + ','+1+')';
+            colors.push(color);
+            borders.push(border); 
+        }
         // Mengubah data menjadi array
         var chartData = JSON.parse(data);
 
@@ -122,6 +133,7 @@
             for (var i in chartData) {
             chart.data.labels.push(chartData[i].tgl);
             chart.data.datasets[0].data.push(chartData[i].jumlah);
+            
             }
             chart.update({
             preservation: true // Menjaga posisi horizontal saat data baru ditambahkan

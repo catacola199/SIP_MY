@@ -28,10 +28,11 @@ class All_model extends CI_Model
 
     public function chart()
     {
-        $this->db->select('COUNT(tgl_invoice) AS jumlah, DAY(STR_TO_DATE(tgl_invoice,"%d/%m/%Y")) AS tgl');
+        $this->db->select('COUNT(tgl_invoice) AS jumlah, MONTHNAME(STR_TO_DATE(tgl_invoice,"%d/%m/%Y")) AS tgl');
         $this->db->from('jual_distributor');
-        $this->db->where('STR_TO_DATE(tgl_invoice,"%d/%m/%Y") BETWEEN DATE_FORMAT(NOW(), "%Y-%m-01") AND LAST_DAY(NOW())');
-        $this->db->group_by('tgl_invoice');
+        $this->db->where('STR_TO_DATE(tgl_invoice,"%d/%m/%Y") BETWEEN DATE_FORMAT(NOW(), "%Y-01-01") AND DATE_FORMAT(NOW(), "%Y-12-31")');
+        $this->db->group_by('MONTHNAME(STR_TO_DATE(tgl_invoice,"%d/%m/%Y"))');
+        $this->db->order_by('MONTH(STR_TO_DATE(tgl_invoice,"%d/%m/%Y"))');
         $query = $this->db->get();
         return  $query->result();
     }
