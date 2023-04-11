@@ -64,6 +64,12 @@
                             <span class="hide-menu">Alat</span>
                         </a>
                     </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('kontens') ?>" aria-expanded="false">
+                            <i data-feather="database" class="feather-icon"></i>
+                            <span class="hide-menu">Konten</span>
+                        </a>
+                    </li>
                     <?php if ($this->fungsi->user_login()->id_role == "1") { ?>
                         <li class="sidebar-item">
                             <a class="sidebar-link has-arrow btn btn-outline-light" href="javascript:void(0)" aria-expanded="false" style="border:0; border-radius: 0 50px 50px 0;"><i data-feather="archive" class="feather-icon"></i>
