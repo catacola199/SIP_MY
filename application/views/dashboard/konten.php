@@ -84,11 +84,11 @@
                                                     <td><?php echo $data->nama_produk ?></td>
                                                     <td class="text-truncate" style="max-width:100px;"><?php echo $data->informasi_produk ?></td>
                                                     <td><?php echo $data->tagline_produk ?></td>
-                                                    <td><?php echo $data->kategori_produk ?></td>
+                                                    <td><?php echo $data->nama_kategori ?></td>
                                                     <td><?php echo $data->kode_produk ?></td>
                                                     <td class="text-truncate" style="max-width:100px;"><?php echo $data->feature_produk ?></td>
                                                     <td class="text-truncate" style="max-width:100px;"><?php echo $data->file_produk ?></td>
-                                                    <td class="text-truncate" style="max-width:100px;"><?php echo $data->gambar1_produk ?></td>
+                                                    <td class="text-truncate" style="max-width:100px;"><?php echo $data->gambar1 ?></td>
                                                     <td>
                                                         <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#edit-<?= $data->id_detailproduk ?>">
                                                             <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
@@ -145,12 +145,6 @@
                         </div>
                         <div class="form-group">
                             <div class="form-floating">
-                                <input type="text" class="form-control form-control-user" name="informasi_produk" id="informasi_produk" placeholder="Informasi Produk" required autocomplete="off">
-                                <label for="informasi_produk">Informasi Produk</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating">
                                 <input type="text" class="form-control form-control-user" name="tagline_produk" id="tagline_produk" placeholder="Tagline Produk" required autocomplete="off">
                                 <label for="tagline_produk">Tagline Produk</label>
                             </div>
@@ -160,6 +154,30 @@
                                 <input type="text" class="form-control form-control-user" name="kategori_produk" id="kategori_produk" placeholder="Kategori Produk" required autocomplete="off">
                                 <label for="kategori_produk">Kategori Produk</label>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <table class="table-borderless col-md-12" id="dynamic_field">
+                                <tr>
+                                    <td class="col-6 col-sm-6 col-lg-6 col-md-6">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="id_produk_baru[]" name="id_produk_baru[]" aria-label="Floating label select example" required>
+                                                <option disabled value="" selected>Pilih salah satu...</option>
+
+                                            </select>
+                                            <label for="id_produk_baru[]">Produk</label>
+                                        </div>
+                                    </td>
+                                    <td class="col-5 col-sm-5 col-lg-5 col-md-5">
+                                        <div class="form-floating">
+                                            <input type="text" name="pabrik[]" id="pabrik[]" placeholder="Spare Part" class="form-control" autocomplete="off" required />
+                                            <label for="Spare Part[]">Spare Part</label>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="button" name="add" id="add" class="btn btn-success "><i class="fa fa-plus"></i></button>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="form-group">
                             <div class="form-floating">
@@ -173,13 +191,16 @@
                                 <label for="feature_produk">Feature Produk</label>
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <label for="file_dst">File Invoice</label>
-                            <input type="file" class="form-control form-control-file" name="file_dst" id="file_dst" accept=".pdf">
+                            <label for="informasi_produk">Informasi Produk</label>
+                            <input type="file" class="form-control form-control-file" name="informasi_produk" id="informasi_produk" accept=".png,.jpg,.jpeg">
                         </div>
                         <div class="form-group">
-                            <label for="thumb_brosur">Gambar Produk</label>
+                            <label for="file_produk">File Invoice</label>
+                            <input type="file" class="form-control form-control-file" name="file_produk" id="file_produk" accept=".pdf">
+                        </div>
+                        <div class="form-group">
+                            <label for="gambar1_produk">Gambar Produk</label>
                             <input type="file" class="form-control form-control-file" name="gambar1_produk" id="gambar1_produk" accept=".png,.jpg,.jpeg">
                         </div>
                         <div class="modal-footer">
@@ -263,5 +284,21 @@
             ClassicEditor.create(document.querySelector("#deskripsi_brosur"));
             $(function() {
                 $('[data-toggle="tooltip"]').tooltip();
+            });
+            $(document).ready(function() {
+                var i = 1;
+
+                $('#add').click(function() {
+                    i++;
+                    $('#dynamic_field').append(
+                        '<tr id="row' + i + '" class="dynamic-added"><td class="col-6 col-sm-6 col-lg-6 col-md-6"><div class="form-floating"><select class="form-select" id="id_produk_baru[]" name="id_produk_baru[]" aria-label="Floating label select example" required><option disabled value="" selected>Pilih salah satu...</option><?php foreach ($produk as $l) { ?><option value="<?php echo $l['id_produk']; ?>"><?php echo $l['jenis_produk'] . " - " . $l['nama_produk'] . " - " . $l['tipe_produk']; ?></option><?php } ?></select><label for="id_produk_baru[]">Produk</label></div></td><td class="col-5 col-sm-5 col-lg-5 col-md-5"><div class="form-floating"><input type="text" name="pabrik[]" id="pabrik[]" placeholder="Pabrik" class="form-control" autocomplete="off" required /><label for="pabrik[]">Pabrik</label></div></td><td class="text-center"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove"><i class="fa fa-times"></i></button></td></tr>'
+                    );
+
+                });
+
+                $(document).on('click', '.btn_remove', function() {
+                    var button_id = $(this).attr("id");
+                    $('#row' + button_id + '').remove();
+                });
             });
         </script>
