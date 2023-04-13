@@ -17,7 +17,7 @@ class Konten extends CI_Controller
 	{
 		$data["role"] = $this->All_model->getAllRole();
 		$data["distributor"] = $this->M_Konten->getDistributor();
-		$data["konten"] = $this->M_Konten->getAllKonten();
+		$data["konten"] = $this->M_Konten->getAlldata();
 		$this->load->view("dashboard/konten", $data);
 	}
 
@@ -28,18 +28,21 @@ class Konten extends CI_Controller
 		$this->load->view("user/brosur", $data);
 	}
 
-	
+
 	// Get Save User
 	public function save_dst()
-	{	
+	{
 		$data = array(
-			'nama_rs_dst'	        => $this->input->post('nama_rs'),
-			'id_pengguna'	    	=> $this->input->post('id_pengguna'),
-			'tgl_invoice'	    	=> $this->input->post('tgl_invoice'),
-			'invoice'	 	        => $this->M_Konten->_uploadFiledst(),
-			'jatuh_tempo'	    	=> $this->input->post('jatuh_tempo')
+			'nama_produk'	        => $this->input->post('nama_produk'),
+			'informasi_produk'	 	=> $this->M_Konten->_uploadInformasiKonten(),
+			'tagline_produk'	    => $this->input->post('tagline_produk'),
+			'kategori_produk'	    => $this->input->post('kategori_produk'),
+			'kode_produk'	    	=> $this->input->post('kode_produk'),
+			'gambar1_produk'	    => $this->M_Konten->_uploadImageKonten(),
+			'feature_produk'	 	=> $this->input->post('kode_produk'),
+			'file_produk'	  		=> $this->M_Konten->_uploadFilekonten()
 		);
-		$this->M_Konten->simpandatadst($data);
+		$this->M_Konten->simpandatakonten($data);
 		$this->session->set_flashdata('notif', 'Data berhasil disimpan');
 		redirect(base_url('dst'));
 	}
