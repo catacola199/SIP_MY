@@ -128,7 +128,7 @@
 
     <!-- Form Add Modal -->
     <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Form Tambah Pengguna</h1>
@@ -155,11 +155,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <!-- <textarea class="form-control" name="deskripsi_brosur" placeholder="Deskripsi" id="deskripsi_brosur" style="height: 100px" required autocomplete="off"></textarea> -->
-                            <div class="form-floating">
+                            <label for="deskripsi_brosur">Deskripsi</label>
+                            <textarea class="form-control" name="deskripsi_brosur" placeholder="Deskripsi" id="deskripsi_brosur" autocomplete="off"></textarea>
+                            <!-- <div class="form-floating">
                                 <textarea class="form-control" name="deskripsi_brosur" placeholder="Deskripsi" id="deskripsi_brosur" style="height: 100px" required autocomplete="off"></textarea>
-                                <label for="deskripsi_brosur">Deskripsi</label>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-group">
                             <label for="thumb_brosur">Thumbnail Brosur</label>

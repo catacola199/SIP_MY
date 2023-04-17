@@ -26,13 +26,32 @@
 <!-- ckedior -->
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script> -->
 <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
-<script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
 
+<script>
+    ClassicEditor
+    .create(document.querySelector('textarea.form-control'))
+    .catch(error => {
+        console.error(error);
+    });
     $(document).ready(function() {
         $('#multi_col_order').DataTable();
         $('table.display').DataTable();
         $('#produk').DataTable();
         $('#teknisi').DataTable();
+        // $('textarea.form-control').summernote({
+        //     tabsize: 3,
+        //     height: 120,
+        //     toolbar: [
+        //     ['style', ['style']],
+        //     ['font', ['bold', 'underline', 'clear']],
+        //     ['color', ['color']],
+        //     ['para', ['ul', 'ol', 'paragraph']],
+        //     ['table', ['table']],
+        //     ['insert', ['link']]
+        //     ]
+        // });
 
         $('#fullscreen').on('click', function() {
             document.getElementById('exit_fullscreen').style.removeProperty("display");
