@@ -149,35 +149,102 @@
                                 <label for="tagline_produk">Tagline Produk</label>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <input type="text" class="form-control form-control-user" name="kategori_produk" id="kategori_produk" placeholder="Kategori Produk" required autocomplete="off">
-                                <label for="kategori_produk">Kategori Produk</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <table class="table-borderless col-md-12" id="dynamic_field">
-                                <tr>
-                                    <td class="col-6 col-sm-6 col-lg-6 col-md-6">
-                                        <div class="form-floating">
-                                            <select class="form-select" id="id_produk_baru[]" name="id_produk_baru[]" aria-label="Floating label select example" required>
-                                                <option disabled value="" selected>Pilih salah satu...</option>
+                        <div class="form-group ml-1">
+                            <label for="kategori_produk">Kategori</label>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="X-ray">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" X-ray">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Analog">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Analog">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Stationery">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Stationery">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Mobile">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Mobile">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Computed Radiography">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Computed Radiography">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Printer">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Printer">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="USG">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" USG">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Film">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Film">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Grid">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Grid">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Digital Radiography">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Digital Radiography">
+                                    </div>
 
-                                            </select>
-                                            <label for="id_produk_baru[]">Produk</label>
+
+                                </div>
+                                <div class="col">
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Accesories Apron">
                                         </div>
-                                    </td>
-                                    <td class="col-5 col-sm-5 col-lg-5 col-md-5">
-                                        <div class="form-floating">
-                                            <input type="text" name="pabrik[]" id="pabrik[]" placeholder="Spare Part" class="form-control" autocomplete="off" required />
-                                            <label for="Spare Part[]">Spare Part</label>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Accesories Apron">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Accesories Gloves">
                                         </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <button type="button" name="add" id="add" class="btn btn-success "><i class="fa fa-plus"></i></button>
-                                    </td>
-                                </tr>
-                            </table>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Accesories Gloves">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Accesories Glasess">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Accesories Glasess">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Accesories Head">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Accesories Head">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="form-floating">
@@ -243,10 +310,55 @@
                                         <label for="tagline_produk">Tagline Produk</label>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control form-control-user" name="kategori_produk" id="kategori_produk" placeholder="Kategori Produk" required autocomplete="off" value="<?= $data->kategori_produk ?>">
-                                        <label for="kategori_produk">Kategori Produk</label>
+                                <div class="form-group ml-1">
+                                    <label for="kategori_produk">Kategori</label>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-text rounded-2">
+                                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Instalasi">
+                                                </div>
+                                                <input type="text" readonly class="form-control-plaintext" value=" Instalasi">
+                                            </div>
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-text rounded-2">
+                                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Service">
+                                                </div>
+                                                <input type="text" readonly class="form-control-plaintext" value=" Service">
+                                            </div>
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-text rounded-2">
+                                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Survey">
+                                                </div>
+                                                <input type="text" readonly class="form-control-plaintext" value=" Survey">
+                                            </div>
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-text rounded-2">
+                                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Training">
+                                                </div>
+                                                <input type="text" readonly class="form-control-plaintext" value=" Training">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-text rounded-2">
+                                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Setting Ukes">
+                                                </div>
+                                                <input type="text" readonly class="form-control-plaintext" value=" Setting Ukes">
+                                            </div>
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-text rounded-2">
+                                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Presentasi">
+                                                </div>
+                                                <input type="text" readonly class="form-control-plaintext" value=" Presentasi">
+                                            </div>
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-text rounded-2">
+                                                    <input type="checkbox" name="check_list[]" alt="Checkbox" value="Pre-Install">
+                                                </div>
+                                                <input type="text" readonly class="form-control-plaintext" value=" Preinstall">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -284,21 +396,5 @@
             ClassicEditor.create(document.querySelector("#deskripsi_brosur"));
             $(function() {
                 $('[data-toggle="tooltip"]').tooltip();
-            });
-            $(document).ready(function() {
-                var i = 1;
-
-                $('#add').click(function() {
-                    i++;
-                    $('#dynamic_field').append(
-                        '<tr id="row' + i + '" class="dynamic-added"><td class="col-6 col-sm-6 col-lg-6 col-md-6"><div class="form-floating"><select class="form-select" id="id_produk_baru[]" name="id_produk_baru[]" aria-label="Floating label select example" required><option disabled value="" selected>Pilih salah satu...</option><?php foreach ($produk as $l) { ?><option value="<?php echo $l['id_produk']; ?>"><?php echo $l['jenis_produk'] . " - " . $l['nama_produk'] . " - " . $l['tipe_produk']; ?></option><?php } ?></select><label for="id_produk_baru[]">Produk</label></div></td><td class="col-5 col-sm-5 col-lg-5 col-md-5"><div class="form-floating"><input type="text" name="pabrik[]" id="pabrik[]" placeholder="Pabrik" class="form-control" autocomplete="off" required /><label for="pabrik[]">Pabrik</label></div></td><td class="text-center"><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove"><i class="fa fa-times"></i></button></td></tr>'
-                    );
-
-                });
-
-                $(document).on('click', '.btn_remove', function() {
-                    var button_id = $(this).attr("id");
-                    $('#row' + button_id + '').remove();
-                });
             });
         </script>
