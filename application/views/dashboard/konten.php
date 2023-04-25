@@ -70,10 +70,7 @@
                                                 <th>Kode</th>
                                                 <th>Feature</th>
                                                 <th>File</th>
-                                                <th>Gambar</th>
                                                 <th>Action</th>
-
-
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -84,11 +81,15 @@
                                                     <td><?php echo $data->nama_produk ?></td>
                                                     <td class="text-truncate" style="max-width:100px;"><?php echo $data->informasi_produk ?></td>
                                                     <td><?php echo $data->tagline_produk ?></td>
-                                                    <td><?php echo $data->nama_kategori ?></td>
+                                                    <td><?php foreach($kategori as $a){
+                                                            if($a->konten_id == $data->konten_id) {?>
+                                                                <span class="badge bg-primary"><?= $a->nama_kategori?></span> 
+                                                            <?php }
+                                                        }?>
+                                                    </td>
                                                     <td><?php echo $data->kode_produk ?></td>
                                                     <td class="text-truncate" style="max-width:100px;"><?php echo $data->feature_produk ?></td>
                                                     <td class="text-truncate" style="max-width:100px;"><?php echo $data->file_produk ?></td>
-                                                    <td class="text-truncate" style="max-width:100px;"><?php echo $data->gambar1 ?></td>
                                                     <td>
                                                         <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#edit-<?= $data->id_detailproduk ?>">
                                                             <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
@@ -136,7 +137,8 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo base_url('Distributor/save_dst') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
+                    <form action="<?php echo base_url('Konten/simpan_konten') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
+                    <input type="hidden" name="konten_id" id="konten_id" value="<?php $konten_id = "KONTEN-" . "SIP-". substr(md5(time()), 0, 5);echo $konten_id; ?>">   
                         <div class="form-group">
                             <div class="form-floating">
                                 <input type="text" class="form-control form-control-user" name="nama_produk" id="nama_produk" placeholder="Nama Produk" required autocomplete="off">
@@ -263,19 +265,19 @@
                             <input type="file" class="form-control form-control-file" name="informasi_produk" id="informasi_produk" accept=".png,.jpg,.jpeg">
                         </div>
                         <div class="form-group">
-                            <label for="file_produk">File Invoice</label>
+                            <label for="file_produk">File Produk</label>
                             <input type="file" class="form-control form-control-file" name="file_produk" id="file_produk" accept=".pdf">
                         </div>
                         <div class="form-group">
                             <label for="gambar1_produk">Gambar Produk</label>
-                            <input type="file" class="form-control form-control-file" name="gambar1_produk" id="gambar1_produk" accept=".png,.jpg,.jpeg">
+                            <input type="file" class="form-control form-control-file" name="gambar_produk[]" id="gambar_produk[]" multiple accept=".png,.jpg,.jpeg">
                         </div>
+                </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
                             <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                         </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
         <!-- Form Add Modal End -->
