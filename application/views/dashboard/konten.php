@@ -278,10 +278,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="form-floating">
-                                <textarea class="form-control" name="feature_produk" placeholder="Feature Produk" id="feature_produk" style="height: 100px" required></textarea>
-                                <label for="feature_produk">Feature Produk</label>
-                            </div>
+                            <textarea class="form-control" name="feature_produk" placeholder="Feature Produk" id="feature_produk"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -394,10 +391,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control form-control-user" name="feature_produk" id="feature_produk" placeholder="Feature Produk" required autocomplete="off" value="<?= $data->kode_produk ?>">
-                                        <label for="feature_produk">Feature Produk</label>
-                                    </div>
+                                    <textarea class="form-control" name="feature_produk" placeholder="Feature Produk" id="feature_produk" style="height: 100px" required></textarea>
                                 </div>
 
                                 <div class="form-group">
@@ -419,7 +413,8 @@
             </div>
         <?php endforeach; ?>
         <script>
-            ClassicEditor.create(document.querySelector("#deskripsi_brosur"));
+            
+            ClassicEditor.create(document.querySelector("#feature_produk"));
             $(function() {
                 $('[data-toggle="tooltip"]').tooltip();
             });
