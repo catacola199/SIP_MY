@@ -79,15 +79,15 @@
                                                 <tr>
                                                     <td><?= $i++ ?></td>
                                                     <td><?php echo $data->nama_produk ?></td>
-                                                    <td class="text-truncate" style="max-width:100px;"><?php echo $data->informasi_produk ?></td>
+                                                    <td><img src="<?php echo $data->informasi_produk ?>" alt="Foto" width="60" class="img-thumbnail rounded" /></td>
                                                     <td><?php echo $data->tagline_produk ?></td>
-                                                    <td><?php foreach($kategori as $a){
-                                                            if($a->konten_id == $data->konten_id) {?>
-                                                                <span class="badge bg-primary"><?= $a->nama_kategori?></span> 
-                                                            <?php }
-                                                        }?>
+                                                    <td><?php foreach ($kategori as $a) {
+                                                            if ($a->konten_id == $data->konten_id) { ?>
+                                                                <span class="badge bg-primary"><?= $a->nama_kategori ?></span>
+                                                        <?php }
+                                                        } ?>
                                                     </td>
-                                                    <td><?php echo $data->kode_produk ?></td>
+                                                    <td><?php echo $data->jenis_kode_produk ?> <?php echo $data->kode_produk ?></td>
                                                     <td class="text-truncate" style="max-width:100px;"><?php echo $data->feature_produk ?></td>
                                                     <td class="text-truncate" style="max-width:100px;"><?php echo $data->file_produk ?></td>
                                                     <td>
@@ -138,7 +138,8 @@
                 </div>
                 <div class="modal-body">
                     <form action="<?php echo base_url('Konten/simpan_konten') ?>" method="post" enctype="multipart/form-data" class="pl-3 pr-3">
-                    <input type="hidden" name="konten_id" id="konten_id" value="<?php $konten_id = "KONTEN-" . "SIP-". substr(md5(time()), 0, 5);echo $konten_id; ?>">   
+                        <input type="hidden" name="konten_id" id="konten_id" value="<?php $konten_id = "KONTEN-" . "SIP-" . substr(md5(time()), 0, 5);
+                                                                                    echo $konten_id; ?>">
                         <div class="form-group">
                             <div class="form-floating">
                                 <input type="text" class="form-control form-control-user" name="nama_produk" id="nama_produk" placeholder="Nama Produk" required autocomplete="off">
@@ -181,9 +182,9 @@
                                     </div>
                                     <div class="input-group mb-1">
                                         <div class="input-group-text rounded-2">
-                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Computed Radiography">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Dental">
                                         </div>
-                                        <input type="text" readonly class="form-control-plaintext" value=" Computed Radiography">
+                                        <input type="text" readonly class="form-control-plaintext" value=" Dental">
                                     </div>
                                 </div>
                                 <div class="col">
@@ -245,21 +246,44 @@
                                         </div>
                                         <input type="text" readonly class="form-control-plaintext" value=" Accesories Head">
                                     </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Computed Radiography">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Computed Radiography">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="jenis_kode_produk" name="jenis_kode_produk" aria-label="Floating label select example" required>
+                                                <option disabled value="" selected>Pilih salah satu...</option>
+                                                <option value="AKL">AKL</option>
+                                                <option value="AKD">AKD</option>
+                                            </select>
+                                            <label for="jenis_kode_produk">Jenis Kode</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control form-control-user" name="kode_produk" id="kode_produk" placeholder="AKL / AKD Produk" required autocomplete="off">
+                                        <label for="kode_produk">Kode Produk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-floating">
-                                <input type="text" class="form-control form-control-user" name="kode_produk" id="kode_produk" placeholder="AKL / AKD Produk" required autocomplete="off">
-                                <label for="kode_produk">AKL / AKD Produk</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <input type="text" class="form-control form-control-user" name="feature_produk" id="feature_produk" placeholder="Feature Produk" required autocomplete="off">
+                                <textarea class="form-control" name="feature_produk" placeholder="Feature Produk" id="feature_produk" style="height: 100px" required></textarea>
                                 <label for="feature_produk">Feature Produk</label>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="informasi_produk">Informasi Produk</label>
                             <input type="file" class="form-control form-control-file" name="informasi_produk" id="informasi_produk" accept=".png,.jpg,.jpeg">
@@ -273,10 +297,10 @@
                             <input type="file" class="form-control form-control-file" name="gambar_produk[]" id="gambar_produk[]" multiple accept=".png,.jpg,.jpeg">
                         </div>
                 </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
-                        </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+                </div>
                 </form>
             </div>
         </div>
