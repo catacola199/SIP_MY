@@ -29,6 +29,7 @@ class Konten extends CI_Controller
 			'konten_id'	        	=> $this->input->post('konten_id'),
 			'informasi_produk'	 	=> $this->M_Konten->_uploadInformasiKonten(),
 			'tagline_produk'	    => $this->input->post('tagline_produk'),
+			'jenis_kode_produk'	    => $this->input->post('jenis_kode_produk'),
 			'kode_produk'	    	=> $this->input->post('kode_produk'),
 			'feature_produk'	 	=> $this->input->post('feature_produk'),
 			'file_produk'	  		=> $this->M_Konten->_uploadFilekonten()
@@ -77,11 +78,11 @@ class Konten extends CI_Controller
 	}
 
 	// Delete User akun
-	public function deletedst($id = null)
+	public function deletekonten($id = null)
 	{
 		if (!isset($id)) show_404();
 
-		if ($this->M_Brosur->del_brosur($id)) {
+		if ($this->M_Konten->del_brosur($id)) {
 			$this->session->set_flashdata('notif', 'Data berhasil dihapus');
 			redirect(base_url('dst'));
 		}
@@ -108,11 +109,11 @@ class Konten extends CI_Controller
 			// Upload gambar
 			if ($this->uploadGambarproduk->do_upload('file')) {
 				$uploadData = $this->uploadGambarproduk->data();
-				$namaFile = $uploadData['file_name'];
+				$fullPath = base_url() .'upload/konten/gambar/'. $uploadData['file_name'];
 				// Menyimpan informasi gambar ke database
 				$data = array(
 					'konten_id'  	=> $this->input->post('konten_id'),
-					'gambar_produk'	 	=> $namaFile,
+					'gambar_produk'	 	=> $fullPath,
 				);
 				$this->db->insert('produk_detail_gambar', $data);
 			} else {

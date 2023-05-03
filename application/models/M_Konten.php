@@ -11,7 +11,7 @@ class M_Konten extends CI_Model
 
     public function getAlldata()
     {
-        $this->db->select('`produk_detail`.`id_detailproduk`,`produk_detail`.`konten_id`,`produk_detail`.`nama_produk`, `produk_detail`.`informasi_produk`, `produk_detail`.`tagline_produk`, `produk_detail`.`kode_produk`,
+        $this->db->select('`produk_detail`.`id_detailproduk`,`produk_detail`.`jenis_kode_produk`,`produk_detail`.`konten_id`,`produk_detail`.`nama_produk`, `produk_detail`.`informasi_produk`, `produk_detail`.`tagline_produk`, `produk_detail`.`kode_produk`,
         `produk_detail`.`feature_produk`, `produk_detail`.`file_produk`, `produk_detail_kategori`.`nama_kategori`,`produk_detail_gambar`.`gambar_produk`');
         $this->db->from('produk_detail');
         $this->db->join('produk_detail_kategori', 'produk_detail_kategori.konten_id = produk_detail.konten_id', 'left');
@@ -66,7 +66,8 @@ class M_Konten extends CI_Model
         $this->uploadFileBrosur->initialize($config);
 
         if ($this->uploadFileBrosur->do_upload('file_produk')) {
-            return $this->uploadFileBrosur->data("file_name");
+            $fullPath = base_url() .'upload/konten/file/'. $this->uploadImageBrosur->data("file_name");
+            return $fullPath;
         }
         // print_r($this->upload->display_errors());
         return "default.pdf";
@@ -74,6 +75,7 @@ class M_Konten extends CI_Model
     
     public function _uploadInformasiKonten()
     {
+        
         $config = array();
         $config['upload_path']          = './upload/konten/info';
         $config['allowed_types']        = 'png|jpg|jpeg';
@@ -86,7 +88,8 @@ class M_Konten extends CI_Model
         $this->uploadImageBrosur->initialize($config);
 
         if ($this->uploadImageBrosur->do_upload('informasi_produk')) {
-            return $this->uploadImageBrosur->data("file_name");
+            $fullPath = base_url() .'upload/konten/info/'. $this->uploadImageBrosur->data("file_name");
+            return $fullPath;
         }
         // print_r($this->upload->display_errors());
         return "default.png";
@@ -127,7 +130,7 @@ class M_Konten extends CI_Model
         }
     }
 
-    public function del_dst($id)
+    public function del_konten($id)
     {
         $this->_deleteImage($id);
         $this->_deleteFile($id);
