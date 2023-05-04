@@ -70,7 +70,7 @@ class User extends CI_Controller
 			'telepon_pengguna'      => $this->input->post('telepon_pengguna'),
 			'id_role'	            => $this->input->post('id_role'),
 			'username_pengguna'	    => $this->input->post('username_pengguna'),
-			'password_pengguna'	    => $this->input->post('password_pengguna'),
+			'password_pengguna'	    => sha1(sha1($this->input->post('password_pengguna'))),
 			'foto_pengguna'		    => $update_foto
 		);
 		$this->M_User->updatedatauser($data, $id);

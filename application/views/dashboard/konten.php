@@ -230,9 +230,9 @@
                                     </div>
                                     <div class="input-group mb-1">
                                         <div class="input-group-text rounded-2">
-                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Digital Radiography">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Portable">
                                         </div>
-                                        <input type="text" readonly class="form-control-plaintext" value=" Digital Radiography">
+                                        <input type="text" readonly class="form-control-plaintext" value=" Portable">
                                     </div>
                                     <div class="input-group mb-1">
                                         <div class="input-group-text rounded-2">
@@ -272,6 +272,12 @@
                                             <input type="checkbox" name="check_list[]" alt="Checkbox" value="Computed Radiography">
                                         </div>
                                         <input type="text" readonly class="form-control-plaintext" value=" Computed Radiography">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Digital Radiography">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Digital Radiography">
                                     </div>
                                     <div class="input-group mb-1">
                                         <div class="input-group-text rounded-2">
