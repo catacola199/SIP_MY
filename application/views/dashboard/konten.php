@@ -68,8 +68,7 @@
                                                 <th>Tagline</th>
                                                 <th>Kategori</th>
                                                 <th>Kode</th>
-                                                <th>Feature</th>
-                                                <th>File</th>
+                                                
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -88,8 +87,7 @@
                                                         } ?>
                                                     </td>
                                                     <td><?php echo $data->jenis_kode_produk ?> <?php echo $data->kode_produk ?></td>
-                                                    <td class="text-truncate" style="max-width:100px;"><?php echo $data->feature_produk ?></td>
-                                                    <td class="text-truncate" style="max-width:100px;"><?php echo $data->file_produk ?></td>
+                                                    
                                                     <td>
                                                         <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#edit-<?= $data->id_detailproduk ?>">
                                                             <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
