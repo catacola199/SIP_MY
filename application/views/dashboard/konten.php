@@ -186,6 +186,18 @@
                                         </div>
                                         <input type="text" readonly class="form-control-plaintext" value=" Dental">
                                     </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Panoramic">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Panoramic">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Robotic System">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Robotic System">
+                                    </div>
                                 </div>
                                 <div class="col">
                                     <div class="input-group mb-1">
@@ -218,39 +230,50 @@
                                         </div>
                                         <input type="text" readonly class="form-control-plaintext" value=" Digital Radiography">
                                     </div>
-
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Flat Panel Detector">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Flat Panel Detector">
+                                    </div>
 
                                 </div>
                                 <div class="col">
                                     <div class="input-group mb-1">
                                         <div class="input-group-text rounded-2">
-                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Accesories Apron">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Apron Protection">
                                         </div>
-                                        <input type="text" readonly class="form-control-plaintext" value=" Accesories Apron">
+                                        <input type="text" readonly class="form-control-plaintext" value=" Apron Protection">
                                     </div>
                                     <div class="input-group mb-1">
                                         <div class="input-group-text rounded-2">
-                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Accesories Gloves">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Gloves Protection">
                                         </div>
-                                        <input type="text" readonly class="form-control-plaintext" value=" Accesories Gloves">
+                                        <input type="text" readonly class="form-control-plaintext" value=" Gloves Protection">
                                     </div>
                                     <div class="input-group mb-1">
                                         <div class="input-group-text rounded-2">
-                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Accesories Glasess">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Glasess Protection">
                                         </div>
-                                        <input type="text" readonly class="form-control-plaintext" value=" Accesories Glasess">
+                                        <input type="text" readonly class="form-control-plaintext" value=" Glasess Protection">
                                     </div>
                                     <div class="input-group mb-1">
                                         <div class="input-group-text rounded-2">
-                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Accesories Head">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Head Protection">
                                         </div>
-                                        <input type="text" readonly class="form-control-plaintext" value=" Accesories Head">
+                                        <input type="text" readonly class="form-control-plaintext" value=" Head Protection">
                                     </div>
                                     <div class="input-group mb-1">
                                         <div class="input-group-text rounded-2">
                                             <input type="checkbox" name="check_list[]" alt="Checkbox" value="Computed Radiography">
                                         </div>
                                         <input type="text" readonly class="form-control-plaintext" value=" Computed Radiography">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Radiation Potection Accessories">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Radiation Potection Accessories">
                                     </div>
                                 </div>
                             </div>
