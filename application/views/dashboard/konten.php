@@ -68,7 +68,8 @@
                                                 <th>Tagline</th>
                                                 <th>Kategori</th>
                                                 <th>Kode</th>
-                                                <!-- <th>Feature</th> -->
+                                              
+                                               <!-- <th>Feature</th> -->
                                                 <th>File</th>
                                                 <th>Action</th>
                                             </tr>
@@ -200,6 +201,12 @@
                                         </div>
                                         <input type="text" readonly class="form-control-plaintext" value=" Robotic System">
                                     </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Accesories">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Accesories">
+                                    </div>
                                 </div>
                                 <div class="col">
                                     <div class="input-group mb-1">
@@ -228,9 +235,15 @@
                                     </div>
                                     <div class="input-group mb-1">
                                         <div class="input-group-text rounded-2">
-                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Digital Radiography">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Digital">
                                         </div>
-                                        <input type="text" readonly class="form-control-plaintext" value=" Digital Radiography">
+                                        <input type="text" readonly class="form-control-plaintext" value=" Digital">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Portable">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Portable">
                                     </div>
                                     <div class="input-group mb-1">
                                         <div class="input-group-text rounded-2">
@@ -270,6 +283,12 @@
                                             <input type="checkbox" name="check_list[]" alt="Checkbox" value="Computed Radiography">
                                         </div>
                                         <input type="text" readonly class="form-control-plaintext" value=" Computed Radiography">
+                                    </div>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-text rounded-2">
+                                            <input type="checkbox" name="check_list[]" alt="Checkbox" value="Digital Radiography">
+                                        </div>
+                                        <input type="text" readonly class="form-control-plaintext" value=" Digital Radiography">
                                     </div>
                                     <div class="input-group mb-1">
                                         <div class="input-group-text rounded-2">
