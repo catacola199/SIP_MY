@@ -68,7 +68,9 @@
                                                 <th>Tagline</th>
                                                 <th>Kategori</th>
                                                 <th>Kode</th>
-                                                
+                                              
+                                               <!-- <th>Feature</th> -->
+                                                <th>File</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -80,14 +82,17 @@
                                                     <td><?php echo $data->nama_produk ?></td>
                                                     <td><img src="<?php echo $data->informasi_produk ?>" alt="Foto" width="60" class="img-thumbnail rounded" /></td>
                                                     <td><?php echo $data->tagline_produk ?></td>
-                                                    <td><?php foreach ($kategori as $a) {
+                                                    <td style="max-width:200px;"><div class="row">
+                                                        <?php foreach ($kategori as $a) {
                                                             if ($a->konten_id == $data->konten_id) { ?>
-                                                                <span class="badge bg-primary"><?= $a->nama_kategori ?></span>
+                                                            <div class="col p-1"><span class="badge bg-primary"><?= $a->nama_kategori ?></span></div>
                                                         <?php }
                                                         } ?>
+                                                        </div>
                                                     </td>
                                                     <td><?php echo $data->jenis_kode_produk ?> <?php echo $data->kode_produk ?></td>
-                                                    
+                                                    <!-- <td class="text-truncate" style="max-width:200px;"><?php echo $data->feature_produk ?></td> -->
+                                                    <td class="text-truncate" style="max-width:100px;"><?php echo $data->file_produk ?></td>
                                                     <td>
                                                         <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#edit-<?= $data->id_detailproduk ?>">
                                                             <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
