@@ -36,14 +36,14 @@
                                                             <td><?= $i++ ?></td>
                                                             <td class="col-4"><label for="file_bap[]"><?php echo $produk->nama_produk ?></label></td>
                                                             <td class="col-auto">
-                                                            <input type="text" class="form-control" value="<?= $data->status_tertunda?>">
                                                                 <?php if($data->status_tertunda == "1"):?>
                                                                     <input type="text" class="form-control" id="status_tertunda[]" name="status_tertunda[]" value="2">
                                                                 <?php elseif($data->status_tertunda == "2"):?>
                                                                     <input type="text" class="form-control" id="status_tertunda[]" name="status_tertunda[]" value="3">
                                                                 <?php elseif($data->status_tertunda == "3"):?>
                                                                     <input type="text" class="form-control" id="status_tertunda[]" name="status_tertunda[]" value="4">
-                                                                <?php else:?>
+                                                                <?php endif; ?>
+                                                                <?php if($data->status_tertunda == null):?>
                                                                     <input type="text" class="form-control" id="status_tertunda[]" name="status_tertunda[]" value="1">
                                                                 <?php endif; ?>
                                                                 <input type="hidden" name="no_permohon[]" id="no_permohon[]" value="<?= $produk->no_permohonan ?>" required>
