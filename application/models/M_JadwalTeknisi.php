@@ -6,10 +6,21 @@ class M_JadwalTeknisi extends CI_Model
 
     public function getProdukperPermohonan()
     {
-        $this->db->select('teknisi_nopermohonan.`no_permohonan`,teknisi_nopermohonan.`id_permohonan`,teknisi_nopermohonan.`pabrik_produk`, produk.`id_produk`, produk.`nama_produk`,produk.`tipe_produk`, produk.`merk_produk`, teknisi_dokumen.`dokumen_bap`');
+        $this->db->select('teknisi_nopermohonan.`no_permohonan`,teknisi_nopermohonan.`id_permohonan`,teknisi_nopermohonan.
+        `pabrik_produk`, produk.`id_produk`, produk.`nama_produk`,produk.`tipe_produk`, produk.`merk_produk`, teknisi_dokumen.`dokumen_bap`');
         $this->db->from('teknisi_nopermohonan');
         $this->db->join('produk', 'teknisi_nopermohonan.id_produk = produk.id_produk', 'left');
         $this->db->join('teknisi_dokumen', ' teknisi_nopermohonan.`id_permohonan`= teknisi_dokumen.`id_permohonan`', 'left');
+        $query = $this->db->get();
+        return  $query->result();
+    }
+
+    public function getBapTertundaperID(){
+        $this->db->select('teknisi_nopermohonan.`id_permohonan`,teknisi_nopermohonan.`no_permohonan`,teknisi_tertunda.`file_bap`, 
+        teknisi_tertunda.`ket_tertunda`,teknisi_tertunda.`status_tertunda`,DATE(teknisi_tertunda.`tgl_tunda`) AS tanggal');
+        $this->db->from('teknisi_nopermohonan');
+        $this->db->join('produk', 'teknisi_nopermohonan.id_produk = produk.id_produk');
+        $this->db->join('teknisi_tertunda', 'teknisi_nopermohonan.`id_permohonan` = teknisi_tertunda.`id_permohonan`');
         $query = $this->db->get();
         return  $query->result();
     }

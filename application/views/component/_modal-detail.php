@@ -170,8 +170,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Nama Alat</th>
-                                            <th>Merk Alat</th>
-                                            <th>Tipe Alat</th>
+                                            <th>Merk & Tipe</th>
                                             <th>Spare Alat</th>
                                             <th>Lampiran</th>
                                             <?php if ((($this->fungsi->user_login()->id_role) != 4) && ($data->status == 'BARU')) : ?>
@@ -187,8 +186,7 @@
                                                     <td><?= $i++ ?></td>
                                                     
                                                     <td class="text-capitalize"><?php echo $produk->nama_produk ?></td>
-                                                    <td class="text-capitalize"><?php echo $produk->merk_produk ?></td>
-                                                    <td class="text-capitalize"><?php echo $produk->tipe_produk ?></td>
+                                                    <td class="text-capitalize"><?php echo $produk->merk_produk." - ".$produk->tipe_produk ?></td>
                                                     <td class="text-capitalize"><?php echo $produk->pabrik_produk ?></td>
                                                     <td>
                                                         <?php if ($produk->dokumen_bap != null) : ?>
@@ -204,6 +202,49 @@
                                                             </a>
                                                         </td>
                                                     <?php endif; ?>
+                                                </tr>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-primary  mb-3">
+                        <div class="card-header">Tertunda</div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="" class="table table-striped table-bordered display no-wrap" style="width:100%">
+                                    <thead class="bg-primary text-white">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nama Alat</th>
+                                            <th>Lampiran BAP Tertunda</th>
+                                            <th>Keterangan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $i = 1;
+                                        foreach ($jadwal_produk as $produk) : ?>
+                                            <?php if ($produk->no_permohonan == $data->no_permohonan) : ?>
+                                                <tr>
+                                                    <td><?= $i++ ?></td>
+                                                    <td class="text-capitalize"><?php echo $produk->nama_produk ?></td>
+                                                    <td class="text-capitalize">
+                                                        <?php if ($data->ket_tertunda != null) : ?>
+                                                            <?php echo $data->ket_tertunda?>
+                                                        <?php else : ?>
+                                                            -
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php foreach ($bap_tertunda as $bap):?>
+                                                            <?php if ($produk->id_permohonan == $bap->id_permohonan) : ?>
+                                                                <a class="btn btn-primary" href="<?php echo base_url('upload/tertunda/' . $bap->file_bap) ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" title="<?= date('d F Y',strtotime($bap->tanggal));?>"><?= $bap->status_tertunda?></a>
+                                                            <?php endif; ?>
+                                                        <?php endforeach;?>
+                                                    </td>
+                                                    
                                                 </tr>
                                             <?php endif; ?>
                                         <?php endforeach; ?>

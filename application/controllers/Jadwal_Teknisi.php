@@ -24,6 +24,7 @@ class Jadwal_Teknisi extends CI_Controller
 		$data["teknisi"] = $this->M_JadwalTeknisi->getTeknisi();
 		$data["produk"] = $this->M_Produk->getAllprodukshow();
 		$data["jadwal_produk"] = $this->M_JadwalTeknisi->getProdukperPermohonan();
+		$data["bap_tertunda"] = $this->M_JadwalTeknisi->getBapTertundaperID();
 		$this->load->view("dashboard/jadwal_teknisi_admin", $data);
 	}
 
@@ -35,6 +36,7 @@ class Jadwal_Teknisi extends CI_Controller
 		$data["teknisi"] = $this->M_JadwalTeknisi->getTeknisi();
 		$data["produk"] = $this->M_Produk->getAllprodukshow();
 		$data["jadwal_produk"] = $this->M_JadwalTeknisi->getProdukperPermohonan();
+		$data["bap_tertunda"] = $this->M_JadwalTeknisi->getBapTertundaperID();
 		$this->load->view("dashboard/user_teknisi", $data);
 	}
 
