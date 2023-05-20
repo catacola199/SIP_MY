@@ -64,8 +64,8 @@
                                             <option value="selesai">Selesai</option>
                                             <option value="gagal">Tidak Selesai</option>
                                         </select>
-                                        <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="Segarkan"></i> </a>
-                                        <button class="btn btn-outline-success float-right" data-bs-toggle="modal" data-bs-target="#tambah"><i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="Tambah Data"></i></button>
+                                        <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right" data-toggle="tooltip" data-placement="bottom" title="Segarkan"><i class="fas fa-redo-alt"></i> </a>
+                                        <button class="btn btn-outline-success float-right" data-bs-toggle="modal" data-bs-target="#tambah" data-toggle="tooltip" data-placement="bottom" title="Tambah Data"><i class="fas fa-user-plus"></i></button>
                                     </div>
                                 </h6>
                                 <div class="table-responsive">
@@ -108,37 +108,37 @@
                                                         <?php endif; ?>
                                                     </td>
                                                     <td class="text-center">
-                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>">
-                                                            <i class="fas fa-info" data-toggle="tooltip" data-placement="bottom" title="Detail"></i>
+                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>"  data-toggle="tooltip" data-placement="bottom" title="Detail">
+                                                            <i class="fas fa-info"></i>
                                                         </a>
                                                         <?php if ($data->status == 'BARU') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#jadwal-<?= $data->id_permohonan ?>">
-                                                                <i class="far fa-calendar-plus" data-toggle="tooltip" data-placement="bottom" title="Buat Jadwal"></i>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#jadwal-<?= $data->id_permohonan ?>"  data-toggle="tooltip" data-placement="bottom" title="Buat Jadwal">
+                                                                <i class="far fa-calendar-plus"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary " data-bs-toggle="modal" data-bs-target="#gantijadwal-<?= $data->id_permohonan ?>">
-                                                                <i class="fas fa-reply" data-toggle="tooltip" data-placement="bottom" title="Ganti Jadwal"></i>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary " data-bs-toggle="modal" data-bs-target="#gantijadwal-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Ganti Jadwal">
+                                                                <i class="fas fa-reply"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERTUNDA') : ?>
-                                                            <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifadminteknisi/' . md5($data->no_permohonan)) ?>')" href="#!" class="btn btn-sm btn-outline-primary">
-                                                                <i class="fas fa-share" data-toggle="tooltip" data-placement="bottom" title="Terlaksana"></i>
+                                                            <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifadminteknisi/' . md5($data->no_permohonan)) ?>')" href="#!" class="btn btn-sm btn-outline-primary"  data-toggle="tooltip" data-placement="bottom" title="Terlaksana">
+                                                                <i class="fas fa-share"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#upload-<?= $data->id_permohonan ?>">
-                                                                <i class="fas fa-file" data-toggle="tooltip" data-placement="bottom" title="Unggah Dokumen"></i>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#upload-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Unggah Dokumen">
+                                                                <i class="fas fa-file"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERUNGGAH') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_permohonan ?>">
-                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Selesaikan Jadwal"></i>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selesai-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Selesaikan Jadwal">
+                                                                <i class="fas fa-check"></i>
                                                             </a>
                                                         <?php else : ?>
-                                                            <a href="" class="btn btn-sm btn-outline-primary disabled" aria-disabled="true">
-                                                                <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Verifikasi"></i>
+                                                            <a href="" class="btn btn-sm btn-outline-primary disabled" aria-disabled="true" data-toggle="tooltip" data-placement="bottom" title="Verifikasi">
+                                                                <i class="fas fa-check"></i>
                                                             </a>
                                                         <?php endif; ?>
 
-                                                        <a onclick="deleteConfirm('<?php echo site_url('Jadwal_Teknisi/delete_jadtek/' . md5($data->no_permohonan)) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
-                                                            <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
+                                                        <a onclick="deleteConfirm('<?php echo site_url('Jadwal_Teknisi/delete_jadtek/' . md5($data->no_permohonan)) ?>')" href="#!" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus">
+                                                            <i class="icon-trash"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
