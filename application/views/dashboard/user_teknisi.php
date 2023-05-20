@@ -124,7 +124,7 @@
                                                                     <i class="fas fa-exclamation-circle"></i>
                                                                 </a>
                                                             <?php else:?>
-                                                                <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifteknisi/' . md5($data->no_permohonan)) ?>')" href="#!" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Tidak Selesai">
+                                                                <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/veriftidakselesai/' . md5($data->no_permohonan)) ?>')" href="#!" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Tidak Selesai">
                                                                     <i class="fas fa-times"></i>
                                                                 </a>
                                                             <?php endif;?>
