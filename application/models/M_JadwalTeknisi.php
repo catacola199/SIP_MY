@@ -26,10 +26,12 @@ class M_JadwalTeknisi extends CI_Model
     public function getJadwalperTeknisi()
     {
         $this->db->select('teknisi_nopermohonan.id_permohonan,teknisi_nopermohonan.no_permohonan, teknisi_nopermohonan.kategori, 
-        teknisi_nopermohonan.nama_rs, teknisi_nopermohonan.pic_name,teknisi_nopermohonan.`status`, pengguna.`id_pengguna`, pengguna.`nama_pengguna`');
+        teknisi_nopermohonan.nama_rs, teknisi_nopermohonan.pic_name,teknisi_nopermohonan.`status`, 
+        pengguna.`id_pengguna`, pengguna.`nama_pengguna`, MAX(teknisi_tertunda.`status_tertunda`) as status_tertunda ');
         $this->db->from('teknisi_nopermohonan');
         $this->db->join('teknisi_terjadwal', 'teknisi_nopermohonan.no_permohonan = teknisi_terjadwal.`no_permohonan`');
         $this->db->join('pengguna', 'teknisi_terjadwal.`id_pengguna` = pengguna.`id_pengguna`');
+        $this->db->join('teknisi_tertunda', 'teknisi_nopermohonan.no_permohonan = teknisi_tertunda.`no_permohonan`','left');
         $this->db->where('pengguna.id_pengguna', $this->session->userdata('id_pengguna'));
         $this->db->group_by('teknisi_nopermohonan.`no_permohonan`');
         $query = $this->db->get();
@@ -41,13 +43,14 @@ class M_JadwalTeknisi extends CI_Model
         $this->db->select('teknisi_nopermohonan.`id_permohonan`,teknisi_nopermohonan.`no_permohonan`, teknisi_nopermohonan.`kategori`, teknisi_nopermohonan.`nama_rs`, teknisi_nopermohonan.`alamat_rs`,teknisi_dokumen.`tgl_dok`,teknisi_nopermohonan.`tgl_selesai`,
         teknisi_nopermohonan.`pic_name`, teknisi_nopermohonan.`pic_phone`, teknisi_nopermohonan.`status`, pengguna.`nama_pengguna`, teknisi_terjadwal.`nama_driver`,teknisi_nopermohonan.`tgl_dibuat`,teknisi_tertunda.`ket_tertunda`,teknisi_terjadwal.`tgl_uploadfile`,
         teknisi_terjadwal.`tgl_jadwal`, teknisi_terjadwal.`file_penawaran`, teknisi_selesai.`metode_bayar`, teknisi_selesai.`file_buktibayar`, teknisi_selesai.`keterangan`, teknisi_selesai.`file_invoice`,teknisi_tertunda.`tgl_tunda`,
-        teknisi_dokumen.`dokumen_bap`');
+        teknisi_dokumen.`dokumen_bap`, teknisi_tertunda.`status_tertunda`');
         $this->db->from('teknisi_nopermohonan');
         $this->db->join('teknisi_terjadwal', 'teknisi_terjadwal.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');
         $this->db->join('teknisi_dokumen', 'teknisi_dokumen.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');
         $this->db->join('teknisi_tertunda', 'teknisi_tertunda.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');
         $this->db->join('pengguna', 'teknisi_terjadwal.id_pengguna = pengguna.id_pengguna', 'left');
         $this->db->join('teknisi_selesai', 'teknisi_selesai.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');
+        $this->db->order_by('teknisi_tertunda.`status_tertunda`', 'desc');
         $query = $this->db->get();
         return  $query->result();
     }
@@ -178,6 +181,44 @@ class M_JadwalTeknisi extends CI_Model
         return "default.pdf";
     }
 
+    public function uploadFileBap_tertunda()
+    {
+        $config = array();
+        $config['upload_path']          = './upload/tertunda/';
+        $config['allowed_types']        = 'pdf|doc|docx';
+        // $config['file_name']            = $this->input->post('id_permohon[]');
+        $config['encrypt_name']         = false;
+        $config['overwrite']            = true;
+        $config['max_size']             = 5094; // 1MB
+
+        $this->load->library('upload', $config, 'tertunda');
+        $this->tertunda->initialize($config);
+
+        $jumlah_berkas = count($_FILES['file_bap']['name']);
+        for ($i = 0; $i < $jumlah_berkas; $i++) {
+            if (!empty($_FILES['file_bap']['name'][$i])) {
+
+                $_FILES['file']['name'] = $_FILES['file_bap']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['file_bap']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['file_bap']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['file_bap']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['file_bap']['size'][$i];
+
+                if ($this->tertunda->do_upload('file')) {
+
+                    $uploadData = $this->tertunda->data();
+                    $data['id_permohonan'] = $this->input->post('id_permohonan')[$i];
+                    $data['no_permohonan'] = $this->input->post('no_permohon')[$i];
+                    $data['ket_tertunda'] = $this->input->post('ket_tunda');
+                    $data['status_tertunda'] = $this->input->post('status_tertunda')[$i];
+                    $data['file_bap'] = $uploadData['file_name'];
+                    $this->db->insert('teknisi_tertunda', $data);
+                }
+            }
+        }
+        // print_r($this->upload->display_errors());
+        return "default.pdf";
+    }
     // Form Selesai
 
     public function _uploadFileBuktiBayar()

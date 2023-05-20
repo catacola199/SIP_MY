@@ -119,6 +119,11 @@
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Terlaksana"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERTUNDA') : ?>
+                                                            <?php if($data->status_tertunda != 4 ):?>
+                                                                <a href="#!" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#tunda-<?= $data->id_permohonan ?>">
+                                                                    <i class="fas fa-exclamation-circle" data-toggle="tooltip" data-placement="bottom" title="Ditunda"></i>
+                                                                </a>
+                                                            <?php endif;?>
                                                             <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifteknisi/' . md5($data->no_permohonan)) ?>')" href="#!" class="btn btn-sm btn-outline-primary">
                                                                 <i class="fas fa-check" data-toggle="tooltip" data-placement="bottom" title="Terlaksana"></i>
                                                             </a>

@@ -109,16 +109,16 @@ class Jadwal_Teknisi extends CI_Controller
 		$id = array(
 			'no_permohonan' => $this->input->post('no_permohonan')
 		);
-		$data = array(
-			'no_permohonan'	    => $this->input->post('no_permohonan'),
-			'ket_tertunda'	    	=> $this->input->post('ket_tunda')
-		);
+		// $data = array(
+		// 	'no_permohonan'	    => $this->input->post('no_permohonan'),
+		// 	'ket_tertunda'	    	=> $this->input->post('ket_tunda')
+		// );
 
 		$data1 = array(
 			'status'			=> "TERTUNDA"
 		);
 		//tambah data 
-		$this->M_JadwalTeknisi->simpandatatertunda($data);
+		$this->M_JadwalTeknisi->uploadFileBap_tertunda();
 		// update status
 		$this->M_JadwalTeknisi->update_jadtek($data1, $id);
 
