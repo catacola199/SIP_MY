@@ -128,7 +128,7 @@
                                                                     <i class="fas fa-times"></i>
                                                                 </a>
                                                             <?php endif;?>
-                                                            <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifteknisi/' . md5($data->no_permohonan)) ?>')" href="#!" class="btn btn-sm btn-outline-primary"  data-toggle="tooltip" data-placement="bottom" title="Terlaksana">
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#uploadtek-<?= $data->id_permohonan ?>"  data-toggle="tooltip" data-placement="bottom" title="Terlaksana">
                                                                 <i class="fas fa-check"></i>
                                                             </a>
                                                         <?php endif; ?>
