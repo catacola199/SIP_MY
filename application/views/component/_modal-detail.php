@@ -113,6 +113,16 @@
                                     <?php endif; ?>
                                 </div>
                                 <div class="mb-1 row">
+                                    <label class="col-sm-4 col-md-5 col-lg-4 col-form-label">Surat Tugas</label>
+                                    <?php if ($data->file_st == null) : ?>
+                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
+                                    <?php else : ?>
+                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
+                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#inovice-<?= $data->id_permohonan ?>" ><?= $data->file_st ?></a>
+                                        </label>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="mb-1 row">
                                     <label class="col-sm-4 col-md-5 col-lg-4 col-form-label">Penawaran</label>
                                     <?php if ($data->file_penawaran == null) : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
@@ -122,26 +132,7 @@
                                         </label>
                                     <?php endif; ?>
                                 </div>
-                                <div class="mb-1 row">
-                                    <label class="col-sm-4 col-md-5 col-lg-4 col-form-label">Invoice</label>
-                                    <?php if ($data->file_invoice == null) : ?>
-                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
-                                    <?php else : ?>
-                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
-                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#inovice-<?= $data->id_permohonan ?>" title="<?= $data->tgl_selesai ?>"><?= $data->file_invoice ?></a>
-                                        </label>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="mb-1 row">
-                                    <label class="col-sm-4 col-md-5 col-lg-4 col-form-label">Bukti Pembayaran</label>
-                                    <?php if ($data->file_buktibayar == null) : ?>
-                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
-                                    <?php else : ?>
-                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
-                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#bayar-<?= $data->id_permohonan ?>" title="<?= $data->tgl_selesai ?>"><?= $data->file_buktibayar ?></a>
-                                        </label>
-                                    <?php endif; ?>
-                                </div>
+
                                 <div class="mb-1 row">
                                     <label class="col-sm-4 col-md-5 col-lg-4 col-form-label">Metode Pembayaran</label>
                                     <?php if ($data->metode_bayar == null) : ?>
@@ -184,9 +175,9 @@
                                             <?php if ($produk->no_permohonan == $data->no_permohonan) : ?>
                                                 <tr>
                                                     <td><?= $i++ ?></td>
-                                                    
+
                                                     <td class="text-capitalize"><?php echo $produk->nama_produk ?></td>
-                                                    <td class="text-capitalize"><?php echo $produk->merk_produk." - ".$produk->tipe_produk ?></td>
+                                                    <td class="text-capitalize"><?php echo $produk->merk_produk . " - " . $produk->tipe_produk ?></td>
                                                     <td class="text-capitalize"><?php echo $produk->pabrik_produk ?></td>
                                                     <td>
                                                         <?php if ($produk->dokumen_bap != null) : ?>
@@ -232,19 +223,19 @@
                                                     <td class="text-capitalize"><?php echo $produk->nama_produk ?></td>
                                                     <td class="text-capitalize">
                                                         <?php if ($data->ket_tertunda != null) : ?>
-                                                            <?php echo $data->ket_tertunda?>
+                                                            <?php echo $data->ket_tertunda ?>
                                                         <?php else : ?>
                                                             -
                                                         <?php endif; ?>
                                                     </td>
                                                     <td>
-                                                        <?php foreach ($bap_tertunda as $bap):?>
+                                                        <?php foreach ($bap_tertunda as $bap) : ?>
                                                             <?php if ($produk->id_permohonan == $bap->id_permohonan) : ?>
-                                                                <a class="btn btn-primary" href="<?php echo base_url('upload/tertunda/' . $bap->file_bap) ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" title="<?= date('d F Y',strtotime($bap->tanggal));?>"><?= $bap->status_tertunda?></a>
+                                                                <a class="btn btn-primary" href="<?php echo base_url('upload/tertunda/' . $bap->file_bap) ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" title="<?= date('d F Y', strtotime($bap->tanggal)); ?>"><?= $bap->status_tertunda ?></a>
                                                             <?php endif; ?>
-                                                        <?php endforeach;?>
+                                                        <?php endforeach; ?>
                                                     </td>
-                                                    
+
                                                 </tr>
                                             <?php endif; ?>
                                         <?php endforeach; ?>

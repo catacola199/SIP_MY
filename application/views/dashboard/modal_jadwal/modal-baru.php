@@ -13,10 +13,10 @@
                             <label for="no_permohonan_b" class="form-label">Nomor Permohonan</label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-white border border-0 p-0 mr-2">NO.</span>
-                                    <input type="hidden" name="no_permohonan_a" id="no_permohonan_a" value="NO.">
-                                    <input type="text" class="form-control rounded-2 border-opacity-10" name="no_permohonan_b" id="no_permohonan_b" placeholder="xxxx" required style="max-width:fit-content">
-                                    <input type="hidden" name="no_permohonan_c" id="no_permohonan_c" value="/SRV/SIP/<?= date("m")?>/<?= date("Y")?>">
-                                <span class="input-group-text bg-white border border-0">/SRV/SIP/<?= date("m")?>/<?= date("Y")?></span>
+                                <input type="hidden" name="no_permohonan_a" id="no_permohonan_a" value="NO.">
+                                <input type="text" class="form-control rounded-2 border-opacity-10" name="no_permohonan_b" id="no_permohonan_b" placeholder="xxxx" required style="max-width:fit-content">
+                                <input type="hidden" name="no_permohonan_c" id="no_permohonan_c" value="/SRV/SIP/<?= date("m") ?>/<?= date("Y") ?>">
+                                <span class="input-group-text bg-white border border-0">/SRV/SIP/<?= date("m") ?>/<?= date("Y") ?></span>
                             </div>
                             <div class="form-group ml-1">
                                 <label for="kategori_jadwal">Kategori</label>
@@ -24,7 +24,7 @@
                                     <div class="col">
                                         <div class="input-group mb-1">
                                             <div class="input-group-text rounded-2">
-                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Instalasi"> 
+                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Instalasi">
                                             </div>
                                             <input type="text" readonly class="form-control-plaintext" value=" Instalasi">
                                         </div>
@@ -158,6 +158,10 @@
                                     </select>
                                     <label for="nama_teknisi">Nama Teknisi</label>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="surat_tugas">Surat Tugas</label>
+                                <input type="file" class="form-control form-control-file" name="file_st" id="file_st" accept=".pdf">
                             </div>
                             <div class="form-group">
                                 <div class="form-floating">
