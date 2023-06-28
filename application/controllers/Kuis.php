@@ -7,7 +7,7 @@ class Kuis extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('All_model');
-		$this->load->model('M_Penawaran');
+		$this->load->model('M_Kuis');
 		if ($this->All_model->isNotLogin()) redirect(site_url(''));
 		if ($this->All_model->rolePengguna()) redirect(site_url('404_override'));
 		$this->load->helper('url');
@@ -16,10 +16,13 @@ class Kuis extends CI_Controller
 	public function index()
 	{
 		$data["role"] = $this->All_model->getAllRole();
-		$data["instansi"] = $this->M_Penawaran->get_instansi();
-		$data["penawaran"] = $this->M_Penawaran->getAllpenawaran();
-		$data["produk"] = $this->M_Penawaran->get_produk();
-		$this->load->view("kuis", $data);
+		$this->load->view("dashboard/kuis", $data);
+	}
+
+	public function soalkuis()
+	{
+		$data["role"] = $this->All_model->getAllRole();
+		$this->load->view("dashboard/soal_kuis", $data);
 	}
 
 	// Get Save User
@@ -36,7 +39,7 @@ class Kuis extends CI_Controller
 			);
 		}
 		$this->db->insert_batch('penawaran', $result);
-		// $this->M_Penawaran->simpandatapenawaran($data);
+		// $this->M_Kuis->simpandatapenawaran($data);
 		$this->session->set_flashdata('notif', 'Data berhasil disimpan');
 		redirect(base_url('penawarans'));
 	}
@@ -44,8 +47,8 @@ class Kuis extends CI_Controller
 	// Edit User
 	public function edit_penawaran($id)
 	{
-		$data["all2"] = $this->M_Penawaran->getInstansi($id);
-		$data["penawaran2"] = $this->M_Penawaran->getID($id);
+		$data["all2"] = $this->M_Kuis->getInstansi($id);
+		$data["penawaran2"] = $this->M_Kuis->getID($id);
 		$this->load->view("component/_editpenawaran", $data);
 	}
 
@@ -61,7 +64,7 @@ class Kuis extends CI_Controller
 			'qty_penawaran'	   		=> $this->input->post('qty'),
 			'tgl_penawaran'     	=> $this->input->post('tgl_penawaran')
 		);
-		$this->M_Penawaran->updatedatapenawaran($data, $id);
+		$this->M_Kuis->updatedatapenawaran($data, $id);
 		$this->session->set_flashdata('notif', 'Data berhasil diupdate');
 		redirect(base_url('penawarans'));
 	}
@@ -71,7 +74,7 @@ class Kuis extends CI_Controller
 	{
 		if (!isset($id)) show_404();
 
-		if ($this->M_Penawaran->del_penawaran($id)) {
+		if ($this->M_Kuis->del_penawaran($id)) {
 			$this->session->set_flashdata('notif', 'Data berhasil dihapus');
 			redirect(base_url('penawarans'));
 		}
