@@ -14,7 +14,7 @@ class M_Kuis extends CI_Model
         return  $query->result();
     }
 
-    public function getInstansi($id)
+    public function getvalid($id)
     {
         // return $this->db->query("SELECT * FROM penawaran JOIN produk ON produk.id_produk = penawaran.id_produk JOIN pengguna ON 
         // pengguna.id_pengguna = penawaran.id_pengguna WHERE penawaran.id_penawaran ='$id'")->row();
@@ -24,6 +24,16 @@ class M_Kuis extends CI_Model
         $this->db->where('produk.id_produk = penawaran.id_produk');
         $query = $this->db->get_where('penawaran', ['penawaran.id_penawaran' => $id]);
         return  $query->row();
+    }
+
+    public function getDataPerUser()
+    {
+        $this->db->select('`kuisioner`.`id_pengguna`,`kuisioner`.`judul_soal`, `kuisioner`.`min_score`, `kuisioner`.`jum_score`');
+        $this->db->from('kuisioner');
+        $this->db->join('pengguna', 'pengguna.id_pengguna = kuisioner.`id_pengguna`','left');
+        $this->db->where('kuisioner.id_pengguna', $this->session->userdata('id_pengguna'));
+        $query = $this->db->get();
+        return  $query->result();
     }
 
     public function simpandatapenawaran($data)

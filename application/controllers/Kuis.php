@@ -16,13 +16,15 @@ class Kuis extends CI_Controller
 	public function index()
 	{
 		$data["role"] = $this->All_model->getAllRole();
+		$data["dataUser"] = $this->M_Kuis->getDataPerUser();
 		$this->load->view("dashboard/kuis", $data);
+		
 	}
 
 	public function soalkuis()
 	{
 		$data["role"] = $this->All_model->getAllRole();
-		$this->load->view("dashboard/soal_kuis", $data);
+		$this->load->view("kuis/soal_kuis", $data);
 	}
 
 	// Get Save User
