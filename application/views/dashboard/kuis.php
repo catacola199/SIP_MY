@@ -50,35 +50,34 @@
                 <?php foreach ($dataUser as $data) : ?>
                     <?php if ($data->id_pengguna != null ) : ?>
                         <div class="card text-center">
-                        <div class="card-header">
-                        <?php echo $data->judul_soal ?>
+                            <div class="card-header">
+                            <?php echo $data->judul_soal ?>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Special title treatment</h5>
+                                <p class="card-text">Score</p>
+                                <p class="card-score" ><?php echo $data->jum_score ?></p>
+                                <a type="button" class="btn btn-outline-primary" href="<?= base_url('soalis') ?>">Kerjakan</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                            Min : <?php echo $data->min_score ?>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">Score</p>
-                            <p class="card-score" ><?php echo $data->jum_score ?></p>
-                            <button type="button" class="btn btn-outline-primary" disable href="<?= base_url('soalis') ?>">Kerjakan</button>
-                        </div>
-                        <div class="card-footer text-muted">
-                           Min : <?php echo $data->min_score ?>
-                        </div>
-                    </div>
-                   
                     <?php else : ?>
                         <div class="card text-center">
-                        <div class="card-header">
-                            UKES
+                            <div class="card-header">
+                                UKES
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Special title treatment</h5>
+                                <p class="card-text">Score</p>
+                                <p class="card-score" >0</p>
+                                <a class="btn btn-outline-primary" href="<?= base_url('soalis') ?>"></i>Kerjakan</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                2 days ago
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">Score</p>
-                            <p class="card-score" >0</p>
-                            <a class="btn btn-outline-primary" href="<?= base_url('soalis') ?>"></i>Kerjakan</a>
-                        </div>
-                        <div class="card-footer text-muted">
-                            2 days ago
-                        </div>
-                    </div>
                     <?php endif; ?>
                     
                    
