@@ -53,7 +53,7 @@ class M_JadwalTeknisi extends CI_Model
     {
         $this->db->select('teknisi_nopermohonan.`id_permohonan`,teknisi_nopermohonan.`no_permohonan`, teknisi_nopermohonan.`kategori`, teknisi_nopermohonan.`nama_rs`, teknisi_nopermohonan.`alamat_rs`,teknisi_dokumen.`tgl_dok`,teknisi_nopermohonan.`tgl_selesai`,teknisi_terjadwal.`file_st`,
         teknisi_nopermohonan.`pic_name`, teknisi_nopermohonan.`pic_phone`, teknisi_nopermohonan.`status`, pengguna.`nama_pengguna`, teknisi_terjadwal.`nama_driver`,teknisi_nopermohonan.`tgl_dibuat`,teknisi_tertunda.`ket_tertunda`,teknisi_terjadwal.`tgl_uploadfile`,
-        teknisi_terjadwal.`tgl_jadwal`, teknisi_terjadwal.`file_penawaran`, teknisi_selesai.`metode_bayar`, teknisi_selesai.`file_buktibayar`, teknisi_selesai.`keterangan`, teknisi_selesai.`file_invoice`,teknisi_tertunda.`tgl_tunda`,
+        teknisi_terjadwal.`tgl_jadwal`, teknisi_terjadwal.`file_penawaran`, teknisi_selesai.`metode_bayar`, teknisi_selesai.`file_buktibayar`, teknisi_selesai.`keterangan`, teknisi_selesai.`file_invoice`,teknisi_tertunda.`tgl_tunda`,teknisi_terjadwal.`insentif`,
         teknisi_dokumen.`dokumen_bap`, teknisi_tertunda.`status_tertunda`');
         $this->db->from('teknisi_nopermohonan');
         $this->db->join('teknisi_terjadwal', 'teknisi_terjadwal.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');

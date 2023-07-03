@@ -28,6 +28,7 @@
 <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
+<script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script>
 
 <script>
     // ClassicEditor
@@ -65,7 +66,7 @@
         // new SimpleBar(document.getElementById('notif'));
     });
 
-    
+
     function deleteConfirm(url) {
         Swal.fire({
             icon: 'warning',
