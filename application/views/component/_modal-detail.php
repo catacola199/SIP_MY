@@ -255,7 +255,7 @@
                     <button type="button" class="btn-close float-end" data-bs-toggle="modal" href="#detail-<?= $data->id_permohonan ?>" aria-label="Close"></button>
                     <p><?= $data->file_invoice ?></p>
                     <div class="row">
-                        <embed type="application/pdf" src="<?= base_url('upload/invoice/' . $data->file_invoice) ?>" height="530"></embed>
+                        <embed type="application/pdf" src="<?= base_url('upload/surattugas/' . $data->file_st) ?>" height="530"></embed>
                     </div>
                 </div>
             </div>
