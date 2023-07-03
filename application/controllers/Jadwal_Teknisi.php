@@ -162,7 +162,7 @@ class Jadwal_Teknisi extends CI_Controller
 		$this->M_JadwalTeknisi->update_jadtek($data1, $idpermohonan);
 
 		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
-		redirect(base_url('teknisii'));
+		redirect(base_url('usertek'));
 	}
 
 	public function update_jadwal()

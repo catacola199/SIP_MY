@@ -29,6 +29,12 @@
                             <span class="hide-menu">Brosur</span>
                         </a>
                     </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('kuise') ?>" aria-expanded="false">
+                            <i data-feather="book" class="feather-icon"></i>
+                            <span class="hide-menu">Kuisioner</span>
+                        </a>
+                    </li>
                      <li class="sidebar-item">
                         <a class="sidebar-link sidebar-link" href="<?= base_url('pretraining') ?>" aria-expanded="false">
                             <i data-feather="book" class="feather-icon"></i>
@@ -149,6 +155,7 @@
                             <span class="hide-menu">Jadwal</span>
                         </a>
                     </li>
+                    
                 <?php } ?>
 
                 <!--User Distributor -->       
