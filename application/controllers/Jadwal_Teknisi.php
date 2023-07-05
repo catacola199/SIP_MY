@@ -184,6 +184,13 @@ class Jadwal_Teknisi extends CI_Controller
 		$data1 = array(
 			'status'			=> $this->input->post('status')
 		);
+
+		$data2 = array(
+			'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFileterjadwal()
+		);
+		
+		//update penawaran
+		$this->M_JadwalTeknisi->update_filePenawaran($data2, $id);
 		//tambah data 
 		$this->M_JadwalTeknisi->simpandataselesai($data);
 		// update status
