@@ -124,11 +124,9 @@
                                 </div>
                                 <div class="mb-1 row">
                                     <label class="col-sm-4 col-md-5 col-lg-4 col-form-label">Insentif</label>
-                                    <?php if ($this->fungsi->user_login()->id_role != "4" ) : ?>
+                                    <?php if ($this->fungsi->user_login()->id_role == "4" ) : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">-</label>
-                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black text-capitalize">Rp <?= $data->insentif ?></label>
-                                    <?php elseif ($this->fungsi->user_login()->id_role == "1" || $this->fungsi->user_login()->id_role == "2") : ?>
-                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black text-capitalize">Rp <?= $data->insentif ?></label>
+    
                                     <?php else : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black text-capitalize">Rp <?= $data->insentif ?></label>
                                     <?php endif; ?>

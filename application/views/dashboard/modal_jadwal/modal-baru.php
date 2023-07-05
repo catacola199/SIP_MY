@@ -16,7 +16,7 @@
                                 <input type="hidden" name="no_permohonan_a" id="no_permohonan_a" value="NO.">
                                 <input type="text" class="form-control rounded-2 border-opacity-10" name="no_permohonan_b" id="no_permohonan_b" placeholder="xxxx" required style="max-width:fit-content">
                                 <input type="hidden" name="no_permohonan_c" id="no_permohonan_c" value="/SRV/SIP/<?= date("m") ?>/<?= date("Y") ?>">
-                                <span class="input-group-text bg-white border border-0">/SRV/SIP/<?= date("m") ?>/<?= date("Y") ?></span>
+                                <span class="input-group-text bg-white border border-0">/ST/SIP/<?= date("m") ?>/<?= date("Y") ?></span>
                             </div>
                             <div class="form-group ml-1">
                                 <label for="kategori_jadwal">Kategori</label>
