@@ -7,7 +7,7 @@ class M_JadwalTeknisi extends CI_Model
     public function getProdukperPermohonan()
     {
         $this->db->select('teknisi_nopermohonan.`no_permohonan`,teknisi_nopermohonan.`id_permohonan`,teknisi_nopermohonan.
-        `pabrik_produk`, produk.`id_produk`, produk.`nama_produk`,produk.`tipe_produk`, produk.`merk_produk`, teknisi_dokumen.`dokumen_bap`');
+        `pabrik_produk`, produk.`id_produk`, produk.`nama_produk`,produk.`tipe_produk`, produk.`merk_produk`, teknisi_dokumen.`dokumen_bap`,teknisi_dokumen.`id_dokumen`');
         $this->db->from('teknisi_nopermohonan');
         $this->db->join('produk', 'teknisi_nopermohonan.id_produk = produk.id_produk', 'left');
         $this->db->join('teknisi_dokumen', ' teknisi_nopermohonan.`id_permohonan`= teknisi_dokumen.`id_permohonan`', 'left');
@@ -173,7 +173,7 @@ class M_JadwalTeknisi extends CI_Model
         return "default.pdf";
     }
 
-   
+
 
     // Upload Dokumen
 
@@ -207,6 +207,39 @@ class M_JadwalTeknisi extends CI_Model
                     $data['no_permohonan'] = $this->input->post('no_permohon')[$i];
                     $data['dokumen_bap'] = $uploadData['file_name'];
                     $this->db->insert('teknisi_dokumen', $data);
+                }
+            }
+        }
+        // print_r($this->upload->display_errors());
+        return "default.pdf";
+    }
+
+    public function gantiFileBAP()
+    {
+        $config = array();
+        $config['upload_path']          = './upload/dokumen_bap/';
+        $config['allowed_types']        = 'pdf|doc|docx';
+        // $config['file_name']            = $this->input->post('id_permohon[]');
+        $config['encrypt_name']         = false;
+        $config['overwrite']            = true;
+        $config['max_size']             = 5094; // 1MB
+
+        $this->load->library('upload', $config, 'dokumenbap');
+        $this->dokumenbap->initialize($config);
+
+        $jumlah_berkas = count($_FILES['file_bap']['name']);
+        for ($i = 0; $i < $jumlah_berkas; $i++) {
+            if (!empty($_FILES['file_bap']['name'][$i])) {
+
+                $_FILES['file']['name'] = $_FILES['file_bap']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['file_bap']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['file_bap']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['file_bap']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['file_bap']['size'][$i];
+
+                if ($this->dokumenbap->do_upload('file')) {
+
+                    $uploadData = $this->dokumenbap->data();
                 }
             }
         }
@@ -348,6 +381,12 @@ class M_JadwalTeknisi extends CI_Model
     public function update_jadtek($data, $id)
     {
         $this->db->update('teknisi_nopermohonan', $data, $id);
+        return TRUE;
+    }
+
+    public function update_dokumen($data, $id)
+    {
+        $this->db->update('teknisi_dokumen', $data, $id);
         return TRUE;
     }
 
