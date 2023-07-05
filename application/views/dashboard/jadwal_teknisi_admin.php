@@ -108,11 +108,11 @@
                                                         <?php endif; ?>
                                                     </td>
                                                     <td class="text-center">
-                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>"  data-toggle="tooltip" data-placement="bottom" title="Detail">
+                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Detail">
                                                             <i class="fas fa-info"></i>
                                                         </a>
                                                         <?php if ($data->status == 'BARU') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#jadwal-<?= $data->id_permohonan ?>"  data-toggle="tooltip" data-placement="bottom" title="Buat Jadwal">
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#jadwal-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Buat Jadwal">
                                                                 <i class="far fa-calendar-plus"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERJADWAL') : ?>
@@ -120,7 +120,7 @@
                                                                 <i class="fas fa-reply"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERTUNDA') : ?>
-                                                            <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifadminteknisi/' . md5($data->no_permohonan)) ?>')" href="#!" class="btn btn-sm btn-outline-primary"  data-toggle="tooltip" data-placement="bottom" title="Terlaksana">
+                                                            <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/verifadminteknisi/' . md5($data->no_permohonan)) ?>')" href="#!" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="bottom" title="Terlaksana">
                                                                 <i class="fas fa-share"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERLAKSANA') : ?>
@@ -174,13 +174,13 @@
     <?php $this->load->view('dashboard/modal_jadwal/modal-edit') ?>
 
     <!-- Modal Terjadwal  -->
-    
+
     <!-- Modal Terjadwal  -->
     <?php $this->load->view('dashboard/modal_jadwal/modal-gantijadwal') ?>
 
     <!-- Modal Tertunda -->
-    
-    
+
+
 
     <!-- Modal Upload -->
     <?php $this->load->view('dashboard/modal_jadwal/modal-upload') ?>
@@ -192,7 +192,6 @@
     <?php $this->load->view('component/_modal-detail') ?>
 
     <script>
-        
         $(document).ready(function() {
             var i = 1;
 
@@ -208,6 +207,39 @@
                 var button_id = $(this).attr("id");
                 $('#row' + button_id + '').remove();
             });
+
+            $('.uang').mask('0.000.000.000', {
+                reverse: true
+            });
+
+            /* Tanpa Rupiah */
+            var tanpa_rupiah = document.getElementById('tanpa-rupiah');
+            tanpa_rupiah.addEventListener('keyup', function(e) {
+                tanpa_rupiah.value = formatRupiah(this.value);
+            });
+
+            /* Dengan Rupiah */
+            var dengan_rupiah = document.getElementById('dengan-rupiah');
+            dengan_rupiah.addEventListener('keyup', function(e) {
+                dengan_rupiah.value = formatRupiah(this.value, 'Rp. ');
+            });
+
+            /* Fungsi */
+            function formatRupiah(angka, prefix) {
+                var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                    split = number_string.split(','),
+                    sisa = split[0].length % 3,
+                    rupiah = split[0].substr(0, sisa),
+                    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+
+                rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+                return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+            }
         });
 
         $(function() {
@@ -217,26 +249,26 @@
                 table.column(5).search(value).draw();
             }
             var table = $('#multi_col_order').DataTable();
-            $(document).on('change','#status' ,function(){
-                if($('#status option:selected').val() === "all"){
+            $(document).on('change', '#status', function() {
+                if ($('#status option:selected').val() === "all") {
                     filterColumn('');
                     console.log("1");
-                }else if($('#status option:selected').val() === "terjadwal"){
+                } else if ($('#status option:selected').val() === "terjadwal") {
                     filterColumn('Terjadwal');
                     console.log("3");
-                }else if($('#status option:selected').val() === "tertunda"){
+                } else if ($('#status option:selected').val() === "tertunda") {
                     filterColumn('Tertunda');
                     console.log("4");
-                }else if($('#status option:selected').val() === "terlaksana"){
+                } else if ($('#status option:selected').val() === "terlaksana") {
                     filterColumn('Terlaksana');
                     console.log("5");
-                }else if($('#status option:selected').val() === "terunggah"){
+                } else if ($('#status option:selected').val() === "terunggah") {
                     filterColumn('Terunggah');
                     console.log("6");
-                }else if($('#status option:selected').val() === "selesai"){
+                } else if ($('#status option:selected').val() === "selesai") {
                     filterColumn('Selesai');
                     console.log("7");
-                }else{
+                } else {
                     filterColumn('Tidak');
                     console.log("0");
                 }

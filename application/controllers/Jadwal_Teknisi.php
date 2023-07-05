@@ -70,6 +70,7 @@ class Jadwal_Teknisi extends CI_Controller
 			'file_st' 			=> $this->M_JadwalTeknisi->_uploadFileSuratTugas(),
 			'nama_driver'	    => $this->input->post('nama_driver'),
 			'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
+			'insentif'   		=> $this->input->post('insentif'),
 			'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFileterjadwal()
 		);
 
@@ -139,23 +140,9 @@ class Jadwal_Teknisi extends CI_Controller
 			'status'			=> "TERUNGGAH"
 		);
 
-		if (!empty($_FILES["file_penawaran"]["name"])) {
-			$data = array(
-				'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFileterjadwal(),
-				'file_st'   		=> $this->M_JadwalTeknisi->_uploadFileSuratTugas(),
-				'tgl_uploadfile'   		=> date('d-m-y')
-			);
-			$this->M_JadwalTeknisi->_deleteFilePenawaran($id);
-		} else {
-			$data = array(
-				'file_penawaran'   	=> $this->input->post('file_penawaran_old'),
-				'file_st'   		=> $this->M_JadwalTeknisi->_uploadFileSuratTugas(),
-				'tgl_uploadfile'   		=> date('d-m-y')
-			);
-		}
-
+		
 		//tambah data 
-		$this->M_JadwalTeknisi->update_filePenawaran($data, $idpermohonan);
+		
 		//Upload Dokumen
 		$this->M_JadwalTeknisi->_uploadFileBap();
 		// update status
@@ -197,6 +184,13 @@ class Jadwal_Teknisi extends CI_Controller
 		$data1 = array(
 			'status'			=> $this->input->post('status')
 		);
+
+		$data2 = array(
+			'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFileterjadwal()
+		);
+		
+		//update penawaran
+		$this->M_JadwalTeknisi->update_filePenawaran($data2, $id);
 		//tambah data 
 		$this->M_JadwalTeknisi->simpandataselesai($data);
 		// update status

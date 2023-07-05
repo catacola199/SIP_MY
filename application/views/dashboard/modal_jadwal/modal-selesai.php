@@ -17,6 +17,10 @@
                                 <label for="No">No Permohonan</label>
                             </div>
                         </div>
+                        <div class="form-group mt-1">
+                                    <label for="file_penawaran">File Penawaran</label>
+                                    <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf">
+                                </div>
                         <div class="form-group">
                             <div class="form-floating">
                                 <select id="pembayaran" name="pembayaran" class="form-control" required>

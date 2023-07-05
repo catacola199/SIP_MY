@@ -63,9 +63,9 @@
                                         <thead class="bg-primary text-white">
                                             <tr>
                                                 <th>#</th>
-                                                
+
                                                 <th>Nama Produk</th>
-                                                
+
                                                 <th>Merk</th>
                                                 <th>Tipe</th>
                                                 <th>Action</th>
@@ -77,9 +77,9 @@
                                             foreach ($produk as $data) : ?>
                                                 <tr>
                                                     <td><?php echo $i++ ?></td>
-                                                    
+
                                                     <td><?php echo $data->nama_produk ?></td>
-                                                    
+
                                                     <td><?php echo $data->merk_produk ?></td>
                                                     <td><?php echo $data->tipe_produk ?></td>
                                                     <td>
@@ -146,6 +146,8 @@
                                     <option disabled value="" selected>Pilih salah satu...</option>
                                     <option value="DR">DR</option>
                                     <option value="CR">CR</option>
+                                    <option value="TUBE">TUBE</option>
+                                    <option value="CT Scan">CT Scan</option>
                                     <option value="Printer">Printer</option>
                                     <option value="X-Ray Mobile">X-Ray Mobile</option>
                                     <option value="X-Ray Stationery">X-Ray Stationery</option>
@@ -165,7 +167,7 @@
                                 <label for="tipe_produk">Tipe Produk</label>
                             </div>
                         </div>
-                        
+
 
                         <!-- End Form -->
 

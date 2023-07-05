@@ -185,6 +185,12 @@
                                     <label for="nama_driver">Nama Driver</label>
                                 </div>
                             </div>
+                            <div class="form-group ">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control form-control-user uang" name="insentif" id="insentif" placeholder="Insentif" autocomplete="off" required>
+                                    <label for="nama_driver">Insentif</label>
+                                </div>
+                            </div>
                             <div class="input-group date" id="pengadaan_alat">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" name="tgl_jadwal" id="tgl_jadwal" placeholder="Pilih Tanggal" autocomplete="off" required />
@@ -196,6 +202,7 @@
                                     </span>
                                 </span>
                             </div>
+            
                             <div class="form-group mt-1">
                                 <label for="file_penawaran">File Penawaran</label>
                                 <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf">
