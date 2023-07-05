@@ -53,7 +53,7 @@ class M_JadwalTeknisi extends CI_Model
     {
         $this->db->select('teknisi_nopermohonan.`id_permohonan`,teknisi_nopermohonan.`no_permohonan`, teknisi_nopermohonan.`kategori`, teknisi_nopermohonan.`nama_rs`, teknisi_nopermohonan.`alamat_rs`,teknisi_dokumen.`tgl_dok`,teknisi_nopermohonan.`tgl_selesai`,teknisi_terjadwal.`file_st`,
         teknisi_nopermohonan.`pic_name`, teknisi_nopermohonan.`pic_phone`, teknisi_nopermohonan.`status`, pengguna.`nama_pengguna`, teknisi_terjadwal.`nama_driver`,teknisi_nopermohonan.`tgl_dibuat`,teknisi_tertunda.`ket_tertunda`,teknisi_terjadwal.`tgl_uploadfile`,
-        teknisi_terjadwal.`tgl_jadwal`, teknisi_terjadwal.`file_penawaran`, teknisi_selesai.`metode_bayar`, teknisi_selesai.`file_buktibayar`, teknisi_selesai.`keterangan`, teknisi_selesai.`file_invoice`,teknisi_tertunda.`tgl_tunda`,teknisi_terjadwal.`insentif`,
+        teknisi_terjadwal.`tgl_jadwal`, teknisi_terjadwal.`file_penawaran`, teknisi_selesai.`metode_bayar`, teknisi_selesai.`file_buktibayar`, teknisi_selesai.`keterangan`, teknisi_selesai.`file_invoice`,teknisi_tertunda.`tgl_tunda`,teknisi_terjadwal.`insentif`,teknisi_terjadwal.`file_penawaran_akhir`,
         teknisi_dokumen.`dokumen_bap`, teknisi_tertunda.`status_tertunda`');
         $this->db->from('teknisi_nopermohonan');
         $this->db->join('teknisi_terjadwal', 'teknisi_terjadwal.no_permohonan = teknisi_nopermohonan.no_permohonan', 'left');
@@ -132,6 +132,26 @@ class M_JadwalTeknisi extends CI_Model
         return "default.pdf";
     }
 
+    public function _uploadFilePenawaranAkhir()
+    {
+        $config = array();
+        $config['upload_path']          = './upload/penawaran/akhir/';
+        $config['allowed_types']        = 'pdf|doc|docx';
+        // $config['file_name']            = $this->input->post('nama_brosur');
+        $config['encrypt_name']         = false;
+        $config['overwrite']            = true;
+        $config['max_size']             = 5094; // 1MB
+
+        $this->load->library('upload', $config, 'uploadpenawaran');
+        $this->uploadpenawaran->initialize($config);
+
+        if ($this->uploadpenawaran->do_upload('file_penawaran_akhir')) {
+            return $this->uploadpenawaran->data("file_name");
+        }
+        //  print_r($this->upload->display_errors());
+        return "default.pdf";
+    }
+
     // Upload Dokumen 
     public function _uploadFileSuratTugas()
     {
@@ -152,6 +172,8 @@ class M_JadwalTeknisi extends CI_Model
         //  print_r($this->upload->display_errors());
         return "default.pdf";
     }
+
+   
 
     // Upload Dokumen
 
@@ -283,12 +305,35 @@ class M_JadwalTeknisi extends CI_Model
         return $this->db->get_where('teknisi_terjadwal', ['no_permohonan' => $id])->row();
     }
 
+    public function getIdDokumen($id)
+    {
+        return $this->db->get_where('teknisi_dokumen', ['id_dokumen' => $id])->row();
+    }
+
     public function _deleteFilePenawaran($id)
     {
         $file = $this->getIdTerjadwal($id);
         if ($file->file_penawaran != "default.pdf") {
             $filename = explode(".", $file->file_penawaran)[0];
             return array_map('unlink', glob(FCPATH . "upload/penawaran/$filename.*"));
+        }
+    }
+
+    public function _deleteFileSuratTugas($id)
+    {
+        $file = $this->getIdTerjadwal($id);
+        if ($file->file_st != "default.pdf") {
+            $filename = explode(".", $file->file_st)[0];
+            return array_map('unlink', glob(FCPATH . "upload/surattugas/$filename.*"));
+        }
+    }
+
+    public function _deleteFileBAP($id)
+    {
+        $file = $this->getIdDokumen($id);
+        if ($file->dokumen_bap != "default.pdf") {
+            $filename = explode(".", $file->dokumen_bap)[0];
+            return array_map('unlink', glob(FCPATH . "upload/dokumen_bap/$filename.*"));
         }
     }
 

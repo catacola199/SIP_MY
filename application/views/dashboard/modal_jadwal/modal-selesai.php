@@ -19,7 +19,7 @@
                         </div>
                         <div class="form-group mt-1">
                                     <label for="file_penawaran">File Penawaran</label>
-                                    <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf">
+                                    <input type="file" class="form-control form-control-file" name="file_penawaran_akhir" id="file_penawaran_akhir" accept=".pdf">
                                 </div>
                         <div class="form-group">
                             <div class="form-floating">

@@ -69,12 +69,22 @@
                                     <?php endif; ?>
                                 </div>
                                 <div class="mb-1 row">
-                                    <label class="col-sm-4 col-md-5 col-lg-4 col-form-label">Penawaran</label>
+                                    <label class="col-sm-4 col-md-5 col-lg-4 col-form-label">Penawaran Awal</label>
                                     <?php if ($data->file_penawaran == null) : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
                                     <?php else : ?>
                                         <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
                                             <a href="#!" data-bs-toggle="modal" data-bs-target="#penawaran-<?= $data->id_permohonan ?>" title="<?= $data->tgl_uploadfile ?>"><?= $data->file_penawaran ?></a>
+                                        </label>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="mb-1 row">
+                                    <label class="col-sm-4 col-md-5 col-lg-4 col-form-label">Penawaran Akhir</label>
+                                    <?php if ($data->file_penawaran_akhir == null) : ?>
+                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black"> -</label>
+                                    <?php else : ?>
+                                        <label class="col-sm-8 col-md-7 col-lg-8 col-form-label text-black">
+                                            <a href="#!" data-bs-toggle="modal" data-bs-target="#penawaran-<?= $data->id_permohonan ?>" title="<?= $data->tgl_uploadfile ?>"><?= $data->file_penawaran_akhir ?></a>
                                         </label>
                                     <?php endif; ?>
                                 </div>
