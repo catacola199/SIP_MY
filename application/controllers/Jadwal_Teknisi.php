@@ -44,9 +44,9 @@ class Jadwal_Teknisi extends CI_Controller
 	public function save_jadtek()
 	{
 		$checkboxes = $this->input->post('check_list');
-		$kategori = implode(",",$checkboxes);
+		$kategori = implode(",", $checkboxes);
 		$result = array();
-		$no_permohonan = $this->input->post('no_permohonan_a').$this->input->post('no_permohonan_b').$this->input->post('no_permohonan_c');
+		$no_permohonan = $this->input->post('no_permohonan_a') . $this->input->post('no_permohonan_b') . $this->input->post('no_permohonan_c');
 		foreach ($this->input->post('id_produk_baru') as $key => $val) {
 			$result[] = array(
 				'no_permohonan'	    => $no_permohonan,
@@ -140,9 +140,9 @@ class Jadwal_Teknisi extends CI_Controller
 			'status'			=> "TERUNGGAH"
 		);
 
-		
+
 		//tambah data 
-		
+
 		//Upload Dokumen
 		$this->M_JadwalTeknisi->_uploadFileBap();
 		// update status
@@ -152,17 +152,63 @@ class Jadwal_Teknisi extends CI_Controller
 		redirect(base_url('usertek'));
 	}
 
+	public function update_file_tek()
+	{
+		$id = $this->input->post('no_permohonan');
+		
+		$data1 = array(
+			'status'			=> "TERUNGGAH"
+		);
+
+		foreach ($this->input->post('file_bap') as $key => $val) {
+			$idpermohonan = array(
+				'no_permohonan' => $this->input->post('no_permohonan')
+			);
+			if (!empty($_FILES["file_bap"]["name"][$val])) {
+				
+				$this->M_JadwalTeknisi->_deleteFileBAP($idpermohonan);
+				$this->M_JadwalTeknisi->_uploadFileBap();
+			} else {
+				$data = array(
+					'id_pengguna'	    => $this->input->post('id_pengguna'),
+					'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
+					
+				);
+			}
+		
+		}
+
+
+		//Update Upload Dokumen
+		
+
+		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
+		redirect(base_url('usertek'));
+	}
+
 	public function update_jadwal()
 	{
+		$idpermohonan = $this->input->post('no_permohonan');
 		$id = array(
 			'no_permohonan' => $this->input->post('no_permohonan')
 		);
-		$data = array(
-			'id_pengguna'	    => $this->input->post('id_pengguna'),
-			'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
-		);
+		
+		if (!empty($_FILES["file_st"]["name"])) {
+			$data = array(
+				'id_pengguna'	    => $this->input->post('id_pengguna'),
+				'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
+				'file_st' 			=> $this->M_JadwalTeknisi->_uploadFileSuratTugas()
+			);
+			$this->M_JadwalTeknisi->_deleteFileSuratTugas($idpermohonan);
+		} else {
+			$data = array(
+				'id_pengguna'	    => $this->input->post('id_pengguna'),
+				'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
+				
+			);
+		}
 		//tambah data 
-		$this->M_JadwalTeknisi->update_filePenawaran($data,$id);
+		$this->M_JadwalTeknisi->update_filePenawaran($data, $id);
 		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
 		redirect(base_url('teknisii'));
 	}
@@ -186,9 +232,9 @@ class Jadwal_Teknisi extends CI_Controller
 		);
 
 		$data2 = array(
-			'file_penawaran'   	=> $this->M_JadwalTeknisi->_uploadFileterjadwal()
+			'file_penawaran_akhir' 	=> $this->M_JadwalTeknisi->_uploadFilePenawaranAkhir()
 		);
-		
+
 		//update penawaran
 		$this->M_JadwalTeknisi->update_filePenawaran($data2, $id);
 		//tambah data 
@@ -222,8 +268,8 @@ class Jadwal_Teknisi extends CI_Controller
 	public function delete_jadtek($id = null)
 	{
 		$query = $this->db->get('teknisi_nopermohonan')->result();
-		foreach ($query as $data){
-			if(md5($data->no_permohonan) === $id){
+		foreach ($query as $data) {
+			if (md5($data->no_permohonan) === $id) {
 				$no = $data->no_permohonan;
 			}
 		}
@@ -245,10 +291,10 @@ class Jadwal_Teknisi extends CI_Controller
 
 	// Verif User Teknisi
 	public function verifteknisi($id = null)
-	{	
+	{
 		$query = $this->db->get('teknisi_nopermohonan')->result();
-		foreach ($query as $data){
-			if(md5($data->no_permohonan) === $id){
+		foreach ($query as $data) {
+			if (md5($data->no_permohonan) === $id) {
 				$no = $data->no_permohonan;
 			}
 		}
@@ -260,15 +306,15 @@ class Jadwal_Teknisi extends CI_Controller
 			'status'			=> "TERLAKSANA"
 		);
 		$this->M_JadwalTeknisi->verif_teknisi($data, $idp);
-		$this->session->set_flashdata('notif', 'Permohonan dengan nomor '.$no.' pada '.ucfirst($nama). ' berhasil terlaksana');
+		$this->session->set_flashdata('notif', 'Permohonan dengan nomor ' . $no . ' pada ' . ucfirst($nama) . ' berhasil terlaksana');
 		redirect(base_url('usertek'));
 	}
 
 	public function veriftidakselesai($id = null)
-	{	
+	{
 		$query = $this->db->get('teknisi_nopermohonan')->result();
-		foreach ($query as $data){
-			if(md5($data->no_permohonan) === $id){
+		foreach ($query as $data) {
+			if (md5($data->no_permohonan) === $id) {
 				$no = $data->no_permohonan;
 			}
 		}
@@ -280,15 +326,15 @@ class Jadwal_Teknisi extends CI_Controller
 			'status'			=> "TIDAK SELESAI"
 		);
 		$this->M_JadwalTeknisi->verif_teknisi($data, $idp);
-		$this->session->set_flashdata('notif', 'Permohonan dengan nomor '.$no.' pada '.ucfirst($nama). ' Tidak Selesai');
+		$this->session->set_flashdata('notif', 'Permohonan dengan nomor ' . $no . ' pada ' . ucfirst($nama) . ' Tidak Selesai');
 		redirect(base_url('usertek'));
 	}
 
 	public function verifadminteknisi($id = null)
 	{
 		$query = $this->db->get('teknisi_nopermohonan')->result();
-		foreach ($query as $data){
-			if(md5($data->no_permohonan) === $id){
+		foreach ($query as $data) {
+			if (md5($data->no_permohonan) === $id) {
 				$no = $data->no_permohonan;
 			}
 		}
@@ -300,7 +346,7 @@ class Jadwal_Teknisi extends CI_Controller
 			'status'			=> "TERLAKSANA"
 		);
 		$this->M_JadwalTeknisi->verif_teknisi($data, $idp);
-		$this->session->set_flashdata('notif', 'Permohonan dengan nomor '.$no.' pada '.ucfirst($nama). ' berhasil terlaksana');
+		$this->session->set_flashdata('notif', 'Permohonan dengan nomor ' . $no . ' pada ' . ucfirst($nama) . ' berhasil terlaksana');
 		redirect(base_url('teknisii'));
 	}
 

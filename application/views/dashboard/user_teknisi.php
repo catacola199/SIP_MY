@@ -53,7 +53,7 @@
                                 <h4 class="card-title">Daftar Jadwal Teknisi</h4>
                                 <hr>
                                 <h6 class="card-subtitle mt-4">
-                                <div class="btn-list">
+                                    <div class="btn-list">
                                         <button type="button" class="btn-outline-dark btn float-left" style="border:none;" disabled>Status</button>
                                         <select class="form-select float-left col-md-2 col-sm-4 mb-4" aria-label="Default select example" id="status">
                                             <option value="all">Semua</option>
@@ -112,24 +112,32 @@
                                                             <i class="fas fa-info"></i>
                                                         </a>
                                                         <?php if ($data->status == 'TERJADWAL') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#tunda-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Ditunda <?php if($data->status_tertunda != null){echo $data->status_tertunda."/4";}?>">
+                                                            <a href="#!" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#tunda-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Ditunda <?php if ($data->status_tertunda != null) {
+                                                                                                                                                                                                                                                            echo $data->status_tertunda . "/4";
+                                                                                                                                                                                                                                                        } ?>">
                                                                 <i class="fas fa-exclamation-circle"></i>
                                                             </a>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#uploadtek-<?= $data->id_permohonan ?>"  data-toggle="tooltip" data-placement="bottom" title="Terlaksana">
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#uploadtek-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Terlaksana">
                                                                 <i class="fas fa-check"></i>
                                                             </a>
                                                         <?php elseif ($data->status == 'TERTUNDA') : ?>
-                                                            <?php if($data->status_tertunda != 4 ):?>
-                                                                <a href="#!" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#tunda-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Ditunda <?php if($data->status_tertunda != null){echo $data->status_tertunda."/4";}?>">
+                                                            <?php if ($data->status_tertunda != 4) : ?>
+                                                                <a href="#!" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#tunda-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Ditunda <?php if ($data->status_tertunda != null) {
+                                                                                                                                                                                                                                                                echo $data->status_tertunda . "/4";
+                                                                                                                                                                                                                                                            } ?>">
                                                                     <i class="fas fa-exclamation-circle"></i>
                                                                 </a>
-                                                            <?php else:?>
+                                                            <?php else : ?>
                                                                 <a onclick="verifTeknisi('<?php echo site_url('Jadwal_Teknisi/veriftidakselesai/' . md5($data->no_permohonan)) ?>')" href="#!" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Tidak Selesai">
                                                                     <i class="fas fa-times"></i>
                                                                 </a>
-                                                            <?php endif;?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#uploadtek-<?= $data->id_permohonan ?>"  data-toggle="tooltip" data-placement="bottom" title="Terlaksana">
+                                                            <?php endif; ?>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#uploadtek-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Terlaksana">
                                                                 <i class="fas fa-check"></i>
+                                                            </a>
+                                                        <?php elseif ($data->status == 'TERUNGGAH') : ?>
+                                                            <a href="#!" class="btn btn-sm btn-outline-primary " data-bs-toggle="modal" data-bs-target="#updatek-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Ganti Jadwal">
+                                                                <i class="fas fa-reply"></i>
                                                             </a>
                                                         <?php endif; ?>
                                                     </td>

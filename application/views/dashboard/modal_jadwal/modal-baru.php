@@ -9,22 +9,6 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <?php 
-                            function romannumber($number) {
-                                $map = array('M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400, 'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40, 'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1);
-                                $returnValue = '';
-                                while ($number > 0) {
-                                    foreach ($map as $roman => $int) {
-                                        if($number >= $int) {
-                                            $number -= $int;
-                                            $returnValue .= $roman;
-                                            break;
-                                        }
-                                    }
-                                }
-                                return $returnValue;
-                            }
-                        ?>
                         <div class="col pl-4 pr-4">
                             <label for="no_permohonan_b" class="form-label">Nomor Permohonan</label>
                             <div class="input-group mb-3">
@@ -32,7 +16,7 @@
                                 <input type="hidden" name="no_permohonan_a" id="no_permohonan_a" value="NO.">
                                 <input type="text" class="form-control rounded-2 border-opacity-10" name="no_permohonan_b" id="no_permohonan_b" placeholder="xxxx" required style="max-width:fit-content">
                                 <input type="hidden" name="no_permohonan_c" id="no_permohonan_c" value="/SRV/SIP/<?= date("m") ?>/<?= date("Y") ?>">
-                                <span class="input-group-text bg-white border border-0">/SRV/SIP/<?= romannumber(date("m")) ?>/<?= date("Y") ?></span>
+                                <span class="input-group-text bg-white border border-0">/ST/SIP/<?= date("m") ?>/<?= date("Y") ?></span>
                             </div>
                             <div class="form-group ml-1">
                                 <label for="kategori_jadwal">Kategori</label>

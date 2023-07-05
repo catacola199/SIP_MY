@@ -19,6 +19,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <input type="hidden" name="file_st_old" id="file_st_old" value="<?= $data->file_st ?>">
+                                    <label for="surat_tugas">Surat Tugas</label>
+                                    <input type="file" class="form-control form-control-file" name="file_st" id="file_st" accept=".pdf">
+                                </div>
+                                <div class="form-group">
                                     <div class="form-floating">
                                         <select class="form-select" id="id_pengguna" name="id_pengguna" aria-label="Floating label select example" required>
                                             <option disabled value="" selected>Pilih salah satu...</option>
@@ -41,7 +46,7 @@
                                         </span>
                                     </span>
                                 </div>
-                                
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
                                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
