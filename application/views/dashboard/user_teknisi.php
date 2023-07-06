@@ -135,10 +135,7 @@
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#uploadtek-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Terlaksana">
                                                                 <i class="fas fa-check"></i>
                                                             </a>
-                                                        <?php elseif ($data->status == 'TERUNGGAH') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary " data-bs-toggle="modal" data-bs-target="#updatek-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Ganti Jadwal">
-                                                                <i class="fas fa-reply"></i>
-                                                            </a>
+                                                            
                                                         <?php endif; ?>
                                                     </td>
                                                 </tr>

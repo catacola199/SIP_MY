@@ -18,6 +18,14 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="surat_tugas">Kuisioner</label>
+                            <input type="file" class="form-control form-control-file" name="file_kuisioner" id="file_kuisioner" accept=".pdf">
+                        </div>
+                        <div class="form-group">
+                            <label for="surat_tugas">Surat Jalan</label>
+                            <input type="file" class="form-control form-control-file" name="file_sj" id="file_sj" accept=".pdf">
+                        </div>
+                        <div class="form-group">
                             <label for="upload">Upload BAP</label>
                             <div class="table-responsive" name="upload">
                                 <table class="table table-borderless">
@@ -59,7 +67,7 @@
     </div>
 <?php endforeach; ?>
 
- <!-- UPDATE FILE UPLOAD -->
+<!-- UPDATE FILE UPLOAD -->
 <?php foreach ($jadwal_tek as $data) : ?>
     <div class="modal fade" id="updatek-<?= $data->id_permohonan ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
@@ -78,6 +86,14 @@
                                 <input type="text" class="form-control" id="no_permohonan" placeholder="No Permohonan" value="<?= $data->no_permohonan ?>" disabled>
                                 <label for="No">No Permohonan</label>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="surat_tugas">Kuisioner</label>
+                            <input type="file" class="form-control form-control-file" name="file_kuisioner" id="file_kuisioner" accept=".pdf">
+                        </div>
+                        <div class="form-group">
+                            <label for="surat_tugas">Surat Jalan</label>
+                            <input type="file" class="form-control form-control-file" name="file_sj" id="file_sj" accept=".pdf">
                         </div>
                         <div class="form-group">
                             <label for="upload">Upload BAP</label>
