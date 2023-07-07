@@ -18,11 +18,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="surat_tugas">Kuisioner</label>
+                            <label for="surat_tugas">Kuisioner (Opsional)</label>
                             <input type="file" class="form-control form-control-file" name="file_kuisioner" id="file_kuisioner" accept=".pdf">
                         </div>
                         <div class="form-group">
-                            <label for="surat_tugas">Surat Jalan</label>
+                            <label for="surat_tugas">Surat Jalan (Opsional)</label>
                             <input type="file" class="form-control form-control-file" name="file_sj" id="file_sj" accept=".pdf">
                         </div>
                         <div class="form-group">
