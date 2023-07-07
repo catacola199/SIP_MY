@@ -147,6 +147,7 @@
                                     <option value="DR">DR</option>
                                     <option value="CR">CR</option>
                                     <option value="TUBE">TUBE</option>
+                                    <option value="USG">USG</option>
                                     <option value="CT Scan">CT Scan</option>
                                     <option value="Printer">Printer</option>
                                     <option value="X-Ray Mobile">X-Ray Mobile</option>
