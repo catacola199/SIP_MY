@@ -157,35 +157,24 @@ class Jadwal_Teknisi extends CI_Controller
 	}
 
 	public function update_file_tek()
-	{
-		$id = $this->input->post('no_permohonan');
-		
-		$data1 = array(
-			'status'			=> "TERUNGGAH"
-		);
-
-		foreach ($this->input->post('file_bap') as $key => $val) {
-			$idpermohonan = array(
-				'no_permohonan' => $this->input->post('no_permohonan')
-			);
-			if (!empty($_FILES["file_bap"]["name"][$val])) {
-				
-				$this->M_JadwalTeknisi->_deleteFileBAP($idpermohonan);
-				$this->M_JadwalTeknisi->_uploadFileBap();
-			} else {
+	{	
+		$jumlah_berkas = count($_FILES['file_bap']['name']);
+        for ($i = 0; $i < $jumlah_berkas; $i++) {
+			if (!empty($_FILES['file_bap']['name'][$i])) {
 				$data = array(
-					'id_pengguna'	    => $this->input->post('id_pengguna'),
-					'tgl_jadwal'   		=> $this->input->post('tgl_jadwal'),
-					
+					'dokumen_bap'   	=> $_FILES['file_bap']['name'][$i]
 				);
+				$id = array(
+					'id_dokumen' => $this->input->post('id_dokumen')[$i]
+				);
+				$id_dokumen = $this->input->post('id_dokumen')[$i];
+				$this->M_JadwalTeknisi->update_dokumen($data, $id);
+				// $this->M_JadwalTeknisi->_deleteFileBAP($id_dokumen);
+
 			}
-		
 		}
 
-
-		//Update Upload Dokumen
-		
-
+		$this->M_JadwalTeknisi->gantiFileBAP();
 		$this->session->set_flashdata('notif', 'Jadwal berhasil diupdate');
 		redirect(base_url('usertek'));
 	}

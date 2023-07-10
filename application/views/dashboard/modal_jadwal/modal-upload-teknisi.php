@@ -104,6 +104,8 @@
                                             <th>#</th>
                                             <th>Produk</th>
                                             <th>Upload</th>
+                                            <th>Upload</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -114,10 +116,13 @@
                                                     <td><?= $i++ ?></td>
                                                     <td class="col-4"><label for="file_bap[]"><?php echo $produk->nama_produk ?></label></td>
                                                     <td class="col-auto">
+                                                        <input type="hidden" name="id_dokumen[]" id="id_dokumen[]" value="<?= $produk->id_dokumen ?>" required>
                                                         <input type="hidden" name="no_permohon[]" id="no_permohon[]" value="<?= $produk->no_permohonan ?>" required>
                                                         <input type="hidden" name="id_permohonan[]" id="id_permohonan[]" value="<?= $produk->id_permohonan ?>" required>
-                                                        <input type="file" class="form-control form-control-file" name="`file_bap`[]" id="file_bap[]" accept=".pdf" required>
+                                                        <input type="file" class="form-control form-control-file" name="file_bap[]" id="file_bap[]" accept=".pdf">
                                                     </td>
+                                                    <td class="col-4"><label for="file_bap[]"><?php echo $produk->id_dokumen ?></label></td>
+
                                                 </tr>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
