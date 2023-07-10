@@ -19,11 +19,11 @@
                         </div>
                         <div class="form-group">
                             <label for="surat_tugas">Kuisioner (Opsional)</label>
-                            <input type="file" class="form-control form-control-file" name="file_kuisioner" id="file_kuisioner" accept=".pdf">
+                            <input type="file" class="form-control form-control-file" name="file_kuisioner" id="file_kuisioner" accept=".jpg,.jpeg,.png,.pdf">
                         </div>
                         <div class="form-group">
                             <label for="surat_tugas">Surat Jalan (Opsional)</label>
-                            <input type="file" class="form-control form-control-file" name="file_sj" id="file_sj" accept=".pdf">
+                            <input type="file" class="form-control form-control-file" name="file_sj" id="file_sj" accept=".jpg,.jpeg,.png,.pdf">
                         </div>
                         <div class="form-group">
                             <label for="upload">Upload BAP</label>
@@ -46,7 +46,7 @@
                                                     <td class="col-auto">
                                                         <input type="hidden" name="no_permohon[]" id="no_permohon[]" value="<?= $produk->no_permohonan ?>" required>
                                                         <input type="hidden" name="id_permohonan[]" id="id_permohonan[]" value="<?= $produk->id_permohonan ?>" required>
-                                                        <input type="file" class="form-control form-control-file" name="file_bap[]" id="file_bap[]" accept=".pdf" required>
+                                                        <input type="file" class="form-control form-control-file" name="file_bap[]" id="file_bap[]" accept=".jpg,.jpeg,.png,.pdf" required>
                                                     </td>
                                                 </tr>
                                             <?php endif; ?>
@@ -89,11 +89,11 @@
                         </div>
                         <div class="form-group">
                             <label for="surat_tugas">Kuisioner</label>
-                            <input type="file" class="form-control form-control-file" name="file_kuisioner" id="file_kuisioner" accept=".pdf">
+                            <input type="file" class="form-control form-control-file" name="file_kuisioner" id="file_kuisioner" accept=".jpg,.jpeg,.png,.pdf">
                         </div>
                         <div class="form-group">
                             <label for="surat_tugas">Surat Jalan</label>
-                            <input type="file" class="form-control form-control-file" name="file_sj" id="file_sj" accept=".pdf">
+                            <input type="file" class="form-control form-control-file" name="file_sj" id="file_sj" accept=".jpg,.jpeg,.png,.pdf">
                         </div>
                         <div class="form-group">
                             <label for="upload">Upload BAP</label>
@@ -119,7 +119,7 @@
                                                         <input type="hidden" name="id_dokumen[]" id="id_dokumen[]" value="<?= $produk->id_dokumen ?>" required>
                                                         <input type="hidden" name="no_permohon[]" id="no_permohon[]" value="<?= $produk->no_permohonan ?>" required>
                                                         <input type="hidden" name="id_permohonan[]" id="id_permohonan[]" value="<?= $produk->id_permohonan ?>" required>
-                                                        <input type="file" class="form-control form-control-file" name="file_bap[]" id="file_bap[]" accept=".pdf">
+                                                        <input type="file" class="form-control form-control-file" name="file_bap[]" id="file_bap[]" accept=".jpg,.jpeg,.png,.pdf">
                                                     </td>
                                                     <td class="col-4"><label for="file_bap[]"><?php echo $produk->id_dokumen ?></label></td>
 
