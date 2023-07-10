@@ -152,6 +152,46 @@ class M_JadwalTeknisi extends CI_Model
         return "default.pdf";
     }
 
+    public function _uploadFileSuratJalan()
+    {
+        $config = array();
+        $config['upload_path']          = './upload/suratJalan/';
+        $config['allowed_types']        = 'pdf|doc|docx';
+        // $config['file_name']            = $this->input->post('nama_brosur');
+        $config['encrypt_name']         = false;
+        $config['overwrite']            = true;
+        $config['max_size']             = 5094; // 1MB
+
+        $this->load->library('upload', $config, 'uploadpenawaran');
+        $this->uploadpenawaran->initialize($config);
+
+        if ($this->uploadpenawaran->do_upload('file_sj')) {
+            return $this->uploadpenawaran->data("file_name");
+        }
+        //  print_r($this->upload->display_errors());
+        return "default.pdf";
+    }
+
+    public function _uploadFileKuisioner()
+    {
+        $config = array();
+        $config['upload_path']          = './upload/kuisioner/';
+        $config['allowed_types']        = 'pdf|doc|docx';
+        // $config['file_name']            = $this->input->post('nama_brosur');
+        $config['encrypt_name']         = false;
+        $config['overwrite']            = true;
+        $config['max_size']             = 5094; // 1MB
+
+        $this->load->library('upload', $config, 'uploadpenawaran');
+        $this->uploadpenawaran->initialize($config);
+
+        if ($this->uploadpenawaran->do_upload('file_kuisioner')) {
+            return $this->uploadpenawaran->data("file_name");
+        }
+        //  print_r($this->upload->display_errors());
+        return "default.pdf";
+    }
+
     // Upload Dokumen 
     public function _uploadFileSuratTugas()
     {

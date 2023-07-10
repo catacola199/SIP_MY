@@ -139,10 +139,14 @@ class Jadwal_Teknisi extends CI_Controller
 		$data1 = array(
 			'status'			=> "TERUNGGAH"
 		);
+		$data2 = array(
+			'file_kuisioner'   	=> $this->M_JadwalTeknisi->_uploadFileKuisioner(),
+			'file_sj'   	=> $this->M_JadwalTeknisi->_uploadFileSuratJalan()
+		);
 
-
-		//tambah data 
-
+		//Update Terjadwal
+		
+		$this->M_JadwalTeknisi->update_filePenawaran($data2, $idpermohonan);
 		//Upload Dokumen
 		$this->M_JadwalTeknisi->_uploadFileBap();
 		// update status

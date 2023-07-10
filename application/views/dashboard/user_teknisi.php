@@ -76,7 +76,7 @@
                                                 <th>No Permohonan</th>
                                                 <th>Kategori</th>
                                                 <th>Rumah Sakit</th>
-                                                <th>PIC</th>
+                                                <th>Teknisi</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
 
@@ -90,7 +90,7 @@
                                                     <td><?php echo $data->no_permohonan ?></td>
                                                     <td><?php echo $data->kategori ?></td>
                                                     <td class="text-truncate" style="max-width:250px"><?php echo $data->nama_rs ?></td>
-                                                    <td><?php echo $data->pic_name ?></td>
+                                                    <td><?php echo $data->nama_pengguna ?></td>
 
                                                     <td>
                                                         <?php if ($data->status == 'TERJADWAL') : ?>
@@ -135,10 +135,7 @@
                                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#uploadtek-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Terlaksana">
                                                                 <i class="fas fa-check"></i>
                                                             </a>
-                                                        <?php elseif ($data->status == 'TERUNGGAH') : ?>
-                                                            <a href="#!" class="btn btn-sm btn-outline-primary " data-bs-toggle="modal" data-bs-target="#updatek-<?= $data->id_permohonan ?>" data-toggle="tooltip" data-placement="bottom" title="Ganti Jadwal">
-                                                                <i class="fas fa-reply"></i>
-                                                            </a>
+                                                            
                                                         <?php endif; ?>
                                                     </td>
                                                 </tr>
