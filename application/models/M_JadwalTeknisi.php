@@ -156,7 +156,7 @@ class M_JadwalTeknisi extends CI_Model
     {
         $config = array();
         $config['upload_path']          = './upload/suratJalan/';
-        $config['allowed_types']        = 'pdf|doc|docx';
+        $config['allowed_types']        = 'pdf|doc|docx|jpeg|jpg|png';
         // $config['file_name']            = $this->input->post('nama_brosur');
         $config['encrypt_name']         = false;
         $config['overwrite']            = true;
@@ -176,7 +176,7 @@ class M_JadwalTeknisi extends CI_Model
     {
         $config = array();
         $config['upload_path']          = './upload/kuisioner/';
-        $config['allowed_types']        = 'pdf|doc|docx';
+        $config['allowed_types']        = 'pdf|doc|docx|jpeg|jpg|png';
         // $config['file_name']            = $this->input->post('nama_brosur');
         $config['encrypt_name']         = false;
         $config['overwrite']            = true;
@@ -221,7 +221,7 @@ class M_JadwalTeknisi extends CI_Model
     {
         $config = array();
         $config['upload_path']          = './upload/dokumen_bap/';
-        $config['allowed_types']        = 'pdf|doc|docx';
+        $config['allowed_types']        = 'pdf|doc|docx|jpeg|jpg|png';
         // $config['file_name']            = $this->input->post('id_permohon[]');
         $config['encrypt_name']         = false;
         $config['overwrite']            = true;
