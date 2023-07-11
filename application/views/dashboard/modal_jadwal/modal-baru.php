@@ -62,6 +62,12 @@
                                             </div>
                                             <input type="text" readonly class="form-control-plaintext" value=" Training">
                                         </div>
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-text rounded-2">
+                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Cek Alat">
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" value=" Cek Alat">
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <div class="input-group mb-1">
@@ -81,6 +87,12 @@
                                                 <input type="checkbox" name="check_list[]" alt="Checkbox" value="Pre-Install">
                                             </div>
                                             <input type="text" readonly class="form-control-plaintext" value=" Preinstall">
+                                        </div>
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-text rounded-2">
+                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Kirim Alat">
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" value=" Kirim Alat">
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +119,7 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-floating">
-                                            <input type="number" class="form-control" name="pic_phone" id="pic_phone" placeholder="PIC Phone" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==12) return false;" required>
+                                            <input type="text" class="form-control" name="pic_phone" id="pic_phone" placeholder="PIC Phone" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
                                             <label for="pic_phone"> Phone PIC </label>
                                         </div>
                                     </div>
