@@ -76,7 +76,7 @@
                                                 <th>No BAP</th>
                                                 <th>Kategori</th>
                                                 <th>Rumah Sakit</th>
-                                                <th>PIC</th>
+                                                <th>Teknisi</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
 
@@ -90,7 +90,7 @@
                                                     <td><?php echo $data->no_permohonan ?></td>
                                                     <td><?php echo $data->kategori ?></td>
                                                     <td class="text-truncate" style="max-width:250px"><?php echo $data->nama_rs ?></td>
-                                                    <td><?php echo $data->pic_name ?></td>
+                                                    <td><?php echo $data->nama_pengguna ?></td>
 
                                                     <td>
                                                         <?php if ($data->status == 'TERJADWAL') : ?>
