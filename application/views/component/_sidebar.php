@@ -18,12 +18,12 @@
                 </li>
 
                 <?php if ($this->fungsi->user_login()->id_role == "1" || $this->fungsi->user_login()->id_role == "2") { ?>
-                    <li class="list-divider"></li>
+                    <!--<li class="list-divider"></li>
                     <li class="nav-small-cap">
                         <span class="hide-menu">Applications</span>
                     </li>
 
-                   <li class="sidebar-item">
+                     <li class="sidebar-item">
                         <a class="sidebar-link sidebar-link" href="<?= base_url('compro') ?>" aria-expanded="false">
                             <i data-feather="book" class="feather-icon"></i>
                             <span class="hide-menu">Brosur</span>
@@ -47,6 +47,7 @@
                             <span class="hide-menu">Presentasi Produk</span>
                         </a>
                     </li>
+                    -->
 
 
                     <li class="list-divider"></li>
@@ -63,6 +64,12 @@
                     <li class="list-divider"></li>
                     <li class="nav-small-cap">
                         <span class="hide-menu">Admin</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('karyawan') ?>" aria-expanded="false">
+                            <i data-feather="database" class="feather-icon"></i>
+                            <span class="hide-menu">Karyawan</span>
+                        </a>
                     </li>
                     <li class="sidebar-item">
                         <a class="sidebar-link sidebar-link" href="<?= base_url('produk') ?>" aria-expanded="false">
