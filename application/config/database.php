@@ -80,7 +80,7 @@ $query_builder = TRUE;
 // 	'database' => 'u860446121_Osass',
 // 	'dbdriver' => 'mysqli',
 // 	'dbprefix' => '',
-// 	'pconnect' => FALSE,7
+// 	'pconnect' => FALSE,
 // 	'db_debug' => (ENVIRONMENT !== 'production'),
 // 	'cache_on' => FALSE,
 // 	'cachedir' => '',
