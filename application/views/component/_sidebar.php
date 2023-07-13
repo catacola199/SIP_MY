@@ -65,12 +65,16 @@
                     <li class="nav-small-cap">
                         <span class="hide-menu">Admin</span>
                     </li>
-                    <li class="sidebar-item">
+
+                    <?php if ($this->fungsi->user_login()->id_role == "1") { ?>
+                        <li class="sidebar-item">
                         <a class="sidebar-link sidebar-link" href="<?= base_url('karyawan') ?>" aria-expanded="false">
                             <i data-feather="database" class="feather-icon"></i>
                             <span class="hide-menu">Karyawan</span>
                         </a>
                     </li>
+                    <?php } ?>
+                    
                     <li class="sidebar-item">
                         <a class="sidebar-link sidebar-link" href="<?= base_url('produk') ?>" aria-expanded="false">
                             <i data-feather="database" class="feather-icon"></i>
@@ -140,7 +144,7 @@
                         <span class="hide-menu"> Profile</span>
                     </a>
                 </li> -->
-                <!--User Teknisi -->       
+                <!--User Teknisi -->
                 <?php if ($this->fungsi->user_login()->id_role == "4") { ?>
                     <li class="list-divider"></li>
                     <li class="nav-small-cap">
@@ -162,10 +166,10 @@
                             <span class="hide-menu">Jadwal</span>
                         </a>
                     </li>
-                    
+
                 <?php } ?>
 
-                <!--User Distributor -->       
+                <!--User Distributor -->
                 <?php if ($this->fungsi->user_login()->id_role == "4") { ?>
                     <li class="list-divider"></li>
                     <li class="nav-small-cap">
@@ -177,13 +181,13 @@
                             <span class="hide-menu">Brosur</span>
                         </a>
                     </li>
-                     <li class="sidebar-item">
+                    <li class="sidebar-item">
                         <a class="sidebar-link sidebar-link" href="<?= base_url('pretraining') ?>" aria-expanded="false">
                             <i data-feather="book" class="feather-icon"></i>
                             <span class="hide-menu">Presentasi Training</span>
                         </a>
                     </li>
-                     <li class="sidebar-item">
+                    <li class="sidebar-item">
                         <a class="sidebar-link sidebar-link" href="<?= base_url('preproduk') ?>" aria-expanded="false">
                             <i data-feather="book" class="feather-icon"></i>
                             <span class="hide-menu">Presentasi Produk</span>

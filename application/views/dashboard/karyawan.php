@@ -59,43 +59,18 @@
                                     </div>
                                 </h6>
                                 <div class="table-responsive">
-                                    <table id="multi_col_order" class="table  table-row-border no-wrap" style="width:100%">
-                                        <thead class="bg-primary text-white">
+                                    <table id="tbl_user" class="table table-sm table-hover" style="width:100%">
+                                        <thead>
                                             <tr>
-                                                <th>#</th>
-
-                                                <th>NIP</th>
-
-                                                <th>Nama Karyawan</th>
-                                                <th>Tanggal Lahir</th>
+                                                <th>No</th>
+                                                <th>Foto</th>
+                                                <th>Nama Lengkap</th>
+                                                <th>NPWP</th>
+                                                <th>Email</th>
+                                                <th>Status Karyawan</th>
                                                 <th>Action</th>
-
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <?php $i = 1;
-                                            foreach ($karyawan as $data) : ?>
-                                                <tr>
-                                                    <td><?php echo $i++ ?></td>
-
-                                                    <td><?php echo $data->karyawan_nip ?></td>
-
-                                                    <td><?php echo $data->karyawan_nama ?></td>
-                                                    <td><?php echo $data->karyawan_tgllahir ?></td>
-                                                    <td>
-                                                        <a href="#!" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#edit-<?= $data->karyawan_nip ?>">
-                                                            <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
-                                                        </a>
-                                                        <!-- <a href="<?php echo site_url('produk/editproduk/' . $data->karyawan_nip) ?>" class="btn btn-sm btn-outline-success">
-                                                            <i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
-                                                        </a> -->
-                                                        <a onclick="deleteConfirm('<?php echo site_url('produk/deleteproduk/' . $data->karyawan_nip) ?>')" href="#!" class="btn btn-sm btn-outline-danger">
-                                                            <i class="icon-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -126,10 +101,11 @@
 
     <!-- Jquery -->
     <?php $this->load->view('component/_jquery') ?>
+
     <!-- End JQuery -->
 
     <?php $this->load->view('modals/modal_karyawan') ?>
-   
+    <?php $this->load->view('jquery/jquery_karyawan') ?>
     <script>
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();

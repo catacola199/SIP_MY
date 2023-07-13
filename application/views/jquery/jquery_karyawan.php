@@ -10,7 +10,7 @@ $("#formFile").change(function() {
     }
 });
 var user = $('#tbl_user').DataTable({
-    "ajax": "<?php echo base_url('user/getUser')?>",
+    "ajax": "<?php echo base_url('Karyawan/getUser')?>",
     "columns": [
         {   
             "data": null,
@@ -29,10 +29,10 @@ var user = $('#tbl_user').DataTable({
         {   "data": "karyawan_nama",
             "className": "align-middle"
         },
-        {   "data": "karyawan_email",
+        {   "data": "karyawan_npwp",
             "className": "align-middle"
         },
-        {   "data": "role_name",
+        {   "data": "karyawan_email",
             "className": "align-middle"
         },
         {   "data": "user_isactive",
@@ -72,7 +72,7 @@ $('#formKaryawan').submit(function(e){
     e.preventDefault();
     var form = $('#formKaryawan').serialize();
     $.ajax({
-        url: '<?php echo base_url('user/simpanData'); ?>',
+        url: '<?php echo base_url('Karyawan/simpanData'); ?>',
         type: 'POST',
         cache	: false,
         data: form,

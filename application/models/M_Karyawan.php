@@ -14,7 +14,7 @@ class M_Karyawan extends CI_Model
         return $query->result_array();
     }
 
-    public function simpandatakaryawan($data)
+    public function SimpanDataKaryawan($data)
     {
         $this->db->insert('tbl_karyawan', $data);
         return TRUE;

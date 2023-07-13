@@ -1,7 +1,7 @@
 
 
 <div id="add_karyawan" class="modal fade" tabindex="-1" data-bs-backdrop="static" role="dialog" aria-labelledby="success-header-modalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header modal-colored-header bg-primary">
                     <h4 class="modal-title" id="success-header-modalLabel">Form Tambah Produk
