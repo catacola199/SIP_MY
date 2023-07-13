@@ -283,25 +283,7 @@ class Jadwal_Teknisi extends CI_Controller
 	}
 
 	// Verif User Teknisi
-	public function verifteknisi($id = null)
-	{
-		$query = $this->db->get('teknisi_nopermohonan')->result();
-		foreach ($query as $data) {
-			if (md5($data->no_permohonan) === $id) {
-				$no = $data->no_permohonan;
-			}
-		}
-		$idp = array(
-			'no_permohonan' => $no
-		);
-		$nama = $this->db->get_where('teknisi_nopermohonan', ["no_permohonan" => $no])->row()->nama_rs;
-		$data = array(
-			'status'			=> "TERLAKSANA"
-		);
-		$this->M_JadwalTeknisi->verif_teknisi($data, $idp);
-		$this->session->set_flashdata('notif', 'Permohonan dengan nomor ' . $no . ' pada ' . ucfirst($nama) . ' berhasil terlaksana');
-		redirect(base_url('usertek'));
-	}
+	
 
 	public function veriftidakselesai($id = null)
 	{
@@ -323,25 +305,7 @@ class Jadwal_Teknisi extends CI_Controller
 		redirect(base_url('usertek'));
 	}
 
-	public function verifadminteknisi($id = null)
-	{
-		$query = $this->db->get('teknisi_nopermohonan')->result();
-		foreach ($query as $data) {
-			if (md5($data->no_permohonan) === $id) {
-				$no = $data->no_permohonan;
-			}
-		}
-		$idp = array(
-			'no_permohonan' => $no
-		);
-		$nama = $this->db->get_where('teknisi_nopermohonan', ["no_permohonan" => $no])->row()->nama_rs;
-		$data = array(
-			'status'			=> "TERLAKSANA"
-		);
-		$this->M_JadwalTeknisi->verif_teknisi($data, $idp);
-		$this->session->set_flashdata('notif', 'Permohonan dengan nomor ' . $no . ' pada ' . ucfirst($nama) . ' berhasil terlaksana');
-		redirect(base_url('teknisii'));
-	}
+	
 
 	public function viewInvoice($id)
 	{

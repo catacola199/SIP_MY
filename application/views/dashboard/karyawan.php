@@ -55,7 +55,7 @@
                                 <h6 class="card-subtitle mt-4">
                                     <div class="btn-list">
                                         <a href="#" id="refresh_tabel" class="btn btn-outline-primary float-right"><i class="fas fa-redo-alt" data-toggle="tooltip" data-placement="bottom" title="refresh"></i> </a>
-                                        <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#success-header-modal"><i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="Add"></i></button>
+                                        <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#add_karyawan"><i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="Add"></i></button>
                                     </div>
                                 </h6>
                                 <div class="table-responsive">
@@ -128,61 +128,7 @@
     <?php $this->load->view('component/_jquery') ?>
     <!-- End JQuery -->
 
-    <!-- Form Add Modal -->
-    <div id="success-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="success-header-modalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header modal-colored-header bg-primary">
-                    <h4 class="modal-title" id="success-header-modalLabel">Form Tambah Produk
-                    </h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <!-- Form -->
-                    <form action="<?php echo base_url('produk/save_produk') ?>" method="post" enctype="multipart/form-data" role="form" class="pl-3 pr-3" autocomplete="off">
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <select class="form-select" id="nama_produk" name="nama_produk" aria-label="Floating label select example" required>
-                                    <option disabled value="" selected>Pilih salah satu...</option>
-                                    <option value="DR">DR</option>
-                                    <option value="CR">CR</option>
-                                    <option value="TUBE">TUBE</option>
-                                    <option value="USG">USG</option>
-                                    <option value="CT Scan">CT Scan</option>
-                                    <option value="Printer">Printer</option>
-                                    <option value="X-Ray Mobile">X-Ray Mobile</option>
-                                    <option value="X-Ray Stationery">X-Ray Stationery</option>
-                                </select>
-                                <label for="nama_produk">Nama Alat</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <input type="text" class="form-control form-control-user" name="merk_produk" id="merk_produk" placeholder="Merk Produk" required>
-                                <label for="merk_produk">Merk Produk</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <input type="text" class="form-control form-control-user" name="tipe_produk" id="tipe_produk" placeholder="Tipe Produk" required>
-                                <label for="tipe_produk">Tipe Produk</label>
-                            </div>
-                        </div>
-
-
-                        <!-- End Form -->
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fa fa-window-close"></i> Batal</button>
-                            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
-                        </div>
-                    </form>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-    <!-- Modal Edit -->
+    <?php $this->load->view('modals/modal_karyawan') ?>
    
     <script>
         $(function() {
