@@ -32,7 +32,7 @@ class Karyawan extends CI_Controller
 		$masuk =  date("Y-m-d", strtotime($this->input->post('tgl_masuk')));
 		$karyawan = array(
 			'karyawan_nip'	=> $this->security->xss_clean($this->input->post('nip')),
-			'karyawan_nik'	=> $this->security->xss_clean($this->input->post('nip')),
+			'karyawan_nik'	=> $this->security->xss_clean($this->input->post('nik')),
 			'karyawan_nama'	=> $this->security->xss_clean($this->input->post('nama')),
 			'karyawan_npwp'	=> $this->security->xss_clean($this->input->post('npwp')),
 			'provinsi_id'	=> $this->security->xss_clean($this->input->post('provinsi')),
@@ -43,6 +43,7 @@ class Karyawan extends CI_Controller
 			'karyawan_tmplahir'	=> $this->security->xss_clean($this->input->post('tempat_lahir')),
 			'karyawan_tgllahir'	=> $this->security->xss_clean($lahir),
 			'karyawan_goldar'	=> $this->security->xss_clean($this->input->post('goldar')),
+			'karyawan_email'	=> $this->security->xss_clean($this->input->post('email')),
 			'karyawan_email'	=> $this->security->xss_clean($this->input->post('email')),
 			'karyawan_tglmasuk'	=> $this->security->xss_clean($masuk)
 		);

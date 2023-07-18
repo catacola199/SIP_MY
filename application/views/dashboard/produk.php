@@ -214,15 +214,7 @@
                                     <label for="nama_produk">Tipe Produk</label>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="form-floating">
-                                    <select class="form-select" id="jenis_produk" name="jenis_produk" aria-label="Floating label select example" required>
-                                        <option value="Umum" <?php if ($data->jenis_produk == "Umum") echo 'selected ="selected"'; ?>>Umum</option>
-                                        <option value="X-Ray" <?php if ($data->jenis_produk == "X-Ray") echo 'selected ="selected"'; ?>>X-Ray</option>
-                                    </select>
-                                    <label for="jenis_produk">Jenis Produk</label>
-                                </div>
-                            </div>
+                            
 
                     </div>
                     <div class="modal-footer">

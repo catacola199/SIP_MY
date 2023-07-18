@@ -9,6 +9,8 @@
 <script src="<?= base_url('src') ?>/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
 <script src="<?= base_url('src') ?>/dist/js/sidebarmenu.js"></script>
 <!--Custom JavaScript -->
+
+<script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
 <script src="<?= base_url('src') ?>/dist/js/custom.js"></script>
 <!-- <script src="<?= base_url('src') ?>/dist/js/pages/dashboards/dashboard1.min.js"></script> -->
 <script src="<?= base_url('src') ?>/dist/js/app-style-switcher.js"></script>
@@ -18,7 +20,9 @@
 <script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/b-2.2.3/b-html5-2.2.3/datatables.min.js"></script>
 <!-- <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script> -->
 <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <!-- selectpicker -->
@@ -41,6 +45,26 @@
         $('table.display').DataTable();
         $('#produk').DataTable();
         $('#teknisi').DataTable();
+
+        $('#tgl_lahir').datepicker({
+            header: true,
+            format: "dd-mm-yyyy",
+            uiLibrary: 'bootstrap5',
+            showRightIcon: false
+        });
+
+        $('#tgl_jadwal').datepicker({
+            header: true,
+            format: "dd-mm-yyyy",
+            uiLibrary: 'bootstrap5',
+            showRightIcon: false
+        });
+        $('#tgl_masuk').datepicker({
+            header: true,
+            format: "dd-mm-yyyy",
+            uiLibrary: 'bootstrap5',
+            showRightIcon: false
+        });
         // $('textarea.form-control').summernote({
         //     tabsize: 3,
         //     height: 120,
@@ -64,6 +88,159 @@
             document.getElementById('exit_fullscreen').style.display = 'none';
         });
         // new SimpleBar(document.getElementById('notif'));
+
+
+        //Memanggil Alamat; Prov,Kab,Kec,Desa
+        $.ajax({
+            url: '<?= base_url('alamat/showProvinsi') ?>',
+            dataType: "JSON",
+            success: function(data) {
+                var select = '';
+                $.each(data, function(key, val) {
+                    $("#provinsi").append("<option value='" + val.id + "' >" + val.name + "</option>");
+                });
+            }
+        });
+
+        function getKabupaten(id) {
+            $("#kabupaten").empty();
+            $("#kecamatan").empty();
+            $("#desa").empty();
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo base_url('alamat/get_kabupaten'); ?>',
+                data: {
+                    provinsi_id: id
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $.each(data, function(key, val) {
+                        $("#kabupaten").append("<option value='" + val.id + "' >" + val.name + "</option>");
+                    });
+                }
+            });
+        }
+
+        function getKecamatan(id) {
+            $("#kabupaten").empty();
+            $("#kecamatan").empty();
+            $("#desa").empty();
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo base_url('alamat/get_kecamatan'); ?>',
+                data: {
+                    kabupaten_id: id
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $.each(data, function(key, val) {
+                        $("#kecamatan").append("<option value='" + val.id + "' >" + val.name + "</option>");
+                    })
+                }
+            });
+        }
+
+        function getDesa(id) {
+            $("#kabupaten").empty();
+            $("#kecamatan").empty();
+            $("#desa").empty();
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo base_url('alamat/get_desa'); ?>',
+                data: {
+                    kecamatan_id: id
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $.each(data, function(key, val) {
+                        $("#desa").append("<option value='" + val.id + "' >" + val.name + "</option>");
+                    })
+                }
+            });
+        }
+
+        $('#provinsi').on('change', function(e) {
+            e.preventDefault();
+            var provinsiID = $(this).val();
+            console.log(provinsiID);
+
+            if (provinsiID != '') {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo base_url('alamat/get_kabupaten'); ?>',
+                    data: {
+                        provinsi_id: provinsiID
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
+                        var select = '';
+                        $("#kabupaten").empty();
+                        $("#kecamatan").empty();
+                        $("#desa").empty();
+                        $.each(data, function(key, val) {
+                            $("#kabupaten").append("<option value='" + val.id + "' >" + val.name + "</option>");
+                        });
+                    }
+                });
+            } else {
+                console.log("jadi");
+                $("#kabupaten").empty();
+                $("#kecamatan").empty();
+                $("#desa").empty();
+            }
+        });
+
+        $('#kabupaten').on('change', function(e) {
+            e.preventDefault();
+            var kabupatenID = $(this).val();
+            if (kabupatenID) {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo base_url('alamat/get_kecamatan'); ?>',
+                    data: {
+                        kabupaten_id: kabupatenID
+                    },
+                    dataType: "JSON",
+
+                    success: function(data) {
+                        var select = '';
+                        $("#kecamatan").empty();
+                        $("#desa").empty();
+                        $.each(data, function(key, val) {
+                            $("#kecamatan").append("<option value='" + val.id + "' >" + val.name + "</option>");
+                        })
+                    }
+                });
+            } else {
+                $("#kecamatan").empty();
+                $("#desa").empty();
+            }
+        });
+
+        $('#kecamatan').on('change', function(e) {
+            e.preventDefault();
+            var kecamatanID = $(this).val();
+            if (kecamatanID) {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo base_url('alamat/get_desa'); ?>',
+                    data: {
+                        kecamatan_id: kecamatanID
+                    },
+                    dataType: "JSON",
+
+                    success: function(data) {
+                        var select = '';
+                        $("#desa").empty();
+                        $.each(data, function(key, val) {
+                            $("#desa").append("<option value='" + val.id + "' >" + val.name + "</option>");
+                        })
+                    }
+                });
+            } else {
+                $("#desa").empty();
+            }
+        });
     });
 
 

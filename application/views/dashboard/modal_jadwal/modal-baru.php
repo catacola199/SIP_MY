@@ -9,21 +9,22 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <?php 
-                            function numbertoroman($number) {
-                                $map = array('M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400, 'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40, 'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1);
-                                $returnValue = '';
-                                while ($number > 0) {
-                                    foreach ($map as $roman => $int) {
-                                        if($number >= $int) {
-                                            $number -= $int;
-                                            $returnValue .= $roman;
-                                            break;
-                                        }
+                        <?php
+                        function numbertoroman($number)
+                        {
+                            $map = array('M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400, 'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40, 'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1);
+                            $returnValue = '';
+                            while ($number > 0) {
+                                foreach ($map as $roman => $int) {
+                                    if ($number >= $int) {
+                                        $number -= $int;
+                                        $returnValue .= $roman;
+                                        break;
                                     }
                                 }
-                                return $returnValue;
                             }
+                            return $returnValue;
+                        }
                         ?>
                         <div class="col pl-4 pr-4">
                             <label for="no_permohonan_b" class="form-label">Nomor Permohonan</label>
@@ -215,18 +216,12 @@
                                     <label for="nama_driver">Insentif</label>
                                 </div>
                             </div>
-                            <div class="input-group date" id="pengadaan_alat">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" name="tgl_jadwal" id="tgl_jadwal" placeholder="Pilih Tanggal" autocomplete="off" required />
-                                    <label for="tgl_jadwal">Tanggal Jadwal </label>
-                                </div>
-                                <span class="input-group-append">
-                                    <span class="input-group-text bg-light">
-                                        <i class="fa fa-calendar"></i>
-                                    </span>
-                                </span>
+
+                            <div class="form-group ">
+                                <label for="ttl" class="form-label">Tanggal Jadwal</label>
+                                <input type="text" class="form-control date-id" id="tgl_jadwal" name="tgl_jadwal" placeholder="01-01-2001" required maxlength="10">
                             </div>
-            
+
                             <div class="form-group mt-1">
                                 <label for="file_penawaran">File Penawaran</label>
                                 <input type="file" class="form-control form-control-file" name="file_penawaran" id="file_penawaran" accept=".pdf">
