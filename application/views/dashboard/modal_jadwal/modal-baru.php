@@ -75,6 +75,12 @@
                                             </div>
                                             <input type="text" readonly class="form-control-plaintext" value=" QC Alat">
                                         </div>
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-text rounded-2">
+                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Bongkar Pasang alat & Timah">
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" value=" Bongkar Pasang alat & Timah">
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <div class="input-group mb-1">
@@ -106,6 +112,12 @@
                                                 <input type="checkbox" name="check_list[]" alt="Checkbox" value="Setting Kalibrasi">
                                             </div>
                                             <input type="text" readonly class="form-control-plaintext" value=" Setting Kalibrasi">
+                                        </div>
+                                        <div class="input-group mb-1">
+                                            <div class="input-group-text rounded-2">
+                                                <input type="checkbox" name="check_list[]" alt="Checkbox" value="Bongkar Alat & Timah">
+                                            </div>
+                                            <input type="text" readonly class="form-control-plaintext" value=" Bongkar Alat & Timah">
                                         </div>
                                     </div>
                                 </div>
